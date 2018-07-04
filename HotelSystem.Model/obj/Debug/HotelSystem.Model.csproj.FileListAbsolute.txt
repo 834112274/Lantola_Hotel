@@ -58,3 +58,15 @@ G:\Project\Lantola_HotelSystem\HotelSystem.Model\bin\Debug\zh-Hans\EntityFramewo
 G:\Project\Lantola_HotelSystem\HotelSystem.Model\obj\Debug\HotelSystem.Model.csprojResolveAssemblyReference.cache
 G:\Project\Lantola_HotelSystem\HotelSystem.Model\obj\Debug\HotelSystem.Model.dll
 G:\Project\Lantola_HotelSystem\HotelSystem.Model\obj\Debug\HotelSystem.Model.pdb
+F:\Project\github\Lantola_Hotel\HotelSystem.Model\bin\Debug\HotelSystem.Model.dll.config
+F:\Project\github\Lantola_Hotel\HotelSystem.Model\bin\Debug\HotelSystem.Model.dll
+F:\Project\github\Lantola_Hotel\HotelSystem.Model\bin\Debug\HotelSystem.Model.pdb
+F:\Project\github\Lantola_Hotel\HotelSystem.Model\bin\Debug\EntityFramework.dll
+F:\Project\github\Lantola_Hotel\HotelSystem.Model\bin\Debug\EntityFramework.SqlServer.dll
+F:\Project\github\Lantola_Hotel\HotelSystem.Model\bin\Debug\EntityFramework.xml
+F:\Project\github\Lantola_Hotel\HotelSystem.Model\bin\Debug\EntityFramework.SqlServer.xml
+F:\Project\github\Lantola_Hotel\HotelSystem.Model\bin\Debug\zh-Hans\EntityFramework.resources.dll
+F:\Project\github\Lantola_Hotel\HotelSystem.Model\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
+F:\Project\github\Lantola_Hotel\HotelSystem.Model\obj\Debug\HotelSystem.Model.csprojResolveAssemblyReference.cache
+F:\Project\github\Lantola_Hotel\HotelSystem.Model\obj\Debug\HotelSystem.Model.dll
+F:\Project\github\Lantola_Hotel\HotelSystem.Model\obj\Debug\HotelSystem.Model.pdb

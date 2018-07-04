@@ -23,3 +23,8 @@ G:\Project\Lantola_HotelSystem\HotelSystem.Helper\bin\Debug\HotelSystem.Helper.p
 G:\Project\Lantola_HotelSystem\HotelSystem.Helper\obj\Debug\HotelSystem.Helper.csprojResolveAssemblyReference.cache
 G:\Project\Lantola_HotelSystem\HotelSystem.Helper\obj\Debug\HotelSystem.Helper.dll
 G:\Project\Lantola_HotelSystem\HotelSystem.Helper\obj\Debug\HotelSystem.Helper.pdb
+F:\Project\github\Lantola_Hotel\HotelSystem.Helper\bin\Debug\HotelSystem.Helper.dll
+F:\Project\github\Lantola_Hotel\HotelSystem.Helper\bin\Debug\HotelSystem.Helper.pdb
+F:\Project\github\Lantola_Hotel\HotelSystem.Helper\obj\Debug\HotelSystem.Helper.csprojResolveAssemblyReference.cache
+F:\Project\github\Lantola_Hotel\HotelSystem.Helper\obj\Debug\HotelSystem.Helper.dll
+F:\Project\github\Lantola_Hotel\HotelSystem.Helper\obj\Debug\HotelSystem.Helper.pdb

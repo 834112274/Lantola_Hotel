@@ -76,7 +76,7 @@ namespace HotelSystem.Web.Models.View
             using (DBModelContainer DbContext = new DBModelContainer())
             {
                 int d = (end - start).Days;
-                var rooms = from r in DbContext.Room where r.HotelInfoId == id select r;
+                var rooms = from r in DbContext.Room.Include("RoomImages") where r.HotelInfoId == id select r;
                 List<RoomView> roomViews = new List<RoomView>();
                 foreach (var r in rooms)
                 {
