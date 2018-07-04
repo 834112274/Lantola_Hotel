@@ -1,0 +1,98 @@
+﻿@model IEnumerable<HotelSystem.Model.Users>
+
+@{
+    ViewBag.Title = "子账号";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2><i class="fa fa-table red"></i><span class="break"></span><strong>子账号</strong></h2>
+    </div>
+    <div class="panel-body">
+        <!-- Button trigger modal -->
+        @if (ViewBag.Message != null)
+        {
+            <div class="alert alert-warning alert-dismissible fade in" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                @Html.Raw(ViewBag.Message)
+            </div>
+        }
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#CreateUser">
+            添加子账号
+        </button>
+        <hr />
+        <!-- Modal -->
+        <div class="modal fade" id="CreateUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    @Html.Action("CreateUser")
+                </div>
+            </div>
+        </div>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Role)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RegisterTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RegisterIP)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Summary)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Role)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RegisterTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RegisterIP)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Summary)
+                    </td>
+                    <td>
+                        <a href="javascript:;" data-toggle="modal" data-target="#permission" id="permission_btn" data-userid="@item.Id">管理权限</a> |
+                        @Html.ActionLink("重置密码", "Reset", new { id = item.Id }, new { onclick = "return confirm('确认重置密码吗？');" }) |
+                        @Html.ActionLink("删除", "Delete", new { id = item.Id }, new { onclick = "return confirm('确认删除吗？');" })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="permission" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" id="permission_load">
+        </div>
+    </div>
+</div>
+<script>
+    $(document.body).on("click", "#permission_btn", function () {
+        var id = $(this).data("userid");
+        $("#permission_load").load("/Admin/User/Permission/" + id);
+    });
+</script>

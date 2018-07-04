@@ -1,0 +1,756 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{69AC7738-F2AB-48E6-8788-A8A5FAD67618}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HotelSystem.Web</RootNamespace>
+    <AssemblyName>HotelSystem.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Gma.QrCodeNet.Encoding, Version=0.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QrCode.Net.0.4.0.0\lib\net45\Gma.QrCodeNet.Encoding.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Activities" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Webdiyer.MvcPager, Version=3.0.2015.802, Culture=neutral, PublicKeyToken=f6872c5a09aed72c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Webdiyer.MvcPager.3.0.1.1\lib\Webdiyer.MvcPager.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Css\hotel_backstage.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Images\a1.png" />
+    <Content Include="Images\alipay.jpg" />
+    <Content Include="Images\backstage1.png" />
+    <Content Include="Images\backstagebackground3.jpg" />
+    <Content Include="Images\backstagelogo.png" />
+    <Content Include="Images\banner.png" />
+    <Content Include="Images\btn_blue.png" />
+    <Content Include="Images\btn_orange.png" />
+    <Content Include="Images\cooperation1.png" />
+    <Content Include="Images\cooperation2\1-1.png" />
+    <Content Include="Images\cooperation2\1-2.png" />
+    <Content Include="Images\cooperation2\1-3.png" />
+    <Content Include="Images\cooperation2\1-4.png" />
+    <Content Include="Images\cooperation2\2-1.png" />
+    <Content Include="Images\cooperation2\2-2.png" />
+    <Content Include="Images\cooperation2\2-3.png" />
+    <Content Include="Images\cooperation2\2-4.png" />
+    <Content Include="Images\cooperation2\3-1.png" />
+    <Content Include="Images\cooperation2\3-2.png" />
+    <Content Include="Images\cooperation2\3-3.png" />
+    <Content Include="Images\cooperation2\3-4.png" />
+    <Content Include="Images\cooperation3.png" />
+    <Content Include="Images\cooperation4.png" />
+    <Content Include="Images\cooperation5.png" />
+    <Content Include="Images\denglu1.png" />
+    <Content Include="Images\denglu2.png" />
+    <Content Include="Images\denglu3.png" />
+    <Content Include="Images\denglu4.png" />
+    <Content Include="Images\denglu5.png" />
+    <Content Include="Images\denglu6.png" />
+    <Content Include="Images\denglu7.png" />
+    <Content Include="Images\denglu8.png" />
+    <Content Include="Images\dsadsad.jpg" />
+    <Content Include="Images\fail.jpg" />
+    <Content Include="Images\hotelregister1.png" />
+    <Content Include="Images\hotelregister3.png" />
+    <Content Include="Images\lantola-logo.png" />
+    <Content Include="Images\login_bg.jpg" />
+    <Content Include="Images\logo-WT.png" />
+    <Content Include="Images\mapicon5.png" />
+    <Content Include="Images\payicon1.png" />
+    <Content Include="Images\payicon2.png" />
+    <Content Include="Images\payicon3.png" />
+    <Content Include="Images\payicon4.png" />
+    <Content Include="Images\payicon5.png" />
+    <Content Include="Images\payicon6.png" />
+    <Content Include="Images\paysuccess.png" />
+    <Content Include="Images\pwd-1.png" />
+    <Content Include="Images\pwd-2.png" />
+    <Content Include="Images\unionpay.jpg" />
+    <Content Include="Images\user_bg.jpg" />
+    <Content Include="Images\wechatpay.jpg" />
+    <Content Include="Images\zhuce1.png" />
+    <Content Include="Images\zhuce17.png" />
+    <Content Include="Images\zhuce2.png" />
+    <Content Include="Images\zhuce3.png" />
+    <Content Include="Scripts\Admin\hotel_backstage.js" />
+    <Content Include="Scripts\assets\css\add-ons.min.css" />
+    <Content Include="Scripts\assets\css\bootstrap.min.css" />
+    <Content Include="Scripts\assets\css\climacons-font.css" />
+    <Content Include="Scripts\assets\css\filetypes.css" />
+    <Content Include="Scripts\assets\css\font-awesome.min.css" />
+    <Content Include="Scripts\assets\css\glyphicons.css" />
+    <Content Include="Scripts\assets\css\halflings.css" />
+    <Content Include="Scripts\assets\css\jquery.mmenu.css" />
+    <Content Include="Scripts\assets\css\social.css" />
+    <Content Include="Scripts\assets\css\style.min.css" />
+    <Content Include="Scripts\assets\fonts\climacons-webfont.svg" />
+    <Content Include="Scripts\assets\fonts\fontawesome-webfont.svg" />
+    <Content Include="Scripts\assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Scripts\assets\ico\flags\Brazil.png" />
+    <Content Include="Scripts\assets\ico\flags\Germany.png" />
+    <Content Include="Scripts\assets\ico\flags\India.png" />
+    <Content Include="Scripts\assets\ico\flags\Russia.png" />
+    <Content Include="Scripts\assets\ico\flags\Spain.png" />
+    <Content Include="Scripts\assets\ico\flags\USA.png" />
+    <Content Include="Scripts\assets\img\avatar.jpg" />
+    <Content Include="Scripts\assets\img\avatar1.jpg" />
+    <Content Include="Scripts\assets\img\avatar2.jpg" />
+    <Content Include="Scripts\assets\img\avatar3.jpg" />
+    <Content Include="Scripts\assets\img\avatar4.jpg" />
+    <Content Include="Scripts\assets\img\avatar5.jpg" />
+    <Content Include="Scripts\assets\img\avatar6.jpg" />
+    <Content Include="Scripts\assets\img\avatar7.jpg" />
+    <Content Include="Scripts\assets\img\browser-chrome-big.png" />
+    <Content Include="Scripts\assets\img\browser-firefox-big.png" />
+    <Content Include="Scripts\assets\img\browser-ie.png" />
+    <Content Include="Scripts\assets\img\browser-opera.png" />
+    <Content Include="Scripts\assets\img\browser-safari.png" />
+    <Content Include="Scripts\assets\img\gallery\photo1.jpg" />
+    <Content Include="Scripts\assets\img\gallery\photo10.jpg" />
+    <Content Include="Scripts\assets\img\gallery\photo11.jpg" />
+    <Content Include="Scripts\assets\img\gallery\photo12.jpg" />
+    <Content Include="Scripts\assets\img\gallery\photo13.jpg" />
+    <Content Include="Scripts\assets\img\gallery\photo14.jpg" />
+    <Content Include="Scripts\assets\img\gallery\photo15.jpg" />
+    <Content Include="Scripts\assets\img\gallery\photo2.jpg" />
+    <Content Include="Scripts\assets\img\gallery\photo3.jpg" />
+    <Content Include="Scripts\assets\img\gallery\photo4.jpg" />
+    <Content Include="Scripts\assets\img\gallery\photo5.jpg" />
+    <Content Include="Scripts\assets\img\gallery\photo6.jpg" />
+    <Content Include="Scripts\assets\img\gallery\photo7.jpg" />
+    <Content Include="Scripts\assets\img\gallery\photo8.jpg" />
+    <Content Include="Scripts\assets\img\gallery\photo9.jpg" />
+    <Content Include="Scripts\assets\img\logo1 - Copy.png" />
+    <Content Include="Scripts\assets\img\logo1.png" />
+    <Content Include="Scripts\assets\js\bootstrap.min.js" />
+    <Content Include="Scripts\assets\js\core.min.js" />
+    <Content Include="Scripts\assets\js\jquery-2.1.1.min.js" />
+    <Content Include="Scripts\assets\js\jquery-migrate-1.2.1.min.js" />
+    <Content Include="Scripts\assets\js\jquery.mmenu.min.js" />
+    <Content Include="Scripts\assets\js\pages\calendar.js" />
+    <Content Include="Scripts\assets\js\pages\charts-flot.js" />
+    <Content Include="Scripts\assets\js\pages\charts-other.js" />
+    <Content Include="Scripts\assets\js\pages\charts-xcharts.js" />
+    <Content Include="Scripts\assets\js\pages\form-dropzone.js" />
+    <Content Include="Scripts\assets\js\pages\form-wizard.js" />
+    <Content Include="Scripts\assets\js\pages\form-x-editable-demo.js" />
+    <Content Include="Scripts\assets\js\pages\form-x-editable.js" />
+    <Content Include="Scripts\assets\js\pages\index.js" />
+    <Content Include="Scripts\assets\js\PCASClass.js" />
+    <Content Include="Scripts\assets\js\SmoothScroll.js" />
+    <Content Include="Scripts\assets\plugins\autosize\jquery.autosize.min.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-daterangepicker-master\daterangepicker.css" />
+    <Content Include="Scripts\assets\plugins\bootstrap-daterangepicker-master\daterangepicker.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-daterangepicker-master\demo.html" />
+    <Content Include="Scripts\assets\plugins\bootstrap-daterangepicker-master\drp.png" />
+    <Content Include="Scripts\assets\plugins\bootstrap-daterangepicker-master\example\amd\index.html" />
+    <Content Include="Scripts\assets\plugins\bootstrap-daterangepicker-master\example\amd\main.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-daterangepicker-master\example\amd\require.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-daterangepicker-master\example\browserify\bundle.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-daterangepicker-master\example\browserify\index.html" />
+    <Content Include="Scripts\assets\plugins\bootstrap-daterangepicker-master\example\browserify\main.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-daterangepicker-master\language.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-daterangepicker-master\moment.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-daterangepicker-master\moment.min.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-daterangepicker-master\package.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-daterangepicker-master\website\index.html" />
+    <Content Include="Scripts\assets\plugins\bootstrap-daterangepicker-master\website\website.css" />
+    <Content Include="Scripts\assets\plugins\bootstrap-daterangepicker-master\website\website.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\css\bootstrap-datetimepicker.css" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\css\bootstrap-datetimepicker.min.css" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\bootstrap-datetimepicker.min.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.ar.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.az.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.bg.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.bn.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.ca.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.cs.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.da.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.de.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.ee.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.el.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.es.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.fi.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.fr.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.he.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.hr.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.hu.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.hy.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.id.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.is.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.it.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.ja.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.ka.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.ko.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.lt.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.lv.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.ms.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.nb.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.nl.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.no.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.pl.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.pt-BR.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.pt.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.ro.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.rs-latin.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.rs.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.ru.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.sk.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.sl.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.sv.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.sw.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.th.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.tr.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.ua.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.uk.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.zh-CN.js" />
+    <Content Include="Scripts\assets\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.zh-TW.js" />
+    <Content Include="Scripts\assets\plugins\chosen\js\chosen.jquery.min.js" />
+    <Content Include="Scripts\assets\plugins\d3\d3.min.js" />
+    <Content Include="Scripts\assets\plugins\datatables\js\dataTables.bootstrap.min.js" />
+    <Content Include="Scripts\assets\plugins\datatables\js\jquery.dataTables.min.js" />
+    <Content Include="Scripts\assets\plugins\dropzone\css\dropzone.css" />
+    <Content Include="Scripts\assets\plugins\dropzone\images\spritemap.png" />
+    <Content Include="Scripts\assets\plugins\dropzone\js\dropzone.min.js" />
+    <Content Include="Scripts\assets\plugins\easypiechart\js\jquery.easypiechart.min.js" />
+    <Content Include="Scripts\assets\plugins\editable\css\bootstrap-editable.css" />
+    <Content Include="Scripts\assets\plugins\editable\inputs-ext\address\address.min.js" />
+    <Content Include="Scripts\assets\plugins\editable\inputs-ext\typeaheadjs\typeaheadjs.min.js" />
+    <Content Include="Scripts\assets\plugins\editable\js\bootstrap-editable.min.js" />
+    <Content Include="Scripts\assets\plugins\flot\jquery.flot.min.js" />
+    <Content Include="Scripts\assets\plugins\flot\jquery.flot.pie.min.js" />
+    <Content Include="Scripts\assets\plugins\flot\jquery.flot.resize.min.js" />
+    <Content Include="Scripts\assets\plugins\flot\jquery.flot.spline.min.js" />
+    <Content Include="Scripts\assets\plugins\flot\jquery.flot.stack.min.js" />
+    <Content Include="Scripts\assets\plugins\flot\jquery.flot.time.min.js" />
+    <Content Include="Scripts\assets\plugins\fullcalendar\css\fullcalendar.css" />
+    <Content Include="Scripts\assets\plugins\fullcalendar\js\fullcalendar.min.js" />
+    <Content Include="Scripts\assets\plugins\fullcalendar\js\jquery-ui.custom.min.js" />
+    <Content Include="Scripts\assets\plugins\gauge\gauge.min.js" />
+    <Content Include="Scripts\assets\plugins\jquery-ui\css\jquery-ui-1.10.4.min.css" />
+    <Content Include="Scripts\assets\plugins\jquery-ui\js\jquery-ui-1.10.4.min.js" />
+    <Content Include="Scripts\assets\plugins\justgage\justgage.1.0.1.min.js" />
+    <Content Include="Scripts\assets\plugins\jvectormap\css\jquery-jvectormap-1.2.2.css" />
+    <Content Include="Scripts\assets\plugins\jvectormap\js\gdp-data.js" />
+    <Content Include="Scripts\assets\plugins\jvectormap\js\jquery-jvectormap-1.2.2.min.js" />
+    <Content Include="Scripts\assets\plugins\jvectormap\js\jquery-jvectormap-world-mill-en.js" />
+    <Content Include="Scripts\assets\plugins\maskedinput\jquery.maskedinput.min.js" />
+    <Content Include="Scripts\assets\plugins\mockjax\jquery.mockjax.min.js" />
+    <Content Include="Scripts\assets\plugins\moment\moment.min.js" />
+    <Content Include="Scripts\assets\plugins\morris\css\morris.css" />
+    <Content Include="Scripts\assets\plugins\morris\js\morris.min.js" />
+    <Content Include="Scripts\assets\plugins\placeholder\jquery.placeholder.min.js" />
+    <Content Include="Scripts\assets\plugins\raphael\raphael.min.js" />
+    <Content Include="Scripts\assets\plugins\select2\js\select2.min.js" />
+    <Content Include="Scripts\assets\plugins\sparkline\jquery.sparkline.min.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-ar-AR.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-ar-AR.min.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-bg-BG.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-bg-BG.min.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-ca-ES.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-ca-ES.min.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-cs-CZ.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-cs-CZ.min.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-da-DK.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-da-DK.min.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-de-DE.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-de-DE.min.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-el-GR.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-el-GR.min.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-es-ES.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-es-ES.min.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-es-EU.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-es-EU.min.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-fa-IR.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-fa-IR.min.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-fi-FI.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-fi-FI.min.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-fr-FR.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-fr-FR.min.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-gl-ES.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-gl-ES.min.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-he-IL.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-he-IL.min.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-hr-HR.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-hr-HR.min.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-hu-HU.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-hu-HU.min.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-id-ID.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-id-ID.min.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-it-IT.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-it-IT.min.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-ja-JP.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-ja-JP.min.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-ko-KR.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-ko-KR.min.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-lt-LT.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-lt-LT.min.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-lt-LV.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-lt-LV.min.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-mn-MN.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-mn-MN.min.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-nb-NO.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-nb-NO.min.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-nl-NL.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-nl-NL.min.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-pl-PL.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-pl-PL.min.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-pt-BR.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-pt-BR.min.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-pt-PT.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-pt-PT.min.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-ro-RO.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-ro-RO.min.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-ru-RU.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-ru-RU.min.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-sk-SK.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-sk-SK.min.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-sl-SI.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-sl-SI.min.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-sr-RS-Latin.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-sr-RS-Latin.min.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-sr-RS.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-sr-RS.min.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-sv-SE.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-sv-SE.min.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-ta-IN.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-ta-IN.min.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-th-TH.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-th-TH.min.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-tr-TR.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-tr-TR.min.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-uk-UA.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-uk-UA.min.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-vi-VN.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-vi-VN.min.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-zh-CN.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-zh-CN.min.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-zh-TW.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\lang\summernote-zh-TW.min.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\summernote-bs4.css" />
+    <Content Include="Scripts\assets\plugins\summernote-master\summernote-bs4.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\summernote-bs4.min.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\summernote-lite.css" />
+    <Content Include="Scripts\assets\plugins\summernote-master\summernote-lite.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\summernote.css" />
+    <Content Include="Scripts\assets\plugins\summernote-master\summernote.js" />
+    <Content Include="Scripts\assets\plugins\summernote-master\summernote.min.js" />
+    <Content Include="Scripts\assets\plugins\touchpunch\jquery.ui.touch-punch.min.js" />
+    <Content Include="Scripts\assets\plugins\wizard\jquery.bootstrap.wizard.min.js" />
+    <Content Include="Scripts\assets\plugins\xcharts\css\xcharts.min.css" />
+    <Content Include="Scripts\assets\plugins\xcharts\js\xcharts.min.js" />
+    <Content Include="Scripts\city.cascading.js" />
+    <Content Include="Scripts\collection.js" />
+    <Content Include="Scripts\Home\index.css" />
+    <Content Include="Scripts\Hotel\Css\header.css" />
+    <Content Include="Scripts\Hotel\Css\lantola.css" />
+    <Content Include="Scripts\Hotel\Css\zong.css" />
+    <Content Include="Scripts\ico\ico.css" />
+    <Content Include="Scripts\ico\ico.png" />
+    <Content Include="Scripts\imagesloaded.pkgd.min.js" />
+    <Content Include="Areas\Hotel\Views\Room\PriceTypeList.cshtml" />
+    <Content Include="Areas\Hotel\Views\Room\CreatePriceType.cshtml" />
+    <Content Include="Areas\Admin\Views\SearchConfig\Config.cshtml" />
+    <Content Include="Areas\Admin\Views\Feature\Hotel.cshtml" />
+    <Content Include="Areas\Admin\Views\Feature\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Feature\HotelList.cshtml" />
+    <Content Include="Areas\Admin\Views\Feature\EditHotel.cshtml" />
+    <Content Include="Areas\Admin\Views\Feature\Cooperative.cshtml" />
+    <Content Include="Areas\Admin\Views\Feature\EditCooperative.cshtml" />
+    <Content Include="Scripts\assets\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Areas\Hotel\Views\Activity\Index.cshtml" />
+    <Content Include="Areas\Hotel\Views\Activity\Create.cshtml" />
+    <Content Include="Areas\Hotel\Views\Room\AddPrice.cshtml" />
+    <Content Include="Areas\Hotel\Views\Order\_OrderList.cshtml" />
+    <Content Include="Areas\Hotel\Views\Order\_OrderPage.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\_OrderList.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\_OrderPage.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\Manage.cshtml" />
+    <Content Include="Areas\Admin\Views\Article\Manage.cshtml" />
+    <Content Include="Areas\Admin\Views\UserManage\Guest.cshtml" />
+    <Content Include="Areas\Admin\Views\UserManage\_GuestList.cshtml" />
+    <Content Include="Areas\Admin\Views\UserManage\_GuestPage.cshtml" />
+    <Content Include="Areas\Admin\Views\UserManage\_HotelList.cshtml" />
+    <Content Include="Areas\Admin\Views\UserManage\_HotelPage.cshtml" />
+    <Content Include="Areas\Admin\Views\UserManage\Hotel.cshtml" />
+    <Content Include="Areas\Admin\Views\User\ChangePassword.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Children.cshtml" />
+    <Content Include="Areas\Admin\Views\User\CreateUser.cshtml" />
+    <Content Include="Areas\Admin\Views\Permission\Menu.cshtml" />
+    <Content Include="Areas\Admin\Views\Permission\CreateMenu.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Permission.cshtml" />
+    <Content Include="Areas\Hotel\Views\User\ChangePassword.cshtml" />
+    <Content Include="Areas\Hotel\Views\User\Children.cshtml" />
+    <Content Include="Areas\Hotel\Views\User\CreateUser.cshtml" />
+    <Content Include="Areas\Hotel\Views\User\Permission.cshtml" />
+    <Content Include="Areas\Hotel\Views\Room\RoomPrice.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\_InvoiceList.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\_InvoicePage.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\Invoice.cshtml" />
+    <Content Include="Areas\Hotel\Views\Comment\Manage.cshtml" />
+    <Content Include="Areas\Hotel\Views\Comment\_CommentList.cshtml" />
+    <Content Include="Areas\Hotel\Views\Comment\_CommentPage.cshtml" />
+    <Content Include="Areas\Admin\Views\Notice\Manage.cshtml" />
+    <Content Include="Areas\Hotel\Views\Home\_OrderList.cshtml" />
+    <Content Include="Areas\Hotel\Views\Home\_OrderPage.cshtml" />
+    <None Include="Properties\PublishProfiles\Release.pubxml" />
+    <Content Include="Scripts\assets\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Scripts\assets\plugins\bootstrap-daterangepicker-master\.gitignore" />
+    <Content Include="Scripts\assets\plugins\bootstrap-daterangepicker-master\bower.json" />
+    <Content Include="Scripts\assets\plugins\bootstrap-daterangepicker-master\daterangepicker.scss" />
+    <Content Include="Scripts\assets\plugins\bootstrap-daterangepicker-master\example\browserify\README.md" />
+    <Content Include="Scripts\assets\plugins\bootstrap-daterangepicker-master\package.json" />
+    <Content Include="Scripts\assets\plugins\bootstrap-daterangepicker-master\README.md" />
+    <Content Include="Scripts\ico\ico.json" />
+    <Content Include="Scripts\assets\plugins\summernote-master\font\summernote.eot" />
+    <Content Include="Scripts\assets\plugins\summernote-master\font\summernote.ttf" />
+    <Content Include="Scripts\assets\plugins\summernote-master\font\summernote.woff" />
+    <Content Include="Scripts\assets\plugins\summernote-master\summernote-bs4.js.map" />
+    <Content Include="Scripts\assets\plugins\summernote-master\summernote-lite.js.map" />
+    <Content Include="Scripts\assets\plugins\summernote-master\summernote.js.map" />
+    <None Include="Scripts\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.4.1.js" />
+    <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Scripts\jquery-1.7.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.bootstrap.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.bootstrap.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\masonry.pkgd.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\DBInit.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\ArticleController.cs" />
+    <Compile Include="Areas\Admin\Controllers\FeatureController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NoticeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PermissionController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserManageController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HotelController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SearchConfigController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Areas\Hotel\Controllers\ActivityController.cs" />
+    <Compile Include="Areas\Hotel\Controllers\AlbumController.cs" />
+    <Compile Include="Areas\Hotel\Controllers\BillController.cs" />
+    <Compile Include="Areas\Hotel\Controllers\BoardroomController.cs" />
+    <Compile Include="Areas\Hotel\Controllers\CommentController.cs" />
+    <Compile Include="Areas\Hotel\Controllers\ConfigController.cs" />
+    <Compile Include="Areas\Hotel\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Hotel\Controllers\InfoController.cs" />
+    <Compile Include="Areas\Hotel\Controllers\OrderController.cs" />
+    <Compile Include="Areas\Hotel\Controllers\RoomController.cs" />
+    <Compile Include="Areas\Hotel\Controllers\UserController.cs" />
+    <Compile Include="Areas\Hotel\HotelAreaRegistration.cs" />
+    <Compile Include="Controllers\ArticleController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HotelHomeController.cs" />
+    <Compile Include="Controllers\InsideApiController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\PartialController.cs" />
+    <Compile Include="Controllers\PayController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Filters\LoginAttribute.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DomainRoute.cs" />
+    <Compile Include="Models\HttpCommon.cs" />
+    <Compile Include="Models\Query.cs" />
+    <Compile Include="Models\ServerConfig.cs" />
+    <Compile Include="Models\SessionInfo.cs" />
+    <Compile Include="Models\SMS.cs" />
+    <Compile Include="Models\Verification.cs" />
+    <Compile Include="Models\View\HotelView.cs" />
+    <Compile Include="Models\View\PriceView.cs" />
+    <Compile Include="Models\View\RoomView.cs" />
+    <Compile Include="Models\WxPay\business\DownloadBill.cs" />
+    <Compile Include="Models\WxPay\business\JsApiPay.cs" />
+    <Compile Include="Models\WxPay\business\MicroPay.cs" />
+    <Compile Include="Models\WxPay\business\NativeNotify.cs" />
+    <Compile Include="Models\WxPay\business\NativePay.cs" />
+    <Compile Include="Models\WxPay\business\OrderQuery.cs" />
+    <Compile Include="Models\WxPay\business\Refund.cs" />
+    <Compile Include="Models\WxPay\business\RefundQuery.cs" />
+    <Compile Include="Models\WxPay\business\ResultNotify.cs" />
+    <Compile Include="Models\WxPay\lantola\PayNotifyController.cs" />
+    <Compile Include="Models\WxPay\lib\Config.cs" />
+    <Compile Include="Models\WxPay\lib\Data.cs" />
+    <Compile Include="Models\WxPay\lib\Exception.cs" />
+    <Compile Include="Models\WxPay\lib\HttpService.cs" />
+    <Compile Include="Models\WxPay\lib\Log.cs" />
+    <Compile Include="Models\WxPay\lib\Notify.cs" />
+    <Compile Include="Models\WxPay\lib\WxPayApi.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\User\Login.cshtml" />
+    <Content Include="Scripts\assets\fonts\climacons-webfont.eot" />
+    <Content Include="Scripts\assets\fonts\climacons-webfont.ttf" />
+    <Content Include="Scripts\assets\fonts\climacons-webfont.woff" />
+    <Content Include="Scripts\assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="Scripts\assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Scripts\assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="Scripts\assets\fonts\FontAwesome.otf" />
+    <Content Include="Scripts\assets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Scripts\assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Scripts\assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Menu.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Header.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Hotel\Views\web.config" />
+    <Content Include="Views\Shared\Error404.cshtml" />
+    <Content Include="Views\Shared\Error401.cshtml" />
+    <Content Include="Views\Shared\_LayoutHeader.cshtml" />
+    <Content Include="Areas\Hotel\Views\User\Register.cshtml" />
+    <Content Include="Views\Home\Header.cshtml" />
+    <Content Include="Views\User\Register.cshtml" />
+    <Content Include="Areas\Hotel\Views\User\RegisterResult.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Cooperation.cshtml" />
+    <Content Include="Areas\Admin\Views\Hotel\Examine.cshtml" />
+    <Content Include="Areas\Admin\Views\Hotel\_HotelList.cshtml" />
+    <Content Include="Areas\Admin\Views\Hotel\_HotelTable.cshtml" />
+    <Content Include="Areas\Admin\Views\Hotel\ExamineDetails.cshtml" />
+    <Content Include="Areas\Hotel\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Hotel\Views\Home\Menu.cshtml" />
+    <Content Include="Areas\Hotel\Views\Home\Header.cshtml" />
+    <Content Include="Areas\Hotel\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Hotel\Views\User\Login.cshtml" />
+    <Content Include="Areas\Hotel\Views\Info\Index.cshtml" />
+    <Content Include="Areas\Hotel\Views\Info\Policy.cshtml" />
+    <Content Include="Areas\Hotel\Views\Boardroom\Manage.cshtml" />
+    <Content Include="Areas\Hotel\Views\Album\Manage.cshtml" />
+    <Content Include="Areas\Hotel\Views\Info\Restaurant.cshtml" />
+    <Content Include="Areas\Hotel\Views\Info\Map.cshtml" />
+    <Content Include="Areas\Hotel\Views\Order\Manage.cshtml" />
+    <Content Include="Areas\Hotel\Views\Bill\Account.cshtml" />
+    <Content Include="Areas\Hotel\Views\Bill\Settlement.cshtml" />
+    <Content Include="Areas\Hotel\Views\Bill\History.cshtml" />
+    <Content Include="Areas\Hotel\Views\Config\Password.cshtml" />
+    <Content Include="Areas\Hotel\Views\Config\Subaccount.cshtml" />
+    <Content Include="Areas\Hotel\Views\Config\Log.cshtml" />
+    <Content Include="Areas\Hotel\Views\Room\Manage.cshtml" />
+    <Content Include="Areas\Admin\Views\Hotel\_PolicyList.cshtml" />
+    <Content Include="Areas\Admin\Views\Hotel\_PolicyTable.cshtml" />
+    <Content Include="Areas\Admin\Views\Hotel\Policy.cshtml" />
+    <Content Include="Areas\Hotel\Views\Album\_List.cshtml" />
+    <Content Include="Areas\Hotel\Views\Album\_Page.cshtml" />
+    <Content Include="Areas\Hotel\Views\Room\_RoomList.cshtml" />
+    <Content Include="Areas\Hotel\Views\Room\_RoomTable.cshtml" />
+    <Content Include="Areas\Hotel\Views\Room\EditRoom.cshtml" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.bootstrap.min.js.map" />
+    <Content Include="Scripts\upload.preview.js" />
+    <Content Include="Views\Partial\Province.cshtml" />
+    <Content Include="Views\Partial\City.cshtml" />
+    <Content Include="Views\Partial\District.cshtml" />
+    <Content Include="Views\Partial\Demo.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\HotelHome\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutHotel.cshtml" />
+    <Content Include="Views\HotelHome\Header.cshtml" />
+    <Content Include="Views\HotelHome\Boardroom.cshtml" />
+    <Content Include="Views\HotelHome\Album.cshtml" />
+    <Content Include="Views\HotelHome\Map.cshtml" />
+    <Content Include="Views\HotelHome\Restaurant.cshtml" />
+    <Content Include="Views\HotelHome\Activity.cshtml" />
+    <Content Include="Views\Order\Apply.cshtml" />
+    <Content Include="Views\Shared\_LayoutUser.cshtml" />
+    <Content Include="Views\User\Order.cshtml" />
+    <Content Include="Views\User\Info.cshtml" />
+    <Content Include="Views\User\ApplyInvoice.cshtml" />
+    <Content Include="Views\User\InvoiceList.cshtml" />
+    <Content Include="Views\Order\Pay.cshtml" />
+    <Content Include="Views\Order\Complete.cshtml" />
+    <Content Include="Views\User\_OrderList.cshtml" />
+    <Content Include="Views\User\_OrderPage.cshtml" />
+    <Content Include="Views\User\Collection.cshtml" />
+    <Content Include="Views\User\Comment.cshtml" />
+    <Content Include="Views\User\Message.cshtml" />
+    <Content Include="Views\User\Safe.cshtml" />
+    <Content Include="Views\Shared\_LayoutCompany.cshtml" />
+    <Content Include="Views\Article\Index.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Home\_HotelList.cshtml" />
+    <Content Include="Views\Home\_HotelPage.cshtml" />
+    <Content Include="Views\User\_CollectionList.cshtml" />
+    <Content Include="Views\User\_CollectionPage.cshtml" />
+    <Content Include="Views\User\CreateComment.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\User\_CommentList.cshtml" />
+    <Content Include="Views\User\_CommentPage.cshtml" />
+    <Content Include="Views\User\Header.cshtml" />
+    <Content Include="Views\HotelHome\Comment.cshtml" />
+    <Content Include="Views\HotelHome\_CommentList.cshtml" />
+    <Content Include="Views\HotelHome\_CommentPage.cshtml" />
+    <Content Include="Views\User\RelievePhone.cshtml" />
+    <Content Include="Views\User\BindingPhone.cshtml" />
+    <Content Include="Views\User\BindingEmail.cshtml" />
+    <Content Include="Views\User\RelieveEmail.cshtml" />
+    <Content Include="Views\User\CancelOrder.cshtml" />
+    <Content Include="Views\User\_MessageList.cshtml" />
+    <Content Include="Views\User\_MessagePage.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Hotel\Models\" />
+    <Folder Include="HotelImages\" />
+    <Folder Include="PolicyImages\" />
+    <Folder Include="Scripts\Hotel\Js\" />
+    <Folder Include="Views\InsideApi\" />
+    <Folder Include="Views\Pay\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HotelSystem.Helper\HotelSystem.Helper.csproj">
+      <Project>{f05dc75a-0c67-4702-be50-d7da94f541d9}</Project>
+      <Name>HotelSystem.Helper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HotelSystem.Model\HotelSystem.Model.csproj">
+      <Project>{846cfa25-1798-4463-916d-81e1ffdc2af8}</Project>
+      <Name>HotelSystem.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52927</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:52801/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,275 @@
+﻿@model PagedList<HotelSystem.Model.Order>
+@using Webdiyer.WebControls.Mvc
+@{
+    ViewBag.Title = "订单";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<style>
+    .table p {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .table > thead > tr > th {
+        background: #ddd;
+    }
+
+    .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+        vertical-align: middle;
+        position: relative;
+        font-size: 12px;
+    }
+
+    .table .sort-item {
+        cursor: pointer;
+    }
+
+    .table .sort {
+        position: absolute;
+        top: 13px;
+        left: 65px;
+    }
+
+        .table .sort .acitve {
+            color: #49f;
+        }
+
+        .table .sort i {
+            display: block;
+        }
+
+    .table label {
+        font-weight: 700;
+    }
+
+    label {
+        font-weight: normal;
+        font-size: 12px;
+    }
+
+    .search-btn-container input[type="button"] {
+        border-color: #4876FF;
+        color: #4876FF;
+        padding: 4px 20px;
+    }
+
+        .search-btn-container input[type="button"]:hover {
+            background-color: #4876FF;
+            color: #fff;
+        }
+
+        .search-btn-container input[type="button"]:first-child {
+            border-color: #4876FF;
+            background-color: #4876FF;
+            color: #fff;
+        }
+
+    a {
+        color: #4876FF;
+    }
+
+        a:hover {
+            color: #4876FF;
+        }
+
+    .disabled {
+        pointer-events: none;
+        cursor: not-allowed;
+        opacity: .65;
+    }
+
+    /*点评*/
+
+    /*取消订单*/
+    .order-container {
+        margin: 0px auto 10px auto;
+        background: #fff;
+        border-radius: 5px;
+        padding: 10px;
+    }
+
+    .order-container .title {
+        color: #004b67;
+        font-size: 24px;
+        line-height: 30px;
+        height: 30px;
+    }
+
+    .order-container .order-content {
+        height: 150px;
+    }
+
+    .order-container .info {
+        float: left;
+        width: 580px;
+        line-height: 40px;
+        font-size: 14px;
+        color: #313131;
+        padding: 15px 0;
+    }
+
+    .order-container .price {
+        float: left;
+        width: 400px;
+        background-color: #e7f0f9;
+        line-height: 40px;
+        padding: 13px 30px;
+        border-top: 1px solid;
+        font-size: 14px;
+        border-color: #bfbfbf;
+        border-bottom: 1px solid #e7f0f9;
+    }
+
+    .order-container .info-item {
+        line-height: 40px;
+        font-size: 14px;
+        color: #313131;
+    }
+
+    .order-container .order-container .info-item-title {
+        color: #4e92d2;
+    }
+
+    .order-container .price-item:not(:last-child) {
+        border-bottom: 1px solid #bfbfbf;
+    }
+
+    .order-container .price-item .price-item-title {
+        float: left;
+        color: #004b67;
+    }
+
+    .order-container .price-item .price-item-price {
+        float: right;
+    }
+</style>
+<div class="panel panel-default" style="margin-top:14px;box-shadow: none;">
+    <div class="panel-body">
+        @if (ViewBag.Message != null)
+        {
+            <div class="alert alert-warning alert-dismissible fade in" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                @Html.Raw(ViewBag.Message)
+            </div>
+        }
+        <div class="form-horizontal">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-4 control-label">订单号</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control input-sm" placeholder="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-4 control-label">酒店名</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control input-sm" placeholder="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-4 control-label">订单状态</label>
+                    <div class="col-sm-8">
+                        <select class="form-control input-sm">
+                            <option>已支付</option>
+                            <option>待支付</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-4 control-label">入住人</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control input-sm" placeholder="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-4 control-label">预订日期</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control input-sm" placeholder="">
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control input-sm" placeholder="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-4 control-label">入住日期</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control input-sm" placeholder="">
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control input-sm" placeholder="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 search-btn-container">
+                <input type="button" class="btn btn-default btn-sm" value="筛选" />
+                <input type="button" class="btn btn-default btn-sm" value="清空" />
+                <input type="button" class="btn btn-default btn-sm" value="导出" />
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="comment_modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" id="Comment_container">
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="cancel_modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" id="cancel_container">
+        </div>
+    </div>
+</div>
+<div id="OrderList">
+    @Html.Partial("_OrderList", Model);
+</div>
+@{Html.RegisterMvcPagerScriptResource();}
+<script src="/Scripts/collection.js"></script>
+<script>
+    $(function () {
+        $("#OrderList").on("click", ".comment-btn", function () {
+            var id = $(this).data("order");
+            $("#Comment_container").load("/User/CreateComment/" + id);
+        });
+        $("#OrderList").on("click", ".cancel-btn", function () {
+            var id = $(this).data("order");
+            $("#cancel_container").load("/User/CancelOrder/" + id);
+        });
+        $(document.body).on("mouseover mouseout click", ".score .score-item ul li span", function (event) {
+            var msg = ["很不满意", "不满意", "一般", "满意", "很满意"];
+            var a = $(this).parent().index() + 1;
+            if (event.type == "mouseover") {
+                $(this).parent().parent().find("li:lt(" + a + ") span").removeClass("fa-star-o");
+                $(this).parent().parent().find("li:lt(" + a + ") span").addClass("fa-star");
+                $(this).parent().parent().parent().find(".info-btn").text(msg[a-1]).show();
+            } else if (event.type == "mouseout" && $(this).attr("seleted") != "true") {
+                var t = $(this).parent().parent().find("li span[seleted='true']");
+                if (t.length > 0) {
+
+                    $(this).parent().parent().parent().find(".info-btn").text(msg[t.parent().index()]);
+
+                    $(this).parent().parent().find("li:gt(" + t.parent().index() + ") span").removeClass("fa-star");
+                    $(this).parent().parent().find("li:gt(" + t.parent().index() + ") span").addClass("fa-star-o");
+                }
+                else {
+                    $(this).parent().parent().find("li:lt(" + a + ") span").removeClass("fa-star");
+                    $(this).parent().parent().find("li:lt(" + a + ") span").addClass("fa-star-o");
+                    $(this).parent().parent().parent().find(".info-btn").hide();
+                }
+                
+            }
+            else if (event.type == "click") {
+                $(this).parent().parent().find("li span").attr("seleted", "false");
+                $(this).attr("seleted", "true");
+                var s = $(this).parent().parent().parent().find("input[name='score']")
+                s.val(s.data("scoreid") + "," + ($(this).parent().index()+1) * 2);
+                $(this).parent().parent().find("li:gt(" + a-- + ") span").removeClass("fa-star");
+                $(this).parent().parent().find("li:gt(" + a-- + ") span").addClass("fa-star-o");
+            }
+        });
+    });
+</script>

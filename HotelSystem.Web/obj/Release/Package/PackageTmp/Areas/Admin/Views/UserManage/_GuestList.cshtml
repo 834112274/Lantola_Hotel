@@ -1,0 +1,25 @@
+﻿@model PagedList<HotelSystem.Model.GuestUser>
+@using Webdiyer.WebControls.Mvc
+@{ Html.RenderPartial("_GuestPage"); }
+<div class="row" style="height:80px">
+    <div class="col-md-8">
+        @Ajax.Pager(Model, new PagerOptions
+   {
+       NumericPagerItemCount = 6,
+       ContainerTagName = "ul",
+       CssClass = "pagination",
+       CurrentPagerItemTemplate = "<li class=\"active\"><a href=\"#\">{0}</a></li>",
+       DisabledPagerItemTemplate = "<li class=\"disabled\"><a>{0}</a></li>",
+       PagerItemTemplate = "<li>{0}</li>",
+       Id = "bootstrappager2",
+       PageIndexBoxId = "pageIndexBox",
+       GoToButtonId = "goToBtn"
+   }, new MvcAjaxOptions { UpdateTargetId = "GuestUserList", HttpMethod = "Post", DataFormId = "GuestSearch" })
+    </div>
+    <div class="col-md-4">
+        <div class="input-group" style="width:120px;margin:20px 0">
+            <select id="pageIndexBox" class="form-control input-sm"></select>
+            <span class="input-group-btn"><button class="btn btn-primary btn-sm" id="goToBtn">跳转</button></span>
+        </div>
+    </div>
+</div>

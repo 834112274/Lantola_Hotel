@@ -1,0 +1,104 @@
+﻿@model IEnumerable<string>
+@using HotelSystem.Model
+
+@using (Html.BeginForm("Permission", "User", FormMethod.Post))
+{
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"> 管理权限 <small>@ViewBag.UserName</small> </h4>
+    </div>
+    <div class="modal-body">
+        <div id="role_container" style="margin-left:20px;">
+            
+            @{
+                var menus = ViewBag.Menu as List<Menu>;
+                var level1 = menus.OrderBy(m => m.Sort).Where(m => m.Level == 1);
+                foreach (var item in level1)
+                {
+                    var have = "";
+                    if (Model.Contains(item.Id))
+                    {
+                        have = "checked";
+                    }
+                    <div class="page-header">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="@item.Id" value="@item.Id" name="Menu" @have> @item.Name
+                        </label>
+                    </div>
+                    <div style="margin-left:30px;">
+                        <ul>
+
+
+                            @foreach (var children in menus)
+                            {
+                                if (children.ParentId == item.Id)
+                                {
+                                    if (children.Name == "子账号设置")
+                                    {
+                                        continue;
+                                    }
+                                    var children_have = "";
+                                    if (Model.Contains(item.Id))
+                                    {
+                                        children_have = "checked";
+                                    }
+                                    <li style="list-style:none;">
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="@children.Id" value="@children.Id" name="menu" data-parent="@children.ParentId" @children_have> @children.Name
+                                        </label>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        <button type="submit" class="btn btn-primary">保存</button>
+    </div>
+                }
+<script>
+    $("#role_container input[type='checkbox']").click(function () {
+        
+        //判断1级菜单
+        var id = $(this).attr("id");
+        var parentId = $(this).data("parent");
+        console.log("click taget:" + $(this).is(":checked"));
+        console.log("click parentId:" + parentId);
+        if ($(this).is(":checked")) {
+            $("#role_container input[data-parent='" + id + "']").prop("checked", true);
+            //判断二级菜单
+            
+            if (parentId != "") {
+                //选中父级
+                $("#" + parentId).prop("checked", true);
+            }
+        }
+        else {
+            $("#role_container input[data-parent='" + id + "']").prop("checked", false);
+
+            //判断二级菜单
+            if (parentId != "") {
+                //判断该父级下是否有子菜单选中
+                var children = false;
+                $("#role_container input[data-parent='" + parentId + "']").each(function () {
+                    if ($(this).is(":checked")) {
+
+                        children = true;
+                        return false;
+                    }
+                });
+                console.log(children);
+                if (children) {
+                    $("#" + parentId).prop("checked", true);
+                }
+                else {
+                    $("#" + parentId).prop("checked", false);
+                }
+            }
+        }
+    });
+</script>

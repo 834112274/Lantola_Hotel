@@ -1,0 +1,25 @@
+$(document).ready(function(){
+	$(".pr").mouseenter(function(){
+		$(".slide").slideDown();
+	});
+	$(".tope").mousemove(function(){
+		$(".slide").stop();
+		$(".slide").slideUp();
+		$(".zd").css({'display':'none'});
+	});
+	$(".pr1").mousemove(function(){
+		$(".slide").stop();
+		$(".slide").slideUp();
+		$(".zd").css({'display':'none'});
+	});
+	$(".pr2").mouseleave(function(){
+		$(".slide").stop();
+		$(".slide").slideUp();
+		$(".zd").css({'display':'none'});
+	});
+	$(".k2").mousemove(function(){
+		$(".slide").stop();
+		$(".slide").slideUp();
+		$(".zd").css({'display':'none'});
+	});
+});

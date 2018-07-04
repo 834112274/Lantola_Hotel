@@ -1,0 +1,19 @@
+﻿@model PagedList<HotelSystem.Model.Collection>
+@using Webdiyer.WebControls.Mvc
+    
+@{
+    ViewBag.Title = "收藏";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<style>
+    .media-object {
+        display: inline-block;
+        width: 100%;
+        height: 160px;
+    }
+</style>
+<div id="CollectionList">
+    @Html.Partial("_CollectionList", Model);
+
+</div>
+@{Html.RegisterMvcPagerScriptResource();}

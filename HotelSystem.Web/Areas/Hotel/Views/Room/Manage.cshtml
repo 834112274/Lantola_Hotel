@@ -1,0 +1,35 @@
+﻿@model PagedList<HotelSystem.Model.Room>
+@using Webdiyer.WebControls.Mvc
+@{
+    ViewBag.Title = "发布房型";
+    Layout = "~/Areas/Hotel/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Scripts/assets/plugins/fullcalendar/css/fullcalendar.css" rel="stylesheet">
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading" data-original-title="">
+                <h2><i class="fa fa-indent red"></i><strong>房型</strong></h2>
+            </div>
+            <div class="panel-body">
+                <div class="container-fluid">
+                        <a href="/Hotel/Room/EditRoom" class="btn btn-primary">添加房型</a>
+                </div>
+                <div id="RoomList" class="container-fluid">
+                    @Html.Partial("_RoomList", Model)
+                </div>
+            </div>
+        </div><!--/col-->
+    </div><!--/col-->
+</div>
+<script src="~/Scripts/assets/plugins/moment/moment.min.js"></script>
+<script src="~/Scripts/assets/plugins/fullcalendar/js/jquery-ui.custom.min.js"></script>
+<script src="~/Scripts/assets/plugins/fullcalendar/js/fullcalendar.min.js"></script>
+<script>
+    $('#RoomList').on('click', '.view-price', function () {
+        var id = $(this).data('target');
+        console.log(`#calendar_${id}`);
+        $(`${id}_calendar`).load(`/Hotel/Room/RoomPrice?id=${id.replace('#', '')}`);
+    });
+</script>

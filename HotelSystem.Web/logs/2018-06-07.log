@@ -1,0 +1,413 @@
+2018-06-07 16:14:30.435 INFO NativePay: Native pay mode 2 url is producing...
+2018-06-07 16:14:30.441 ERROR WxPayAPI.WxPayData: WxPayData字段数据类型错误!
+2018-06-07 16:18:53.781 INFO NativePay: Native pay mode 2 url is producing...
+2018-06-07 16:18:53.786 DEBUG WxPayApi: UnfiedOrder request : <xml><appid><![CDATA[wxe3986f34c73a20f2]]></appid><attach><![CDATA[test]]></attach><body><![CDATA[Lantola酒店预订]]></body><goods_tag><![CDATA[hotel]]></goods_tag><mch_id><![CDATA[1507219281]]></mch_id><nonce_str><![CDATA[3637aacdbfc94a399e6c989c383cf47d]]></nonce_str><notify_url><![CDATA[http://www.Lantola.com:8099/Pay/WxNotify]]></notify_url><out_trade_no><![CDATA[118060753062]]></out_trade_no><product_id><![CDATA[e189847d-5eeb-40bb-8ad6-165f25114a00]]></product_id><sign><![CDATA[C3E86894756F1EF4FC20DF4CA9DDC8DE]]></sign><spbill_create_ip><![CDATA[58.246.98.30]]></spbill_create_ip><time_expire><![CDATA[20180607162853]]></time_expire><time_start><![CDATA[20180607161853]]></time_start><total_fee><![CDATA[1000]]></total_fee><trade_type><![CDATA[NATIVE]]></trade_type></xml>
+2018-06-07 16:18:54.089 DEBUG WxPayApi: UnfiedOrder response : <xml><return_code><![CDATA[SUCCESS]]></return_code>
+<return_msg><![CDATA[OK]]></return_msg>
+<appid><![CDATA[wxe3986f34c73a20f2]]></appid>
+<mch_id><![CDATA[1507219281]]></mch_id>
+<nonce_str><![CDATA[5OdHy0OGFaoKvrVQ]]></nonce_str>
+<sign><![CDATA[B1233D093A6D9FA3EB754D12228C0502]]></sign>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<prepay_id><![CDATA[wx07161855802415a759a495461752468108]]></prepay_id>
+<trade_type><![CDATA[NATIVE]]></trade_type>
+<code_url><![CDATA[weixin://wxpay/bizpayurl?pr=QOFpGHN]]></code_url>
+</xml>
+2018-06-07 16:18:54.090 INFO NativePay: Get native pay mode 2 url : weixin://wxpay/bizpayurl?pr=QOFpGHN
+2018-06-07 16:21:22.303 INFO NativePay: Native pay mode 2 url is producing...
+2018-06-07 16:21:22.309 DEBUG WxPayApi: UnfiedOrder request : <xml><appid><![CDATA[wxe3986f34c73a20f2]]></appid><attach><![CDATA[test]]></attach><body><![CDATA[Lantola酒店预订]]></body><goods_tag><![CDATA[hotel]]></goods_tag><mch_id><![CDATA[1507219281]]></mch_id><nonce_str><![CDATA[6e17e50d248a42aea03bbafbbb1ce3cb]]></nonce_str><notify_url><![CDATA[http://www.Lantola.com:8099/Pay/WxNotify]]></notify_url><out_trade_no><![CDATA[118060721525]]></out_trade_no><product_id><![CDATA[e189847d-5eeb-40bb-8ad6-165f25114a00]]></product_id><sign><![CDATA[982765D838CE6987AEDA6E2762F7BE21]]></sign><spbill_create_ip><![CDATA[58.246.98.30]]></spbill_create_ip><time_expire><![CDATA[20180607163122]]></time_expire><time_start><![CDATA[20180607162122]]></time_start><total_fee><![CDATA[1000]]></total_fee><trade_type><![CDATA[NATIVE]]></trade_type></xml>
+2018-06-07 16:21:22.564 DEBUG WxPayApi: UnfiedOrder response : <xml><return_code><![CDATA[SUCCESS]]></return_code>
+<return_msg><![CDATA[OK]]></return_msg>
+<appid><![CDATA[wxe3986f34c73a20f2]]></appid>
+<mch_id><![CDATA[1507219281]]></mch_id>
+<nonce_str><![CDATA[YykdJKB1CB4kXeVB]]></nonce_str>
+<sign><![CDATA[D9FE20BFEE0CE7B299B4CB53E0C6EC9C]]></sign>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<prepay_id><![CDATA[wx07162124265586d61db01fa42283925922]]></prepay_id>
+<trade_type><![CDATA[NATIVE]]></trade_type>
+<code_url><![CDATA[weixin://wxpay/bizpayurl?pr=U1pMetz]]></code_url>
+</xml>
+2018-06-07 16:21:22.565 INFO NativePay: Get native pay mode 2 url : weixin://wxpay/bizpayurl?pr=U1pMetz
+2018-06-07 16:27:56.175 INFO NativePay: Native pay mode 2 url is producing...
+2018-06-07 16:27:56.188 DEBUG WxPayApi: UnfiedOrder request : <xml><appid><![CDATA[wxe3986f34c73a20f2]]></appid><attach><![CDATA[test]]></attach><body><![CDATA[Lantola酒店预订]]></body><goods_tag><![CDATA[hotel]]></goods_tag><mch_id><![CDATA[1507219281]]></mch_id><nonce_str><![CDATA[9d3b45125170448e8d436c352803eac9]]></nonce_str><notify_url><![CDATA[http://www.Lantola.com:8099/Pay/WxNotify]]></notify_url><out_trade_no><![CDATA[118060755690]]></out_trade_no><product_id><![CDATA[e189847d-5eeb-40bb-8ad6-165f25114a00]]></product_id><sign><![CDATA[43B1782590F37162660111B5EED2A0EC]]></sign><spbill_create_ip><![CDATA[58.246.98.30]]></spbill_create_ip><time_expire><![CDATA[20180607163756]]></time_expire><time_start><![CDATA[20180607162756]]></time_start><total_fee><![CDATA[1000]]></total_fee><trade_type><![CDATA[NATIVE]]></trade_type></xml>
+2018-06-07 16:27:56.445 DEBUG WxPayApi: UnfiedOrder response : <xml><return_code><![CDATA[SUCCESS]]></return_code>
+<return_msg><![CDATA[OK]]></return_msg>
+<appid><![CDATA[wxe3986f34c73a20f2]]></appid>
+<mch_id><![CDATA[1507219281]]></mch_id>
+<nonce_str><![CDATA[tzxLry3fksW6gJJt]]></nonce_str>
+<sign><![CDATA[5D74F989F3D0C6A5A2C3850B42BA7BF7]]></sign>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<prepay_id><![CDATA[wx07162755674216ca93dc12884068513628]]></prepay_id>
+<trade_type><![CDATA[NATIVE]]></trade_type>
+<code_url><![CDATA[weixin://wxpay/bizpayurl?pr=odiA2G4]]></code_url>
+</xml>
+2018-06-07 16:27:56.446 INFO NativePay: Get native pay mode 2 url : weixin://wxpay/bizpayurl?pr=odiA2G4
+2018-06-07 16:31:39.015 INFO NativePay: Native pay mode 2 url is producing...
+2018-06-07 16:31:39.045 DEBUG WxPayApi: UnfiedOrder request : <xml><appid><![CDATA[wxe3986f34c73a20f2]]></appid><attach><![CDATA[test]]></attach><body><![CDATA[Lantola酒店预订]]></body><goods_tag><![CDATA[hotel]]></goods_tag><mch_id><![CDATA[1507219281]]></mch_id><nonce_str><![CDATA[d150770457074d88bdc547aaee02992e]]></nonce_str><notify_url><![CDATA[http://www.Lantola.com:8099/Pay/WxNotify]]></notify_url><out_trade_no><![CDATA[118060750027]]></out_trade_no><product_id><![CDATA[e189847d-5eeb-40bb-8ad6-165f25114a00]]></product_id><sign><![CDATA[9BD821F5626AD670B681C7BDD3B096DF]]></sign><spbill_create_ip><![CDATA[58.246.98.30]]></spbill_create_ip><time_expire><![CDATA[20180607164139]]></time_expire><time_start><![CDATA[20180607163139]]></time_start><total_fee><![CDATA[1000]]></total_fee><trade_type><![CDATA[NATIVE]]></trade_type></xml>
+2018-06-07 16:31:39.354 DEBUG WxPayApi: UnfiedOrder response : <xml><return_code><![CDATA[SUCCESS]]></return_code>
+<return_msg><![CDATA[OK]]></return_msg>
+<appid><![CDATA[wxe3986f34c73a20f2]]></appid>
+<mch_id><![CDATA[1507219281]]></mch_id>
+<nonce_str><![CDATA[5xy2SKieSI0erHtd]]></nonce_str>
+<sign><![CDATA[D88BEA671A1FE4752BAD468B111E1239]]></sign>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<prepay_id><![CDATA[wx071631385850570666fad74e3542523322]]></prepay_id>
+<trade_type><![CDATA[NATIVE]]></trade_type>
+<code_url><![CDATA[weixin://wxpay/bizpayurl?pr=G3g1i6Q]]></code_url>
+</xml>
+2018-06-07 16:31:39.355 INFO NativePay: Get native pay mode 2 url : weixin://wxpay/bizpayurl?pr=G3g1i6Q
+2018-06-07 16:32:05.582 INFO HotelSystem.Web.Controllers.PayController: Receive data from WeChat : <xml><appid><![CDATA[wxe3986f34c73a20f2]]></appid>
+<attach><![CDATA[test]]></attach>
+<bank_type><![CDATA[CFT]]></bank_type>
+<cash_fee><![CDATA[1000]]></cash_fee>
+<fee_type><![CDATA[CNY]]></fee_type>
+<is_subscribe><![CDATA[N]]></is_subscribe>
+<mch_id><![CDATA[1507219281]]></mch_id>
+<nonce_str><![CDATA[d150770457074d88bdc547aaee02992e]]></nonce_str>
+<openid><![CDATA[oNc6j0RwENlLqBo6iHm-tEq_5-Lc]]></openid>
+<out_trade_no><![CDATA[118060750027]]></out_trade_no>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<return_code><![CDATA[SUCCESS]]></return_code>
+<sign><![CDATA[8DCED837801BABD65A3C59E8E6D2AD4C]]></sign>
+<time_end><![CDATA[20180607163203]]></time_end>
+<total_fee>1000</total_fee>
+<trade_type><![CDATA[NATIVE]]></trade_type>
+<transaction_id><![CDATA[4200000110201806078020428321]]></transaction_id>
+</xml>
+2018-06-07 16:32:05.582 INFO HotelSystem.Web.Controllers.PayController: Check sign success
+2018-06-07 16:32:05.585 INFO HotelSystem.Web.Controllers.PayController: 未找到订单 FAIL : <xml><return_code><![CDATA[FAIL]]></return_code><return_msg><![CDATA[支付成功]]></return_msg></xml>
+2018-06-07 16:32:20.805 INFO HotelSystem.Web.Controllers.PayController: Receive data from WeChat : <xml><appid><![CDATA[wxe3986f34c73a20f2]]></appid>
+<attach><![CDATA[test]]></attach>
+<bank_type><![CDATA[CFT]]></bank_type>
+<cash_fee><![CDATA[1000]]></cash_fee>
+<fee_type><![CDATA[CNY]]></fee_type>
+<is_subscribe><![CDATA[N]]></is_subscribe>
+<mch_id><![CDATA[1507219281]]></mch_id>
+<nonce_str><![CDATA[d150770457074d88bdc547aaee02992e]]></nonce_str>
+<openid><![CDATA[oNc6j0RwENlLqBo6iHm-tEq_5-Lc]]></openid>
+<out_trade_no><![CDATA[118060750027]]></out_trade_no>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<return_code><![CDATA[SUCCESS]]></return_code>
+<sign><![CDATA[8DCED837801BABD65A3C59E8E6D2AD4C]]></sign>
+<time_end><![CDATA[20180607163203]]></time_end>
+<total_fee>1000</total_fee>
+<trade_type><![CDATA[NATIVE]]></trade_type>
+<transaction_id><![CDATA[4200000110201806078020428321]]></transaction_id>
+</xml>
+2018-06-07 16:32:20.805 INFO HotelSystem.Web.Controllers.PayController: Check sign success
+2018-06-07 16:32:20.807 INFO HotelSystem.Web.Controllers.PayController: 未找到订单 FAIL : <xml><return_code><![CDATA[FAIL]]></return_code><return_msg><![CDATA[支付成功]]></return_msg></xml>
+2018-06-07 16:32:36.261 INFO HotelSystem.Web.Controllers.PayController: Receive data from WeChat : <xml><appid><![CDATA[wxe3986f34c73a20f2]]></appid>
+<attach><![CDATA[test]]></attach>
+<bank_type><![CDATA[CFT]]></bank_type>
+<cash_fee><![CDATA[1000]]></cash_fee>
+<fee_type><![CDATA[CNY]]></fee_type>
+<is_subscribe><![CDATA[N]]></is_subscribe>
+<mch_id><![CDATA[1507219281]]></mch_id>
+<nonce_str><![CDATA[d150770457074d88bdc547aaee02992e]]></nonce_str>
+<openid><![CDATA[oNc6j0RwENlLqBo6iHm-tEq_5-Lc]]></openid>
+<out_trade_no><![CDATA[118060750027]]></out_trade_no>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<return_code><![CDATA[SUCCESS]]></return_code>
+<sign><![CDATA[8DCED837801BABD65A3C59E8E6D2AD4C]]></sign>
+<time_end><![CDATA[20180607163203]]></time_end>
+<total_fee>1000</total_fee>
+<trade_type><![CDATA[NATIVE]]></trade_type>
+<transaction_id><![CDATA[4200000110201806078020428321]]></transaction_id>
+</xml>
+2018-06-07 16:32:36.262 INFO HotelSystem.Web.Controllers.PayController: Check sign success
+2018-06-07 16:32:36.265 INFO HotelSystem.Web.Controllers.PayController: 未找到订单 FAIL : <xml><return_code><![CDATA[FAIL]]></return_code><return_msg><![CDATA[支付成功]]></return_msg></xml>
+2018-06-07 16:33:06.803 INFO HotelSystem.Web.Controllers.PayController: Receive data from WeChat : <xml><appid><![CDATA[wxe3986f34c73a20f2]]></appid>
+<attach><![CDATA[test]]></attach>
+<bank_type><![CDATA[CFT]]></bank_type>
+<cash_fee><![CDATA[1000]]></cash_fee>
+<fee_type><![CDATA[CNY]]></fee_type>
+<is_subscribe><![CDATA[N]]></is_subscribe>
+<mch_id><![CDATA[1507219281]]></mch_id>
+<nonce_str><![CDATA[d150770457074d88bdc547aaee02992e]]></nonce_str>
+<openid><![CDATA[oNc6j0RwENlLqBo6iHm-tEq_5-Lc]]></openid>
+<out_trade_no><![CDATA[118060750027]]></out_trade_no>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<return_code><![CDATA[SUCCESS]]></return_code>
+<sign><![CDATA[8DCED837801BABD65A3C59E8E6D2AD4C]]></sign>
+<time_end><![CDATA[20180607163203]]></time_end>
+<total_fee>1000</total_fee>
+<trade_type><![CDATA[NATIVE]]></trade_type>
+<transaction_id><![CDATA[4200000110201806078020428321]]></transaction_id>
+</xml>
+2018-06-07 16:33:06.803 INFO HotelSystem.Web.Controllers.PayController: Check sign success
+2018-06-07 16:33:06.805 INFO HotelSystem.Web.Controllers.PayController: 未找到订单 FAIL : <xml><return_code><![CDATA[FAIL]]></return_code><return_msg><![CDATA[支付成功]]></return_msg></xml>
+2018-06-07 16:36:07.795 INFO HotelSystem.Web.Controllers.PayController: Receive data from WeChat : <xml><appid><![CDATA[wxe3986f34c73a20f2]]></appid>
+<attach><![CDATA[test]]></attach>
+<bank_type><![CDATA[CFT]]></bank_type>
+<cash_fee><![CDATA[1000]]></cash_fee>
+<fee_type><![CDATA[CNY]]></fee_type>
+<is_subscribe><![CDATA[N]]></is_subscribe>
+<mch_id><![CDATA[1507219281]]></mch_id>
+<nonce_str><![CDATA[d150770457074d88bdc547aaee02992e]]></nonce_str>
+<openid><![CDATA[oNc6j0RwENlLqBo6iHm-tEq_5-Lc]]></openid>
+<out_trade_no><![CDATA[118060750027]]></out_trade_no>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<return_code><![CDATA[SUCCESS]]></return_code>
+<sign><![CDATA[8DCED837801BABD65A3C59E8E6D2AD4C]]></sign>
+<time_end><![CDATA[20180607163203]]></time_end>
+<total_fee>1000</total_fee>
+<trade_type><![CDATA[NATIVE]]></trade_type>
+<transaction_id><![CDATA[4200000110201806078020428321]]></transaction_id>
+</xml>
+2018-06-07 16:36:07.797 INFO HotelSystem.Web.Controllers.PayController: Check sign success
+2018-06-07 16:36:07.804 INFO HotelSystem.Web.Controllers.PayController: 未找到订单 FAIL : <xml><return_code><![CDATA[FAIL]]></return_code><return_msg><![CDATA[支付成功]]></return_msg></xml>
+2018-06-07 16:40:08.102 INFO NativePay: Native pay mode 2 url is producing...
+2018-06-07 16:40:08.106 DEBUG WxPayApi: UnfiedOrder request : <xml><appid><![CDATA[wxe3986f34c73a20f2]]></appid><attach><![CDATA[test]]></attach><body><![CDATA[Lantola酒店预订]]></body><goods_tag><![CDATA[hotel]]></goods_tag><mch_id><![CDATA[1507219281]]></mch_id><nonce_str><![CDATA[8a5d08defa7d432580daf3514f03a8e8]]></nonce_str><notify_url><![CDATA[http://www.Lantola.com:8099/Pay/WxNotify]]></notify_url><out_trade_no><![CDATA[118060750027]]></out_trade_no><product_id><![CDATA[e189847d-5eeb-40bb-8ad6-165f25114a00]]></product_id><sign><![CDATA[05842156878796BE8A970423855B9DD6]]></sign><spbill_create_ip><![CDATA[58.246.98.30]]></spbill_create_ip><time_expire><![CDATA[20180607165008]]></time_expire><time_start><![CDATA[20180607164008]]></time_start><total_fee><![CDATA[1000]]></total_fee><trade_type><![CDATA[NATIVE]]></trade_type></xml>
+2018-06-07 16:40:08.365 DEBUG WxPayApi: UnfiedOrder response : <xml><return_code><![CDATA[SUCCESS]]></return_code>
+<return_msg><![CDATA[OK]]></return_msg>
+<appid><![CDATA[wxe3986f34c73a20f2]]></appid>
+<mch_id><![CDATA[1507219281]]></mch_id>
+<nonce_str><![CDATA[xtXEv70gvKWW4yUY]]></nonce_str>
+<sign><![CDATA[F40111F382FF551A2B21BD68D640C377]]></sign>
+<result_code><![CDATA[FAIL]]></result_code>
+<err_code><![CDATA[ORDERPAID]]></err_code>
+<err_code_des><![CDATA[该订单已支付]]></err_code_des>
+</xml>
+2018-06-07 16:42:04.240 INFO NativePay: Native pay mode 2 url is producing...
+2018-06-07 16:42:04.240 DEBUG WxPayApi: UnfiedOrder request : <xml><appid><![CDATA[wxe3986f34c73a20f2]]></appid><attach><![CDATA[test]]></attach><body><![CDATA[Lantola酒店预订]]></body><goods_tag><![CDATA[hotel]]></goods_tag><mch_id><![CDATA[1507219281]]></mch_id><nonce_str><![CDATA[8f4eb5f68d794349ae0648bef1806d68]]></nonce_str><notify_url><![CDATA[http://www.Lantola.com:8099/Pay/WxNotify]]></notify_url><out_trade_no><![CDATA[118060703764]]></out_trade_no><product_id><![CDATA[e189847d-5eeb-40bb-8ad6-165f25114a00]]></product_id><sign><![CDATA[5B10DA095477C2EC7D0858B52E202A8C]]></sign><spbill_create_ip><![CDATA[58.246.98.30]]></spbill_create_ip><time_expire><![CDATA[20180607165204]]></time_expire><time_start><![CDATA[20180607164204]]></time_start><total_fee><![CDATA[1000]]></total_fee><trade_type><![CDATA[NATIVE]]></trade_type></xml>
+2018-06-07 16:42:04.489 DEBUG WxPayApi: UnfiedOrder response : <xml><return_code><![CDATA[SUCCESS]]></return_code>
+<return_msg><![CDATA[OK]]></return_msg>
+<appid><![CDATA[wxe3986f34c73a20f2]]></appid>
+<mch_id><![CDATA[1507219281]]></mch_id>
+<nonce_str><![CDATA[QPiQWugaHumBLjhc]]></nonce_str>
+<sign><![CDATA[AFE93EF9077512E3B9FF45E8D0608156]]></sign>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<prepay_id><![CDATA[wx071642037231192f7ee77a351835541975]]></prepay_id>
+<trade_type><![CDATA[NATIVE]]></trade_type>
+<code_url><![CDATA[weixin://wxpay/bizpayurl?pr=TNYNVfk]]></code_url>
+</xml>
+2018-06-07 16:42:04.489 INFO NativePay: Get native pay mode 2 url : weixin://wxpay/bizpayurl?pr=TNYNVfk
+2018-06-07 16:43:03.298 INFO NativePay: Native pay mode 2 url is producing...
+2018-06-07 16:43:03.303 DEBUG WxPayApi: UnfiedOrder request : <xml><appid><![CDATA[wxe3986f34c73a20f2]]></appid><attach><![CDATA[test]]></attach><body><![CDATA[Lantola酒店预订]]></body><goods_tag><![CDATA[hotel]]></goods_tag><mch_id><![CDATA[1507219281]]></mch_id><nonce_str><![CDATA[9300627ca7bd4cf199e6ac41ff14ffd6]]></nonce_str><notify_url><![CDATA[http://www.Lantola.com:8099/Pay/WxNotify]]></notify_url><out_trade_no><![CDATA[118060703764]]></out_trade_no><product_id><![CDATA[e189847d-5eeb-40bb-8ad6-165f25114a00]]></product_id><sign><![CDATA[CEF81923341639F11C8CBF5468D328A0]]></sign><spbill_create_ip><![CDATA[58.246.98.30]]></spbill_create_ip><time_expire><![CDATA[20180607165303]]></time_expire><time_start><![CDATA[20180607164303]]></time_start><total_fee><![CDATA[1000]]></total_fee><trade_type><![CDATA[NATIVE]]></trade_type></xml>
+2018-06-07 16:43:03.551 DEBUG WxPayApi: UnfiedOrder response : <xml><return_code><![CDATA[SUCCESS]]></return_code>
+<return_msg><![CDATA[OK]]></return_msg>
+<appid><![CDATA[wxe3986f34c73a20f2]]></appid>
+<mch_id><![CDATA[1507219281]]></mch_id>
+<nonce_str><![CDATA[0WPwLhT0jJgFeNzi]]></nonce_str>
+<sign><![CDATA[F639785B0D0319D253BB60F3AF4A8C3C]]></sign>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<prepay_id><![CDATA[wx071643027810232f7ee77a352343217970]]></prepay_id>
+<trade_type><![CDATA[NATIVE]]></trade_type>
+<code_url><![CDATA[weixin://wxpay/bizpayurl?pr=8JOWkBl]]></code_url>
+</xml>
+2018-06-07 16:43:03.552 INFO NativePay: Get native pay mode 2 url : weixin://wxpay/bizpayurl?pr=8JOWkBl
+2018-06-07 16:43:27.625 INFO NativePay: Native pay mode 2 url is producing...
+2018-06-07 16:43:27.626 DEBUG WxPayApi: UnfiedOrder request : <xml><appid><![CDATA[wxe3986f34c73a20f2]]></appid><attach><![CDATA[test]]></attach><body><![CDATA[Lantola酒店预订]]></body><goods_tag><![CDATA[hotel]]></goods_tag><mch_id><![CDATA[1507219281]]></mch_id><nonce_str><![CDATA[ae80116d1b8b443fa4b0738a8f9d504b]]></nonce_str><notify_url><![CDATA[http://www.Lantola.com:8099/Pay/WxNotify]]></notify_url><out_trade_no><![CDATA[118060703764]]></out_trade_no><product_id><![CDATA[e189847d-5eeb-40bb-8ad6-165f25114a00]]></product_id><sign><![CDATA[1EEDDAE56AC9615A80769DCBBD89ABCF]]></sign><spbill_create_ip><![CDATA[58.246.98.30]]></spbill_create_ip><time_expire><![CDATA[20180607165327]]></time_expire><time_start><![CDATA[20180607164327]]></time_start><total_fee><![CDATA[1000]]></total_fee><trade_type><![CDATA[NATIVE]]></trade_type></xml>
+2018-06-07 16:43:27.857 DEBUG WxPayApi: UnfiedOrder response : <xml><return_code><![CDATA[SUCCESS]]></return_code>
+<return_msg><![CDATA[OK]]></return_msg>
+<appid><![CDATA[wxe3986f34c73a20f2]]></appid>
+<mch_id><![CDATA[1507219281]]></mch_id>
+<nonce_str><![CDATA[BwwNyBAQdAIhpqpm]]></nonce_str>
+<sign><![CDATA[92509218D46EFE9B4C0496B0A0FB3216]]></sign>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<prepay_id><![CDATA[wx071643270824352f7ee77a350446790041]]></prepay_id>
+<trade_type><![CDATA[NATIVE]]></trade_type>
+<code_url><![CDATA[weixin://wxpay/bizpayurl?pr=MOAZwGR]]></code_url>
+</xml>
+2018-06-07 16:43:27.857 INFO NativePay: Get native pay mode 2 url : weixin://wxpay/bizpayurl?pr=MOAZwGR
+2018-06-07 16:45:18.859 INFO NativePay: Native pay mode 2 url is producing...
+2018-06-07 16:45:18.859 DEBUG WxPayApi: UnfiedOrder request : <xml><appid><![CDATA[wxe3986f34c73a20f2]]></appid><attach><![CDATA[test]]></attach><body><![CDATA[Lantola酒店预订]]></body><goods_tag><![CDATA[hotel]]></goods_tag><mch_id><![CDATA[1507219281]]></mch_id><nonce_str><![CDATA[879853e115844d3788ea7d1ea8bd7d2d]]></nonce_str><notify_url><![CDATA[http://www.Lantola.com:8099/Pay/WxNotify]]></notify_url><out_trade_no><![CDATA[118060703764]]></out_trade_no><product_id><![CDATA[e189847d-5eeb-40bb-8ad6-165f25114a00]]></product_id><sign><![CDATA[A71C0A24C527FCE2062DD82826280CEB]]></sign><spbill_create_ip><![CDATA[58.246.98.30]]></spbill_create_ip><time_expire><![CDATA[20180607165518]]></time_expire><time_start><![CDATA[20180607164518]]></time_start><total_fee><![CDATA[1000]]></total_fee><trade_type><![CDATA[NATIVE]]></trade_type></xml>
+2018-06-07 16:45:19.087 DEBUG WxPayApi: UnfiedOrder response : <xml><return_code><![CDATA[SUCCESS]]></return_code>
+<return_msg><![CDATA[OK]]></return_msg>
+<appid><![CDATA[wxe3986f34c73a20f2]]></appid>
+<mch_id><![CDATA[1507219281]]></mch_id>
+<nonce_str><![CDATA[JVEBUAeHGjgDEi0J]]></nonce_str>
+<sign><![CDATA[542E979EB7D133A713301C367071A17B]]></sign>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<prepay_id><![CDATA[wx071645183176482f7ee77a353411351196]]></prepay_id>
+<trade_type><![CDATA[NATIVE]]></trade_type>
+<code_url><![CDATA[weixin://wxpay/bizpayurl?pr=ltJjSAx]]></code_url>
+</xml>
+2018-06-07 16:45:19.087 INFO NativePay: Get native pay mode 2 url : weixin://wxpay/bizpayurl?pr=ltJjSAx
+2018-06-07 16:45:46.307 INFO NativePay: Native pay mode 2 url is producing...
+2018-06-07 16:45:46.308 DEBUG WxPayApi: UnfiedOrder request : <xml><appid><![CDATA[wxe3986f34c73a20f2]]></appid><attach><![CDATA[test]]></attach><body><![CDATA[Lantola酒店预订]]></body><goods_tag><![CDATA[hotel]]></goods_tag><mch_id><![CDATA[1507219281]]></mch_id><nonce_str><![CDATA[94ea9f2baa354cf29b9cddd47c852ff3]]></nonce_str><notify_url><![CDATA[http://www.Lantola.com:8099/Pay/WxNotify]]></notify_url><out_trade_no><![CDATA[118060703764]]></out_trade_no><product_id><![CDATA[e189847d-5eeb-40bb-8ad6-165f25114a00]]></product_id><sign><![CDATA[8AA9A3F89F2F9A245622070D2522D78D]]></sign><spbill_create_ip><![CDATA[58.246.98.30]]></spbill_create_ip><time_expire><![CDATA[20180607165546]]></time_expire><time_start><![CDATA[20180607164546]]></time_start><total_fee><![CDATA[1000]]></total_fee><trade_type><![CDATA[NATIVE]]></trade_type></xml>
+2018-06-07 16:45:46.477 DEBUG WxPayApi: UnfiedOrder response : <xml><return_code><![CDATA[SUCCESS]]></return_code>
+<return_msg><![CDATA[OK]]></return_msg>
+<appid><![CDATA[wxe3986f34c73a20f2]]></appid>
+<mch_id><![CDATA[1507219281]]></mch_id>
+<nonce_str><![CDATA[9dWVsZkJXJzbfEgb]]></nonce_str>
+<sign><![CDATA[4B22C4782CE0887B8159EE8BA8567798]]></sign>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<prepay_id><![CDATA[wx071645456960832f7ee77a353998019995]]></prepay_id>
+<trade_type><![CDATA[NATIVE]]></trade_type>
+<code_url><![CDATA[weixin://wxpay/bizpayurl?pr=3rEZEsS]]></code_url>
+</xml>
+2018-06-07 16:45:46.477 INFO NativePay: Get native pay mode 2 url : weixin://wxpay/bizpayurl?pr=3rEZEsS
+2018-06-07 16:46:34.925 INFO NativePay: Native pay mode 2 url is producing...
+2018-06-07 16:46:34.928 DEBUG WxPayApi: UnfiedOrder request : <xml><appid><![CDATA[wxe3986f34c73a20f2]]></appid><attach><![CDATA[test]]></attach><body><![CDATA[Lantola酒店预订]]></body><goods_tag><![CDATA[hotel]]></goods_tag><mch_id><![CDATA[1507219281]]></mch_id><nonce_str><![CDATA[514bd1b122ef46b6b2d9d0279e35df1c]]></nonce_str><notify_url><![CDATA[http://www.Lantola.com:8099/Pay/WxNotify]]></notify_url><out_trade_no><![CDATA[118060734388]]></out_trade_no><product_id><![CDATA[e189847d-5eeb-40bb-8ad6-165f25114a00]]></product_id><sign><![CDATA[05742A75708570D0E607263E5D26FA24]]></sign><spbill_create_ip><![CDATA[58.246.98.30]]></spbill_create_ip><time_expire><![CDATA[20180607165634]]></time_expire><time_start><![CDATA[20180607164634]]></time_start><total_fee><![CDATA[1000]]></total_fee><trade_type><![CDATA[NATIVE]]></trade_type></xml>
+2018-06-07 16:46:35.223 DEBUG WxPayApi: UnfiedOrder response : <xml><return_code><![CDATA[SUCCESS]]></return_code>
+<return_msg><![CDATA[OK]]></return_msg>
+<appid><![CDATA[wxe3986f34c73a20f2]]></appid>
+<mch_id><![CDATA[1507219281]]></mch_id>
+<nonce_str><![CDATA[nWL8sLK4SV3dFFwE]]></nonce_str>
+<sign><![CDATA[81170425F5FACF3CFFA5B0CAD6B49720]]></sign>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<prepay_id><![CDATA[wx071646344468550d508aff651714487204]]></prepay_id>
+<trade_type><![CDATA[NATIVE]]></trade_type>
+<code_url><![CDATA[weixin://wxpay/bizpayurl?pr=Pv8D7Z3]]></code_url>
+</xml>
+2018-06-07 16:46:35.224 INFO NativePay: Get native pay mode 2 url : weixin://wxpay/bizpayurl?pr=Pv8D7Z3
+2018-06-07 16:47:01.095 INFO HotelSystem.Web.Controllers.PayController: Receive data from WeChat : <xml><appid><![CDATA[wxe3986f34c73a20f2]]></appid>
+<attach><![CDATA[test]]></attach>
+<bank_type><![CDATA[CFT]]></bank_type>
+<cash_fee><![CDATA[1000]]></cash_fee>
+<fee_type><![CDATA[CNY]]></fee_type>
+<is_subscribe><![CDATA[Y]]></is_subscribe>
+<mch_id><![CDATA[1507219281]]></mch_id>
+<nonce_str><![CDATA[514bd1b122ef46b6b2d9d0279e35df1c]]></nonce_str>
+<openid><![CDATA[oNc6j0RwENlLqBo6iHm-tEq_5-Lc]]></openid>
+<out_trade_no><![CDATA[118060734388]]></out_trade_no>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<return_code><![CDATA[SUCCESS]]></return_code>
+<sign><![CDATA[594F0160F16B5B68E89F36CD103E2145]]></sign>
+<time_end><![CDATA[20180607164659]]></time_end>
+<total_fee>1000</total_fee>
+<trade_type><![CDATA[NATIVE]]></trade_type>
+<transaction_id><![CDATA[4200000114201806077151617104]]></transaction_id>
+</xml>
+2018-06-07 16:47:01.096 INFO HotelSystem.Web.Controllers.PayController: Check sign success
+2018-06-07 16:47:16.134 INFO HotelSystem.Web.Controllers.PayController: Receive data from WeChat : <xml><appid><![CDATA[wxe3986f34c73a20f2]]></appid>
+<attach><![CDATA[test]]></attach>
+<bank_type><![CDATA[CFT]]></bank_type>
+<cash_fee><![CDATA[1000]]></cash_fee>
+<fee_type><![CDATA[CNY]]></fee_type>
+<is_subscribe><![CDATA[Y]]></is_subscribe>
+<mch_id><![CDATA[1507219281]]></mch_id>
+<nonce_str><![CDATA[514bd1b122ef46b6b2d9d0279e35df1c]]></nonce_str>
+<openid><![CDATA[oNc6j0RwENlLqBo6iHm-tEq_5-Lc]]></openid>
+<out_trade_no><![CDATA[118060734388]]></out_trade_no>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<return_code><![CDATA[SUCCESS]]></return_code>
+<sign><![CDATA[594F0160F16B5B68E89F36CD103E2145]]></sign>
+<time_end><![CDATA[20180607164659]]></time_end>
+<total_fee>1000</total_fee>
+<trade_type><![CDATA[NATIVE]]></trade_type>
+<transaction_id><![CDATA[4200000114201806077151617104]]></transaction_id>
+</xml>
+2018-06-07 16:47:16.134 INFO HotelSystem.Web.Controllers.PayController: Check sign success
+2018-06-07 16:47:16.136 INFO HotelSystem.Web.Controllers.PayController: The data WeChat post is error : <xml><return_code><![CDATA[SUCCESS]]></return_code><return_msg><![CDATA[]]></return_msg></xml>
+2018-06-07 16:49:48.949 INFO NativePay: Native pay mode 2 url is producing...
+2018-06-07 16:49:48.949 DEBUG WxPayApi: UnfiedOrder request : <xml><appid><![CDATA[wxe3986f34c73a20f2]]></appid><attach><![CDATA[test]]></attach><body><![CDATA[Lantola酒店预订]]></body><goods_tag><![CDATA[hotel]]></goods_tag><mch_id><![CDATA[1507219281]]></mch_id><nonce_str><![CDATA[66e1dfeadf40452f963a0c51467b97bb]]></nonce_str><notify_url><![CDATA[http://www.Lantola.com:8099/Pay/WxNotify]]></notify_url><out_trade_no><![CDATA[118060748657]]></out_trade_no><product_id><![CDATA[e189847d-5eeb-40bb-8ad6-165f25114a00]]></product_id><sign><![CDATA[DC9233705354BB2E7673136CF311F965]]></sign><spbill_create_ip><![CDATA[58.246.98.30]]></spbill_create_ip><time_expire><![CDATA[20180607165948]]></time_expire><time_start><![CDATA[20180607164948]]></time_start><total_fee><![CDATA[1000]]></total_fee><trade_type><![CDATA[NATIVE]]></trade_type></xml>
+2018-06-07 16:49:49.197 DEBUG WxPayApi: UnfiedOrder response : <xml><return_code><![CDATA[SUCCESS]]></return_code>
+<return_msg><![CDATA[OK]]></return_msg>
+<appid><![CDATA[wxe3986f34c73a20f2]]></appid>
+<mch_id><![CDATA[1507219281]]></mch_id>
+<nonce_str><![CDATA[MTcvKvP6xGRVs4Rx]]></nonce_str>
+<sign><![CDATA[EC827A002A0438F13CF016B3C2AB3369]]></sign>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<prepay_id><![CDATA[wx07164948422084cc35fd62eb0761789136]]></prepay_id>
+<trade_type><![CDATA[NATIVE]]></trade_type>
+<code_url><![CDATA[weixin://wxpay/bizpayurl?pr=B6WAYeR]]></code_url>
+</xml>
+2018-06-07 16:49:49.197 INFO NativePay: Get native pay mode 2 url : weixin://wxpay/bizpayurl?pr=B6WAYeR
+2018-06-07 17:04:47.357 INFO NativePay: Native pay mode 2 url is producing...
+2018-06-07 17:04:47.357 DEBUG WxPayApi: UnfiedOrder request : <xml><appid><![CDATA[wxe3986f34c73a20f2]]></appid><attach><![CDATA[test]]></attach><body><![CDATA[Lantola酒店预订]]></body><goods_tag><![CDATA[hotel]]></goods_tag><mch_id><![CDATA[1507219281]]></mch_id><nonce_str><![CDATA[32c159f861244d7a8c0f4e2fe253d5e2]]></nonce_str><notify_url><![CDATA[http://www.Lantola.com:8099/Pay/WxNotify]]></notify_url><out_trade_no><![CDATA[118060747067]]></out_trade_no><product_id><![CDATA[e189847d-5eeb-40bb-8ad6-165f25114a00]]></product_id><sign><![CDATA[BEBE6F80475628997725AD7C302FC5E0]]></sign><spbill_create_ip><![CDATA[58.246.98.30]]></spbill_create_ip><time_expire><![CDATA[20180607171447]]></time_expire><time_start><![CDATA[20180607170447]]></time_start><total_fee><![CDATA[1000]]></total_fee><trade_type><![CDATA[NATIVE]]></trade_type></xml>
+2018-06-07 17:04:47.617 DEBUG WxPayApi: UnfiedOrder response : <xml><return_code><![CDATA[SUCCESS]]></return_code>
+<return_msg><![CDATA[OK]]></return_msg>
+<appid><![CDATA[wxe3986f34c73a20f2]]></appid>
+<mch_id><![CDATA[1507219281]]></mch_id>
+<nonce_str><![CDATA[wsIjWF4U7Un4pgY3]]></nonce_str>
+<sign><![CDATA[F34DE2A0E16BECF3685F4CAFA3FD5B2A]]></sign>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<prepay_id><![CDATA[wx0717044680054603081c11e52767129600]]></prepay_id>
+<trade_type><![CDATA[NATIVE]]></trade_type>
+<code_url><![CDATA[weixin://wxpay/bizpayurl?pr=10zQCqI]]></code_url>
+</xml>
+2018-06-07 17:04:47.617 INFO NativePay: Get native pay mode 2 url : weixin://wxpay/bizpayurl?pr=10zQCqI
+2018-06-07 17:06:09.067 INFO HotelSystem.Web.Controllers.PayController: Receive data from WeChat : <xml><appid><![CDATA[wxe3986f34c73a20f2]]></appid>
+<attach><![CDATA[test]]></attach>
+<bank_type><![CDATA[CFT]]></bank_type>
+<cash_fee><![CDATA[1000]]></cash_fee>
+<fee_type><![CDATA[CNY]]></fee_type>
+<is_subscribe><![CDATA[N]]></is_subscribe>
+<mch_id><![CDATA[1507219281]]></mch_id>
+<nonce_str><![CDATA[d150770457074d88bdc547aaee02992e]]></nonce_str>
+<openid><![CDATA[oNc6j0RwENlLqBo6iHm-tEq_5-Lc]]></openid>
+<out_trade_no><![CDATA[118060750027]]></out_trade_no>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<return_code><![CDATA[SUCCESS]]></return_code>
+<sign><![CDATA[8DCED837801BABD65A3C59E8E6D2AD4C]]></sign>
+<time_end><![CDATA[20180607163203]]></time_end>
+<total_fee>1000</total_fee>
+<trade_type><![CDATA[NATIVE]]></trade_type>
+<transaction_id><![CDATA[4200000110201806078020428321]]></transaction_id>
+</xml>
+2018-06-07 17:06:09.077 INFO HotelSystem.Web.Controllers.PayController: Check sign success
+2018-06-07 17:07:00.136 INFO HotelSystem.Web.Controllers.PayController: Receive data from WeChat : <xml><appid><![CDATA[wxe3986f34c73a20f2]]></appid>
+<attach><![CDATA[test]]></attach>
+<bank_type><![CDATA[CMB_DEBIT]]></bank_type>
+<cash_fee><![CDATA[1000]]></cash_fee>
+<fee_type><![CDATA[CNY]]></fee_type>
+<is_subscribe><![CDATA[Y]]></is_subscribe>
+<mch_id><![CDATA[1507219281]]></mch_id>
+<nonce_str><![CDATA[32c159f861244d7a8c0f4e2fe253d5e2]]></nonce_str>
+<openid><![CDATA[oNc6j0ZJ0RtIYtax781MkybU_Amw]]></openid>
+<out_trade_no><![CDATA[118060747067]]></out_trade_no>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<return_code><![CDATA[SUCCESS]]></return_code>
+<sign><![CDATA[38417358F7B149C3903183A6D4C44AD7]]></sign>
+<time_end><![CDATA[20180607170658]]></time_end>
+<total_fee>1000</total_fee>
+<trade_type><![CDATA[NATIVE]]></trade_type>
+<transaction_id><![CDATA[4200000118201806074147458468]]></transaction_id>
+</xml>
+2018-06-07 17:07:00.146 INFO HotelSystem.Web.Controllers.PayController: Check sign success
+2018-06-07 17:07:16.156 INFO HotelSystem.Web.Controllers.PayController: Receive data from WeChat : <xml><appid><![CDATA[wxe3986f34c73a20f2]]></appid>
+<attach><![CDATA[test]]></attach>
+<bank_type><![CDATA[CMB_DEBIT]]></bank_type>
+<cash_fee><![CDATA[1000]]></cash_fee>
+<fee_type><![CDATA[CNY]]></fee_type>
+<is_subscribe><![CDATA[Y]]></is_subscribe>
+<mch_id><![CDATA[1507219281]]></mch_id>
+<nonce_str><![CDATA[32c159f861244d7a8c0f4e2fe253d5e2]]></nonce_str>
+<openid><![CDATA[oNc6j0ZJ0RtIYtax781MkybU_Amw]]></openid>
+<out_trade_no><![CDATA[118060747067]]></out_trade_no>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<return_code><![CDATA[SUCCESS]]></return_code>
+<sign><![CDATA[38417358F7B149C3903183A6D4C44AD7]]></sign>
+<time_end><![CDATA[20180607170658]]></time_end>
+<total_fee>1000</total_fee>
+<trade_type><![CDATA[NATIVE]]></trade_type>
+<transaction_id><![CDATA[4200000118201806074147458468]]></transaction_id>
+</xml>
+2018-06-07 17:07:16.166 INFO HotelSystem.Web.Controllers.PayController: Check sign success
+2018-06-07 17:07:16.166 INFO HotelSystem.Web.Controllers.PayController: The data WeChat post is error : <xml><return_code><![CDATA[SUCCESS]]></return_code><return_msg><![CDATA[]]></return_msg></xml>
+2018-06-07 17:13:07.256 INFO NativePay: Native pay mode 2 url is producing...
+2018-06-07 17:13:07.256 DEBUG WxPayApi: UnfiedOrder request : <xml><appid><![CDATA[wxe3986f34c73a20f2]]></appid><attach><![CDATA[test]]></attach><body><![CDATA[Lantola酒店预订]]></body><goods_tag><![CDATA[hotel]]></goods_tag><mch_id><![CDATA[1507219281]]></mch_id><nonce_str><![CDATA[351f901c9d5b460da8477a5511811761]]></nonce_str><notify_url><![CDATA[http://www.Lantola.com:8099/Pay/WxNotify]]></notify_url><out_trade_no><![CDATA[118060706856]]></out_trade_no><product_id><![CDATA[e189847d-5eeb-40bb-8ad6-165f25114a00]]></product_id><sign><![CDATA[BEAF9C4694E03DAD8C826A4413BD0042]]></sign><spbill_create_ip><![CDATA[58.246.98.30]]></spbill_create_ip><time_expire><![CDATA[20180607172307]]></time_expire><time_start><![CDATA[20180607171307]]></time_start><total_fee><![CDATA[1000]]></total_fee><trade_type><![CDATA[NATIVE]]></trade_type></xml>
+2018-06-07 17:13:07.526 DEBUG WxPayApi: UnfiedOrder response : <xml><return_code><![CDATA[SUCCESS]]></return_code>
+<return_msg><![CDATA[OK]]></return_msg>
+<appid><![CDATA[wxe3986f34c73a20f2]]></appid>
+<mch_id><![CDATA[1507219281]]></mch_id>
+<nonce_str><![CDATA[PyRUrJ7GnDBz8cZN]]></nonce_str>
+<sign><![CDATA[DC8F929AE0B930D9809325993A568635]]></sign>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<prepay_id><![CDATA[wx07171306719628c9f0d80b0f1137968948]]></prepay_id>
+<trade_type><![CDATA[NATIVE]]></trade_type>
+<code_url><![CDATA[weixin://wxpay/bizpayurl?pr=89n5hIy]]></code_url>
+</xml>
+2018-06-07 17:13:07.526 INFO NativePay: Get native pay mode 2 url : weixin://wxpay/bizpayurl?pr=89n5hIy
+2018-06-07 17:36:11.124 INFO HotelSystem.Web.Controllers.PayController: Receive data from WeChat : <xml><appid><![CDATA[wxe3986f34c73a20f2]]></appid>
+<attach><![CDATA[test]]></attach>
+<bank_type><![CDATA[CFT]]></bank_type>
+<cash_fee><![CDATA[1000]]></cash_fee>
+<fee_type><![CDATA[CNY]]></fee_type>
+<is_subscribe><![CDATA[N]]></is_subscribe>
+<mch_id><![CDATA[1507219281]]></mch_id>
+<nonce_str><![CDATA[d150770457074d88bdc547aaee02992e]]></nonce_str>
+<openid><![CDATA[oNc6j0RwENlLqBo6iHm-tEq_5-Lc]]></openid>
+<out_trade_no><![CDATA[118060750027]]></out_trade_no>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<return_code><![CDATA[SUCCESS]]></return_code>
+<sign><![CDATA[8DCED837801BABD65A3C59E8E6D2AD4C]]></sign>
+<time_end><![CDATA[20180607163203]]></time_end>
+<total_fee>1000</total_fee>
+<trade_type><![CDATA[NATIVE]]></trade_type>
+<transaction_id><![CDATA[4200000110201806078020428321]]></transaction_id>
+</xml>
+2018-06-07 17:36:11.124 INFO HotelSystem.Web.Controllers.PayController: Check sign success
+2018-06-07 17:36:11.144 INFO HotelSystem.Web.Controllers.PayController: The data WeChat post is error : <xml><return_code><![CDATA[SUCCESS]]></return_code><return_msg><![CDATA[]]></return_msg></xml>

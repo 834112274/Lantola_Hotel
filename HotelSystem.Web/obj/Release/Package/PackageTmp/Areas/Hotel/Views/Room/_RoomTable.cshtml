@@ -1,0 +1,39 @@
+﻿@model PagedList<HotelSystem.Model.Room>
+@using Webdiyer.WebControls.Mvc
+<ul class="list-group">
+    <li class="list-group-item">
+        <div class="row">
+            <div class="col-md-2"><label> @Html.DisplayNameFor(model => model.Name)</label></div>
+            <div class="col-md-1"><label>@Html.DisplayNameFor(model => model.Area)</label></div>
+            <div class="col-md-1"><label>@Html.DisplayNameFor(model => model.Storey)</label></div>
+            <div class="col-md-4"><label>@Html.DisplayNameFor(model => model.BedDescribe)</label></div>
+            <div class="col-md-4"></div>
+        </div>
+    </li>
+
+    @foreach (var item in Model)
+    {
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-md-2">@Html.DisplayFor(modelItem => item.Name)</div>
+                <div class="col-md-1">@Html.DisplayFor(modelItem => item.Area)</div>
+                <div class="col-md-1">@Html.DisplayFor(modelItem => item.Storey)</div>
+                <div class="col-md-4">@Html.DisplayFor(modelItem => item.BedDescribe)</div>
+                <div class="col-md-4">
+                    @Html.ActionLink("发布房价", "PriceTypeList", new { id = item.Id }) |
+                    @Html.ActionLink("修改", "EditRoom", new { id = item.Id }) |
+                    @Html.ActionLink("删除", "Delete", new { id = item.Id }, new { onclick = "return confirm('确认删除吗？');" }) |
+                    <a href="javascript:;" data-toggle="collapse" data-target="#@item.Id" class="view-price">查看房价</a>
+                </div>
+            </div>
+            <div class="collapse" id="@item.Id">
+                <hr />
+                <div class="panel panel-default" style="border:0px;">
+                    <div class="panel-body" style="border:0px;">
+                        <div id="@(item.Id)_calendar" class="col-lg-10 col-md-offset-1" style="overflow:hidden;"></div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    }
+</ul>

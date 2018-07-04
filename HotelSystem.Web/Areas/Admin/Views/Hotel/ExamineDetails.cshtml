@@ -1,0 +1,193 @@
+﻿@model HotelSystem.Model.HotelInfo
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>审核</title>
+    <link href="~/Scripts/assets/css/bootstrap.min.css" rel="stylesheet">
+    <script src="~/Scripts/assets/js/jquery-2.1.1.min.js"></script>
+    <script src="~/Scripts/assets/js/bootstrap.min.js"></script>
+    <style>
+        .detail {
+            font-weight: normal;
+            text-align: left !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p style="height:30px;"></p>
+        <h4 class="text-center">@Html.DisplayFor(model => model.Name) <span class="label @(Model.ExamineStatus == 0 ? "label-default" : Model.ExamineStatus == 1 ? "label-success" : "label-danger")">@(Model.ExamineStatus == 0 ? "未审核" : Model.ExamineStatus == 1 ? "通过" : "未通过")</span></h4>
+        <p class="text-muted text-center">
+            @{
+                if (Model.ExamineStatus != 0)
+                {
+                    @Html.DisplayNameFor(model => model.ExamineUser);<span>:</span>
+
+                    @Html.DisplayFor(model => model.ExamineUser);<span>-------</span>
+
+                    @Html.DisplayNameFor(model => model.ExamineTime); <span>:</span>
+
+                    @(Model.ExamineTime == null ? "" : DateTime.Parse(Model.ExamineTime.ToString()).ToString("yyyy-MM-dd"))
+
+                }
+            }
+        </p>
+        <p class="text-danger text-center">@ViewBag.Message</p>
+        <hr />
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 control-label"> @Html.DisplayNameFor(model => model.Name) :</label>
+                <div class="col-sm-8">
+                    <label class="col-sm-2 control-label detail" id="inputEmail3"> @Html.DisplayFor(model => model.Name)</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 control-label"> @Html.DisplayNameFor(model => model.Type) :</label>
+                <div class="col-sm-8">
+                    <label for="inputEmail3" class="col-sm-2 control-label detail" id="inputEmail3"> @(Model.Type == 0 ? "酒店" : "企业")</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 control-label"> @Html.DisplayNameFor(model => model.ExamineStatus) :</label>
+                <div class="col-sm-8">
+                    <label for="inputEmail3" class="col-sm-2" id="inputEmail3"> <span class="label @(Model.ExamineStatus == 0 ? "label-default" : Model.ExamineStatus == 1 ? "label-success" : "label-danger")">@(Model.ExamineStatus == 0 ? "未审核" : Model.ExamineStatus == 1 ? "通过" : "未通过")</span></label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 control-label"> @Html.DisplayNameFor(model => model.City.CityName) :</label>
+                <div class="col-sm-8">
+                    <label for="inputEmail3" class="col-sm-2 control-label detail" id="inputEmail3"> @Html.DisplayFor(model => model.City.CityName)</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 control-label"> @Html.DisplayNameFor(model => model.District.DistrictName) :</label>
+                <div class="col-sm-8">
+                    <label for="inputEmail3" class="col-sm-2 control-label detail" id="inputEmail3"> @Html.DisplayFor(model => model.District.DistrictName)</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 control-label"> @Html.DisplayNameFor(model => model.Adress) :</label>
+                <div class="col-sm-8">
+
+                    <label for="inputEmail3" class="col-sm-2 control-label detail" id="inputEmail3"> @Html.DisplayFor(model => model.Adress)</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 control-label"> @Html.DisplayNameFor(model => model.Tel) :</label>
+                <div class="col-sm-8">
+                    <label for="inputEmail3" class="col-sm-2 control-label detail" id="inputEmail3"> @Html.DisplayFor(model => model.Tel)</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 control-label"> @Html.DisplayNameFor(model => model.Star) :</label>
+                <div class="col-sm-8">
+                    <label for="inputEmail3" class="col-sm-2 control-label detail" id="inputEmail3"> @Html.DisplayFor(model => model.Star)</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 control-label"> @Html.DisplayNameFor(model => model.Contact) :</label>
+                <div class="col-sm-8">
+                    <label for="inputEmail3" class="col-sm-2 control-label detail" id="inputEmail3"> @Html.DisplayFor(model => model.Contact)</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 control-label"> @Html.DisplayNameFor(model => model.Position) :</label>
+                <div class="col-sm-8">
+                    <label for="inputEmail3" class="col-sm-2 control-label detail" id="inputEmail3"> @Html.DisplayFor(model => model.Position)</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 control-label"> @Html.DisplayNameFor(model => model.Phone) :</label>
+                <div class="col-sm-8">
+                    <label for="inputEmail3" class="col-sm-2 control-label detail" id="inputEmail3"> @Html.DisplayFor(model => model.Phone)</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 control-label"> @Html.DisplayNameFor(model => model.Email) :</label>
+                <div class="col-sm-8">
+                    <label for="inputEmail3" class="col-sm-2 control-label detail" id="inputEmail3"> @Html.DisplayFor(model => model.Email)</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 control-label"> @Html.DisplayNameFor(model => model.BusinessLicense) :</label>
+                <div class="col-sm-8">
+                    <div class="row">
+                        <div class="col-xs-10 col-md-10">
+                            <a href="##" class="thumbnail">
+                                <img src="@Html.DisplayFor(model => model.BusinessLicense)" alt="...">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 control-label"> @Html.DisplayNameFor(model => model.Franchise) :</label>
+                <div class="col-sm-8">
+                    <div class="row">
+                        <div class="col-xs-10 col-md-10">
+                            <a href="##" class="thumbnail">
+                                <img src="@Html.DisplayFor(model => model.Franchise)" alt="...">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 control-label"> @Html.DisplayNameFor(model => model.Card) :</label>
+                <div class="col-sm-8">
+                    <div class="row">
+                        <div class="col-xs-10 col-md-10">
+                            <a href="##" class="thumbnail">
+                                <img src="@Html.DisplayFor(model => model.Card)" alt="...">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 control-label"> @Html.DisplayNameFor(model => model.Apply) :</label>
+                <div class="col-sm-8">
+                    <label for="inputEmail3" class="col-sm-2" id="inputEmail3"> @Model.Apply.ToString("yyyy-MM-dd")</label>
+                </div>
+            </div>
+            @using (Html.BeginForm("ExamineHandle", "Hotel", new { id = Model.Id }, FormMethod.Post))
+            {
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="Name" class="col-sm-2 control-label">登录用户名</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="Name" name="userName" placeholder="用户名" value="@Html.DisplayFor(model => model.Name)" required>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+
+                if (Model.ExamineStatus == 0)
+                {
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-4 col-sm-8">
+                            <div class="col-md-4">
+                                <input type="submit" class="btn btn btn-danger btn-lg btn-block" name="result" onclick="return confirm('确认否决申请吗？')" value="不通过">
+                            </div>
+                            <div class="col-md-4">
+
+                                <input type="submit" class="btn btn btn-success btn-lg btn-block" name="result" onclick="return confirm('确认通过申请吗？')" value="通过">
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            }
+            <div style="height:80px;"></div>
+        </div>
+    </div>
+</body>
+</html>

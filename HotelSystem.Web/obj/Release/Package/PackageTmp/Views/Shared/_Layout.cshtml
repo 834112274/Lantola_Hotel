@@ -1,0 +1,129 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Scripts/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Scripts/assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/Scripts/assets/css/style.min.css" rel="stylesheet">
+    <script src="~/Scripts/jquery-1.7.2.min.js"></script>
+    <script src="~/Scripts/assets/js/bootstrap.min.js"></script>
+    <style>
+        .footer {
+            background: #333232;
+            color: #ffffff;
+            padding-top: 60px;
+            padding-bottom: 80px;
+        }
+
+            .footer .siteinfo {
+                float: left;
+                width: 80%;
+            }
+
+                .footer .siteinfo .info {
+                    margin-top: 60px;
+                    margin-bottom: 10px;
+                }
+
+                    .footer .siteinfo .info .logo {
+                        display: block;
+                        float: left;
+                        width: 30%;
+                        padding-left:20px;
+                        text-align:left;
+                    }
+
+                    .footer .siteinfo .info .adress {
+                        float: left;
+                        width: 70%;
+                        font-size:12px;
+                        font-family:"宋体"
+                    }
+
+            .footer .qr-code {
+                float: left;
+                width: 20%;
+                text-align: right;
+            }
+
+            .footer .link {
+                width: 100%;
+                overflow: hidden;
+            }
+
+                .footer .link ul {
+                }
+
+                    .footer .link ul li {
+                        float: left;
+                        width:12.5%;
+                    }
+
+                        .footer .link ul li a {
+                            display:inline-block;
+                            text-align:center;
+                            width:100%;
+                            border-right: 1px solid #ffffff;
+                            color: #ffffff;
+                            font-size: 14px;
+                            text-decoration: none;
+                        }
+
+                        .footer .link ul li:last-child a {
+                            border-right: none;
+                        }
+                        .register-container{
+                            display:none;
+                        }
+    </style>
+</head>
+
+<body>
+    <div class="register-container">
+        @{Html.RenderAction("Register", "User", new { area = "" });}
+    </div>
+    
+    <div style="position:relative;height:76px;">
+        @{Html.RenderAction("Header", "Home", new { area = "" });}
+    </div>
+
+    @RenderBody()
+    <div class="footer">
+        <div class="container">
+            <div class="siteinfo">
+                <div class="link">
+                    <ul>
+                        <li><a href="/Article/Index/About" target="_blank">关于lantola.com</a></li>
+                        <li><a href="/Home/Cooperation" target="_blank">直销合作</a></li>
+                        <li><a href="/Article/Index/Advertisement" target="_blank">广告业务</a></li>
+                        <li><a href="/Article/Index/Safe" target="_blank">安全中心</a></li>
+                        <li><a href="/Article/Index/Help" target="_blank">使用帮助</a></li>
+                        <li><a href="/Article/Index/Complaint" target="_blank">投诉建议</a></li>
+                        <li><a href="/Article/Index/License" target="_blank">营业执照</a></li>
+                        <li><a href="/Hotel/User/Login" target="_blank">后台登录</a></li>
+                    </ul>
+                </div>
+                <div class="info">
+                    <div class="logo">
+                        <img src="~/Images/logo-WT.png" />
+                    </div>
+                    <div class="adress">
+                        沪ICP备15056989号-1 &nbsp;&nbsp;&nbsp; 版权所有©2015-2016 Shanghai Lantola E-business Co.Ltd保留所有权利
+                        <br />
+                        地址:上海市普陀区中山北路 1759号浦发广场 D座 607室
+                    </div>
+                </div>
+            </div>
+            <div class="qr-code">
+                <img src="~/Images/a1.png" />
+            </div>
+        </div>
+    </div>
+</body>
+</html>

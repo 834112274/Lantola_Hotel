@@ -1,0 +1,404 @@
+﻿@model PagedList<HotelSystem.Web.Models.View.HotelView>
+@using Webdiyer.WebControls.Mvc
+@{
+    ViewBag.Title = "酒店搜索";
+    Layout = "~/Views/Shared/_LayoutHeader.cshtml";
+}
+<link rel="stylesheet" type="text/css" media="all" href="~/Scripts/assets/plugins/bootstrap-daterangepicker-master/daterangepicker.css" />
+<style>
+    .date-box .fa {
+        color: #ccc;
+        line-height: 30px;
+        font-size: 16px;
+        float: left;
+        left: 15px;
+    }
+
+    .daterange {
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+        .daterange .date-box {
+            background-color: white;
+            width: 48%;
+            height: 34px;
+            float: left;
+            padding-left: 15px;
+        }
+
+        .daterange .end {
+            margin-left: 2px;
+        }
+
+        .daterange .day {
+            position: absolute;
+            margin: 6px auto;
+            left: 48%;
+            margin-left: -6px;
+            height: 30px;
+        }
+
+        .daterange .date {
+            font-size: 12px;
+            margin-left: 0px;
+            margin-right: 0px;
+            right: 0px;
+            width: auto;
+        }
+
+            .daterange .date p {
+                padding: 2px;
+                margin: 0px;
+                height: 15px;
+                text-align: left;
+                padding-left: 30px;
+                line-height: 15px;
+            }
+
+                .daterange .date p:nth-child(2) {
+                    color: #ccc;
+                }
+
+    .search-btn {
+        height: 34px;
+        background: #4876FF;
+        font-size: 14px;
+        font-family: "宋体";
+        border: none;
+        color: #fff;
+        cursor: pointer;
+        padding: 0px 10px;
+        line-height: 34px;
+        top: 0px;
+        border: 1px solid transparent;
+        width: 100%;
+    }
+
+        .search-btn:hover {
+            background: #49f;
+        }
+
+    .search-container {
+        background-color: #07214b;
+        padding: 8px 0px;
+    }
+
+    .filter-container {
+    }
+
+    .filter-item {
+        padding: 10px 0px;
+        border-bottom: 1px solid #ccc;
+        border-left: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+    }
+
+        .filter-item .title {
+            color: #4876FF;
+        }
+
+        .filter-item .select-item {
+            overflow: hidden;
+            height: 60px;
+        }
+
+            .filter-item .select-item li {
+                float: left;
+                padding: 0px 8px 10px 8px;
+            }
+
+                .filter-item .select-item li a {
+                    color: #333;
+                    outline: none;
+                    text-decoration: none;
+                    padding: 4px;
+                    border-radius: 4px;
+                }
+
+            .filter-item .select-item .selected a {
+                background-color: #49f;
+                color: #fff;
+            }
+
+    .facilities {
+    }
+
+    .filter-item .more {
+        color: #49f;
+        border: 1px solid #49f;
+        background-color: #fff;
+        border-radius: 4px;
+        padding: 0px 10px;
+    }
+
+    .search-message {
+        margin-top: 40px;
+    }
+            .sort{
+            margin:6px 0px 6px 0px;
+            overflow:hidden;
+        }
+    .sort ul {
+        border-top: 3px solid #4876FF;
+        overflow:hidden;
+    }
+
+        .sort ul li {
+            float: left;
+            border:1px solid #4876FF;
+            padding:2px 6px;
+            width:25%;
+            text-align:center;
+            cursor:pointer;
+        }
+        .sort ul li a{
+            outline:none;
+            text-decoration:none;
+            color:#4876FF;
+        }
+    .media-object {
+        display: inline-block;
+        width: 300px;
+        height: 160px;
+    }
+
+    .star {
+        font-weight: 100;
+        font-size: 14px;
+    }
+
+    .media-heading {
+        color: #4876FF;
+        font-weight: bold;
+    }
+
+    .english {
+        color: #808080;
+        font-size: 12px;
+    }
+
+    .adress a {
+        color: #4876FF;
+        text-decoration: underline;
+    }
+
+    .popularity {
+        margin-top: 20px;
+    }
+
+        .popularity .tag {
+            display: inline-block;
+            background-color: #ffd800;
+            font-size: 12px;
+            padding: 2px;
+            border-radius: 4px;
+            color: #fff;
+            margin-right: 10px;
+        }
+
+        .popularity .summary {
+            color: #808080;
+        }
+
+    .policy {
+        margin-top: 10px;
+    }
+
+        .policy span {
+            display: inline-block;
+            margin: 2px;
+            padding: 4px;
+            font-size: 14px;
+            border: 1px solid #49f;
+            border-radius: 24px;
+        }
+
+    .media-right {
+        float: right;
+        text-align: right;
+        margin-top: 0px;
+    }
+
+        .media-right .score {
+            float: right;
+            text-align: center;
+            line-height: 37px;
+            width: 37px;
+            background-color: #337ab7;
+            border-radius: 6px;
+            color: #fff;
+            border-bottom-left-radius: 0px;
+            margin-left: 6px;
+        }
+
+        .media-right .score-info {
+            float: right;
+        }
+
+        .media-right .price {
+            color: #32CD32;
+            font-weight: bold;
+            font-size: 16px;
+            margin-top: 50px;
+        }
+
+        .media-right .btn-details {
+            background-color: #4876FF;
+            padding: 6px;
+            color: #fff;
+        }
+
+</style>
+<div class="search-container">
+    <div class="container">
+        @using (Html.BeginForm("Search", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="row">
+                <div class="col-md-4">
+                    <input type="text" name="k" class="form-control" value="@ViewBag.SearchParams.k" placeholder="请输入酒店、目的地" style="border-radius: 0px;border:none;">
+                </div>
+                <div class="col-md-6">
+                    <div class="daterange">
+                        <div class="day"><span class="day-value">1</span><span class="fa fa-moon-o"></span></div>
+                        <div class="date-box start">
+                            <span class="fa fa-calendar"></span>
+                            <div class="date">
+                                <p>2018年04月06</p>
+                                <p>周四</p>
+                            </div>
+                        </div>
+                        <div class="date-box end">
+                            <span class="fa fa-calendar"></span>
+                            <div class="date">
+                                <p>2018年04月06</p>
+                                <p>周四</p>
+                            </div>
+                        </div>
+                        <input type="hidden" name="start" value="">
+                        <input type="hidden" name="end" value="">
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <input type="submit" value="搜索酒店" class="search-btn" id="J_search_hotel">
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<div class="filter-container">
+    <div class="container">
+        <div class="row filter-item">
+            <div class="col-md-1 text-center"><span class="title">位置</span> </div>
+            <div class="col-md-11">
+                <ul class="select-item">
+                    <li class="selected"><a href="javascript:;">不限</a> </li>
+                    <li><a href="javascript:;">黄埔区</a> </li>
+                    <li><a href="javascript:;">浦东区</a> </li>
+                    <li><a href="javascript:;">普陀区</a> </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row filter-item">
+            <div class="col-md-1 text-center"><span class="title">设施</span></div>
+            <div class="col-md-11">
+                <ul class="select-item facilities">
+                    <li class="selected"><a href="javascript:;">不限</a> </li>
+                    <li><a href="javascript:;">免费停车</a> </li>
+                    <li><a href="javascript:;">会议室</a> </li>
+                    <li><a href="javascript:;">中餐厅</a> </li>
+                    <li><a href="javascript:;">西餐厅</a> </li>
+                    <li><a href="javascript:;">免费停车</a> </li>
+                    <li><a href="javascript:;">会议室</a> </li>
+                    <li><a href="javascript:;">中餐厅</a> </li>
+                    <li><a href="javascript:;">西餐厅</a> </li>
+                    <li><a href="javascript:;">免费停车</a> </li>
+                    <li><a href="javascript:;">会议室</a> </li>
+                    <li><a href="javascript:;">中餐厅</a> </li>
+                    <li><a href="javascript:;">西餐厅</a> </li>
+                    <li><a href="javascript:;">免费停车</a> </li>
+                    <li><a href="javascript:;">会议室</a> </li>
+                    <li><a href="javascript:;">中餐厅</a> </li>
+                    <li><a href="javascript:;">西餐厅</a> </li>
+                    <li><a href="javascript:;">免费停车</a> </li>
+                    <li><a href="javascript:;">会议室</a> </li>
+                    <li><a href="javascript:;">中餐厅</a> </li>
+                    <li><a href="javascript:;">西餐厅</a> </li>
+                    <li><a href="javascript:;">免费停车</a> </li>
+                    <li><a href="javascript:;">会议室</a> </li>
+                    <li><a href="javascript:;">中餐厅</a> </li>
+                    <li><a href="javascript:;">西餐厅</a> </li>
+                    <li><a href="javascript:;">免费停车</a> </li>
+                    <li><a href="javascript:;">会议室</a> </li>
+                    <li><a href="javascript:;">中餐厅</a> </li>
+                    <li><a href="javascript:;">西餐厅</a> </li>
+                    <li><a href="javascript:;">免费停车</a> </li>
+                    <li><a href="javascript:;">会议室</a> </li>
+                    <li><a href="javascript:;">中餐厅</a> </li>
+                    <li><a href="javascript:;">西餐厅</a> </li>
+                </ul>
+                <div class="text-center"><button type="button" class="more">展开</button> </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-message">
+    <div class="container" style="padding:0px;">
+        <h4>上海：共<span>200</span>住宿-<span class="red">3</span>家住宿符合条件 </h4>
+        <div class="sort">
+            <ul>
+                <li><a href="javascript:;">热门推荐 <span class="fa fa-caret-down"></span></a> </li>
+                <li><a href="javascript:;">价格从低到高</a></li>
+                <li><a href="javascript:;">按评分和价格</a></li>
+                <li><a href="javascript:;">评分</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="HotelList">
+    @Html.Partial("_HotelList", Model);
+</div>
+@{Html.RegisterMvcPagerScriptResource();}
+<script type="text/javascript" src="~/Scripts/assets/plugins/bootstrap-daterangepicker-master/moment.js"></script>
+<script type="text/javascript" src="~/Scripts/assets/plugins/bootstrap-daterangepicker-master/daterangepicker.js"></script>
+<script type="text/javascript" src="~/Scripts/assets/plugins/bootstrap-daterangepicker-master/language.js"></script>
+<script>
+    var current = moment();
+    var s = moment("@ViewBag.SearchParams.start");
+    var e = moment("@ViewBag.SearchParams.end");
+    function showDefaultDate(target, start, end) {
+        target.find(".start").eq(0).find("p").eq(0).text(start.format('YYYY年MM月DD日'));
+        target.find(".start").eq(0).find("p").eq(1).text(getWeek(start.format('d')));
+        target.find(".end").eq(0).find("p").eq(0).text(end.format('YYYY年MM月DD日'));
+        target.find(".end").eq(0).find("p").eq(1).text(getWeek(end.format('d')));
+        target.find(".day-value").text(end.diff(start, 'days'));
+        target.find("input[name='start']").val(start.format('YYYY-MM-DD'));
+        target.find("input[name='end']").val(end.format('YYYY-MM-DD'));
+    }
+    showDefaultDate($(".daterange"), s, e);
+    $(".daterange").daterangepicker({
+        "autoApply": true,
+        "startDate": s.format('YYYY年MM月DD日'),
+        "endDate": e.format('YYYY年MM月DD日'),
+        "opens": "center",
+        "minDate": current.format('YYYY年MM月DD日'),
+        locale: locale
+    }, function (start, end, label) {
+        showDefaultDate(this.element, start, end);
+    });
+    $(document).ready(function () {
+        $("#user_menu").find("li").removeClass("active");
+        var url = window.location.href;
+        $("#user_menu").find("li").each(function () {
+            var a = $(this).find("a").attr("href");
+            if (url.indexOf(a) > 0) {
+                $(this).addClass("active");
+            }
+            else {
+                $(this).removeClass("active");
+            }
+        });
+
+    });
+</script>

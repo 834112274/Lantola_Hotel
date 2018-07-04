@@ -1,0 +1,75 @@
+﻿@model HotelSystem.Model.PriceType
+
+@{
+    ViewBag.Title = "CreatePriceType";
+    Layout = null;
+}
+
+@using (Html.BeginForm("CreatePriceType", ViewContext.RouteData.GetRequiredString("controller"), FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+    <div class="row form-horizontal">
+        <div class="col-md-12 form-group">
+            <label class="control-label col-md-2">价格名称</label>
+            <div class="col-md-5">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        
+    </div>
+    <div class="row form-horizontal">
+
+        <div class="col-md-4 form-group">
+            @Html.LabelFor(model => model.Breakfast, htmlAttributes: new { @class = "col-md-3 control-label" })
+            <div class="col-md-9">
+                @Html.DropDownListFor(m => m.Breakfast, ViewBag.Breakfast as SelectList, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Breakfast, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-4 form-group">
+            @Html.LabelFor(model => model.Broadband, htmlAttributes: new { @class = "control-label col-md-3" })
+            <div class="col-md-9">
+                @Html.DropDownListFor(m => m.Broadband, ViewBag.Broadband as SelectList, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Broadband, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-4 form-group">
+            @Html.LabelFor(model => model.PaymentMethod, htmlAttributes: new { @class = "control-label col-md-3" })
+            <div class="col-md-9">
+                @Html.DropDownListFor(m => m.PaymentMethod, ViewBag.PaymentMethod as SelectList, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.PaymentMethod, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-4 form-group">
+            @Html.LabelFor(model => model.ExtraBedPrice, htmlAttributes: new { @class = "control-label col-md-3" })
+            <div class="col-md-9">
+                <div class="input-group">
+                    <div class="input-group-addon">¥</div>
+                    @Html.EditorFor(model => model.ExtraBedPrice, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+
+                @Html.ValidationMessageFor(model => model.ExtraBedPrice, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-4 form-group">
+            @Html.LabelFor(model => model.Number, htmlAttributes: new { @class = "control-label col-md-3" })
+            <div class="col-md-9">
+                @Html.EditorFor(model => model.Number, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Number, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-4 form-group">
+            <div class="col-md-offset-2 col-md-9">
+                <input type="submit" value="发布房价类型" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,86 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <!-- Css files -->
+    <link href="~/Scripts/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Scripts/assets/css/jquery.mmenu.css" rel="stylesheet">
+    <link href="~/Scripts/assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/Scripts/assets/css/style.min.css" rel="stylesheet">
+    <link href="~/Scripts/assets/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <!--[if !IE]>-->
+
+    <script src="~/Scripts/assets/js/jquery-2.1.1.min.js"></script>
+
+    <!--<![endif]-->
+    <!--[if IE]>
+
+        <script src="~/Scripts/assets/js/jquery-1.11.1.min.js"></script>
+
+    <![endif]-->
+    <!--[if !IE]>-->
+
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='~/Scripts/assets/js/jquery-2.1.1.min.js'>" + "<" + "/script>");
+    </script>
+
+    <!--<![endif]-->
+    <!--[if IE]>
+
+        <script type="text/javascript">
+        window.jQuery || document.write("<script src='assets/js/jquery-1.11.1.min.js'>"+"<"+"/script>");
+        </script>
+
+    <![endif]-->
+    <!-- start: JavaScript-->
+
+    <script src="~/Scripts/assets/js/bootstrap.min.js"></script>
+    <!--[if lte IE 8]>
+        <script language="javascript" type="text/javascript" src="~/Scripts/assets/plugins/excanvas/excanvas.min.js"></script>
+    <![endif]-->
+    <script src="~/Scripts/assets/plugins/flot/jquery.flot.min.js"></script>
+
+    <!-- theme scripts -->
+
+    <script src="~/Scripts/assets/js/jquery.mmenu.min.js"></script>
+    <script src="~/Scripts/assets/js/core.min.js"></script>
+    <script language="javascript" type="text/javascript" src="~/Scripts/assets/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script language="javascript" type="text/javascript" src="~/Scripts/assets/plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+    <!--验证脚本-->
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <!--非嵌入式脚本-->
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script> 
+    <!-- end: JavaScript-->
+</head>
+<body>
+    @{Html.RenderAction("Menu", "Home");}
+    @{Html.RenderAction("Header", "Home");}
+
+    <div class="main">
+
+        @RenderBody()
+    </div>
+
+    <div id="mm-blocker"></div>
+    <div class="jvectormap-label"></div>
+    <script type="text/javascript">
+    $('.form_date').datetimepicker({
+        language: 'zh-CN',
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        minView: 2,
+        forceParse: 0
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+﻿@model HotelSystem.Model.GuestUser
+@using (Html.BeginForm("RelievePhone", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+    <div class="form-horizontal">
+        <h4 style="padding-left:200px;margin-top:30px;">解除绑定手机</h4>
+        <hr />
+        @if (string.IsNullOrEmpty(Model.Phone))
+        {
+            <div class="alert alert-warning alert-dismissible fade in" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <strong>操作错误!</strong> 未绑定手机.
+            </div>
+        }
+        else
+        {
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+            <div class="form-group">
+                <label class="control-label col-md-3">手机号</label>
+                <div class="col-md-8">
+                    <div class="input-group">
+                        <p class="form-control-static">@(Model.Phone.Substring(0, 2))***@(Model.Phone.Substring(Model.Phone.Length - 4, 4))</p>
+                        <input type="hidden" id="Relieve_Phone" value="@(Model.Phone)" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" id="RelievePhone_Send" type="button">发送验证码</button>
+                        </span>
+                    </div><!-- /input-group -->
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3">验证码</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="VerificationCode" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-3 col-md-6">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <input type="submit" value="绑定" class="btn btn-danger" />
+                </div>
+            </div>
+        }
+
+        
+    </div>
+}
+<script>
+    var sentTime = function (timeSpan) {
+        $("#RelievePhone_Send").text(timeSpan);
+        if (timeSpan > 0) {
+            setTimeout(function () {
+                timeSpan = timeSpan - 1;
+                sentTime(timeSpan);
+            }, 1000)
+        }
+        else {
+            $("#RelievePhone_Send").text("发送验证码");
+            $("#RelievePhone_Send").attr("disabled", false);
+        }
+    };
+    $(document).ready(function () {
+        $("#RelievePhone_Send").click(function () {
+            $.ajax({
+                url: "/InsideApi/SendSms",
+                type: "post",
+                dateType: "json",
+                data: {
+                    phone: $("#Relieve_Phone").val()
+                },
+                success: function (r) {
+                    console.log(r);
+                    if (r == "success") {
+                        $("#RelievePhone_Send").text(60);
+                        $("#RelievePhone_Send").attr("disabled", true);
+                        setTimeout(function () {
+                            sentTime(59);
+                        }, 1000)
+                    } else {
+                        alert(r);
+                    }
+
+                },
+                error: function (e) {
+
+                }
+            });
+        });
+    });
+</script>

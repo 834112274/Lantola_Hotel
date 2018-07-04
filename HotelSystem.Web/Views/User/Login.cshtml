@@ -1,0 +1,99 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>登录</title>
+    <link href="~/Scripts/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Scripts/assets/css/font-awesome.min.css" rel="stylesheet">
+    <script src="~/Scripts/jquery-1.7.2.min.js"></script>
+    <script src="~/Scripts/assets/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+            background:rgb(242,242,242);
+        }
+        .login-container{
+            background:url(/Images/login_bg.jpg) center;height:550px;
+        }
+        .login-box {
+            float: right;
+            margin-right: 15%;
+            margin-top:112px;
+            background: #fff;
+            padding: 20px 40px;
+            width: 350px;
+            box-shadow: 0px 0px 15px #d1cec9;
+        }
+
+        .logo {
+            margin: 0px auto 20px auto;
+        }
+
+        .has-feedback .form-control {
+            padding-left: 42.5px;
+        }
+
+        .form-control-feedback {
+            left: 0px;
+        }
+
+        .register-btn {
+            float: right;
+            border: 1px solid #0094ff;
+            padding: 6px 20px;
+            border-radius: 6px;
+            outline: none;
+            text-decoration: none;
+        }
+
+            .register-btn:hover {
+                text-decoration: none;
+            }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        @using (Html.BeginForm("Login", "User", FormMethod.Post, new { enctype = "multipart/form-data", @class = "login-box" }))
+        {
+            <div class="logo">
+                <img src="~/Images/lantola-logo.png" />
+            </div>
+            <span class="text-danger">@ViewBag.Message</span>
+            <div class="form-group has-default has-feedback">
+                <label class="control-label sr-only"></label>
+                <input type="text" value="" name="Name" class="form-control" placeholder="手机号">
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+            </div>
+            <div class="form-group has-default has-feedback">
+                <label class="control-label sr-only"></label>
+                <input type="password" name="Password" class="form-control" placeholder="登录密码">
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+            <div>
+                <input type="submit" value="登录" class="btn btn-warning btn-block">
+            </div>
+            <p></p>
+            <label class="checkbox-inline">
+                <input type="checkbox" name="remember" value="1"> 记住账号
+            </label>
+            <a href="javascript:;" style="float:right">忘记密码？</a>
+            <hr />
+            <div>
+                <span class="text-muted" style="line-height:34px;">还没有账号！</span>
+                <a href="javascript:;" class="register-btn">点击注册</a>
+            </div>
+        }
+    </div>
+    <script>
+        $(document).ready(function () {
+            $(".login-container").css("margin-top",($(window).height()-550)/2);
+        });
+    </script>
+</body>
+</html>

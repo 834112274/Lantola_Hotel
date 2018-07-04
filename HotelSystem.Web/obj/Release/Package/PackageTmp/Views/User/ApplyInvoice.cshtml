@@ -1,0 +1,315 @@
+﻿@{
+    ViewBag.Title = "申请发票";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<style>
+    .table p {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .table > thead > tr > th {
+        background: #ddd;
+    }
+
+    .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+        vertical-align: middle;
+        position: relative;
+        font-size: 12px;
+    }
+
+    .table .sort-item {
+        cursor: pointer;
+    }
+
+    .table .sort {
+        position: absolute;
+        top: 13px;
+        left: 65px;
+    }
+
+        .table .sort .acitve {
+            color: #49f;
+        }
+
+        .table .sort i {
+            display: block;
+        }
+
+    .table label {
+        font-weight: 700;
+    }
+
+    label {
+        font-weight: normal;
+        font-size: 12px;
+    }
+    a {
+        color: #4876FF;
+    }
+
+        a:hover {
+            color: #4876FF;
+        }
+            .invoice {
+        background: rgb(239,246,252);
+        overflow: hidden;
+        padding: 10px;
+    }
+
+        .invoice .tab-content {
+            background: white;
+            border-left: 1px solid #ccc;
+            border-right: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        .invoice .nav-tabs > li > a {
+            border-radius: 0px;
+            color:black;
+        }
+        .add-btn {
+        border-color: #4876FF;
+        color: #4876FF;
+        padding: 4px 20px;
+        border-color: #4876FF;
+        background-color: #4876FF;
+        color: #fff;
+    }
+
+        .add-btn:hover {
+            background-color: #4876FF;
+            color: #fff;
+        }
+</style>
+<div class="panel panel-default" style="margin-top:14px;box-shadow: none;">
+    <div class="panel-body text-muted" style="font-size:12px;padding:10px;">
+        <h5 style="font-weight:bold;">开票说明：</h5>
+        <p>1.订单完成后可申请开发票，10日内送达；</p>
+        <p>2.公司账户开具发票，不提供为第三方公司代开发票；</p>
+        <p>3.根据国家税务总局规定，<span class="text-danger">企业开具发票时需填写“纳税人识别号”</span>，请在申请时填写此信息；</p>
+        <p>4.快递费用 10元/次；</p>
+        <p>5.开票说明最终解释权归郎拓拉所有。</p>
+    </div>
+</div>
+@using (Html.BeginForm("CreateInvoice", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+<div>
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-warning alert-dismissible fade in" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+            @Html.Raw(ViewBag.Message)
+        </div>
+    }
+    <h3>可开票订单</h3>
+    <table class="table table-bordered" id="order_list">
+        <thead>
+            <tr>
+                <th><input type="checkbox" class="all" value="" /></th>
+                <th>订单号</th>
+                <th><p>酒店名</p><p>房型</p> </th>
+                <th>入住人</th>
+                <th class="sort-item"><p>入住退房日期</p><p>间夜数</p></th>
+                <th>订单金额</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var m in ViewBag.Order)
+            {
+                <tr>
+                    <td><input type="checkbox" class="order-item" name="ordersId" value="@m.Id" data-value="@m.HousingPrice" /> </td>
+                    <td>@m.Number</td>
+                    <td><a href="###">@m.HotelName</a> <p>@m.RoomName</p> </td>
+                    <td>@m.ApplyUser</td>
+                    <td><p>@m.StartTime.ToString("yyyy-MM-dd")</p><p>@m.EndTime.ToString("yyyy-MM-dd")</p><p>@m.RoomCount 间/@((m.EndTime - m.StartTime).Days) 晚</p> </td>
+
+                    <td><label>@m.HousingPrice</label></td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="panel panel-default" style="margin-top:14px;box-shadow: none;">
+    <div class="panel-body invoice">
+
+        <ul id="invoiceTabs" class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active">
+
+                <a href="#personal" id="personal-tab" role="tab" data-toggle="tab" aria-controls="personal" aria-expanded="true">
+                    <label class="radio-inline">
+                        <input type="radio" name="invoiceType" id="invoice1" value="1" checked="checked"> 个人发票
+                    </label>
+                </a>
+            </li>
+            <li role="presentation" class="">
+                <a href="#ordinary" role="tab" id="ordinary-tab" data-toggle="tab" aria-controls="ordinary" aria-expanded="false">
+                    <label class="radio-inline">
+                        <input type="radio" name="invoiceType" id="invoice2" value="2"> 增值税普通发票
+                    </label>
+                </a>
+            </li>
+            <li role="presentation" class="">
+                <a href="#special" role="tab" id="special-tab" data-toggle="tab" aria-controls="special" aria-expanded="false">
+                    <label class="radio-inline">
+                        <input type="radio" name="invoiceType" id="invoice3" value="3"> 增值税专用发票
+                    </label>
+                </a>
+            </li>
+        </ul>
+        <div id="myTabContent" class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="personal" aria-labelledby="personal-tab">
+
+                <div class="form-horizontal">
+                    <div class="form-group" style="margin-bottom:10px;">
+                        <label class="col-sm-2 control-label">发票抬头</label>
+                        <div class="col-sm-5">
+                            <input type="text" name="head" class="form-control" placeholder="住客姓名或公司名称">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="ordinary" aria-labelledby="ordinary-tab">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">发票抬头</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" name="companyHead">
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-bottom:10px;">
+                        <label class="col-sm-2 control-label">纳税人识别号</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" name="taxpayer">
+                        </div>
+                        <div class="col-sm-10 col-md-offset-2">
+                            <p class="text-muted" style="margin-bottom:0px;">税务登记证上唯一识别企业的税号（通常由15位、18位或20位码组成）</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="special" aria-labelledby="dropdown1-tab">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">公司全称</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" name="Company">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">公司地址</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" name="Address">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">公司电话</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" name="Tel">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">开户银行名称</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" name="Bank">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">开户银行账号</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" name="BankAccount">
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-bottom:10px;">
+                        <label class="col-sm-2 control-label">纳税人识别号</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" name="TaxpayerNumber">
+                        </div>
+                        <div class="col-sm-10 col-md-offset-2">
+                            <p class="text-muted" style="margin-bottom:0px;">税务登记证上唯一识别企业的税号（通常由15位、18位或20位码组成）</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p style="border-bottom:1px dashed #ccc;"></p>
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">发票收件人</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="Addressee" placeholder="姓名（中文/拼音）">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">手机号码</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="Phone" placeholder="中国大陆(+86)">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">配送地址</label>
+                    <div class="col-sm-3">
+                        @Html.DropDownList("Province", new SelectList(ViewBag.Province, "Id", "ProvinceName", ViewBag.ProvinceId), "==请选择==", new { @class = "form-control province", @data_target = "#City" })
+                    </div>
+                    <div class="col-sm-3" id="City">
+                        @Html.DropDownList("City", new SelectList(ViewBag.City, "Id", "CityName"), "==请选择==", new { @class = "form-control city", @data_target = "#District" })
+                    </div>
+                    <div class="col-sm-3" id="District">
+                        @Html.DropDownList("District", new SelectList(ViewBag.District, "Id", "DistrictName"), "==请选择==", new { @class = "form-control district" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"></label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="ReceivingAddress" placeholder="详细地址">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">总计开票金额</label>
+                    <div class="col-sm-9">
+                        <i class="fa fa-cny"></i><span style="font-size:18px;color:#ff6a00;" id="invoice_value">0</span>
+                    </div>
+                </div>
+                <div class="text-right" style="padding-right:30px;">
+                    <input type="submit" class="btn btn-default btn-sm add-btn" value="提交申请" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+}
+<script src="~/Scripts/city.cascading.js"></script>
+<script>
+
+    $('#invoiceTabs a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+
+        $(e.target).find("input[type='radio']").prop('checked', true);
+    })
+    $("#order_list .all").click(function () {
+        if ($(this).is(":checked")) {
+            $("#order_list .order-item").prop("checked", true);
+            var amount = 0;
+            $("#order_list .order-item").each(function () {
+                amount += parseFloat($(this).data("value"));
+            });
+            $("#invoice_value").text(amount);
+        }
+        else {
+            $("#order_list .order-item").prop("checked", false);
+            $("#invoice_value").text(0);
+        }
+    });
+    $("#order_list .order-item").click(function () {
+        var amount = parseFloat($("#invoice_value").text());
+        if ($(this).is(":checked")) {
+            amount += parseFloat($(this).data("value"));
+            $("#invoice_value").text(amount);
+        }
+        else {
+            amount -= parseFloat($(this).data("value"));
+            $("#invoice_value").text(amount);
+        }
+    });
+</script>

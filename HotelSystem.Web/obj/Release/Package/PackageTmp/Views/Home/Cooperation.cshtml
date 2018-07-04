@@ -1,0 +1,135 @@
+﻿
+@{
+    ViewBag.Title = "商务合作";
+    Layout = "~/Views/Shared/_LayoutHeader.cshtml";
+}
+
+<div class="cooperationbanner" style="background-image:url(/Images/cooperation1.png);"></div>
+<div class="cooperationcontent">
+    <div class="cooperationanimate">
+        <div class="cooperationanimates cooperationanimate1" style="top:0;left:0;margin-left:320px;"><img src="/Images/cooperation2/1-1.png" /></div>
+        <div class="cooperationanimates" style="top:0;left:320px;"><img src="/Images/cooperation2/1-2.png" /></div>
+        <div class="cooperationanimates" style="top:0;left:640px;"><img src="/Images/cooperation2/1-3.png" /></div>
+        <div class="cooperationanimates cooperationanimate1" style="top:0;right:0px;margin-right:320px;"><img src="/Images/cooperation2/1-4.png" /></div>
+        <div class="cooperationanimates" style="top:230px;left:0;"><img src="/Images/cooperation2/2-1.png" /></div>
+        <div class="cooperationanimates cooperationanimate2" style="top:230px;right:640px;margin-right:320px;"><img src="/Images/cooperation2/2-2.png" /></div>
+        <div class="cooperationanimates cooperationanimate2" style="top:230px;left:640px;margin-left:320px;"><img src="/Images/cooperation2/2-3.png" /></div>
+        <div class="cooperationanimates" style="top:230px;left:960px;"><img src="/Images/cooperation2/2-4.png" /></div>
+        <div class="cooperationanimates cooperationanimate3" style="top:460px;left:0;margin-left:320px;"><img src="/Images/cooperation2/3-1.png" /></div>
+        <div class="cooperationanimates" style="top:460px;left:320px;"><img src="/Images/cooperation2/3-2.png" /></div>
+        <div class="cooperationanimates" style="top:460px;left:640px;"><img src="/Images/cooperation2/3-3.png" /></div>
+        <div class="cooperationanimates  cooperationanimate3" style="top:460px;right:0px;margin-right:320px;"><img src="/Images/cooperation2/3-4.png" /></div>
+    </div>
+    <div class="cooperationbanner2">
+        <div class="cooperationbanner21" style="background-image:url(/Images/cooperation4.png);height:250px;"></div>
+        <div class="cooperationbanner22" style="height:250px;">LANTOLA愿与商户建立紧密合作，为旅游者提供更丰富、更优惠、更准确的旅游服务，打造自由行预订平台。愿与旅游者分享最真实的旅游历程，带来最具参考价值的点评和建议，展现各个目的地的酒店，景点等真实情况，旨在帮助全球旅游者规划和预订行程，并享受优质的旅游体验。<br /><br />LANTOLA始终倾听用户心声，重视用户体验，满足用户需求，我们所做的努力就是希望能将旅游变得更简便、更自由，更让人享受！</div>
+    </div>
+    <div class="cooperationbanner3" style="background-image:url(/Images/cooperation5.png);">
+        <div class="cooperationbanner31">直销合作</div>
+        <div class="cooperationbanner32">提高服务品质，收获好评口碑</div>
+        <div class="cooperationbanner33">
+            <div class="cooperationbanner331">
+                <div class="cooperationword1">3927</div>
+                <div class="cooperationword2">家品牌酒店</div>
+            </div>
+            <div class="cooperationbanner332"></div>
+            <div class="cooperationbanner331">
+                <div class="cooperationword1">127</div>
+                <div class="cooperationword2">上月新入住酒店</div>
+            </div>
+            <div class="cooperationbanner332"></div>
+            <div class="cooperationbanner331">
+                <div class="cooperationword1">96%</div>
+                <div class="cooperationword2">酒店活跃度</div>
+            </div>
+            <div class="cooperationbanner332"></div>
+            <div class="cooperationbanner331">
+                <div class="cooperationword1">87</div>
+                <div class="cooperationword2">企业公司</div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <a class="cooperationbanner34" href="~/Hotel/User/Register">商户注册</a>
+    </div>
+</div>
+<script>
+    var cooperationanimateswitch = 1;
+    $(document).ready(function () {
+        $('.lantola_about_list li').click(function () {
+            $('.lantola_about_list li').removeClass('hover');
+            $(this).addClass('hover');
+            $('.lantola_about_content').hide();
+            $('.lantola_about_content').eq($(this).index()).show();
+        })
+        if ($('.cooperationanimate').length >= 1) {
+            $(window).scroll(function () {
+                if (cooperationanimateswitch == 1) {
+                    $('.cooperationanimate1').css({ 'margin': '0', 'opacity': '1' });
+                    setTimeout("$('.cooperationanimate2').css({'margin':'0','opacity':'1'})", 500);
+                    setTimeout("$('.cooperationanimate3').css({'margin':'0','opacity':'1'})", 1000);
+                }
+                cooperationanimateswitch = 0;
+            });
+        }
+        $('.personalpersonaldatadate2').click(function () {
+            if ($(this).parent().find('.personalpersonaldatadate3 li').length == '0') { alert('请先填写年份和月份'); return false; }
+            $(this).parent().find('.personalpersonaldatadate3').show();
+            $('.mask').show();
+        })
+        $('.personalpersonaldatadate3 li').click(function () {
+            $(this).parents('.personalpersonaldatadate1').find('.personalpersonaldatadate2').html($(this).html());
+            $(this).parents('.personalpersonaldatadate1').find('input[type="hidden"]').val($(this).html());
+            $(this).parents('.personalpersonaldatadate3').hide();
+            $('.mask').hide();
+        })
+        $('.mask').click(function () {
+            $('.personalpersonaldatadate3,.mask').hide();
+        })
+        $('.hotelregisterimageup2').change(function () {
+            var objUrl = getObjectURL(this.files[0]);
+            $(this).parent().css('background', 'none');
+            /*$(this).parent().find('.hotelregisterimageup3').attr('src',objUrl);*/
+            $(this).parent().find('.word').addClass('words');
+            $(this).parent().find('.hotelregisterimageup4').css('background-image', 'url(' + objUrl + ')');
+            $(this).parent().find('input[type="hidden"]').val(objUrl);
+        })
+        if (GetQueryString("article") != "") {
+            if (GetQueryString("article") == "0") { $('.lantola_about_list li').eq(0).click(); }
+            else if (GetQueryString("article") == "1") { $('.lantola_about_list li').eq(1).click(); }
+            else if (GetQueryString("article") == "2") { $('.lantola_about_list li').eq(2).click(); }
+            else if (GetQueryString("article") == "3") { $('.lantola_about_list li').eq(3).click(); }
+            else if (GetQueryString("article") == "4") { $('.lantola_about_list li').eq(4).click(); }
+            else if (GetQueryString("article") == "5") { $('.lantola_about_list li').eq(5).click(); }
+            else if (GetQueryString("article") == "6") { $('.lantola_about_list li').eq(6).click(); }
+            else if (GetQueryString("article") == "7") { $('.lantola_about_list li').eq(7).click(); }
+        }//easeInExpo
+        if ($('.cooperationbanner .banneranimate').length == 1) {
+            $('.cooperationbanner .banneranimate1').animate({ 'width': '93.5px', 'height': '97.9px', 'margin': '-4.25px 0 0 -4.45px', 'opacity': '1' }, 750, "easeInExpo", function () {
+                $(this).animate({ 'width': '85px', 'height': '89px', 'margin': '0', 'opacity': '1' }, 250, "easeInExpo")
+            });
+            $('.cooperationbanner .banneranimate2').animate({ 'width': '126.5px', 'height': '81.4px', 'margin': '-3.7px 0 0 -5.75px', 'opacity': '1' }, 750, "easeInExpo", function () {
+                $(this).animate({ 'width': '115px', 'height': '74px', 'margin': '0', 'opacity': '1' }, 250, "easeInExpo")
+            });
+            $('.cooperationbanner .banneranimate1,.cooperationbanner .banneranimate2').css({ 'transform': 'rotateZ(360deg)' });
+        }
+    })
+
+    function getObjectURL(file) {
+        var url = null;
+        if (window.createObjectURL != undefined) { // basic
+            url = window.createObjectURL(file);
+        } else if (window.URL != undefined) { // mozilla(firefox)
+            url = window.URL.createObjectURL(file);
+        } else if (window.webkitURL != undefined) { // webkit or chrome
+            url = window.webkitURL.createObjectURL(file);
+        }
+        return url;
+    }
+
+    function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+</script>
+

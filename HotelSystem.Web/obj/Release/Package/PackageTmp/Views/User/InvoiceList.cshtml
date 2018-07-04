@@ -1,0 +1,200 @@
+﻿@{
+    ViewBag.Title = "发票列表";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<style>
+    .table p {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .table > thead > tr > th {
+        background: #ddd;
+    }
+
+    .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+        vertical-align: middle;
+        position: relative;
+        font-size: 12px;
+    }
+
+    .table .sort-item {
+        cursor: pointer;
+    }
+
+    .table .sort {
+        position: absolute;
+        top: 13px;
+        left: 65px;
+    }
+
+        .table .sort .acitve {
+            color: #49f;
+        }
+
+        .table .sort i {
+            display: block;
+        }
+
+    .table label {
+        font-weight: 700;
+    }
+
+    label {
+        font-weight: normal;
+        font-size: 12px;
+    }
+
+    a {
+        color: #4876FF;
+    }
+
+        a:hover {
+            color: #4876FF;
+        }
+
+    .add-btn {
+        border-color: #4876FF;
+        color: #4876FF;
+        padding: 4px 20px;
+        border-color: #4876FF;
+        background-color: #4876FF;
+        color: #fff;
+    }
+
+        .add-btn:hover {
+            background-color: #4876FF;
+            color: #fff;
+        }
+</style>
+<div style="margin-top:14px;">
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-warning alert-dismissible fade in" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+            @Html.Raw(ViewBag.Message)
+        </div>
+    }
+    <table class="table table-bordered">
+        <caption>发票抬头记录.</caption>
+        <thead>
+            <tr>
+                <th>抬头</th>
+                <th>公司地址</th>
+                <th>公司电话</th>
+                <th>开户银行名称</th>
+                <th>开户银行账户</th>
+                <th>纳税人识别号</th>
+                <th style="width:60px;">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var m in ViewBag.GuestInvoice)
+            {
+                <tr>
+                    <td>@m.Company</td>
+                    <td>@m.Address</td>
+                    <td>@m.Tel </td>
+                    <td>@m.Bank</td>
+                    <td>@m.BankAccount</td>
+                    <td>@m.TaxpayerNumber</td>
+                    <td><p><a href="/User/DeleteInvoiceHead/@m.Id">删除</a></p>  </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div>
+    <input type="button" class="btn btn-default btn-sm add-btn" value="添加发票抬头" data-toggle="modal" data-target="#AddModal" />
+    <div class="modal fade" id="AddModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel">
+        <form class="" id="" method="post" action="/User/AddInvoiceHead">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">添加发票抬头</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">公司全称</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="Company">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">公司地址</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="Address">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">公司电话</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="Tel">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">开户银行名称</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="Bank">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">开户银行账号</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="BankAccount">
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-bottom:10px;">
+                                <label class="col-sm-3 control-label">纳税人识别号</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="TaxpayerNumber">
+                                </div>
+                                <div class="col-sm-9 col-md-offset-3">
+                                    <p class="text-muted" style="margin-bottom:0px;">税务登记证上唯一识别企业的税号（通常由15位、18位或20位码组成）</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="submit" class="btn btn-primary">保存</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div style="margin-top:20px;">
+    <table class="table table-bordered">
+        <caption>发票历史记录.</caption>
+        <thead>
+            <tr>
+                <th>发票抬头</th>
+                <th>发票金额</th>
+                <th>收件人 </th>
+                <th>手机号</th>
+                <th>配送地址</th>
+                <th>开票状态</th>
+                <th>快递公司</th>
+                <th>快递单号</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var m in ViewBag.Invoice)
+            {
+                <tr>
+                    <td>@m.Company</td>
+                    <td><label>@m.Amount</label></td>
+                    <td>@m.Addressee </td>
+                    <td>@m.Phone</td>
+                    <td>@m.City.CityName @m.District.DistrictName @m.ReceivingAddress</td>
+                    <td>@(m.Status==1?"等待开票": m.Status == 2?"已开票":"已取消")</td>
+                    <td>@m.Express</td>
+                    <td>@m.ExpressNumber</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

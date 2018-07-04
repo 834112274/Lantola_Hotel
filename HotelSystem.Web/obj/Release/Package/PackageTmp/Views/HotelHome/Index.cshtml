@@ -1,0 +1,773 @@
+﻿@using HotelSystem.Model;
+@{
+    ViewBag.Title = "欢迎来到 " + ViewBag.Hotel.Name + " ";
+    Layout = "~/Views/Shared/_LayoutHotel.cshtml";
+}
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=8yxhCfYtFgbKfFGFzLe0tuQNMz2xScIT"></script>
+
+<style>
+    .slide-img {
+        height: 100%;
+    }
+
+    .slide-item:nth-child(1) {
+        height: 620px;
+        padding: 0px 10px 0px 0px;
+    }
+
+    .slide-item:nth-child(2) {
+        height: 400px;
+        padding: 0px 0px 0px 0px;
+    }
+
+    .slide-item:nth-child(3) {
+        height: 220px;
+        padding: 10px 10px 0px 0px;
+    }
+
+    .slide-item:nth-child(4) {
+        height: 220px;
+        padding: 10px 0px 0px 0px;
+    }
+
+    .view-more-btn {
+        color: #fff;
+        line-height: 237px;
+        text-align: center;
+        display: block;
+        font-size: 16px;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    /*客房列表*/
+    .room-box {
+        background: #f5f5f5;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    .hotel-info .star {
+        margin-left: 10px;
+    }
+
+    .search-btn {
+        width: 100%;
+        height: 46px;
+        background: #4876FF;
+        font-size: 14px;
+        font-family: "宋体";
+        border: #fad280;
+        color: #fff;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    hr {
+        border-color: #b7b7b7;
+    }
+
+    .media-left .img {
+        display: block;
+        height: 200px;
+    }
+
+    .media-heading {
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 4px;
+    }
+
+    .room-list .view {
+        margin-bottom: 10px;
+    }
+
+    .room-list .img-list {
+        margin: 0px;
+    }
+
+    .price-item {
+        margin-left: 10px;
+    }
+
+        .price-item div {
+            padding: 0px;
+        }
+
+        .price-item .price-value {
+            color: #4a8ecd;
+            font-size: 18px;
+        }
+
+        .price-item li {
+            line-height: 40px;
+            color: #444;
+            padding-left: 20px;
+        }
+
+            .price-item li:nth-child(2n) {
+                background: rgba(0, 0, 0, 0.1);
+            }
+
+            .price-item li:hover {
+                background: rgba(0, 0, 0, 0.2);
+            }
+
+        .price-item .reserve-btn {
+            border: 1px solid #3176b5;
+            background: #488dcd;
+            color: #fff;
+            border-radius: 3px;
+            cursor: pointer;
+            text-align: center;
+            line-height: 26px;
+            font-size: 14px;
+            text-decoration: none;
+            padding: 6px 10px;
+        }
+
+    .img-list {
+        display: none;
+        border-top: 1px solid #d4d4d4;
+        position: relative;
+        height: 160px;
+    }
+
+        .img-list .close {
+            position: absolute;
+            display: block;
+            font-size: 28px;
+            cursor: pointer;
+            right: 10px;
+            top: 10px;
+            z-index: 5;
+        }
+
+            .img-list .close i {
+                font-size: 28px;
+                cursor: pointer;
+            }
+
+        .img-list .room-info {
+            padding-top: 20px;
+        }
+
+            .img-list .room-info table {
+                width: 100%;
+            }
+
+                .img-list .room-info table td {
+                    text-align: left;
+                    color: #444;
+                    font-size: 14px;
+                    line-height: 40px;
+                    padding: 0;
+                    height: 40px;
+                }
+
+        .img-list .list-box {
+            padding-top: 20px;
+        }
+
+            .img-list .list-box li {
+                float: left;
+                width: 25%;
+                padding: 4px;
+            }
+
+                .img-list .list-box li:first-child {
+                    padding-left: 0px;
+                }
+
+                .img-list .list-box li:nth-child(4n) {
+                    padding-right: 0px;
+                }
+
+                .img-list .list-box li a {
+                    display: block;
+                    height: 60px;
+                    width: 100%;
+                }
+
+    .media-body, .media-left, .media-right {
+        display: table-cell;
+        vertical-align: top;
+    }
+
+    .media-heading span, .media-heading a {
+        font-size: 14px;
+    }
+
+    .item-box {
+        margin-bottom: 30px;
+    }
+
+    .item-row {
+        font-size: 12px;
+        line-height: 20px;
+        padding: 10px 0px;
+        border-bottom: 1px dashed #dcdcdc;
+        overflow: hidden;
+        margin: 0px 15px 0px 15px;
+    }
+
+    .block {
+        margin: 95px auto 95px auto;
+    }
+
+        .block p {
+            font-size: 60px;
+            color: #fff;
+            text-align: center;
+        }
+
+            .block p:first-child {
+                font-size: 60px;
+            }
+
+            .block p:nth-child(2) {
+                font-size: 10px;
+                font-weight: bold;
+            }
+
+            .block p:last-child {
+                font-size: 20px;
+            }
+
+    .wrap {
+        color: #fff;
+        padding-top: 80px;
+        padding-bottom: 60px;
+    }
+
+        .wrap .header {
+            font-size: 18px;
+            line-height: 34px;
+        }
+
+            .wrap .header span:last-child {
+                line-height: 30px;
+                display: inline-block;
+                padding: 4px;
+                height: 34px;
+            }
+
+        .wrap .ico {
+            font-size: 26px;
+            display: inline-block;
+            border-radius: 30px;
+            color: rgb(81,98,98);
+            text-align: center;
+            background: #fff;
+            height: 34px;
+            width: 34px;
+            line-height: 34px;
+        }
+
+        .wrap .synopsis {
+            margin-top: 30px;
+            font-size: 12px;
+            line-height: 30px;
+            max-height: 90px;
+            overflow: hidden;
+        }
+
+    .map {
+        width: 100%;
+        height: 300px;
+        position: relative;
+    }
+
+        .map .card {
+            position: absolute;
+            left: 80px;
+            top: 0px;
+            background: #fff;
+            height: 100%;
+            box-shadow: 0px 0px 15px #d1cec9;
+            padding: 0px 50px;
+        }
+
+            .map .card a {
+                color: #fff;
+                width: 300px;
+                height: 40px;
+                text-align: center;
+                line-height: 40px;
+                font-size: 14px;
+                font-weight: bold;
+                margin: 0 auto;
+                margin-top: 0px;
+                background-color: #0080e1;
+                border-radius: 3px;
+                margin-top: 20px;
+                display: block;
+                cursor: pointer;
+                text-decoration: none;
+            }
+
+            .map .card p {
+                padding-bottom: 20px;
+                font-size: 16px;
+                line-height: 40px;
+                color: #333333;
+                border-bottom: 1px solid #e4e4e4;
+            }
+
+            .map .card h4 {
+                padding-top: 30px;
+                font-size: 22px;
+                line-height: 40px;
+                color: #5b5b5b;
+            }
+
+            .map .card .card-list {
+                text-align: center;
+            }
+
+                .map .card .card-list span {
+                    display: inline-block;
+                    line-height: 40px;
+                    color: #333;
+                    font-size: 14px;
+                    font-weight: bold;
+                    text-align: center;
+                    padding: 0 10px;
+                }
+
+    .date-box .fa {
+        color: #ccc;
+        line-height: 46px;
+        font-size: 18px;
+    }
+
+    .daterange {
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+        .daterange .date-box {
+            background-color: white;
+            width: 48%;
+            height: 46px;
+            float: left;
+            padding-left: 15px;
+        }
+
+        .daterange .end {
+            margin-left: 2px;
+        }
+
+        .daterange .day {
+            position: absolute;
+            background-color: white;
+            margin: 13px auto;
+            left: 48%;
+            margin-left: -6px;
+        }
+
+    .date-box .fa {
+        float: left;
+        left: 15px;
+    }
+
+    .daterange .date {
+        padding: 6px 10px;
+        font-size: 12px;
+        margin-left: 0px;
+        margin-right: 0px;
+        right: 0px;
+        width: auto;
+    }
+
+        .daterange .date p {
+            padding: 0px;
+            margin: 0px;
+            text-align: left;
+            padding-left: 20px;
+        }
+
+            .daterange .date p:nth-child(2) {
+                color: #ccc;
+            }
+</style>
+<link rel="stylesheet" type="text/css" media="all" href="~/Scripts/assets/plugins/bootstrap-daterangepicker-master/daterangepicker.css" />
+<div class="container-fluid" id="slide">
+    <div class="row">
+        <div class="col-md-7 slide-item" data-sort="1">
+            <div class="slide-img" style="background:url('@ViewBag.SlideImgFirst.Url') no-repeat;background-size:cover;background-position:center;">
+            </div>
+        </div>
+        <div class="col-md-5 slide-item" data-sort="2">
+            <div class="slide-img" style="background:url('@ViewBag.SlideImgTwo.Url') no-repeat;background-size:cover;background-position:center;">
+            </div>
+        </div>
+        <div class="col-md-3 slide-item" data-sort="3">
+            <div class="slide-img" style="background:url('@ViewBag.SlideImgThree.Url') no-repeat;background-size:cover;background-position:center;">
+            </div>
+        </div>
+        <div class="col-md-2 slide-item" data-sort="4">
+            <div class="slide-img" style="background:url('@ViewBag.Ablum.Url') no-repeat;background-size:cover;background-position:center;">
+                <a href="/HotelHome/Album/@ViewBag.Hotel.Id" class="view-more-btn album-view-btn">查看全部 @ViewBag.AblumCount 张照片</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid room-box">
+    <div class="container">
+        <div class="hotel-info">
+            <h4>
+                @ViewBag.Hotel.Name
+                @for (var i = 0; i < @ViewBag.Hotel.Star; i++)
+                {
+                    <span class="fa fa-star star"></span>
+                }
+                @if (ViewBag.Login == "true")
+                {
+                    <a class="collection-btn" data-collection="@ViewBag.Collection" data-hotel="@ViewBag.Hotel.Id" href="javascript:;">收藏酒店</a>
+                }
+            </h4>
+            <p class="text-muted">@ViewBag.Hotel.EnglishName &nbsp;&nbsp;&nbsp;&nbsp;  <a href="#synopsis">酒店简介</a></p>
+        </div>
+        @using (Html.BeginForm("Index", ViewContext.RouteData.GetRequiredString("controller"), FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="daterange">
+                        <div class="day"><span class="day-value">1</span><span class="fa fa-moon-o"></span></div>
+                        <div class="date-box start">
+                            <span class="fa fa-calendar"></span>
+                            <div class="date">
+                                <p>2018年04月06</p>
+                                <p>周四</p>
+                            </div>
+                        </div>
+                        <div class="date-box end">
+                            <span class="fa fa-calendar"></span>
+                            <div class="date">
+                                <p>2018年04月06</p>
+                                <p>周四</p>
+                            </div>
+                        </div>
+                        <input type="hidden" name="startDate" value="">
+                        <input type="hidden" name="endDate" value="">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label class="sr-only"></label>
+                        <input type="submit" class="search-btn" value="搜索" />
+                    </div>
+                </div>
+            </div>
+
+        }
+        <hr />
+        <div class="room-list">
+            @foreach (var r in ViewBag.Rooms)
+            {
+                var room = r.room;
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="media view">
+                            <div class="media-left col-md-3" style="padding-left:0px;">
+                                @{
+                                    var firstImg = new RoomImages();
+                                    foreach (var img in room.RoomImages)
+                                    {
+                                        firstImg = img;
+                                        break;
+                                    }
+
+                                    <a href="javascript:;" class="img more" data-target="#@room.Id" style="background:url('@firstImg.Url') no-repeat;background-size:cover;background-position:center;">
+                                    </a>
+                                }
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">@room.Name &nbsp; <span class="text-muted">( @room.EnglishName )</span>&nbsp; &nbsp; &nbsp; &nbsp;  <a href="javascript:;" data-target="#@room.Id" class="more">查看客房详情</a></h4>
+                                <ul class="price-item">
+                                    @foreach (var price in r.PriceViews)
+                                    {
+                                        <li class="">
+                                            <div class="row">
+                                                <div class="col-md-1">@price.priceType.Name</div>
+                                                <div class="col-md-1">@room.BedType</div>
+                                                <div class="col-md-2">@price.priceType.Breakfast/@price.priceType.Broadband</div>
+                                                <div class="col-md-2"><a href="javascript:;">退订政策</a></div>
+                                                <div class="col-md-2">@Enum.GetName(typeof(PayType), price.priceType.PaymentMethod)</div>
+                                                <div class="col-md-2"><span class="price-value"><span class="fa fa-rmb"></span> @Math.Round(price.avg, 2)</span> </div>
+                                                <div class="col-md-2"><a class="reserve-btn" href="/Order/Apply/@price.priceType.Id?HotelInfoId=@ViewBag.Hotel.Id&StartTime=@ViewBag.startDate&EndTime=@ViewBag.endDate" target="_blank">立即预定</a></div>
+                                            </div>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="media img-list" id="@room.Id">
+                            <span class="close"><i class="fa fa-times-circle-o"></i></span>
+                            <div class="list-box col-md-4">
+                                <ul>
+                                    @foreach (var img in room.RoomImages)
+                                    {
+                                        <li>
+                                            <a href="javascript:;" class="list-item" style="background:url('@img.Url') no-repeat;background-size:cover;background-position:center;"></a>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                            <div class="room-info col-md-8">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td>客房面积：@room.Area</td>
+                                            <td>楼层：@room.Storey 层</td>
+                                            <td>床型： @room.BedDescribe</td>
+                                        </tr>
+                                        <tr>
+                                            <td>入住人数：@room.OccupancyNumber</td>
+                                            <td>风景： @room.Scenery </td>
+                                            <td>加床：@room.AddBed </td>
+                                        </tr>
+                                        <tr>
+                                            <td>数量：@room.Number 间</td>
+                                            <td>无烟房：@room.Smokeless </td>
+                                            <td>浴室：@(room.Bathtub ? "有" : "无") </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                                    }
+        </div>
+    </div>
+    <div class="container">
+        <div style="background:#fff;padding:15px;padding-bottom:40px;">
+            <h4>酒店设施</h4>
+            <hr />
+            <div class="item-box">
+                <div class="row">
+                    <div class="item-row">
+                        <span class="col-lg-2 col-md-2 col-sm-12"> 通用项目： </span>
+                        <div class="col-lg-10 col-md-10">
+
+                            @foreach (var p in ViewBag.Policy0)
+                            {
+                                <img style="height:30px;" src="@p.Icon" alt="..."> @p.Name
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="item-row">
+                        <span class="col-lg-2 col-md-2 col-sm-12"> 服务项目： </span>
+                        <div class="col-lg-10 col-md-10">
+
+                            @foreach (var p in ViewBag.Policy1)
+                            {
+                                <img style="height:30px;" src="@p.Icon" alt="..."> @p.Name
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="item-row">
+                        <span class="col-lg-2 col-md-2 col-sm-12"> 客房设施： </span>
+                        <div class="col-lg-10 col-md-10">
+
+                            @foreach (var p in ViewBag.Policy2)
+                            {
+                                <img style="height:30px;" src="@p.Icon" alt="..."> @p.Name
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h4>酒店政策</h4>
+            <hr />
+            <div class="item-box">
+                <div class="row">
+                    <div class="item-row">
+                        <div class="col-md-6" style="padding:0px;">
+                            <span class="col-lg-3 col-md-3 col-sm-12"> 入住和离店： </span>
+                            <div class="col-lg-9 col-md-9">
+                                @ViewBag.Service.CheckInTime - @ViewBag.Service.LeaveTime
+                            </div>
+                        </div>
+
+                        <div class="col-md-6" style="padding:0px;">
+                            <span class="col-lg-3 col-md-3 col-sm-12">携带宠物： </span>
+                            <div class="col-lg-9 col-md-9">
+                                @ViewBag.Service.Pet
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="item-row">
+                        <div class="col-md-6" style="padding:0px;">
+                            <span class="col-lg-3 col-md-3 col-sm-12"> 自助早餐： </span>
+                            <div class="col-lg-9 col-md-9">
+                                @ViewBag.Service.Buffet
+                            </div>
+                        </div>
+
+                        <div class="col-md-6" style="padding:0px;">
+                            <span class="col-lg-3 col-md-3 col-sm-12"> 接受信用卡： </span>
+                            <div class="col-lg-9 col-md-9">
+                                @ViewBag.Service.CreditCard
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid" style="background:url('/Images/banner.png') no-repeat;background-size:cover;background-position:center;padding:0px;">
+    <div style="background: rgba(0,0,0,0.2);">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 block">
+                    <p>@(ViewBag.Hotel.OpeningTime == null ? "" : DateTime.Parse(ViewBag.Hotel.OpeningTime.ToString()).ToString("yyyy"))</p>
+                    <p><span class="fa fa-circle"></span></p>
+                    <p>开店年份</p>
+                </div>
+                <div class="col-md-4 block">
+                    <p>@ViewBag.Hotel.RoomCount</p>
+                    <p><span class="fa fa-circle"></span></p>
+                    <p>房间总数</p>
+                </div>
+                <div class="col-md-4 block">
+                    <p>9.3</p>
+                    <p><span class="fa fa-circle"></span></p>
+                    <p>评价得分</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid" id="About" style="background:rgb(81,98,98);padding:0px;">
+    <div class="container">
+        <div class="wrap">
+            <div class="row header">
+                <div class="col-md-6">
+                    <span class="fa fa-map-marker ico"></span>
+                    <span>@ViewBag.Hotel.City.CityName @ViewBag.Hotel.District.DistrictName @ViewBag.Hotel.Adress</span>
+                </div>
+                <div class="col-md-6">
+                    <span class="fa fa-phone ico"></span>
+                    <span>@ViewBag.Hotel.Tel</span>
+                </div>
+            </div>
+            <div class="synopsis">
+                @ViewBag.Hotel.Synopsis
+            </div>
+            <div style="text-align:center;font-size:12px;color:#4a8ecd;"><a id="more-synopsis" href="javascript:;">显示全部</a></div>
+        </div>
+    </div>
+</div>
+<div class="map">
+    <div id="map" style="height:100%;width:100%;">
+    </div>
+    <div class="card">
+        <h4>入住 | 出游</h4>
+        <p>住宿只是体验的第一步，开启LANTOLA探索之旅</p>
+        <div class="card-list">
+            <span>体验</span>
+            <span>美食</span>
+            <span>购物</span>
+            <span>游玩</span>
+        </div>
+        <a href="##">到达指引</a>
+    </div>
+</div>
+<script src="~/Scripts/masonry.pkgd.min.js"></script>
+<script src="~/Scripts/imagesloaded.pkgd.min.js"></script>
+<script type="text/javascript" src="~/Scripts/assets/plugins/bootstrap-daterangepicker-master/moment.js"></script>
+<script type="text/javascript" src="~/Scripts/assets/plugins/bootstrap-daterangepicker-master/daterangepicker.js"></script>
+<script type="text/javascript" src="~/Scripts/assets/plugins/bootstrap-daterangepicker-master/language.js"></script>
+<script src="/Scripts/collection.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".view-more-btn").css("line-height", ($(window).height() - 76 - 100) * 0.4 + "px");
+        $(".slide-item").each(function () {
+            if ($(this).data("sort") == "1") {
+                $(this).css("height", $(window).height() - 76 - 100);
+            }
+            if ($(this).data("sort") == "2") {
+                $(this).css("height", ($(window).height() - 76 - 100) * 0.6);
+            }
+            if ($(this).data("sort") == "3") {
+                $(this).css("height", ($(window).height() - 76 - 100) * 0.4);
+            }
+            if ($(this).data("sort") == "4") {
+                $(this).css("height", ($(window).height() - 76 - 100) * 0.4);
+            }
+        });
+        $('#slide').imagesLoaded(function () {
+            $("#album_list").masonry();
+        });
+        $(".room-list").on("click", ".more", function () {
+            var t = $(this).data("target");
+            $(t).slideToggle();
+        });
+        $(".room-list").on("click", ".close", function () {
+            $(this).parent().slideToggle();
+        });
+        // 百度地图API功能
+        var map = new BMap.Map("map", { enableMapClick: false });    // 创建Map实例
+        map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);  // 初始化地图,设置中心点坐标和地图级别
+        var myGeo = new BMap.Geocoder();
+        // 将地址解析结果显示在地图上，并调整地图视野
+        myGeo.getPoint("@ViewBag.Hotel.Adress", function (point) {
+            if (point) {
+                map.centerAndZoom(point, 16);
+                map.addOverlay(new BMap.Marker(point));
+            }
+        },
+        "@ViewBag.Hotel.City.CityName");
+        map.disableDragging();     //禁止拖拽
+        //map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+        $("#more-synopsis").click(function () {
+            if ($(this).text() == "收起") {
+                $(".synopsis").css("max-height", 90);
+                $(this).text("显示全部");
+            }
+            else {
+                $(".synopsis").css("max-height", "initial");
+                $(this).text("收起");
+            }
+
+        });
+        var current = moment();
+        var s = moment("@ViewBag.startDate");
+        var e = moment("@ViewBag.endDate");
+        function showDefaultDate(target, start, end) {
+            target.find(".start").eq(0).find("p").eq(0).text(start.format('YYYY年MM月DD日'));
+            target.find(".start").eq(0).find("p").eq(1).text(getWeek(start.format('d')));
+            target.find(".end").eq(0).find("p").eq(0).text(end.format('YYYY年MM月DD日'));
+            target.find(".end").eq(0).find("p").eq(1).text(getWeek(end.format('d')));
+            target.find(".day-value").text(end.diff(start, 'days'));
+            target.find("input[name='startDate']").val(start.format('YYYY-MM-DD'));
+            target.find("input[name='endDate']").val(end.format('YYYY-MM-DD'));
+        }
+        showDefaultDate($(".daterange"), s, e);
+        $(".daterange").daterangepicker({
+            "autoApply": true,
+            "startDate": s.format('YYYY年MM月DD日'),
+            "endDate": e.format('YYYY年MM月DD日'),
+            "opens": "center",
+            "minDate": current.format('YYYY年MM月DD日'),
+            locale: locale
+        }, function (start, end, label) {
+            showDefaultDate(this.element, start, end);
+        });
+    });
+</script>

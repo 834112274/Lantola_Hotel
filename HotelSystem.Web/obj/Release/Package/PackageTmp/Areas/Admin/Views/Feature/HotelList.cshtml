@@ -1,0 +1,66 @@
+﻿@model IEnumerable<HotelSystem.Model.FeatureHotel>
+
+@{
+    ViewBag.Title = "HotelList";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2><i class="fa fa-table red"></i><span class="break"></span><strong>添加酒店</strong></h2>
+    </div>
+    <div class="panel-body">
+        @Html.Action("EditHotel",new { featureId= ViewBag.FeatureId })
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2><i class="fa fa-table red"></i><span class="break"></span><strong>酒店列表</strong></h2>
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped table-bordered bootstrap-datatable datatable">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Summary)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ImgUrl)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Valid)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Sort)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Summary)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ImgUrl)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Valid)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Sort)
+                    </td>
+                    <td>
+                        @Html.ActionLink("删除", "DeleteHotel", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+

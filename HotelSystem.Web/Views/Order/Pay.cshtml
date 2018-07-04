@@ -1,0 +1,312 @@
+﻿@model HotelSystem.Model.Order
+@{
+    ViewBag.Title = "支付";
+    Layout = "~/Views/Shared/_LayoutHeader.cshtml";
+}
+<style>
+    .order-container {
+        margin: 0px auto 60px auto;
+        width: 1170px;
+        background: #fff;
+        border-radius: 5px;
+        border: 1px solid #bfbfbf;
+        padding: 30px 80px;
+    }
+
+    .title {
+        color: #004b67;
+        font-size: 24px;
+        line-height: 30px;
+        height: 30px;
+    }
+
+    .order-content {
+        height: 150px;
+    }
+
+    .info {
+        float: left;
+        width: 580px;
+        line-height: 40px;
+        font-size: 14px;
+        color: #313131;
+        padding: 15px 0;
+    }
+
+    .price {
+        float: left;
+        width: 400px;
+        background-color: #e7f0f9;
+        line-height: 40px;
+        padding: 13px 30px;
+        border-top: 1px solid;
+        font-size: 14px;
+        border-color: #bfbfbf;
+        border-bottom: 1px solid #e7f0f9;
+    }
+
+    .info-item {
+        line-height: 40px;
+        font-size: 14px;
+        color: #313131;
+    }
+
+    .info-item-title {
+        color: #4e92d2;
+    }
+
+    .price-item:not(:last-child) {
+        border-bottom: 1px solid #bfbfbf;
+    }
+
+    .price-item .price-item-title {
+        float: left;
+        color: #004b67;
+    }
+
+    .price-item .price-item-price {
+        float: right;
+    }
+
+    .pay-summary {
+        height: 48px;
+        line-height: 48px;
+        border-top: 1px solid #bfbfbf;
+        border-bottom: 1px solid #bfbfbf;
+    }
+
+        .pay-summary .title {
+            display: inline-block;
+            font-size: 16px;
+            color: #1b1b1b;
+            font-family: "SimHei";
+            font-weight: bold;
+            padding-right: 20px;
+        }
+
+        .pay-summary .describe {
+            display: inline-block;
+            font-size: 12px;
+            color: #313131;
+            line-height: 48px;
+            vertical-align: top;
+        }
+        .pay-summary .value {
+            color: #ec6941;
+        }
+    .pay-price {
+        height: 50px;
+        line-height: 50px;
+    }
+
+        .pay-price .title {
+            font-size: 12px;
+            color: #313131;
+        }
+
+        .pay-price .value {
+            font-size: 16px;
+            color: #ec6941;
+        }
+
+    .pay-type {
+        padding-bottom: 20px;
+    }
+
+        .pay-type .item {
+            width: 150px;
+            height: 60px;
+            float: left;
+            margin-right: 20px;
+            position: relative;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+
+        .pay-type .item-mask {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 150px;
+            height: 60px;
+            background-image: url(/Images/payicon4.png);
+            background-size: 100% 100%;
+            cursor: pointer;
+        }
+
+        .pay-type .select {
+            background-image: url(/Images/payicon5.png);
+        }
+
+    .btn-submit {
+        width: 120px;
+        height: 35px;
+        display: block;
+        border: 0;
+        color: #fff;
+        font-size: 14px;
+        text-align: center;
+        line-height: 35px;
+        padding: 0;
+        background-color: #4b90cf;
+        font-family: "微软雅黑";
+        border-radius: 3px;
+        box-shadow: 0px 0px 5px #7e9fbb;
+        cursor: pointer;
+    }
+
+    .hotel {
+        margin: 30px auto;
+        overflow: hidden;
+    }
+
+        .hotel .hotel-image {
+            float: left;
+            width: 18%;
+            height: 120px;
+        }
+
+        .hotel .hotel-info {
+            float: left;
+            padding-left: 60px;
+        }
+
+        .hotel .name {
+            font-size: 22px;
+            font-weight: 500;
+        }
+
+            .hotel .name span {
+                font-size: 18px;
+            }
+
+        .hotel .english-name, .hotel .address {
+            font-size: 16px;
+            color: #929090;
+        }
+
+    body {
+        background: #f1f1f1;
+    }
+</style>
+@Html.HiddenFor(model => model.Id)
+@Html.HiddenFor(model => model.HotelInfoId)
+@Html.HiddenFor(model => model.HotelName)
+@Html.HiddenFor(model => model.PriceTypeId)
+<div class="container-fluid" style="background:#f1f1f1;">
+    <div class="container" style="padding:0px;">
+        <div class="hotel">
+            <div class="hotel-image" style="background:url('@ViewBag.SlideImgFirst.Url') no-repeat;background-size:cover;background-position:center;"></div>
+            <div class="hotel-info">
+                <p class="name">
+                    @ViewBag.Hotel.Name &nbsp;&nbsp;&nbsp;&nbsp;
+                    @for (var i = 0; i < 4; i++)
+                    {
+                        <span class="fa fa-star"></span>
+                    }
+                </p>
+                <p class="english-name">english name</p>
+                <div class="address">
+                    <span>@ViewBag.Hotel.City.Province.ProvinceName</span>
+                    <span>@ViewBag.Hotel.City.CityName</span>
+                    <span>@ViewBag.Hotel.Adress</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="order-container">
+    @*<div class="title">订单信息</div>*@
+    <div class="row" style="margin-bottom:20px;">
+        <div class="col-md-3" style="padding:0px;"><div class="col-md-6">入住房型</div>  <label>@Model.RoomName</label> </div>
+        <div class="col-md-3" style="padding:0px;"><div class="col-md-6">床型</div> <label>@Model.BedType</label> </div>
+        <div class="col-md-3" style="padding:0px;"><div class="col-md-6">早餐</div> <label>@Model.Breakfast</label> </div>
+        <div class="col-md-3" style="padding:0px;"><div class="col-md-6">宽带</div> <label>@Model.Broadband</label> </div>
+    </div>
+    <div class="row" style="margin-bottom:20px;">
+        <div class="col-md-3" style="padding:0px;"><div class="col-md-6">入住日期</div> <label>@Model.StartTime</label> </div>
+        <div class="col-md-3" style="padding:0px;"><div class="col-md-6">退房日期</div> <label>@Model.EndTime</label> </div>
+        <div class="col-md-3" style="padding:0px;"><div class="col-md-6">间夜数量</div> <label>@Model.RoomCount 间@((Model.StartTime - Model.EndTime).Days.ToString())晚</label> </div>
+    </div>
+    <div class="row" style="margin-bottom:20px;">
+        <div class="col-md-12" style="padding:0px;"><div class="col-md-1">取消政策</div> <label>根据酒店取消内容显示 </label><p>（取消政策我们已经谈过很多次，固定时间段可以取消全站酒店统一，别搞事啊）</p> </div>
+    </div>
+
+    <div class="pay-summary">
+        <div class="title">请选择支付方式</div>
+        <div class="describe">剩余支付时间<span class="value">13分22秒</span>，逾期订单将自动取消</div>
+    </div>
+    <div class="pay-price">
+        <span class="index29content31">第三方支付</span>  <span class="value">￥@Model.Total</span>
+    </div>
+    <div class="pay-type">
+        <div class="item alipay" style="background-image:url(/Images/payicon1.png)"><div class="item-mask"></div><input type="hidden" value="支付宝" /></div>
+        <div class="item wxpay" style="background-image:url(/Images/payicon2.png)"><div class="item-mask"></div><input type="hidden" value="微信" /></div>
+        <div class="item unionpay" style="background-image:url(/Images/payicon3.png)"><div class="item-mask"></div><input type="hidden" value="银联" /></div>
+        <input name="paytype" id="paytype" type="hidden" value="银联" />
+        <div style="clear:both;"></div>
+        <div class="qr-code">
+            <img id="qr_code" style="width:200px;height:200px;" src="data:image/jpeg;base64,@ViewBag.QrCode" />
+        </div>
+        
+    </div>
+    @*<a href="##"><input type="submit" class="btn-submit" value="付 款" /></a>*@
+</div>
+<script>
+    $('.pay-type .item').click(function () {
+        $(".pay-type").find('.item-mask').removeClass('select');
+        $(this).find('.item-mask').addClass('select');
+        $('#paytype').val($(this).find('input').val());
+    })
+    var CheckPay = function () {
+        $.ajax({
+            url: "/Order/CheckPay",
+            type: "post",
+            dateType: "json",
+            data: {
+                id: $("#Id").val()
+            },
+            success: function (r) {
+                //console.log(r);
+                if (r == "success") {
+                    window.location = "/Order/Complete/" + $("#Id").val();
+                } else {
+                    setTimeout(function () {
+                        CheckPay();
+                    }, 1000);
+                }
+
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+    };
+    $(document).ready(function () {
+        CheckPay();
+        $(".wxpay").click(function () {
+            $.ajax({
+                url: "/InsideApi/WxQRCode",
+                type: "post",
+                dateType: "json",
+                data: {
+                    orderId: $("#Id").val()
+                },
+                success: function (r) {
+                    console.log(r);
+                    if (r.result == "success") {
+                        $("#qr_code").attr('src','data:image/jpeg;base64,'+r.qrcode);
+                    }
+                    else {
+                        alert(r.msg);
+                    }
+
+                },
+                error: function (e) {
+                    console.log(e);
+                }
+            });
+        });
+    });
+</script>

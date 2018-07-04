@@ -1,0 +1,1320 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="DBModelStoreContainer">
+    <EntitySet Name="Menu" EntityType="DBModel.Store.Menu" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="DBModel.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserRole" EntityType="DBModel.Store.UserRole" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="City" EntityType="DBModel.Store.City" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="District" EntityType="DBModel.Store.District" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Province" EntityType="DBModel.Store.Province" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="HotelInfo" EntityType="DBModel.Store.HotelInfo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="HotelImages" EntityType="DBModel.Store.HotelImages" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Policy" EntityType="DBModel.Store.Policy" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="HotelPolicy" EntityType="DBModel.Store.HotelPolicy" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Restaurant" EntityType="DBModel.Store.Restaurant" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Guide" EntityType="DBModel.Store.Guide" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Activity" EntityType="DBModel.Store.Activity" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Conference" EntityType="DBModel.Store.Conference" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ConferenceRoom" EntityType="DBModel.Store.ConferenceRoom" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Room" EntityType="DBModel.Store.Room" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RoomImages" EntityType="DBModel.Store.RoomImages" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="HotelUsers" EntityType="DBModel.Store.HotelUsers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="HotelService" EntityType="DBModel.Store.HotelService" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="HomeConfig" EntityType="DBModel.Store.HomeConfig" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Feature" EntityType="DBModel.Store.Feature" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FeatureHotel" EntityType="DBModel.Store.FeatureHotel" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Cooperative" EntityType="DBModel.Store.Cooperative" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GuestUser" EntityType="DBModel.Store.GuestUser" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Order" EntityType="DBModel.Store.Order" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Comment" EntityType="DBModel.Store.Comment" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Collection" EntityType="DBModel.Store.Collection" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Message" EntityType="DBModel.Store.Message" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Article" EntityType="DBModel.Store.Article" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PriceType" EntityType="DBModel.Store.PriceType" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Price" EntityType="DBModel.Store.Price" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Occupant" EntityType="DBModel.Store.Occupant" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Invoice" EntityType="DBModel.Store.Invoice" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DaysPrice" EntityType="DBModel.Store.DaysPrice" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GuestInvoice" EntityType="DBModel.Store.GuestInvoice" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="transaction" EntityType="DBModel.Store.transaction" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Score" EntityType="DBModel.Store.Score" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ScoreType" EntityType="DBModel.Store.ScoreType" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Reply" EntityType="DBModel.Store.Reply" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Stock" EntityType="DBModel.Store.Stock" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="MenuUserRole" Association="DBModel.Store.MenuUserRole">
+      <End Role="Menu" EntitySet="Menu" />
+      <End Role="UserRole" EntitySet="UserRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_City_Province" Association="DBModel.Store.FK_City_Province">
+      <End Role="Province" EntitySet="Province" />
+      <End Role="City" EntitySet="City" />
+    </AssociationSet>
+    <AssociationSet Name="FK_District_City" Association="DBModel.Store.FK_District_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="District" EntitySet="District" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CityHotelInfo" Association="DBModel.Store.FK_CityHotelInfo">
+      <End Role="City" EntitySet="City" />
+      <End Role="HotelInfo" EntitySet="HotelInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DistrictHotelInfo" Association="DBModel.Store.FK_DistrictHotelInfo">
+      <End Role="District" EntitySet="District" />
+      <End Role="HotelInfo" EntitySet="HotelInfo" />
+    </AssociationSet>
+    <AssociationSet Name="HotelInfoHotelImages" Association="DBModel.Store.HotelInfoHotelImages">
+      <End Role="HotelInfo" EntitySet="HotelInfo" />
+      <End Role="HotelImages" EntitySet="HotelImages" />
+    </AssociationSet>
+    <AssociationSet Name="HotelInfoHotelPolicy" Association="DBModel.Store.HotelInfoHotelPolicy">
+      <End Role="HotelInfo" EntitySet="HotelInfo" />
+      <End Role="HotelPolicy" EntitySet="HotelPolicy" />
+    </AssociationSet>
+    <AssociationSet Name="PolicyHotelPolicy" Association="DBModel.Store.PolicyHotelPolicy">
+      <End Role="Policy" EntitySet="Policy" />
+      <End Role="HotelPolicy" EntitySet="HotelPolicy" />
+    </AssociationSet>
+    <AssociationSet Name="HotelInfoRestaurant" Association="DBModel.Store.HotelInfoRestaurant">
+      <End Role="HotelInfo" EntitySet="HotelInfo" />
+      <End Role="Restaurant" EntitySet="Restaurant" />
+    </AssociationSet>
+    <AssociationSet Name="HotelInfoGuide" Association="DBModel.Store.HotelInfoGuide">
+      <End Role="HotelInfo" EntitySet="HotelInfo" />
+      <End Role="Guide" EntitySet="Guide" />
+    </AssociationSet>
+    <AssociationSet Name="HotelInfoActivity" Association="DBModel.Store.HotelInfoActivity">
+      <End Role="HotelInfo" EntitySet="HotelInfo" />
+      <End Role="Activity" EntitySet="Activity" />
+    </AssociationSet>
+    <AssociationSet Name="HotelInfoConference" Association="DBModel.Store.HotelInfoConference">
+      <End Role="HotelInfo" EntitySet="HotelInfo" />
+      <End Role="Conference" EntitySet="Conference" />
+    </AssociationSet>
+    <AssociationSet Name="ConferenceConferenceRoom" Association="DBModel.Store.ConferenceConferenceRoom">
+      <End Role="Conference" EntitySet="Conference" />
+      <End Role="ConferenceRoom" EntitySet="ConferenceRoom" />
+    </AssociationSet>
+    <AssociationSet Name="HotelInfoRoom" Association="DBModel.Store.HotelInfoRoom">
+      <End Role="HotelInfo" EntitySet="HotelInfo" />
+      <End Role="Room" EntitySet="Room" />
+    </AssociationSet>
+    <AssociationSet Name="RoomRoomImages" Association="DBModel.Store.RoomRoomImages">
+      <End Role="Room" EntitySet="Room" />
+      <End Role="RoomImages" EntitySet="RoomImages" />
+    </AssociationSet>
+    <AssociationSet Name="HotelInfoHotelUser" Association="DBModel.Store.HotelInfoHotelUser">
+      <End Role="HotelInfo" EntitySet="HotelInfo" />
+      <End Role="HotelUser" EntitySet="HotelUsers" />
+    </AssociationSet>
+    <AssociationSet Name="HotelInfoHotelService" Association="DBModel.Store.HotelInfoHotelService">
+      <End Role="HotelInfo" EntitySet="HotelInfo" />
+      <End Role="HotelService" EntitySet="HotelService" />
+    </AssociationSet>
+    <AssociationSet Name="HotelInfoFeatureHotel" Association="DBModel.Store.HotelInfoFeatureHotel">
+      <End Role="HotelInfo" EntitySet="HotelInfo" />
+      <End Role="FeatureHotel" EntitySet="FeatureHotel" />
+    </AssociationSet>
+    <AssociationSet Name="FeatureFeatureHotel" Association="DBModel.Store.FeatureFeatureHotel">
+      <End Role="Feature" EntitySet="Feature" />
+      <End Role="FeatureHotel" EntitySet="FeatureHotel" />
+    </AssociationSet>
+    <AssociationSet Name="GuestUserOrder" Association="DBModel.Store.GuestUserOrder">
+      <End Role="GuestUser" EntitySet="GuestUser" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="HotelInfoOrder" Association="DBModel.Store.HotelInfoOrder">
+      <End Role="HotelInfo" EntitySet="HotelInfo" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="OrderComment" Association="DBModel.Store.OrderComment">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="Comment" EntitySet="Comment" />
+    </AssociationSet>
+    <AssociationSet Name="GuestUserComment" Association="DBModel.Store.GuestUserComment">
+      <End Role="GuestUser" EntitySet="GuestUser" />
+      <End Role="Comment" EntitySet="Comment" />
+    </AssociationSet>
+    <AssociationSet Name="CollectionGuestUser" Association="DBModel.Store.CollectionGuestUser">
+      <End Role="Collection" EntitySet="Collection" />
+      <End Role="GuestUser" EntitySet="GuestUser" />
+    </AssociationSet>
+    <AssociationSet Name="RoomPriceType" Association="DBModel.Store.RoomPriceType">
+      <End Role="Room" EntitySet="Room" />
+      <End Role="PriceType" EntitySet="PriceType" />
+    </AssociationSet>
+    <AssociationSet Name="PriceTypePrice" Association="DBModel.Store.PriceTypePrice">
+      <End Role="PriceType" EntitySet="PriceType" />
+      <End Role="Price" EntitySet="Price" />
+    </AssociationSet>
+    <AssociationSet Name="PriceTypeOrder" Association="DBModel.Store.PriceTypeOrder">
+      <End Role="PriceType" EntitySet="PriceType" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="PriceTypeDaysPrice" Association="DBModel.Store.PriceTypeDaysPrice">
+      <End Role="PriceType" EntitySet="PriceType" />
+      <End Role="DaysPrice" EntitySet="DaysPrice" />
+    </AssociationSet>
+    <AssociationSet Name="OrderDaysPrice" Association="DBModel.Store.OrderDaysPrice">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="DaysPrice" EntitySet="DaysPrice" />
+    </AssociationSet>
+    <AssociationSet Name="OrderOccupant" Association="DBModel.Store.OrderOccupant">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="Occupant" EntitySet="Occupant" />
+    </AssociationSet>
+    <AssociationSet Name="GuestUserGuestInvoice" Association="DBModel.Store.GuestUserGuestInvoice">
+      <End Role="GuestUser" EntitySet="GuestUser" />
+      <End Role="GuestInvoice" EntitySet="GuestInvoice" />
+    </AssociationSet>
+    <AssociationSet Name="ProvinceInvoice" Association="DBModel.Store.ProvinceInvoice">
+      <End Role="Province" EntitySet="Province" />
+      <End Role="Invoice" EntitySet="Invoice" />
+    </AssociationSet>
+    <AssociationSet Name="CityInvoice" Association="DBModel.Store.CityInvoice">
+      <End Role="City" EntitySet="City" />
+      <End Role="Invoice" EntitySet="Invoice" />
+    </AssociationSet>
+    <AssociationSet Name="DistrictInvoice" Association="DBModel.Store.DistrictInvoice">
+      <End Role="District" EntitySet="District" />
+      <End Role="Invoice" EntitySet="Invoice" />
+    </AssociationSet>
+    <AssociationSet Name="HotelInfoCollection" Association="DBModel.Store.HotelInfoCollection">
+      <End Role="HotelInfo" EntitySet="HotelInfo" />
+      <End Role="Collection" EntitySet="Collection" />
+    </AssociationSet>
+    <AssociationSet Name="Order_transaction" Association="DBModel.Store.Order_transaction">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="transaction" EntitySet="transaction" />
+    </AssociationSet>
+    <AssociationSet Name="HotelInfoScore" Association="DBModel.Store.HotelInfoScore">
+      <End Role="HotelInfo" EntitySet="HotelInfo" />
+      <End Role="Score" EntitySet="Score" />
+    </AssociationSet>
+    <AssociationSet Name="ScoreTypeScore" Association="DBModel.Store.ScoreTypeScore">
+      <End Role="ScoreType" EntitySet="ScoreType" />
+      <End Role="Score" EntitySet="Score" />
+    </AssociationSet>
+    <AssociationSet Name="CommentScore" Association="DBModel.Store.CommentScore">
+      <End Role="Comment" EntitySet="Comment" />
+      <End Role="Score" EntitySet="Score" />
+    </AssociationSet>
+    <AssociationSet Name="HotelUsersReply" Association="DBModel.Store.HotelUsersReply">
+      <End Role="HotelUsers" EntitySet="HotelUsers" />
+      <End Role="Reply" EntitySet="Reply" />
+    </AssociationSet>
+    <AssociationSet Name="CommentReply" Association="DBModel.Store.CommentReply">
+      <End Role="Comment" EntitySet="Comment" />
+      <End Role="Reply" EntitySet="Reply" />
+    </AssociationSet>
+    <AssociationSet Name="RoomStock" Association="DBModel.Store.RoomStock">
+      <End Role="Room" EntitySet="Room" />
+      <End Role="Stock" EntitySet="Stock" />
+    </AssociationSet>
+    <AssociationSet Name="InvoiceOrder" Association="DBModel.Store.InvoiceOrder">
+      <End Role="Invoice" EntitySet="Invoice" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="GuestUserInvoice" Association="DBModel.Store.GuestUserInvoice">
+      <End Role="GuestUser" EntitySet="GuestUser" />
+      <End Role="Invoice" EntitySet="Invoice" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Menu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="IcoClass" Type="nvarchar" Nullable="false" MaxLength="60" />
+    <Property Name="Url" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="ParentId" Type="nvarchar" Nullable="true" MaxLength="40" />
+    <Property Name="Level" Type="smallint" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Sort" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Role" Type="nvarchar" Nullable="false" MaxLength="10" />
+    <Property Name="RegisterTime" Type="datetime" Nullable="true" />
+    <Property Name="RegisterIP" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="ParentId" Type="nvarchar" Nullable="true" MaxLength="40" />
+    <Property Name="Vail" Type="bit" Nullable="false" />
+    <Property Name="Summary" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="Status" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="UsersId" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="MenuId" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="UserType" Type="nvarchar" Nullable="false" MaxLength="30" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CityName" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="ZipCode" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="ProvinceID" Type="bigint" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime" Nullable="true" />
+    <Property Name="DateUpdated" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="District">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DistrictName" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="CityID" Type="bigint" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime" Nullable="true" />
+    <Property Name="DateUpdated" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Province">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProvinceName" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="DateCreated" Type="datetime" Nullable="true" />
+    <Property Name="DateUpdated" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="HotelInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="80" />
+    <Property Name="EnglishName" Type="nvarchar" Nullable="true" MaxLength="80" />
+    <Property Name="Type" Type="smallint" Nullable="false" />
+    <Property Name="Adress" Type="nvarchar" Nullable="false" MaxLength="80" />
+    <Property Name="Tel" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="Star" Type="smallint" Nullable="false" />
+    <Property Name="Contact" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Position" Type="nvarchar" Nullable="true" MaxLength="40" />
+    <Property Name="Phone" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Email" Type="nvarchar" Nullable="true" MaxLength="40" />
+    <Property Name="BusinessLicense" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="Franchise" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="Card" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="Apply" Type="datetime" Nullable="false" />
+    <Property Name="ExamineTime" Type="datetime" Nullable="true" />
+    <Property Name="ExamineUser" Type="nvarchar" Nullable="true" MaxLength="40" />
+    <Property Name="ExamineStatus" Type="int" Nullable="false" />
+    <Property Name="DistrictId" Type="bigint" Nullable="false" />
+    <Property Name="CityId" Type="bigint" Nullable="false" />
+    <Property Name="OpeningTime" Type="datetime" Nullable="true" />
+    <Property Name="Synopsis" Type="nvarchar" Nullable="true" MaxLength="2000" />
+    <Property Name="RenovationTime" Type="datetime" Nullable="true" />
+    <Property Name="RoomCount" Type="smallint" Nullable="true" />
+    <Property Name="DomainName" Type="nvarchar" Nullable="true" MaxLength="30" />
+    <Property Name="Valid" Type="smallint" Nullable="true" />
+  </EntityType>
+  <EntityType Name="HotelImages">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Url" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="Summary" Type="nvarchar" Nullable="true" MaxLength="200" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="HotelInfoId" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Sort" Type="int" Nullable="true" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Policy">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Values" Type="nvarchar" Nullable="true" MaxLength="200" />
+    <Property Name="Icon" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="CreateTime" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="HotelPolicy">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Value" Type="nvarchar" Nullable="true" MaxLength="40" />
+    <Property Name="HotelInfoId" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="PolicyId" Type="nvarchar" Nullable="false" MaxLength="40" />
+  </EntityType>
+  <EntityType Name="Restaurant">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Describe" Type="nvarchar" Nullable="true" MaxLength="300" />
+    <Property Name="BreakfastTime" Type="nvarchar" Nullable="true" MaxLength="60" />
+    <Property Name="LunchTime" Type="nvarchar" Nullable="true" MaxLength="60" />
+    <Property Name="DinnerTime" Type="nvarchar" Nullable="true" MaxLength="60" />
+    <Property Name="Seat" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Clothing" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="Place" Type="nvarchar" Nullable="true" MaxLength="90" />
+    <Property Name="Reserve" Type="nvarchar" Nullable="true" MaxLength="200" />
+    <Property Name="Image1" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="Image2" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="Image3" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="HotelInfo_Id" Type="nvarchar" MaxLength="40" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Guide">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="HotelInfoId" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Describe" Type="nvarchar" Nullable="true" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Activity">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="HotelInfoId" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="60" />
+    <Property Name="Describe" Type="nvarchar" Nullable="true" MaxLength="400" />
+    <Property Name="Images" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="StartTime" Type="datetime" Nullable="false" />
+    <Property Name="EndTime" Type="datetime" Nullable="true" />
+    <Property Name="Place" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="CreateTime" Type="datetime" Nullable="true" />
+    <Property Name="Valid" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Conference">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="RoomCount" Type="int" Nullable="false" />
+    <Property Name="MaxArea" Type="nvarchar" Nullable="true" MaxLength="40" />
+    <Property Name="OpenYear" Type="nvarchar" Nullable="true" MaxLength="10" />
+    <Property Name="NewestRenovation" Type="nvarchar" Nullable="true" MaxLength="10" />
+    <Property Name="GuestRoom" Type="int" Nullable="false" />
+    <Property Name="TeaBreak" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Buffet" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Banquet" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="HotelInfo_Id" Type="nvarchar" MaxLength="40" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ConferenceRoom">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="ConferenceId" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Area" Type="nvarchar" Nullable="true" MaxLength="40" />
+    <Property Name="Capacity" Type="int" Nullable="false" />
+    <Property Name="Storey" Type="int" Nullable="false" />
+    <Property Name="Size" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="Column" Type="smallint" Nullable="false" />
+    <Property Name="Layout" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="BusinessHours" Type="nvarchar" Nullable="true" MaxLength="60" />
+    <Property Name="Images" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="Price" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="HalfPrice" Type="nvarchar" Nullable="true" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Room">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="HotelInfoId" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="EnglishName" Type="nvarchar" Nullable="true" MaxLength="40" />
+    <Property Name="Area" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="Storey" Type="smallint" Nullable="false" />
+    <Property Name="BedType" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="BedDescribe" Type="nvarchar" Nullable="true" MaxLength="200" />
+    <Property Name="OccupancyNumber" Type="smallint" Nullable="false" />
+    <Property Name="Scenery" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="AddBed" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Number" Type="smallint" Nullable="false" />
+    <Property Name="Smokeless" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+    <Property Name="Shower" Type="bit" Nullable="false" />
+    <Property Name="Bathtub" Type="bit" Nullable="false" />
+    <Property Name="HotSpring" Type="bit" Nullable="false" />
+    <Property Name="RoundBathtub" Type="bit" Nullable="false" />
+    <Property Name="WindowBathtub" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RoomImages">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="RoomId" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Url" Type="nvarchar" Nullable="false" MaxLength="150" />
+    <Property Name="Sort" Type="smallint" Nullable="false" />
+    <Property Name="Summary" Type="nvarchar" Nullable="true" MaxLength="200" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HotelUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="HotelInfoId" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Role" Type="nvarchar" Nullable="true" MaxLength="10" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="LastLogin" Type="datetime" Nullable="false" />
+    <Property Name="ParentId" Type="nvarchar" Nullable="true" MaxLength="40" />
+    <Property Name="Vail" Type="bit" Nullable="false" />
+    <Property Name="Summary" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="Status" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HotelService">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="CheckInTime" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="LeaveTime" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="Pet" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="Buffet" Type="nvarchar" Nullable="true" MaxLength="30" />
+    <Property Name="CreditCard" Type="nvarchar" Nullable="true" MaxLength="300" />
+    <Property Name="HotelInfo_Id" Type="nvarchar" MaxLength="40" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HomeConfig">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Summary" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="ImgUrl" Type="nvarchar" Nullable="false" MaxLength="150" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+    <Property Name="Valid" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Feature">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="60" />
+    <Property Name="Summary" Type="nvarchar" Nullable="true" MaxLength="120" />
+    <Property Name="Ico" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="Type" Type="smallint" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+    <Property Name="Valid" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FeatureHotel">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="60" />
+    <Property Name="Summary" Type="nvarchar" Nullable="true" MaxLength="120" />
+    <Property Name="ImgUrl" Type="nvarchar" Nullable="false" MaxLength="150" />
+    <Property Name="Valid" Type="bit" Nullable="false" />
+    <Property Name="Sort" Type="smallint" Nullable="false" />
+    <Property Name="HotelInfoId" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="FeatureId" Type="nvarchar" Nullable="false" MaxLength="40" />
+  </EntityType>
+  <EntityType Name="Cooperative">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="LogoUrl" Type="nvarchar" Nullable="false" MaxLength="150" />
+    <Property Name="Summary" Type="nvarchar" Nullable="true" MaxLength="200" />
+    <Property Name="Url" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GuestUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="24" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="NickName" Type="nvarchar" Nullable="true" MaxLength="24" />
+    <Property Name="RealName" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="LastLogin" Type="datetime" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" Nullable="true" MaxLength="18" />
+    <Property Name="QQ" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="WeChat" Type="nvarchar" Nullable="true" MaxLength="40" />
+    <Property Name="Email" Type="nvarchar" Nullable="true" MaxLength="60" />
+    <Property Name="Sex" Type="smallint" Nullable="false" />
+    <Property Name="City" Type="nvarchar" Nullable="true" MaxLength="10" />
+    <Property Name="Type" Type="smallint" Nullable="false" />
+    <Property Name="Head" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="Summary" Type="nvarchar" Nullable="true" MaxLength="400" />
+    <Property Name="RegisterType" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="RegisterIp" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="RegisterTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Number" Type="nvarchar" Nullable="false" MaxLength="30" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="State" Type="nvarchar" Nullable="false" MaxLength="10" />
+    <Property Name="IsValid" Type="bit" Nullable="false" />
+    <Property Name="Source" Type="nvarchar" Nullable="true" MaxLength="30" />
+    <Property Name="ApplyUser" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="ApplyPhone" Type="nvarchar" Nullable="true" MaxLength="18" />
+    <Property Name="ApplyEmail" Type="nvarchar" Nullable="true" MaxLength="60" />
+    <Property Name="Remarks" Type="nvarchar" Nullable="true" MaxLength="80" />
+    <Property Name="Payment" Type="bit" Nullable="false" />
+    <Property Name="Total" Type="float" Nullable="false" />
+    <Property Name="BedType" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="Breakfast" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="Broadband" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="PriceName" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="StartTime" Type="datetime" Nullable="false" />
+    <Property Name="EndTime" Type="datetime" Nullable="false" />
+    <Property Name="RoomCount" Type="int" Nullable="false" />
+    <Property Name="AvgPrice" Type="float" Nullable="false" />
+    <Property Name="RoomName" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="HotelName" Type="nvarchar" Nullable="false" MaxLength="80" />
+    <Property Name="GuestUserId" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="HotelInfoId" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="PriceTypeId" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="PaymentMethod" Type="smallint" Nullable="false" />
+    <Property Name="IsInvoice" Type="smallint" Nullable="false" />
+    <Property Name="HousingPrice" Type="float" Nullable="false" />
+    <Property Name="UpdateUser" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="UpdateTime" Type="datetime" Nullable="true" />
+    <Property Name="CancelRemarks" Type="nvarchar" Nullable="true" MaxLength="200" />
+    <Property Name="PayTime" Type="datetime" Nullable="true" />
+    <Property Name="InvoiceId" Type="nvarchar" Nullable="true" MaxLength="40" />
+  </EntityType>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Content" Type="nvarchar" Nullable="false" MaxLength="2000" />
+    <Property Name="Images" Type="nvarchar" Nullable="true" MaxLength="600" />
+    <Property Name="ParentCommentId" Type="nvarchar" Nullable="true" MaxLength="40" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="OrderId" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="GuestUserId" Type="nvarchar" Nullable="false" MaxLength="40" />
+  </EntityType>
+  <EntityType Name="Collection">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="Remarks" Type="nvarchar" Nullable="true" MaxLength="200" />
+    <Property Name="GuestUserId" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="HotelInfoId" Type="nvarchar" Nullable="false" MaxLength="40" />
+  </EntityType>
+  <EntityType Name="Message">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="ToUser" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="FromUser" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Content" Type="nvarchar" Nullable="false" MaxLength="1000" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="Send" Type="bit" Nullable="false" />
+    <Property Name="Read" Type="bit" Nullable="false" />
+    <Property Name="ParentMessageId" Type="nvarchar" Nullable="true" MaxLength="40" />
+    <Property Name="SendTime" Type="datetime" Nullable="false" />
+    <Property Name="RendTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Article">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Type" Type="smallint" Nullable="false" />
+    <Property Name="IsVaid" Type="bit" Nullable="false" />
+    <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="CreateUser" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="UpdateUser" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PriceType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Breakfast" Type="nvarchar" Nullable="true" MaxLength="40" />
+    <Property Name="Broadband" Type="nvarchar" Nullable="true" MaxLength="40" />
+    <Property Name="PaymentMethod" Type="smallint" Nullable="false" />
+    <Property Name="Number" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Remarks" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+    <Property Name="CreateUser" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="UpdateUser" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="RoomId" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="ExtraBedPrice" Type="nvarchar" Nullable="true" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Price">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="UnitPrice" Type="float" Nullable="false" />
+    <Property Name="PriceTypeId" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="ConfigId" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Stock" Type="smallint" Nullable="false" />
+    <Property Name="SurplusStock" Type="smallint" Nullable="false" />
+    <Property Name="Status" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Occupant">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Sex" Type="smallint" Nullable="true" />
+    <Property Name="Phone" Type="nvarchar" Nullable="true" MaxLength="18" />
+    <Property Name="OrderId" Type="nvarchar" Nullable="false" MaxLength="40" />
+  </EntityType>
+  <EntityType Name="Invoice">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Company" Type="nvarchar" Nullable="false" MaxLength="120" />
+    <Property Name="Address" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="Tel" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="Bank" Type="nvarchar" Nullable="true" MaxLength="30" />
+    <Property Name="BankAccount" Type="nvarchar" Nullable="true" MaxLength="40" />
+    <Property Name="TaxpayerNumber" Type="nvarchar" Nullable="true" MaxLength="30" />
+    <Property Name="Addressee" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Phone" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="ReceivingAddress" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Amount" Type="float" Nullable="true" />
+    <Property Name="Express" Type="nvarchar" Nullable="true" MaxLength="40" />
+    <Property Name="ExpressNumber" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="ProvinceId" Type="bigint" Nullable="false" />
+    <Property Name="CityId" Type="bigint" Nullable="false" />
+    <Property Name="DistrictId" Type="bigint" Nullable="false" />
+    <Property Name="GuestUserId" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Status" Type="smallint" Nullable="false" />
+    <Property Name="Type" Type="smallint" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DaysPrice">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="UnitPrice" Type="float" Nullable="false" />
+    <Property Name="ConfigId" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="PriceTypeId" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="OrderId" Type="nvarchar" Nullable="false" MaxLength="40" />
+  </EntityType>
+  <EntityType Name="GuestInvoice">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Company" Type="nvarchar" Nullable="false" MaxLength="120" />
+    <Property Name="Address" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="Tel" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="Bank" Type="nvarchar" Nullable="true" MaxLength="30" />
+    <Property Name="BankAccount" Type="nvarchar" Nullable="true" MaxLength="40" />
+    <Property Name="TaxpayerNumber" Type="nvarchar" Nullable="true" MaxLength="30" />
+    <Property Name="GuestUserId" Type="nvarchar" Nullable="false" MaxLength="40" />
+  </EntityType>
+  <EntityType Name="transaction">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="data" Type="nvarchar" Nullable="false" MaxLength="1024" />
+    <Property Name="Order_Id" Type="nvarchar" MaxLength="40" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Score">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Value" Type="smallint" Nullable="false" />
+    <Property Name="HotelInfoId" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="ScoreTypeId" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="CommentId" Type="nvarchar" Nullable="false" MaxLength="40" />
+  </EntityType>
+  <EntityType Name="ScoreType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="30" />
+    <Property Name="Valid" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Reply">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Content" Type="nvarchar" Nullable="false" MaxLength="2000" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="HotelUsersId" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="CommentId" Type="nvarchar" Nullable="false" MaxLength="40" />
+  </EntityType>
+  <EntityType Name="Stock">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Total" Type="smallint" Nullable="false" />
+    <Property Name="SurplusStock" Type="smallint" Nullable="false" />
+    <Property Name="Status" Type="smallint" Nullable="false" />
+    <Property Name="RoomId" Type="nvarchar" Nullable="false" MaxLength="40" />
+  </EntityType>
+  <Association Name="MenuUserRole">
+    <End Role="Menu" Type="DBModel.Store.Menu" Multiplicity="1" />
+    <End Role="UserRole" Type="DBModel.Store.UserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Menu">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserRole">
+        <PropertyRef Name="MenuId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_City_Province">
+    <End Role="Province" Type="DBModel.Store.Province" Multiplicity="1" />
+    <End Role="City" Type="DBModel.Store.City" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Province">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="City">
+        <PropertyRef Name="ProvinceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_District_City">
+    <End Role="City" Type="DBModel.Store.City" Multiplicity="1" />
+    <End Role="District" Type="DBModel.Store.District" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="District">
+        <PropertyRef Name="CityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CityHotelInfo">
+    <End Role="City" Type="DBModel.Store.City" Multiplicity="1" />
+    <End Role="HotelInfo" Type="DBModel.Store.HotelInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HotelInfo">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DistrictHotelInfo">
+    <End Role="District" Type="DBModel.Store.District" Multiplicity="1" />
+    <End Role="HotelInfo" Type="DBModel.Store.HotelInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="District">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HotelInfo">
+        <PropertyRef Name="DistrictId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HotelInfoHotelImages">
+    <End Role="HotelInfo" Type="DBModel.Store.HotelInfo" Multiplicity="1" />
+    <End Role="HotelImages" Type="DBModel.Store.HotelImages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HotelInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HotelImages">
+        <PropertyRef Name="HotelInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HotelInfoHotelPolicy">
+    <End Role="HotelInfo" Type="DBModel.Store.HotelInfo" Multiplicity="1" />
+    <End Role="HotelPolicy" Type="DBModel.Store.HotelPolicy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HotelInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HotelPolicy">
+        <PropertyRef Name="HotelInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PolicyHotelPolicy">
+    <End Role="Policy" Type="DBModel.Store.Policy" Multiplicity="1" />
+    <End Role="HotelPolicy" Type="DBModel.Store.HotelPolicy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Policy">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HotelPolicy">
+        <PropertyRef Name="PolicyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HotelInfoRestaurant">
+    <End Role="HotelInfo" Type="DBModel.Store.HotelInfo" Multiplicity="1" />
+    <End Role="Restaurant" Type="DBModel.Store.Restaurant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HotelInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Restaurant">
+        <PropertyRef Name="HotelInfo_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HotelInfoGuide">
+    <End Role="HotelInfo" Type="DBModel.Store.HotelInfo" Multiplicity="1" />
+    <End Role="Guide" Type="DBModel.Store.Guide" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HotelInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Guide">
+        <PropertyRef Name="HotelInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HotelInfoActivity">
+    <End Role="HotelInfo" Type="DBModel.Store.HotelInfo" Multiplicity="1" />
+    <End Role="Activity" Type="DBModel.Store.Activity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HotelInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Activity">
+        <PropertyRef Name="HotelInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HotelInfoConference">
+    <End Role="HotelInfo" Type="DBModel.Store.HotelInfo" Multiplicity="1" />
+    <End Role="Conference" Type="DBModel.Store.Conference" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HotelInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Conference">
+        <PropertyRef Name="HotelInfo_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ConferenceConferenceRoom">
+    <End Role="Conference" Type="DBModel.Store.Conference" Multiplicity="1" />
+    <End Role="ConferenceRoom" Type="DBModel.Store.ConferenceRoom" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Conference">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ConferenceRoom">
+        <PropertyRef Name="ConferenceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HotelInfoRoom">
+    <End Role="HotelInfo" Type="DBModel.Store.HotelInfo" Multiplicity="1" />
+    <End Role="Room" Type="DBModel.Store.Room" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HotelInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Room">
+        <PropertyRef Name="HotelInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RoomRoomImages">
+    <End Role="Room" Type="DBModel.Store.Room" Multiplicity="1" />
+    <End Role="RoomImages" Type="DBModel.Store.RoomImages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Room">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RoomImages">
+        <PropertyRef Name="RoomId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HotelInfoHotelUser">
+    <End Role="HotelInfo" Type="DBModel.Store.HotelInfo" Multiplicity="1" />
+    <End Role="HotelUser" Type="DBModel.Store.HotelUsers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HotelInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HotelUser">
+        <PropertyRef Name="HotelInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HotelInfoHotelService">
+    <End Role="HotelInfo" Type="DBModel.Store.HotelInfo" Multiplicity="1" />
+    <End Role="HotelService" Type="DBModel.Store.HotelService" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HotelInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HotelService">
+        <PropertyRef Name="HotelInfo_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HotelInfoFeatureHotel">
+    <End Role="HotelInfo" Type="DBModel.Store.HotelInfo" Multiplicity="1" />
+    <End Role="FeatureHotel" Type="DBModel.Store.FeatureHotel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HotelInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FeatureHotel">
+        <PropertyRef Name="HotelInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FeatureFeatureHotel">
+    <End Role="Feature" Type="DBModel.Store.Feature" Multiplicity="1" />
+    <End Role="FeatureHotel" Type="DBModel.Store.FeatureHotel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Feature">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FeatureHotel">
+        <PropertyRef Name="FeatureId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GuestUserOrder">
+    <End Role="GuestUser" Type="DBModel.Store.GuestUser" Multiplicity="1" />
+    <End Role="Order" Type="DBModel.Store.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GuestUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="GuestUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HotelInfoOrder">
+    <End Role="HotelInfo" Type="DBModel.Store.HotelInfo" Multiplicity="1" />
+    <End Role="Order" Type="DBModel.Store.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HotelInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="HotelInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OrderComment">
+    <End Role="Order" Type="DBModel.Store.Order" Multiplicity="1" />
+    <End Role="Comment" Type="DBModel.Store.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GuestUserComment">
+    <End Role="GuestUser" Type="DBModel.Store.GuestUser" Multiplicity="1" />
+    <End Role="Comment" Type="DBModel.Store.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GuestUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="GuestUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CollectionGuestUser">
+    <End Role="Collection" Type="DBModel.Store.Collection" Multiplicity="*" />
+    <End Role="GuestUser" Type="DBModel.Store.GuestUser" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="GuestUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Collection">
+        <PropertyRef Name="GuestUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RoomPriceType">
+    <End Role="Room" Type="DBModel.Store.Room" Multiplicity="1" />
+    <End Role="PriceType" Type="DBModel.Store.PriceType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Room">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PriceType">
+        <PropertyRef Name="RoomId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PriceTypePrice">
+    <End Role="PriceType" Type="DBModel.Store.PriceType" Multiplicity="1" />
+    <End Role="Price" Type="DBModel.Store.Price" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PriceType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Price">
+        <PropertyRef Name="PriceTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PriceTypeOrder">
+    <End Role="PriceType" Type="DBModel.Store.PriceType" Multiplicity="1" />
+    <End Role="Order" Type="DBModel.Store.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PriceType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="PriceTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PriceTypeDaysPrice">
+    <End Role="PriceType" Type="DBModel.Store.PriceType" Multiplicity="1" />
+    <End Role="DaysPrice" Type="DBModel.Store.DaysPrice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PriceType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DaysPrice">
+        <PropertyRef Name="PriceTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OrderDaysPrice">
+    <End Role="Order" Type="DBModel.Store.Order" Multiplicity="1" />
+    <End Role="DaysPrice" Type="DBModel.Store.DaysPrice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DaysPrice">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OrderOccupant">
+    <End Role="Order" Type="DBModel.Store.Order" Multiplicity="1" />
+    <End Role="Occupant" Type="DBModel.Store.Occupant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Occupant">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GuestUserGuestInvoice">
+    <End Role="GuestUser" Type="DBModel.Store.GuestUser" Multiplicity="1" />
+    <End Role="GuestInvoice" Type="DBModel.Store.GuestInvoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GuestUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GuestInvoice">
+        <PropertyRef Name="GuestUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProvinceInvoice">
+    <End Role="Province" Type="DBModel.Store.Province" Multiplicity="1" />
+    <End Role="Invoice" Type="DBModel.Store.Invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Province">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Invoice">
+        <PropertyRef Name="ProvinceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CityInvoice">
+    <End Role="City" Type="DBModel.Store.City" Multiplicity="1" />
+    <End Role="Invoice" Type="DBModel.Store.Invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Invoice">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DistrictInvoice">
+    <End Role="District" Type="DBModel.Store.District" Multiplicity="1" />
+    <End Role="Invoice" Type="DBModel.Store.Invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="District">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Invoice">
+        <PropertyRef Name="DistrictId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HotelInfoCollection">
+    <End Role="HotelInfo" Type="DBModel.Store.HotelInfo" Multiplicity="1" />
+    <End Role="Collection" Type="DBModel.Store.Collection" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HotelInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Collection">
+        <PropertyRef Name="HotelInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Order_transaction">
+    <End Role="Order" Type="DBModel.Store.Order" Multiplicity="1" />
+    <End Role="transaction" Type="DBModel.Store.transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="transaction">
+        <PropertyRef Name="Order_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HotelInfoScore">
+    <End Role="HotelInfo" Type="DBModel.Store.HotelInfo" Multiplicity="1" />
+    <End Role="Score" Type="DBModel.Store.Score" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HotelInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Score">
+        <PropertyRef Name="HotelInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ScoreTypeScore">
+    <End Role="ScoreType" Type="DBModel.Store.ScoreType" Multiplicity="1" />
+    <End Role="Score" Type="DBModel.Store.Score" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ScoreType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Score">
+        <PropertyRef Name="ScoreTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CommentScore">
+    <End Role="Comment" Type="DBModel.Store.Comment" Multiplicity="1" />
+    <End Role="Score" Type="DBModel.Store.Score" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Comment">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Score">
+        <PropertyRef Name="CommentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HotelUsersReply">
+    <End Role="HotelUsers" Type="DBModel.Store.HotelUsers" Multiplicity="1" />
+    <End Role="Reply" Type="DBModel.Store.Reply" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HotelUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Reply">
+        <PropertyRef Name="HotelUsersId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CommentReply">
+    <End Role="Comment" Type="DBModel.Store.Comment" Multiplicity="1" />
+    <End Role="Reply" Type="DBModel.Store.Reply" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Comment">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Reply">
+        <PropertyRef Name="CommentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RoomStock">
+    <End Role="Room" Type="DBModel.Store.Room" Multiplicity="1" />
+    <End Role="Stock" Type="DBModel.Store.Stock" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Room">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Stock">
+        <PropertyRef Name="RoomId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="InvoiceOrder">
+    <End Role="Invoice" Type="DBModel.Store.Invoice" Multiplicity="0..1" />
+    <End Role="Order" Type="DBModel.Store.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Invoice">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="InvoiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GuestUserInvoice">
+    <End Role="GuestUser" Type="DBModel.Store.GuestUser" Multiplicity="1" />
+    <End Role="Invoice" Type="DBModel.Store.Invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GuestUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Invoice">
+        <PropertyRef Name="GuestUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

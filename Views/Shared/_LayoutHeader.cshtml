@@ -1,0 +1,28 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Scripts/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Scripts/assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/Scripts/assets/css/style.min.css" rel="stylesheet">
+    <script src="~/Scripts/jquery-1.7.2.min.js"></script>
+    
+</head>
+<body>
+    @{Html.RenderAction("Register", "User", new { area = "" });}
+    <div style="position:relative;height:76px;">
+        @{Html.RenderAction("Header", "Home", new { area = "" });}
+    </div>
+    
+    @RenderBody()
+    <div id="kong2">沪ICP备15056989号-1<br />版权所有©2015-2016 Shanghai Lantola E-business Co.Ltd保留所有权利</div>
+    <script src="~/Scripts/assets/js/bootstrap.min.js"></script>
+</body>
+</html>

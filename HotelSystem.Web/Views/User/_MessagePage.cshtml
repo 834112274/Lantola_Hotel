@@ -1,0 +1,13 @@
+﻿
+@model PagedList<HotelSystem.Model.Message>
+@using Webdiyer.WebControls.Mvc
+@if(Model.Count==0){
+    <p class="text-center">暂无消息</p>
+}
+@foreach (var item in Model)
+{
+    <div class="item">
+        <div class="item-title"><span class="fa fa-circle" style="color:#ffd800;"></span> @item.Title <div class="time">@item.CreateTime.ToString("yyyy年MM月dd日")</div></div>
+        <div class="item-content">@item.Content</div>
+    </div>
+}

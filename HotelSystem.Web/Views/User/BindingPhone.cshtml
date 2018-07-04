@@ -1,0 +1,87 @@
+﻿@model HotelSystem.Model.GuestUser
+@using (Html.BeginForm("BindingPhone", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+    <div class="form-horizontal">
+        <h4 style="padding-left:200px;margin-top:30px;">绑定手机</h4>
+        <hr />
+        @if (string.IsNullOrEmpty(Model.Phone))
+        {
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+            <div class="form-group">
+                <label class="control-label col-md-3">手机号</label>
+                <div class="col-md-8">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="手机号" name="Phone" id="Binding_Phone">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" id="BindingPhone_Send">发送验证码</button>
+                        </span>
+                    </div><!-- /input-group -->
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3">验证码</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="VerificationCode" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-3 col-md-6">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <input type="submit" value="绑定" class="btn btn-danger" />
+                </div>
+            </div>
+
+        }
+        else
+        {
+            <div class="alert alert-warning alert-dismissible fade in" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <strong>操作错误!</strong> 请先解除绑定后才可重新绑定.
+            </div>
+        }
+    </div>
+}
+<script>
+    var sentTime = function (timeSpan) {
+        $("#BindingPhone_Send").text(timeSpan);
+        if (timeSpan > 0) {
+            setTimeout(function () {
+                timeSpan = timeSpan - 1;
+                sentTime(timeSpan);
+            }, 1000)
+        }
+        else {
+            $("#BindingPhone_Send").text("发送验证码");
+            $("#BindingPhone_Send").attr("disabled", false);
+        }
+    };
+    $(document).ready(function () {
+        $("#BindingPhone_Send").click(function () {
+            $.ajax({
+                url: "/InsideApi/SendSms",
+                type: "post",
+                dateType: "json",
+                data: {
+                    phone: $("#Binding_Phone").val()
+                },
+                success: function (r) {
+                    console.log(r);
+                    if (r == "success") {
+                        $("#BindingPhone_Send").text(60);
+                        $("#BindingPhone_Send").attr("disabled", true);
+                        setTimeout(function () {
+                            sentTime(59);
+                        }, 1000)
+                    } else {
+                        alert(r);
+                    }
+
+                },
+                error: function (e) {
+
+                }
+            });
+        });
+    });
+</script>

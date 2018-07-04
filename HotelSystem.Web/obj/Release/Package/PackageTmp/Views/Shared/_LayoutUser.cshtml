@@ -1,0 +1,258 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Scripts/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Scripts/assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/Scripts/assets/css/style.min.css" rel="stylesheet">
+    <script src="~/Scripts/jquery-1.7.2.min.js"></script>
+    <script src="~/Scripts/assets/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="all" href="~/Scripts/assets/plugins/bootstrap-daterangepicker-master/daterangepicker.css" />
+
+    <style>
+        .personal-info {
+            height: 230px;
+            background: url("/Images/user_bg.jpg") no-repeat;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+            .personal-info .head {
+                height: 230px;
+                width: 100%;
+                background: rgba(0, 0, 0,0.7);
+                color: #fff;
+                text-align: center;
+                padding-top: 10px;
+            }
+
+                .personal-info .head img {
+                    width: 130px;
+                    height: 130px;
+                    border: 4px solid #fff;
+                    border-radius: 130px;
+                    margin-bottom: 10px;
+                }
+
+        .search-container {
+            padding: 10px;
+            margin-top: 100px;
+            background: rgba(255, 255, 255, 0.64);
+        }
+
+        .personal-menu {
+            width: 200px;
+            float: left;
+            margin: 0px;
+            position: absolute;
+            bottom: 10px;
+            top: 10px;
+            background-color: #fff;
+            overflow: auto;
+            /*box-shadow: 0 2px 2px rgba(0,0,0,.15);*/
+        }
+
+            .personal-menu .menu-list {
+            }
+
+                .personal-menu .menu-list li {
+                    text-align: left;
+                    margin: 4px 0px;
+                }
+
+                .personal-menu .menu-list .active {
+                    background: #4876FF;
+                }
+
+                    .personal-menu .menu-list .active a {
+                        color: #fff;
+                    }
+
+                .personal-menu .menu-list li a {
+                    outline: none;
+                    text-decoration: none;
+                    font-size: 16px;
+                    line-height: 40px;
+                    display: block;
+                    color: #4876FF;
+                    padding-left: 15px;
+                }
+
+                    .personal-menu .menu-list li a i {
+                        font-size: 30px;
+                        font-style: normal;
+                        vertical-align: -5px;
+                        margin-left: 10px;
+                    }
+
+                    /*.personal-menu .menu-list li:hover {
+                    background: #4876FF;
+                }*/
+
+                    .personal-menu .menu-list li a:hover {
+                        color: #fff;
+                        background: #4876FF;
+                    }
+
+        .date-box .fa {
+            color: #ccc;
+            line-height: 30px;
+            font-size: 16px;
+            float: left;
+            left: 15px;
+        }
+
+        .daterange {
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+            .daterange .date-box {
+                background-color: white;
+                width: 48%;
+                height: 30px;
+                float: left;
+                padding-left: 15px;
+            }
+
+            .daterange .end {
+                margin-left: 2px;
+            }
+
+            .daterange .day {
+                position: absolute;
+                margin: 6px auto;
+                left: 48%;
+                margin-left: -6px;
+                height: 30px;
+            }
+
+            .daterange .date {
+                font-size: 12px;
+                margin-left: 0px;
+                margin-right: 0px;
+                right: 0px;
+                width: auto;
+            }
+
+                .daterange .date p {
+                    padding: 0px;
+                    margin: 0px;
+                    height: 15px;
+                    text-align: left;
+                    padding-left: 30px;
+                    line-height: 15px;
+                }
+
+                    .daterange .date p:nth-child(2) {
+                        color: #ccc;
+                    }
+
+        .search-btn {
+            height: 30px;
+            background: #4876FF;
+            font-size: 14px;
+            font-family: "宋体";
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            padding: 0px 10px;
+            line-height: 30px;
+            top: 0px;
+            border: 1px solid transparent;
+        }
+
+            .search-btn:hover {
+                background: #49f;
+            }
+    </style>
+</head>
+
+<body>
+    <div class="register-container" style="display:none;">
+        @{Html.RenderAction("Register", "User", new { area = "" });}
+    </div>
+    <div style="position:relative;height:76px;">
+        @{Html.RenderAction("Header", "Home", new { area = "" });}
+    </div>
+    @{Html.RenderAction("Header", "User", new { area = "" });}
+
+    <div class="container" style="min-height:700px;position:relative;">
+        <div class="personal-menu" id="user_menu">
+            <ul class="menu-list">
+                <li class=""><a href="/User/Order">我的订单</a> </li>
+                <li><a href="/User/Comment">我的评论</a></li>
+                <li><a href="/User/Collection">我的收藏</a></li>
+                <li><a href="/User/Message">消息中心</a></li>
+                <li>
+                    <a href="javascript:;">发票管理</a>
+                    <ul>
+                        <li><a href="/User/ApplyInvoice"><i>·</i> 发票申请</a></li>
+                        <li><a href="/User/InvoiceList"><i>·</i> 发票列表</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;">账户管理</a>
+                    <ul>
+                        <li><a href="/User/Info"><i>·</i> 账户信息</a></li>
+                        <li><a href="/User/Safe"><i>·</i> 账号安全</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div style="float:left;height:100%;padding-left:210px;width:100%;">
+            @RenderBody()
+        </div>
+    </div>
+
+    <div id="kong2">沪ICP备15056989号-1<br />版权所有©2015-2016 Shanghai Lantola E-business Co.Ltd保留所有权利</div>
+    <script type="text/javascript" src="~/Scripts/assets/plugins/bootstrap-daterangepicker-master/moment.js"></script>
+    <script type="text/javascript" src="~/Scripts/assets/plugins/bootstrap-daterangepicker-master/daterangepicker.js"></script>
+    <script type="text/javascript" src="~/Scripts/assets/plugins/bootstrap-daterangepicker-master/language.js"></script>
+    <script>
+        var s = moment();
+        var e = moment().add(1, 'days');
+        function showDefaultDate(target, start, end) {
+            target.find(".start").eq(0).find("p").eq(0).text(start.format('YYYY年MM月DD日'));
+            target.find(".start").eq(0).find("p").eq(1).text(getWeek(start.format('d')));
+            target.find(".end").eq(0).find("p").eq(0).text(end.format('YYYY年MM月DD日'));
+            target.find(".end").eq(0).find("p").eq(1).text(getWeek(end.format('d')));
+            target.find(".day-value").text(end.diff(start, 'days'));
+            target.find("input[name='startDate']").val(start.format('YYYY-MM-DD'));
+            target.find("input[name='endDate']").val(end.format('YYYY-MM-DD'));
+        }
+        showDefaultDate($(".daterange"), s, e);
+        $(".daterange").daterangepicker({
+            "autoApply": true,
+            "startDate": s.format('YYYY年MM月DD日'),
+            "endDate": e.format('YYYY年MM月DD日'),
+            "opens": "center",
+            "minDate": s.format('YYYY年MM月DD日'),
+            locale: locale
+        }, function (start, end, label) {
+            showDefaultDate(this.element, start, end);
+        });
+        $(document).ready(function () {
+            $("#user_menu").find("li").removeClass("active");
+            var url = window.location.href;
+            $("#user_menu").find("li").each(function () {
+                var a = $(this).find("a").attr("href");
+                if (url.indexOf(a) > 0) {
+                    $(this).addClass("active");
+                }
+                else {
+                    $(this).removeClass("active");
+                }
+            });
+
+        });
+    </script>
+</body>
+</html>

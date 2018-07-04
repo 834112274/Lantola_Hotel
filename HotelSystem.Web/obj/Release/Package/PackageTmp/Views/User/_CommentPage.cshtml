@@ -1,0 +1,37 @@
+﻿@model PagedList<HotelSystem.Model.Comment>
+@using Webdiyer.WebControls.Mvc
+<div class="comment-container">
+    @foreach (var item in Model)
+    {
+
+        <div class="item">
+            <div class="head">
+                <img src="@item.GuestUser.Head">
+                <div class="summary">@item.GuestUser.NickName<br> 点评次数：@Model.TotalItemCount</div>
+            </div>
+            <div class="content">
+                <div class="title">评分 @item.Score.Average(m=>m.Value) 分　@item.Order.StartTime.ToString("yyyy年MM月dd日") 入住　@item.Order.RoomName</div>
+                <div class="body" style="max-height: 60px;">
+                    @item.Content     
+                    <a href="javascript:;" class="more">查看更多</a>
+                </div>
+                <div class="time">发表于 @item.CreateTime.ToString("yyyy-MM-dd")</div>
+                <div class="img-list">
+                    @foreach (var img in item.Images.Split(','))
+                    {
+                        <img src="@img">
+                    }
+                </div>
+                @if (item.Reply.Count > 0)
+                {
+                    <div class="reply">
+                        @item.Reply.First().Content
+                        <div class="reply-user">@item.Reply.First().HotelUsers.HotelInfo.Name</div>
+                    </div>
+                }
+               
+            </div>
+            <div class="clear"></div>
+        </div>
+    }
+</div>

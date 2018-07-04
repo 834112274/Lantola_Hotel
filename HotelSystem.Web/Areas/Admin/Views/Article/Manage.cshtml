@@ -1,0 +1,35 @@
+﻿@model HotelSystem.Model.Article
+@{
+    ViewBag.Title = "文章管理";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="~/Scripts/assets/plugins/summernote-master/summernote.css">
+<script src="~/Scripts/assets/plugins/summernote-master/summernote.js"></script>
+<script src="~/Scripts/assets/plugins/summernote-master/lang/summernote-zh-CN.js"></script>
+
+<div class="container-fluid">
+    @using (Html.BeginForm("Save", "Article", FormMethod.Post, new {@id= "Article_Form" }))
+    {
+        <input type="hidden" id="Id" name="Id" value="@Model.Id" />
+        @Html.HiddenFor(model => model.Type)
+        @Html.HiddenFor(model => model.Content)
+        <button id="save" type="submit" class="btn btn-primary">保存</button>
+        <div id="edit_content">@Html.Raw(Model.Content) </div>
+    }
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#Article_Form").submit(function () {
+            var markup = $('#edit_content').summernote('code');
+            $("#Content").val(markup);
+            return true;
+        });
+        $('#edit_content').summernote({
+            height: 600,   //set editable area's height
+            codemirror: { // codemirror options
+                theme: 'monokai'
+            }
+        });
+    });
+</script>

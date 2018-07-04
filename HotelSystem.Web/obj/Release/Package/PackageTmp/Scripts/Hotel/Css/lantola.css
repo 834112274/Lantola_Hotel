@@ -1,0 +1,117 @@
+.lantola_about{width:1120px;margin:0 auto;padding-top:30px;}
+.lantola_about_list{width:252px;padding-right:70px;float:left;}
+.lantola_about_list ul{width:250px;border:1px solid #bfbfbf;border-radius:5px;background-color:#f0f0f0;overflow:hidden;}
+.lantola_about_list li{height:60px;line-height:60px;color:#535353;font-size:16px;text-indent:110px;background-repeat:no-repeat;background-position:70px center;cursor:pointer;}
+.lantola_about_list li:hover,.lantola_about_list li.hover{color:#fff;background-color:#488ccc;}
+.lantola_about_list li:nth-child(1){background-image:url(../img/grb1.png);}
+.lantola_about_list li:nth-child(2){background-image:url(../img/grb2.png);}
+.lantola_about_list li:nth-child(3){background-image:url(../img/grb3.png);}
+.lantola_about_list li:nth-child(4){background-image:url(../img/grb7.png);}
+.lantola_about_list li:nth-child(5){background-image:url(../img/grb4.png);}
+.lantola_about_list li:nth-child(6){background-image:url(../img/grb5.png);}
+.lantola_about_list li:nth-child(7){background-image:url(../img/grb6.png);}
+.lantola_about_list li:nth-child(1).hover,.lantola_about_list li:nth-child(1):hover{background-image:url(../img/grb1a.png);}
+.lantola_about_list li:nth-child(2).hover,.lantola_about_list li:nth-child(2):hover{background-image:url(../img/grb2a.png);}
+.lantola_about_list li:nth-child(3).hover,.lantola_about_list li:nth-child(3):hover{background-image:url(../img/grb3a.png);}
+.lantola_about_list li:nth-child(4).hover,.lantola_about_list li:nth-child(4):hover{background-image:url(../img/grb7a.png);}
+.lantola_about_list li:nth-child(5).hover,.lantola_about_list li:nth-child(5):hover{background-image:url(../img/grb4a.png);}
+.lantola_about_list li:nth-child(6).hover,.lantola_about_list li:nth-child(6):hover{background-image:url(../img/grb5a.png);}
+.lantola_about_list li:nth-child(7).hover,.lantola_about_list li:nth-child(7):hover{background-image:url(../img/grb6a.png);}
+.lantola_about_content{float:left;width:798px;}
+.lantola_about_banner{height:200px;width:100%;padding-bottom:30px;}
+.lantola_about_banner img{height:100%;width:100%;}
+.lantola_about_word{color:#888;font-size:14px;line-height:25px;}
+.lantola_about_word p{margin:0;margin-bottom:25px;}
+.lantola_about_word p.span{margin:0;margin-bottom:15px;font-size:18px;color:#262626;line-height:35px;}
+/**/
+.cooperationbanner{width:100%;height:450px;background-position:center center;}
+.cooperationcontent{background-color:#e7f1ff;overflow:hidden;}
+.cooperationanimate{margin:50px auto;width:1260px;position:relative;height:670px;}
+.cooperationanimates{height:210px;width:300px;position:absolute;z-index:1;}
+.cooperationanimate1,.cooperationanimate2,.cooperationanimate3{opacity:0.5;z-index:2;transition:all 1s ease-out;}
+.cooperationanimates img{height:100%;width:100%;}
+.cooperationbanner2{padding-top:50px;padding-bottom:400px;height:250px;margin:0px auto;width:1260px;overflow:hidden;}
+.cooperationbanner21{width:630px;float:left;height:100%;background-position:center center;background-repeat:no-repeat;}
+.cooperationbanner22{width:610px;margin-left:20px;float:left;height:100%;color:#434343;font-size:14px;line-height:40px;}
+.cooperationbanner3{width:100%;background-position:center center;padding-top:60px;padding-bottom:110px;}
+.cooperationbanner31{color:#fff;font-size:28px;text-align:cenetr;line-height:40px;font-family:"方正大黑简体";text-align:center;}
+.cooperationbanner32{color:#fff;font-size:14px;text-align:cenetr;line-height:40px;font-family:"华文细黑";text-align:center;}
+.cooperationbanner33{width:883px;margin:0 auto;height:120px;}
+.cooperationbanner331{float:left;width:220px;padding-left:60px;height:120px;}
+.cooperationbanner332{float:left;width:1px;height:80px;margin-top:20px;background-color:rgba(255,255,255,0.4);}
+.cooperationword1{line-height:70px;color:#fff;font-family:"华文细黑";font-size:42px;}
+.cooperationword2{line-height:50px;color:#fff;font-family:"华文细黑";font-size:14px;}
+.cooperationbanner34{margin:0 auto;margin-top:100px;border-radius:100px;background-color:#0d6fb8;color:#fff;font-size:18px;text-align:center;width:180px;height:40px;line-height:40px;box-shadow:0px 3px 3px #042347;display:block;cursor:pointer;}
+.cooperationbanner34:hover{background-color:#74bae9;}
+/**/
+.hotelregister{width:1260px;margin:0 auto;padding:20px 0 50px 0;}
+.hotelregister1{padding-bottom:50px;}
+.hotelregistertitle{background-color:#488ccc;background-repeat:no-repeat;background-position:10px center;text-align:center;font-size:14px;color:#fff;width:125px;height:40px;line-height:40px;}
+.hotelregistercontent{padding:30px 0 0 50px;background-color:#dae8f5;}
+.hotelregisterinput{height:32px;padding-bottom:40px;line-height:32px;width:570px;float:left;font-size:14px;color:#488ccc;}
+.hotelregisterinput .word{display:inline-block;width:80px;vertical-align:top;color:#313131;}
+.hotelregisterinput input{padding:0;margin:0;height:30px;border:1px solid #b5b5b5;border-radius:3px;color:#488ccc;line-height:30px;}
+
+/*企业地址区*/
+.hotelregisterinput1{height:32px;padding-bottom:40px;line-height:32px;width:1140px;float:left;font-size:14px;color:#488ccc;}
+.hotelregisterinput1 .word{display:inline-block;width:80px;vertical-align:top;color:#313131;}
+.hotelregisterinput1 input{padding:0;margin:0;height:30px;border:1px solid #b5b5b5;border-radius:3px;color:#488ccc;line-height:30px;}
+
+
+
+.personalpersonaldatadate1{background-color:#fff;background-repeat:no-repeat;background-position:right center;}
+
+.mask{height:100%;width:100%;position:fixed;top:0;left:0;z-index:8;display:none;}
+.personalpersonaldatadate1{margin-right:10px;cursor:pointer;text-align:right;font-size:12px;color:#aaaaaa;border-radius:3px;border:1px solid #b5b5b5;height:30px;line-height:30px;padding:0 5px;position:relative;display:inline-block;background-color:#fff;}
+.personalpersonaldatadate2{font-size:14px;color:#488ccc;position:absolute;top:0;left:0;height:100%;width:100%;text-align:center;text-indent:-17px;}
+.personalpersonaldatadate3{border:1px solid #b5b5b5;display:none;position:absolute;top:29px;left:-1px;width:100%;text-align:center;background:#fff;max-height:300px;overflow-y:auto;z-index:10;}
+.personalpersonaldatadate3 li{width:100%;height:30px;line-height:30px;font-size:14px;color:#488ccc;}
+.hotelregisterimageup{float:left;height:180px;width:150px;background-color:#85b6e5;background-repeat:no-repeat;background-position:center center;position:relative;cursor:pointer;margin-right:30px;}
+.hotelregisterimageup .word{color:#fff;position:absolute;bottom:20px;left:0;width:150px;text-align:center;font-size:16px;height:30px;line-height:30px;z-index:4;background-color:rgba(0, 0, 0, 0.38);}
+.hotelregisterimageup .word.words{color:#313131;top:195px;}
+.hotelregisterimageup3{position:absolute;height:180px;width:auto;z-index:2;}
+.hotelregisterimageup4{position:absolute;height:100%;width:100%;z-index:3;background-repeat:no-repeat;background-size:auto 100%;background-position:center center;}
+.hotelregisterimageup span{
+    color:white;
+    font-weight:bold;
+    font-size:48px;
+    width:50px;
+    height:50px;
+    display:block;
+    text-align:center;
+    line-height:40px;
+    border: dashed 2px white;
+    border-radius:50px;
+    margin:40px auto auto 50px;
+    z-index:4;
+    float:left;
+    position:absolute;
+}
+.hotelregisterimageword{float:left;height:180px;font-size:14px;color:#626262;line-height:36px;}
+.hotelregister2{font-size:16px;color:#488ccc;height:30px;line-height:30px;}
+.hotelregisterbutton{width:120px;height:35px;display:block;margin:0 auto;border:0;color:#fff;font-size:14px;text-align:center;line-height:35px;padding:0;background-color:#4b90cf;font-family:"微软雅黑";border-radius:3px;box-shadow:0px 0px 5px #7e9fbb;margin-top:40px;}
+/**/
+.cooperationbanner .banneranimate{width:1300px;margin:0 auto;position:relative;}
+.cooperationbanner .banneranimate1{position:absolute;background-image:url(../img/banneranimate1.png);width:85px;height:89px;top:160px;left:410px;opacity:0;width:0;height:0;margin:42.5px 0 0 44.5px;background-size:100% 100%;transition:transform 1s linear;}
+.cooperationbanner .banneranimate2{display:none;position:absolute;background-image:url(../img/banneranimate2.png);width:115px;height:74px;top:160px;left:790px;height:0;width:0;margin:57.5px 0 0 37px;opacity:0;background-size:100% 100%;/*animation: huangahuang 5s;*/transition:transform 1s linear;}
+.cooperationbanner .banneranimate3{position:absolute;background-image:url(../img/banneranimate2.png);width:115px;height:74px;top:160px;left:790px;background-size:100% 100%;animation:huangahuang 2s;}
+
+
+@keyframes huangahuang
+{
+0%  {opacity:0;margin:57.5px 0 0 37px;height:0;width:0;}
+40%  {opacity:1;margin:0;height:74px;width:115px;transform:rotateZ(0deg);}
+55% {transform:rotateZ(20deg);}
+70% {transform:rotateZ(-20deg);}
+80% {transform:rotateZ(15deg);}
+85% {transform:rotateZ(-15deg);}
+90% {transform:rotateZ(10deg);}
+95% {transform:rotateZ(-10deg);}
+98% {transform:rotateZ(5deg);}
+100% {transform:rotateZ(0deg);}
+}
+
+
+
+
+

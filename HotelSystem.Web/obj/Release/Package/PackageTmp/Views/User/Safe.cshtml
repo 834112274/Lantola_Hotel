@@ -1,0 +1,152 @@
+﻿
+@model HotelSystem.Model.GuestUser
+@{
+    ViewBag.Title = "账户安全";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<style>
+    .safe-item{
+        border:1px solid #ccc;
+        margin:20px 0px;
+        padding:20px 20px;
+        line-height:80px;
+    }
+</style>
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-warning alert-dismissible fade in" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+        @Html.Raw(ViewBag.Message)
+    </div>
+}
+<div class="safe-item">
+    <div class="row">
+        <div class="col-md-2" style="font-size:18px;"><span class="fa fa-check-circle" style="color:#00ff21;font-size:22px;"></span>登录密码</div>
+        <div class="col-md-2">
+            <p style="font-size:14px;">建议定期更换</p>
+        </div>
+        <div class="col-md-5 text-muted">
+            <p  style="line-height:20px;font-size:12px;margin:18px auto;"> 安全性高的密码可以使账号更安全，建议您定期更换密码，且设置一个包含数字和字母，并且长度超过8位以上的密码。</p>
+        </div>
+        <div class="col-md-3">
+            <div class="col-md-6"><a href="javascript:;" data-toggle="modal" data-target="#ChangePassword">修改</a></div>
+        </div>
+    </div>
+</div>
+<div class="safe-item">
+    <div class="row">
+        <div class="col-md-2" style="font-size:18px;"><span class="fa fa-check-circle" style="color:#00ff21;font-size:22px;"></span>绑定手机</div>
+        <div class="col-md-2">
+            @if (string.IsNullOrEmpty(Model.Phone))
+            {
+                <p style="font-size:14px;">未绑定</p>
+            }
+            else
+            {
+                <p style="font-size:14px;">@(Model.Phone.Substring(0, 2))***@(Model.Phone.Substring(Model.Phone.Length - 4, 4))</p>
+            }
+        </div>
+        <div class="col-md-5 text-muted">
+            <p style="line-height:20px;font-size:12px;margin:18px auto;"> 绑定手机后，您即可享受手机好登录、动态密码登录、找回密码等。为了账号安全，建议您在更换手机号后第一时间更换绑定手机。</p>
+        </div>
+        <div class="col-md-3">
+            <div class="col-md-6"><a href="javascript:;" data-toggle="modal" data-target="#BindingPhone">修改</a></div>
+            <div class="col-md-6"><a href="javascript:;" data-toggle="modal" data-target="#RelievePhone">解除绑定</a></div>
+        </div>
+    </div>
+</div>
+<div class="safe-item">
+    <div class="row">
+        <div class="col-md-2" style="font-size:18px;"><span class="fa fa-check-circle" style="color:#00ff21;font-size:22px;"></span>绑定邮箱</div>
+        <div class="col-md-2">
+            @if (string.IsNullOrEmpty(Model.Email))
+            {
+                <p style="font-size:14px;">未绑定</p>
+            }
+            else
+            {
+                <p style="font-size:14px;">@(Model.Email.Substring(0, 2))***@(Model.Email.Substring(Model.Email.LastIndexOf("@")))</p>
+            }
+            
+        </div>
+        <div class="col-md-5 text-muted">
+            <p style="line-height:20px;font-size:12px;margin:18px auto;"> 绑定E-mail后，您即可使用E-mail登录Lantola或找回密码等。</p>
+        </div>
+        <div class="col-md-3">
+            <div class="col-md-6"><a href="javascript:;" data-toggle="modal" data-target="#BindingEmail">修改</a></div>
+            <div class="col-md-6"><a href="javascript:;" data-toggle="modal" data-target="#RelieveEmail">解除绑定</a></div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" tabindex="-1" id="ChangePassword" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            @using (Html.BeginForm("ChangePassword", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <div class="form-horizontal">
+                    <h4 style="padding-left:200px;margin-top:30px;">修改密码</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.Id)
+                    <div class="form-group">
+                        <label class = "control-label col-md-3">原密码</label>
+                        <div class="col-md-8">
+                            <input type="password" class = "form-control" name="Password"  />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">新密码</label>
+                        <div class="col-md-8">
+                            <input type="password" class="form-control" name="NewPassword" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">再次输入新密码</label>
+                        <div class="col-md-8">
+                            <input type="password" class="form-control" name="ComparePassword" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-3 col-md-6">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            <input type="submit" value="保存" class="btn btn-danger" />
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<div class="modal fade" tabindex="-1" id="RelievePhone" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            @Html.Action("RelievePhone")
+        </div>
+    </div>
+</div>
+<div class="modal fade" tabindex="-1" id="BindingPhone" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            @Html.Action("BindingPhone")
+        </div>
+    </div>
+</div>
+<div class="modal fade" tabindex="-1" id="RelieveEmail" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            @Html.Action("RelieveEmail")
+        </div>
+    </div>
+</div>
+<div class="modal fade" tabindex="-1" id="BindingEmail" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            @Html.Action("BindingEmail")
+        </div>
+    </div>
+</div>

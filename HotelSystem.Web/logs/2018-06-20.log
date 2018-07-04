@@ -1,0 +1,34 @@
+2018-06-20 15:09:16.198 INFO NativePay: Native pay mode 2 url is producing...
+2018-06-20 15:09:16.198 DEBUG WxPayApi: UnfiedOrder request : <xml><appid><![CDATA[wxe3986f34c73a20f2]]></appid><attach><![CDATA[test]]></attach><body><![CDATA[Lantola酒店预订]]></body><goods_tag><![CDATA[hotel]]></goods_tag><mch_id><![CDATA[1507219281]]></mch_id><nonce_str><![CDATA[11614579c1764b86be911cc17525e641]]></nonce_str><notify_url><![CDATA[http://www.Lantola.com:8099/Pay/WxNotify]]></notify_url><out_trade_no><![CDATA[118062015828]]></out_trade_no><product_id><![CDATA[4c277431-4f75-48c3-8151-8b07d79b6758]]></product_id><sign><![CDATA[EF80B287590E8908AE3BA51139DDB41E]]></sign><spbill_create_ip><![CDATA[58.246.98.30]]></spbill_create_ip><time_expire><![CDATA[20180620151916]]></time_expire><time_start><![CDATA[20180620150916]]></time_start><total_fee><![CDATA[1000]]></total_fee><trade_type><![CDATA[NATIVE]]></trade_type></xml>
+2018-06-20 15:09:16.508 DEBUG WxPayApi: UnfiedOrder response : <xml><return_code><![CDATA[SUCCESS]]></return_code>
+<return_msg><![CDATA[OK]]></return_msg>
+<appid><![CDATA[wxe3986f34c73a20f2]]></appid>
+<mch_id><![CDATA[1507219281]]></mch_id>
+<nonce_str><![CDATA[4Ogy4CP9VRRzuv3E]]></nonce_str>
+<sign><![CDATA[94AE3CC666E4128AD9F0CE15362946EF]]></sign>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<prepay_id><![CDATA[wx201509149385808672c3fed52095681418]]></prepay_id>
+<trade_type><![CDATA[NATIVE]]></trade_type>
+<code_url><![CDATA[weixin://wxpay/bizpayurl?pr=r8mRKSi]]></code_url>
+</xml>
+2018-06-20 15:09:16.508 INFO NativePay: Get native pay mode 2 url : weixin://wxpay/bizpayurl?pr=r8mRKSi
+2018-06-20 15:10:07.108 INFO HotelSystem.Web.Controllers.PayController: Receive data from WeChat : <xml><appid><![CDATA[wxe3986f34c73a20f2]]></appid>
+<attach><![CDATA[test]]></attach>
+<bank_type><![CDATA[CMBC_CREDIT]]></bank_type>
+<cash_fee><![CDATA[1000]]></cash_fee>
+<fee_type><![CDATA[CNY]]></fee_type>
+<is_subscribe><![CDATA[Y]]></is_subscribe>
+<mch_id><![CDATA[1507219281]]></mch_id>
+<nonce_str><![CDATA[11614579c1764b86be911cc17525e641]]></nonce_str>
+<openid><![CDATA[oNc6j0ZJ0RtIYtax781MkybU_Amw]]></openid>
+<out_trade_no><![CDATA[118062015828]]></out_trade_no>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<return_code><![CDATA[SUCCESS]]></return_code>
+<sign><![CDATA[D1014D3A97226513A0CDD65A183424BC]]></sign>
+<time_end><![CDATA[20180620151004]]></time_end>
+<total_fee>1000</total_fee>
+<trade_type><![CDATA[NATIVE]]></trade_type>
+<transaction_id><![CDATA[4200000112201806204139507935]]></transaction_id>
+</xml>
+2018-06-20 15:10:07.108 INFO HotelSystem.Web.Controllers.PayController: Check sign success
+2018-06-20 15:10:07.168 INFO HotelSystem.Web.Controllers.PayController: SUCCESS : <xml><return_code><![CDATA[SUCCESS]]></return_code><return_msg><![CDATA[支付成功]]></return_msg></xml>

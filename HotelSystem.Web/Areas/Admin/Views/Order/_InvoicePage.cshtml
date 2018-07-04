@@ -1,0 +1,52 @@
+﻿@model PagedList<HotelSystem.Model.Invoice>
+@using Webdiyer.WebControls.Mvc
+<table class="table table-striped table-hover table-bordered">
+    <thead>
+        <tr>
+            <th>发票类型</th>
+            <th>金额</th>
+            <th>抬头/公司名</th>
+            <th>地址</th>
+            <th>电话</th>
+            <th>开户行</th>
+            <th>银行账户</th>
+            <th>纳税人识别号</th>
+            <th>收件人</th>
+            <th>联系电话</th>
+            <th>收件地址</th>
+            <th>开票状态</th>
+            <th>快递公司</th>
+            <th>快递单号</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@(item.Type==1?"个人发票": item.Type == 2 ? "增值税普通发票": item.Type == 3 ? "增值税专用发票":"")</td>
+                <td><label>@item.Amount</label> </td>
+                <td>@item.Company </td>
+                <td>@item.Address </td>
+                <td>@item.Company </td>
+                <td>@item.Tel </td>
+                <td>@item.Bank </td>
+                <td>@item.BankAccount </td>
+                <td>@item.TaxpayerNumber </td>
+                <td>@item.Phone </td>
+                <td>@item.Addressee </td>
+                <td>@(item.Status == 1 ? "等待开票" : item.Status == 2 ? "已开票" : item.Status == 0 ? "已取消" : "")</td>
+                <td>@item.Express </td>
+                <td>@item.ExpressNumber </td>
+                <td>
+                    
+                    @if (item.Status == 1)
+                    {
+                        <a href="javascript:;" data-url="/Admin/Order/OpneInvoice/@item.Id" class="opne-invoice" data-toggle="modal" data-target="#Open_Invoice">开票</a> @("|")
+                        <a href = "/Admin/Order/CloseInvoice/@item.Id" > 取消 </a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

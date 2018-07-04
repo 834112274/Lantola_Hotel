@@ -1,0 +1,206 @@
+﻿@model PagedList<HotelSystem.Model.Comment>
+@using Webdiyer.WebControls.Mvc
+
+@{
+    ViewBag.Title = "评论";
+    Layout = "~/Views/Shared/_LayoutHotel.cshtml";
+}
+<style>
+    .comment-container {
+        color: #333;
+    }
+
+        .comment-container .item {
+            padding-top: 30px;
+            border-bottom: 1px solid #e1e1e1;
+            padding-bottom: 20px;
+        }
+
+            .comment-container .item .head {
+                float: left;
+                width: 180px;
+                position: absolute;
+                text-align: center;
+            }
+
+                .comment-container .item .head img {
+                    margin: 0 25px 25px;
+                    border-width: 0px;
+                    float: none;
+                    height: 130px;
+                    width: 130px;
+                    margin: 40px auto 20px auto;
+                    border-radius: 100px;
+                    border: 8px solid #fff;
+                    height: 130px;
+                    width: 130px;
+                }
+
+                .comment-container .item .head .summary {
+                    font-size: 12px;
+                    text-align: center;
+                    line-height: 25px;
+                    height: 50px;
+                }
+
+            .comment-container .item .content {
+                float: left;
+                padding-left: 210px;
+                width: 100%;
+            }
+
+                .comment-container .item .content .title {
+                    font-size: 16px;
+                    color: #0053ab;
+                    line-height: 40px;
+                }
+
+                .comment-container .item .content .body {
+                    font-size: 14px;
+                    line-height: 30px;
+                    overflow: hidden;
+                    position: relative;
+                }
+
+                    .comment-container .item .content .body .more {
+                        color: #1453b7;
+                        cursor: pointer;
+                        float: right;
+                        position: absolute;
+                        right: 0;
+                        bottom: 0;
+                        background: #fff;
+                        width: 70px;
+                        height: 30px;
+                        line-height: 30px;
+                        text-align: center;
+                    }
+
+                .comment-container .item .content .time {
+                    font-size: 14px;
+                    line-height: 30px;
+                    overflow: hidden;
+                    position: relative;
+                }
+
+                .comment-container .item .content .img-list {
+                    padding: 10px 0;
+                    padding-bottom: 20px;
+                }
+
+                    .comment-container .item .content .img-list img {
+                        height: 90px;
+                        width: 90px;
+                        margin-right: 10px;
+                    }
+
+                .comment-container .item .content .reply {
+                    background: #eee;
+                    font-size: 12px;
+                    line-height: 25px;
+                    margin-right: 50px;
+                }
+
+                    .comment-container .item .content .reply .reply-user {
+                        font-weight: bold;
+                    }
+
+    .personal-info {
+        height: 230px;
+        background: url(/Images/user_bg.jpg) no-repeat;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+    }
+
+    .score-container {
+        margin-top: 40px;
+        height: 81px;
+        overflow: hidden;
+        padding-bottom: 30px;
+    }
+
+    .sum-score {
+        height: 100%;
+        width: 110px;
+        background-color: #0080ba;
+        font-size: 40px;
+        line-height: 50px;
+        color: #fff;
+        text-align: center;
+        font-weight: bold;
+        margin-right: 28px;
+        float: left;
+    }
+
+    .score-item {
+        height: 100%;
+        width: 220px;
+        margin-left: 28px;
+        float: left;
+        background-color: #e8e8e8;
+        font-size: 12px;
+        padding: 0 20px;
+    }
+
+    .rate {
+        background-color: #0080ba;
+        height: 6px;
+        margin-top: 14px;
+        padding: 0px;
+    }
+
+    .note {
+        float: left;
+        color: #535353;
+        line-height: 30px;
+    }
+
+    .value {
+        float: right;
+        color: #0080ba;
+        line-height: 30px;
+    }
+
+    .tag {
+        padding-top: 20px;
+        border-bottom: 1px solid #e5e5e5;
+        height: 53px;
+        line-height: 32px;
+        font-size: 12px;
+        text-align: center;
+    }
+
+        .tag .item {
+            background-color: #0080ba;
+            color: #fff;
+            height: 100%;
+            width: 130px;
+            float: left;
+            cursor: pointer;
+            display: block;
+        }
+</style>
+<div class="personal-info">
+</div>
+<div class="container">
+    <div class="score-container">
+        <div class="sum-score">@Math.Round(ViewBag.SumAvg, 2)</div>
+        @foreach (var m in ViewBag.ItemAvg)
+        {
+            <div class="score-item">
+                <div class="rate" style="width:@Math.Round(m.Item2*10,2)%;"></div>
+                <div class="note">@m.Item1</div>
+                <div class="value">@Math.Round(m.Item2, 1)</div>
+            </div>
+        }
+    </div>
+    <div class="tag">
+        <a class="item">全部评价（@Model.TotalItemCount）</a>
+    </div>
+</div>
+
+<div class="container" id="CollectionList">
+    @Html.Partial("_CommentList", Model);
+</div>
+@{Html.RegisterMvcPagerScriptResource();}

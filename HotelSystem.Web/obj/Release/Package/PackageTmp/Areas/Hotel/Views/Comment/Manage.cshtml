@@ -1,0 +1,150 @@
+﻿@model PagedList<HotelSystem.Model.Comment>
+@using Webdiyer.WebControls.Mvc
+@{
+    ViewBag.Title = "评论管理";
+    Layout = "~/Areas/Hotel/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .comment-container {
+        color: #333;
+    }
+
+        .comment-container .item {
+            padding-top: 30px;
+            border-bottom: 1px solid #e1e1e1;
+            padding-bottom: 20px;
+            overflow: hidden;
+        }
+
+            .comment-container .item .head {
+                float: left;
+                width: 180px;
+                position: absolute;
+                text-align: center;
+            }
+
+                .comment-container .item .head img {
+                    margin: 0 25px 25px;
+                    border-width: 0px;
+                    float: none;
+                    height: 130px;
+                    width: 130px;
+                    margin: 40px auto 20px auto;
+                    border-radius: 100px;
+                    border: 8px solid #fff;
+                    height: 130px;
+                    width: 130px;
+                }
+
+                .comment-container .item .head .summary {
+                    font-size: 12px;
+                    text-align: center;
+                    line-height: 25px;
+                    height: 50px;
+                }
+
+            .comment-container .item .content {
+                float: left;
+                padding-left: 210px;
+                width: 100%;
+            }
+
+                .comment-container .item .content .title {
+                    font-size: 16px;
+                    color: #0053ab;
+                    line-height: 40px;
+                }
+
+                .comment-container .item .content .body {
+                    font-size: 14px;
+                    line-height: 30px;
+                    overflow: hidden;
+                    position: relative;
+                }
+
+                    .comment-container .item .content .body .more {
+                        color: #1453b7;
+                        cursor: pointer;
+                        float: right;
+                        position: absolute;
+                        right: 0;
+                        bottom: 0;
+                        background: #fff;
+                        width: 70px;
+                        height: 30px;
+                        line-height: 30px;
+                        text-align: center;
+                    }
+
+                .comment-container .item .content .time {
+                    font-size: 14px;
+                    line-height: 30px;
+                    overflow: hidden;
+                    position: relative;
+                }
+
+                .comment-container .item .content .img-list {
+                    padding: 10px 0;
+                    padding-bottom: 20px;
+                }
+
+                    .comment-container .item .content .img-list img {
+                        height: 90px;
+                        width: 90px;
+                        margin-right: 10px;
+                    }
+
+                .comment-container .item .content .reply {
+                    background: #eee;
+                    font-size: 12px;
+                    line-height: 25px;
+                    margin-right: 50px;
+                    padding-left:10px;
+                }
+
+                    .comment-container .item .content .reply .reply-user {
+                        font-weight: bold;
+                    }
+</style>
+<div class="container-fluid">
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-warning alert-dismissible fade in" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+            @Html.Raw(ViewBag.Message)
+        </div>
+    }
+    <div id="CommentList">
+        @Html.Partial("_CommentList", Model);
+    </div>
+</div>
+<div class="modal fade" id="reply_modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" id="cancel_container">
+            @using (Html.BeginForm("ReplyComment", "Comment", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-inline",id= "reply_form" }))
+            {
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">回复评论</h4>
+                </div>
+                <div class="modal-body">
+                    <textarea name="Content" style="width:100%;height:150px;resize: none;" placeholder="回复内容">
+
+                    </textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="submit" class="btn btn-primary">回复</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+@{Html.RegisterMvcPagerScriptResource();}
+<script>
+    $("#CommentList").on("click", ".reply-btn", function () {
+        var url = $(this).data("url");
+        $("#reply_form").attr("action", url);
+    });
+</script>

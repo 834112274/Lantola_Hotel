@@ -1,0 +1,50 @@
+﻿<div class="personal-info">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="head">
+                    <img src="@Model.Head" />
+                    <p>@Model.NickName</p>
+                    <p>城市：@Model.City</p>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="container-fluid search-container">
+                    @using (Html.BeginForm("Search", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <div class="row">
+                            <div class="col-md-4">
+                                <input type="text" class="form-control input-sm" name="k" value="" placeholder="请输入酒店、目的地" style="border-radius: 0px;border:none;">
+                            </div>
+                            <div class="col-md-6">
+                                <div class="daterange">
+                                    <div class="day"><span class="day-value">1</span><span class="fa fa-moon-o"></span></div>
+                                    <div class="date-box start">
+                                        <span class="fa fa-calendar"></span>
+                                        <div class="date">
+                                            <p>2018年04月06</p>
+                                            <p>周四</p>
+                                        </div>
+                                    </div>
+                                    <div class="date-box end">
+                                        <span class="fa fa-calendar"></span>
+                                        <div class="date">
+                                            <p>2018年04月06</p>
+                                            <p>周四</p>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="start" value="">
+                                    <input type="hidden" name="end" value="">
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <input type="submit" value="搜索酒店" class="search-btn" id="J_search_hotel">
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

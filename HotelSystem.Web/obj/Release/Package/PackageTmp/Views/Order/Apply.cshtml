@@ -1,0 +1,705 @@
+﻿@model HotelSystem.Model.Order
+@using HotelSystem.Model;
+@{
+    ViewBag.Title = "填写订单";
+    Layout = "~/Views/Shared/_LayoutHeader.cshtml";
+}
+<style>
+    .hotel {
+        margin: 30px auto;
+        overflow: hidden;
+    }
+
+        .hotel .hotel-image {
+            float: left;
+            width: 18%;
+            height: 120px;
+        }
+
+        .hotel .hotel-info {
+            float: left;
+            padding-left: 60px;
+        }
+
+        .hotel .name {
+            font-size: 22px;
+            font-weight: 500;
+        }
+
+            .hotel .name span {
+                font-size: 18px;
+            }
+
+        .hotel .english-name, .hotel .address {
+            font-size: 16px;
+            color: #929090;
+        }
+
+    .date-box .fa {
+        color: #ccc;
+        line-height: 46px;
+        font-size: 18px;
+    }
+
+    .daterange {
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+        .daterange .date-box {
+            background-color: white;
+            width: 48%;
+            height: 46px;
+            float: left;
+            padding-left: 15px;
+            border: 1px solid #ccc;
+        }
+
+        .daterange .end {
+            margin-left: 2px;
+        }
+
+        .daterange .day {
+            position: absolute;
+            background-color: white;
+            margin: 13px auto;
+            left: 48%;
+            margin-left: -6px;
+        }
+
+    .date-box .fa {
+        float: left;
+        left: 15px;
+    }
+
+    .daterange .date {
+        padding: 6px 10px;
+        font-size: 12px;
+        margin-left: 0px;
+        margin-right: 0px;
+        right: 0px;
+        width: auto;
+    }
+
+        .daterange .date p {
+            padding: 0px;
+            margin: 0px;
+            text-align: left;
+            padding-left: 20px;
+        }
+
+            .daterange .date p:nth-child(2) {
+                color: #ccc;
+            }
+
+    .order {
+        position: relative;
+    }
+
+        .order .order-title {
+            font-size: 18px;
+            border-bottom: 1px solid #ccc;
+            padding: 6px 0px;
+            margin-bottom: 20px;
+            color: #787676;
+        }
+
+            .order .order-title .step {
+                color: #0094ff;
+            }
+
+        .order .date-list {
+            overflow: hidden;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            margin: 20px 0px;
+        }
+
+            .order .date-list li {
+                float: left;
+                width: 125.5px;
+                text-align: center;
+                line-height: 40px;
+                border-right: 1px solid #e5e4e4;
+                border-bottom: 1px solid #e5e4e4;
+            }
+
+                .order .date-list li p {
+                    background: #e5e4e4;
+                    line-height: 40px;
+                    height: 40px;
+                }
+
+    .order-item {
+        margin: 10px 0px;
+        padding: 10px;
+        overflow: hidden;
+    }
+
+    .control-label {
+        font-weight: normal;
+    }
+
+    .order-box {
+        width: 70%;
+        border: 1px solid #ccc;
+        border-radius: 2px;
+        /*background: rgb(248,252,255);*/
+        background: white;
+        padding: 10px;
+        margin-bottom: 30px;
+    }
+
+    .invoice {
+        background: rgb(239,246,252);
+        overflow: hidden;
+        padding: 10px;
+    }
+
+        .invoice .tab-content {
+            background: white;
+            border-left: 1px solid #ccc;
+            border-right: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        .invoice .nav-tabs > li > a {
+            border-radius: 0px;
+            color: black;
+        }
+
+    .order-statistics {
+        position: absolute;
+        float: right;
+        top: 0px;
+        right: 30px;
+        background: white;
+        border: 1px solid #ccc;
+        width: 304px;
+    }
+
+        .order-statistics h4 {
+            background: rgb(71,133,255);
+            height: 60px;
+            margin: 0px;
+            line-height: 60px;
+            text-align: center;
+            color: white;
+        }
+
+        .order-statistics .order-content {
+            padding: 20px 10px;
+        }
+
+    .order-statistics-footer {
+        /*background: rgb(239,246,252);*/
+        padding: 15px 10px;
+        padding-bottom: 15px;
+    }
+
+        .order-statistics-footer .checkbox {
+            margin: 0px;
+        }
+
+        .order-statistics-footer .btn-container {
+            text-align: center;
+            width: 100%;
+            margin-top: 12px;
+        }
+
+        .order-statistics-footer .submit-button {
+            background-color: rgb(71,133,255);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+        }
+
+    .room-select option {
+        display: inline-block;
+        float: left;
+        width: 33%;
+    }
+
+    body {
+        background: #f1f1f1;
+    }
+
+    .disabled {
+        cursor: not-allowed;
+        filter: alpha(opacity=65);
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        opacity: .65;
+    }
+</style>
+<link rel="stylesheet" type="text/css" media="all" href="~/Scripts/assets/plugins/bootstrap-daterangepicker-master/daterangepicker.css" />
+<form class="" id="" method="post" action="/Order/Create">
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.HotelInfoId)
+    @Html.HiddenFor(model => model.HotelName)
+    @Html.HiddenFor(model => model.PriceTypeId)
+    <div class="container-fluid" style="background:#f1f1f1;">
+        <div class="container">
+            <div class="hotel">
+                <div class="hotel-image" style="background:url('@ViewBag.SlideImgFirst.Url') no-repeat;background-size:cover;background-position:center;"></div>
+                <div class="hotel-info">
+                    <p class="name">
+                        @ViewBag.Hotel.Name &nbsp;&nbsp;&nbsp;&nbsp;
+                        @for (var i = 0; i < 4; i++)
+                        {
+                            <span class="fa fa-star"></span>
+                        }
+                    </p>
+                    <p class="english-name">english name</p>
+                    <div class="address">
+                        <span>@ViewBag.Hotel.City.Province.ProvinceName</span>
+                        <span>@ViewBag.Hotel.City.CityName</span>
+                        <span>@ViewBag.Hotel.Adress</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container order">
+        <div class="order-box">
+            <div class="order-item">
+                <h2 class="order-title"><span class="step">01</span> 填写订单</h2>
+                <div class="row form-inline">
+                    <div class="col-md-9">
+                        <div class="daterange">
+                            <div class="day"><span class="day-value">1</span><span class="fa fa-moon-o"></span></div>
+                            <div class="date-box start">
+                                <span class="fa fa-calendar"></span>
+                                <div class="date">
+                                    <p>2018年04月06</p>
+                                    <p>周四</p>
+                                </div>
+                            </div>
+                            <div class="date-box end">
+                                <span class="fa fa-calendar"></span>
+                                <div class="date">
+                                    <p>2018年04月06</p>
+                                    <p>周四</p>
+                                </div>
+                            </div>
+                            @Html.HiddenFor(model => model.StartTime)
+                            @Html.HiddenFor(model => model.EndTime)
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="control-label">房间数量</label>
+                            <select class="form-control input-lg room-select" name="RoomCount" id="RoomCount" style="width:106px;">
+                                @for (var i = 1; i < 10; i++)
+                                {
+                                    <option value="@i" @(ViewBag.RoomCount == i ? "selected" : "")>@i</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="date-list">
+                    @foreach (var p in ViewBag.RoomView.priceView.price)
+                    {
+                        <li>
+                            <p>@p.Date.ToString("MM/dd") (@p.Date.ToString("dddd", new System.Globalization.CultureInfo("zh-cn")))</p>
+                            <span style="color:#ff6a00;font-size:16px;"> ￥@Math.Round(p.UnitPrice, 2)</span>
+                        </li>
+                    }
+                </ul>
+
+                <ul class="text-box-group">
+                    <li>
+                        <div class="row">
+                            <div class="form-inline">
+                                @for (var i = 1; i <= ViewBag.RoomCount; i++)
+                                {
+                                    <div class="form-group col-md-6" style="margin-bottom:4px;">
+                                        <label class="control-label" style="line-height:30px;">客房 @i :&nbsp;&nbsp;</label>
+                                        <input type="text" name="surname" class="form-control" placeholder="姓" style="width:100px;">
+                                        <input type="text" name="name" class="form-control" placeholder="名" style="width:200px;">
+                                    </div>
+                                    <div class="form-group col-md-6 text-right" style="margin-bottom:4px;">
+                                        <input type="text" name="surname" class="form-control" placeholder="姓" style="width:100px;">
+                                        <input type="text" name="name" class="form-control" placeholder="名" style="width:200px;">
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <p class="text-danger" style="margin-top:10px;"><i class="fa fa-exclamation-circle"></i>  至少填写1人，所填姓名入住时与所持证件一致</p>
+                <div class="row" style="margin-top:20px;">
+                    <div class="col-md-2">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="Requirement" value="无烟房"> 无烟房
+                        </label>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="Requirement" value="原房续住"> 原房续住
+                        </label>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="Requirement" name="Requirement" value="其他"> 其他
+                        </label>
+                    </div>
+                    <div class="col-md-8" style="margin-top:5px;">
+                        <input type="text" id="Remarks" name="Remarks" class="form-control" placeholder="备注" style="display:none;">
+                    </div>
+                </div>
+            </div>
+            <div class="order-item">
+                <h2 class="order-title"><span class="step">02</span> 入住人/联系人</h2>
+                <div class="form-inline" style="margin-bottom:30px;">
+                    <div class="form-group">
+                        <label class="control-label"><span class="text-danger">*</span> 姓名:&nbsp;&nbsp;</label>
+                        @Html.EditorFor(model => model.ApplyUser, new { htmlAttributes = new { @class = "form-control", @style = "width:200px;" } })
+                    </div>
+                </div>
+                <p class="text-danger"><i class="fa fa-exclamation-circle"></i> 以下信息至少填写1项，完整地填写信息，帮助我们更好的为您服务！</p>
+                <div class="row form-inline">
+                    <div class="col-md-6 form-group">
+                        <label class="control-label">手机:&nbsp;&nbsp;</label>
+                        @Html.EditorFor(model => model.ApplyPhone, new { htmlAttributes = new { @class = "form-control", @style = "width:200px;", @placeholder = "国内手机(CHINA)" } })
+                    </div>
+                    <div class="col-md-6 form-group text-right">
+                        <label class="control-label">邮箱:&nbsp;&nbsp;</label>
+                        @Html.EditorFor(model => model.ApplyEmail, new { htmlAttributes = new { @class = "form-control", @style = "width:200px;" } })
+                    </div>
+                </div>
+            </div>
+            <div class="order-item">
+                <h2 class="order-title"><span class="step">03</span> 其他付费服务</h2>
+                <p class="color-blue2">暂无附加服务</p>
+            </div>
+
+            <div class="order-item">
+                <h2 class="order-title"><span class="step">04</span> 发票信息</h2>
+                <div class="invoice">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" id="IsInvoice" name="IsInvoice" value="1">
+                            需要发票
+                        </label>
+                    </div>
+                    <p class="text-muted">订单完成三个月内可补开</p>
+                    <div id="invoice_container" style="display:@(Model.IsInvoice==1?"block":"none");">
+                        <ul id="invoiceTabs" class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active">
+
+                                <a href="#personal" id="personal-tab" role="tab" data-toggle="tab" aria-controls="personal" aria-expanded="true">
+                                    <label class="radio-inline">
+                                        <input type="radio" name="invoiceType" id="invoice1" value="1" checked> 个人发票
+                                    </label>
+                                </a>
+                            </li>
+                            <li role="presentation" class="">
+                                <a href="#ordinary" role="tab" id="ordinary-tab" data-toggle="tab" aria-controls="ordinary" aria-expanded="false">
+                                    <label class="radio-inline">
+                                        <input type="radio" name="invoiceType" id="invoice2" value="2"> 增值税普通发票
+                                    </label>
+                                </a>
+                            </li>
+                            <li role="presentation" class="">
+                                <a href="#special" role="tab" id="special-tab" data-toggle="tab" aria-controls="special" aria-expanded="false">
+                                    <label class="radio-inline">
+                                        <input type="radio" name="invoiceType" id="invoice3" value="3"> 增值税专用发票
+                                    </label>
+                                </a>
+                            </li>
+                        </ul>
+                        <div id="myTabContent" class="tab-content">
+                            <div role="tabpanel" class="tab-pane fade active in" id="personal" aria-labelledby="personal-tab">
+
+                                <div class="form-horizontal">
+                                    <div class="form-group" style="margin-bottom:10px;">
+                                        <label class="col-sm-2 control-label">发票抬头</label>
+                                        <div class="col-sm-5">
+                                            <input type="text" name="head" class="form-control" placeholder="住客姓名或公司名称">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="ordinary" aria-labelledby="ordinary-tab">
+                                <div class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">发票抬头</label>
+                                        <div class="col-sm-5">
+                                            <input type="text" class="form-control" name="companyHead">
+                                        </div>
+                                    </div>
+                                    <div class="form-group" style="margin-bottom:10px;">
+                                        <label class="col-sm-2 control-label">纳税人识别号</label>
+                                        <div class="col-sm-5">
+                                            <input type="text" class="form-control" name="taxpayer">
+                                        </div>
+                                        <div class="col-sm-10 col-md-offset-2">
+                                            <p class="text-muted" style="margin-bottom:0px;">税务登记证上唯一识别企业的税号（通常由15位、18位或20位码组成）</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="special" aria-labelledby="dropdown1-tab">
+                                <div class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">公司全称</label>
+                                        <div class="col-sm-5">
+                                            <input type="text" class="form-control" name="Company">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">公司地址</label>
+                                        <div class="col-sm-5">
+                                            <input type="text" class="form-control" name="Address">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">公司电话</label>
+                                        <div class="col-sm-5">
+                                            <input type="text" class="form-control" name="Tel">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">开户银行名称</label>
+                                        <div class="col-sm-5">
+                                            <input type="text" class="form-control" name="Bank">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">开户银行账号</label>
+                                        <div class="col-sm-5">
+                                            <input type="text" class="form-control" name="BankAccount">
+                                        </div>
+                                    </div>
+                                    <div class="form-group" style="margin-bottom:10px;">
+                                        <label class="col-sm-2 control-label">纳税人识别号</label>
+                                        <div class="col-sm-5">
+                                            <input type="text" class="form-control" name="TaxpayerNumber">
+                                        </div>
+                                        <div class="col-sm-10 col-md-offset-2">
+                                            <p class="text-muted" style="margin-bottom:0px;">税务登记证上唯一识别企业的税号（通常由15位、18位或20位码组成）</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p style="border-bottom:1px dashed #ccc;"></p>
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">发票收件人</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control" name="Addressee" placeholder="姓名（中文/拼音）">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">手机号码</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control" name="Phone" placeholder="中国大陆(+86)">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">配送地址</label>
+                                    <div class="col-sm-3">
+                                        @Html.DropDownList("Province", new SelectList(ViewBag.Province, "Id", "ProvinceName", ViewBag.ProvinceId), "==请选择==", new { @class = "form-control province", @data_target = "#City" })
+                                    </div>
+                                    <div class="col-sm-3" id="City">
+                                        @Html.DropDownList("City", new SelectList(ViewBag.City, "Id", "CityName"), "==请选择==", new { @class = "form-control city", @data_target = "#District" })
+                                    </div>
+                                    <div class="col-sm-3" id="District">
+                                        @Html.DropDownList("District", new SelectList(ViewBag.District, "Id", "DistrictName"), "==请选择==", new { @class = "form-control district" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label"></label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="ReceivingAddress" placeholder="详细地址">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">快递费用</label>
+                                    <div class="col-sm-9">
+                                        <div class="radio disabled">
+                                            <label>
+                                                <input type="radio" name="postage" value="option3" checked disabled>
+                                                <i class="fa fa-cny"></i><span style="font-size:18px;color:#ff6a00;">10</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="order-statistics">
+            <h4>订单详情</h4>
+            <div class="order-content">
+                <div class="row">
+                    <div class="col-md-12">
+                    </div>
+                    <div class="col-md-12">
+                        <p class="text-muted">入住房型:</p>
+                        <label>@ViewBag.RoomView.room.Name</label>
+                    </div>
+
+                    <div class="col-md-12">
+                        <span class="text-muted">床型:</span> &nbsp;&nbsp;&nbsp;
+                        <label>@ViewBag.RoomView.room.BedType</label>
+                    </div>
+                    <div class="col-md-6">
+                        <span class="text-muted">早餐:</span> &nbsp;&nbsp;&nbsp;
+                        <label>@ViewBag.RoomView.priceView.priceType.Breakfast</label>
+                    </div>
+                    <div class="col-md-6">
+                        <span class="text-muted">宽带:</span> &nbsp;&nbsp;&nbsp;
+                        <label>@ViewBag.RoomView.priceView.priceType.Broadband</label>
+                    </div>
+                    <div class="col-md-12">
+                        <span class="text-muted">价格名称: </span> &nbsp;&nbsp;&nbsp;<label>@ViewBag.RoomView.priceView.priceType.Name</label>
+                    </div>
+                    <div class="col-md-12">
+                        <span class="text-muted">支付方式: </span> <label>@Enum.GetName(typeof(PayType), ViewBag.RoomView.priceView.priceType.PaymentMethod)</label>
+                    </div>
+                    <div class="col-md-12">
+                       
+
+                        <p>入住日期 @ViewBag.startDate</p>
+                        <p>退房日期 @ViewBag.endDate</p>
+                    </div>
+                    <div style="line-height:30px;">
+                        <div class="col-md-12" style="margin-top:20px;">
+                            <div class="col-md-3 text-muted" style="padding:0px;">房费小计</div>
+                            <div class="col-md-6 text-muted" style="padding:0px;"><p style="border-bottom:1px dashed #ccc;margin-top:15px;"></p></div>
+                            <div class="col-md-3 text-right" style="padding:0px;"><span><i class="fa fa-cny"></i>@ViewBag.RoomView.priceView.sum</span></div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-3 text-muted" style="padding:0px;">间夜数量</div>
+                            <div class="col-md-6 text-muted" style="padding:0px;"><p style="border-bottom:1px dashed #ccc;margin-top:15px;"></p></div>
+                            <div class="col-md-3 text-right" style="padding:0px;"><span>@ViewBag.RoomCount 间 @ViewBag.Days 晚</span></div>
+                        </div>
+                        <div class="col-md-12" id="Express" style="display:none;">
+                            <div class="col-md-3 text-muted" style="padding:0px;">发票快递费</div>
+                            <div class="col-md-6 text-muted" style="padding:0px;"><p style="border-bottom:1px dashed #ccc;margin-top:15px;"></p></div>
+                            <div class="col-md-3 text-right" style="padding:0px;"><span><i class="fa fa-cny"></i>10</span></div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-3 text-muted" style="padding:0px;">总金额</div>
+                            <div class="col-md-6 text-muted" style="padding:0px;"><p style="border-bottom:1px dashed #ccc;margin-top:15px;"></p></div>
+                            <div class="col-md-3 text-right" style="padding:0px;"><span style="color:#ff6a00;"><i class="fa fa-cny"></i><span style="font-size:18px;" id="Total">@ViewBag.RoomView.priceView.sum</span> </span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="order-statistics-footer">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="RederMe" value="" checked>
+                        已阅读并同意《<a href="###">Lantola酒店预订须知</a>》
+                    </label>
+                </div>
+                <div class="btn-container">
+                    <input type="submit" value="提交订单" id="submit_apply" class="submit-button" />
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script type="text/javascript" src="~/Scripts/assets/plugins/bootstrap-daterangepicker-master/moment.js"></script>
+<script type="text/javascript" src="~/Scripts/assets/plugins/bootstrap-daterangepicker-master/daterangepicker.js"></script>
+<script type="text/javascript" src="~/Scripts/assets/plugins/bootstrap-daterangepicker-master/language.js"></script>
+<script src="~/Scripts/city.cascading.js"></script>
+<script>
+    $(function () {
+        var current = moment();
+        var s = moment("@ViewBag.startDate");
+        var e = moment("@ViewBag.endDate");
+        function showDefaultDate(target, start, end) {
+            target.find(".start").eq(0).find("p").eq(0).text(start.format('YYYY年MM月DD日'));
+            target.find(".start").eq(0).find("p").eq(1).text(getWeek(start.format('d')));
+            target.find(".end").eq(0).find("p").eq(0).text(end.format('YYYY年MM月DD日'));
+            target.find(".end").eq(0).find("p").eq(1).text(getWeek(end.format('d')));
+            target.find(".day-value").text(end.diff(start, 'days'));
+            target.find("input[name='StartTime']").val(start.format('YYYY-MM-DD'));
+            target.find("input[name='EndTime']").val(end.format('YYYY-MM-DD'));
+        }
+        showDefaultDate($(".daterange"), s, e);
+        $(".daterange").daterangepicker({
+            "autoApply": true,
+            "startDate": s.format('YYYY年MM月DD日'),
+            "endDate": e.format('YYYY年MM月DD日'),
+            "opens": "center",
+            "minDate": current.format('YYYY年MM月DD日'),
+            locale: locale
+        }, function (start, end, label) {
+            window.location = "/Order/Apply/15cf91af-436f-448b-9eea-017329dfdfbc?HotelInfoId=" + $("#HotelInfoId").val()
+            + "&StartTime=" + start.format('YYYY-MM-DD')
+            + "&EndTime=" + end.format('YYYY-MM-DD')
+            + "&RoomCount=" + $("#RoomCount").val();
+            //showDefaultDate(this.element, start, end);
+        });
+        $('#invoiceTabs a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+
+            $(e.target).find("input[type='radio']").prop('checked', true);
+        })
+        $("#RoomCount").change(function () {
+            window.location = "/Order/Apply/15cf91af-436f-448b-9eea-017329dfdfbc?HotelInfoId=" + $("#HotelInfoId").val()
+            + "&StartTime=" + s.format('YYYY-MM-DD')
+            + "&EndTime=" + e.format('YYYY-MM-DD')
+            + "&RoomCount=" + $(this).val();
+        });
+        $("#Requirement").click(function () {
+            if ($(this).is(":checked")) {
+                $("#Remarks").show();
+            }
+            else {
+                $("#Remarks").hide();
+            }
+        });
+        if ($("#IsInvoice").is(":checked")) {
+            $("#invoice_container").show();
+            $("#Express").show();
+            var t = parseFloat($("#Total").text());
+            $("#Total").text(t + 10);
+        }
+        $("#IsInvoice").click(function () {
+            if ($(this).is(":checked")) {
+                $("#invoice_container").show();
+                $("#Express").show();
+                var t = parseFloat($("#Total").text());
+                $("#Total").text(t + 10);
+            }
+            else {
+                $("#invoice_container").hide();
+                $("#Express").hide();
+                var t = parseFloat($("#Total").text());
+                $("#Total").text(t - 10);
+            }
+        });
+        $("#RederMe").click(function () {
+            if ($(this).is(":checked")) {
+                $("#submit_apply").attr("disabled", false);
+                $("#submit_apply").removeClass("disabled");
+                
+            }
+            else {
+                $("#submit_apply").attr("disabled", true);
+                $("#submit_apply").addClass("disabled");
+            }
+        });
+
+        t = $('.order-statistics').offset().top;
+        $(window).scroll(function (e) {
+            s = $(document).scrollTop();
+            if (s > t) {
+                $('.order-statistics').css('top', s - t + 'px');
+            } else {
+                $('.order-statistics').css('top', '0px');
+            }
+        })
+    });
+</script>

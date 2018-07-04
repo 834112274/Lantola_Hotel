@@ -1,0 +1,183 @@
+﻿@model HotelSystem.Model.HotelInfo
+@{
+    ViewBag.Title = "商户注册";
+    Layout = "~/Views/Shared/_LayoutHeader.cshtml";
+}
+<!--验证脚本-->
+<script src="~/Scripts/jquery.validate.js"></script>
+<!--非嵌入式脚本-->
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+<div class="cooperationbanner" style="background-image:url(/Images/hotelregister1.png);height:200px;"></div>
+@using (Html.BeginForm("Register", "User", FormMethod.Post, new { @class = "hotelregister", enctype = "multipart/form-data" }))
+{
+
+    <div class="hotelregister1">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <p style="color:red;text-align:center;">@ViewBag.Message</p>
+        <div class="hotelregistertitle">   <i class="fa fa-edit"> 企业信息</i></div>
+        <div class="hotelregistercontent">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="Name" class="col-sm-2 control-label">酒店名称</label>
+                            <div class="col-sm-10">
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="Star" class="col-sm-2 control-label">酒店星级</label>
+                            <div class="col-sm-10">
+                                <select name="Star" class="form-control" id="Star">
+                                    <option value="1">六星标准</option>
+                                    <option value="2">挂牌五星</option>
+                                    <option value="3">五星标准</option>
+                                    <option value="4">挂牌四星</option>
+                                    <option value="5">四星标准</option>
+                                    <option value="6">挂牌三星</option>
+                                    <option value="7">三星标准</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="Tel" class="col-sm-2 control-label">联系电话</label>
+                            <div class="col-sm-10">
+                                @Html.EditorFor(model => model.Tel, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Tel, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="ProvinceId" class="col-sm-2 control-label">省份</label>
+                            <div class="col-sm-10">
+
+                                @Html.DropDownList("ProvinceId", new SelectList(ViewBag.Province, "Id", "ProvinceName", ViewBag.ProvinceId),"==请选择==", new { @class = "form-control province", @data_target = "#City" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="CityId" class="col-sm-2 control-label">城市</label>
+                            <div class="col-sm-10" id="City">
+                                <div id="City">
+                                    @Html.DropDownListFor(m => m.CityId, new SelectList(ViewBag.City, "Id", "CityName"), "==请选择==", new { @class = "form-control city", @data_target = "#District" })
+                                </div>
+
+                                @Html.ValidationMessageFor(model => model.CityId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="DistrictId" class="col-sm-2 control-label">区/县</label>
+                            <div class="col-sm-10">
+                                <div id="District">
+
+                                    @Html.DropDownListFor(m => m.DistrictId, new SelectList(ViewBag.District, "Id", "DistrictName"), "==请选择==", new { @class = "form-control district" })
+                                </div>
+
+                                @Html.ValidationMessageFor(model => model.DistrictId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="Adress" class="col-sm-2 control-label">详细地址</label>
+                            <div class="col-sm-10">
+                                @Html.EditorFor(model => model.Adress, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Adress, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hotelregister1">
+
+        <div class="hotelregistertitle"><i class="fa fa-edit"> 联系人信息</i></div>
+        <div class="hotelregistercontent">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="Contact" class="col-sm-2 control-label">联系姓名</label>
+                            <div class="col-sm-10">
+                                @Html.EditorFor(model => model.Contact, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Contact, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="Phone" class="col-sm-2 control-label">联系手机</label>
+                            <div class="col-sm-10">
+                                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="Email" class="col-sm-2 control-label">联系邮箱</label>
+                            <div class="col-sm-10">
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hotelregister1">
+        <div class="hotelregistertitle"><i class="fa fa-edit"> 材料信息</i></div>
+        <div class="hotelregistercontent" style="padding-bottom:60px;">
+
+            <input name="BusinessLicense" type="file" accept=".jpg,.png,jpeg" style="display:none;" id="BusinessLicense" class="hotelregisterimageup2 upload-image" />
+            <div class="hotelregisterimageup" onclick="jQuery('#BusinessLicense').click();">
+                <div class="word">营业执照</div>
+                <div class="hotelregisterimageup4 preview"></div>
+                <span>+</span>
+            </div>
+
+            <input name="Franchise" type="file" accept=".jpg,.png,jpeg" style="display:none;" id="Franchise" class="hotelregisterimageup2 upload-image" />
+            <div class="hotelregisterimageup" style="margin-right:250px;" onclick="$('#Franchise').click();">
+                <div class="word">特许经营许可证</div>
+                <div class="hotelregisterimageup4 preview"></div>
+                <span>+</span>
+            </div>
+
+            <div class="hotelregisterimageword">证件上传说明：<br />1. 保证证件的真实有效性。<br />2. 检查证件是否在有效期内，可正常使用<br />3. 保证证件图片内文字清晰可辨认。<br />4. 上传证件图片大小在2M以内。</div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="hotelregister2">备注说明：　　1.LANTOLA提供免费后台。　　　　2.官方直销，平台佣金全免。　　　　 3.基础结算周期为15天</div>
+    <input type="submit" class="hotelregisterbutton" value="提交信息" />
+}
+
+<script src="~/Scripts/upload.preview.js"></script>
+<script src="~/Scripts/city.cascading.js"></script>

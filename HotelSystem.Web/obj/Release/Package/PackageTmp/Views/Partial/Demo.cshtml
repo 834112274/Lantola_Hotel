@@ -1,0 +1,41 @@
+﻿<div id="Province">
+    @Html.Action("Province", "Partial", new { id = "" })
+</div>
+<div id="City">
+    @Html.Action("City", "Partial", new { id = "30" })
+</div>
+<div id="District">
+    @Html.Action("District", "Partial", new { id = "30" })
+</div>
+
+<script src="~/Scripts/jquery-1.7.2.min.js"></script>
+<script>
+    $(function () {
+        $(document.body).on("change", ".province,.city", function () {
+            var id = $(this).val();
+            var target = $(this).data("target");
+            if ($(this).hasClass("province")) {
+                $(target).find(".city").html("");
+                $($(target).find(".city").data("target")).find(".district").html("");
+            }
+            else {
+                $(target).find(".district").html("");
+            }
+            var url = $(this).hasClass("province") ? "/Partial/City" : "/Partial/District";
+            $.ajax({
+                url: url,
+                data: { id: id },
+                type: "get",
+                dataType: "text",
+                success: function (data) {
+                    if (target) {
+                        $(target).html(data);
+                    }
+                },
+                error: function (e) {
+                    console.log(e);
+                }
+            });
+        })
+    })
+</script>

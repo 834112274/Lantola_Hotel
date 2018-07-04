@@ -1,0 +1,47 @@
+﻿@model PagedList<HotelSystem.Model.Order>
+@using HotelSystem.Model;
+@using Webdiyer.WebControls.Mvc
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>订单号</th>
+            <th class="sort-item"><p>下单时间</p></th>
+            <th><p>酒店名</p><p>房型</p> </th>
+            <th>联系电话</th>
+            <th>入住人</th>
+            <th class="sort-item"><p>入住退房日期</p><p>间夜数</p></th>
+            <th>订单金额</th>
+            <th>来源</th>
+            <th>订单状态</th>
+            <th>支付状态</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td>@order.Number</td>
+                <td>@order.CreateTime.ToString("yyyy-MM-dd") <p>@order.CreateTime.ToString("HH:mm:ss")</p></td>
+                <td><a href="###">@order.HotelName</a> <p>@order.RoomName</p> </td>
+                <td>@order.ApplyPhone</td>
+                <td>
+                    @foreach (var t in order.Occupant)
+                    {
+                        <p>@t.Name</p>
+                    }
+                </td>
+                <td><p>@order.StartTime.ToString("yyyy-MM-dd")</p><p>@order.EndTime.ToString("yyyy-MM-dd")</p><p>@order.RoomCount 间@((order.StartTime - order.EndTime).Days.ToString())晚</p> </td>
+                <td><label>@order.Total</label></td>
+                <td>@(order.GuestUser.Type==1?"普通客户":"企业客户")</td>
+                <td>@Enum.GetName(typeof(OrderState), Convert.ToInt32(order.State)) </td>
+                <td>@(order.Payment ? "已支付" : "未支付")</td>
+                <td>
+                    <p><a href="###">接单</a></p>
+                    <p><a href="###">订单详情</a></p>
+                    <p><a href="###">取消订单</a></p>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

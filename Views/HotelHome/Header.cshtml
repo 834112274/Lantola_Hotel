@@ -1,0 +1,120 @@
+﻿@{
+    Layout = null;
+}
+<link href='~/Scripts/Hotel/Css/header.css' rel='stylesheet' type='text/css' />
+<link href='~/Scripts/Hotel/Css/lantola.css' rel='stylesheet' type='text/css' />
+<style>
+    .header-menu li:first-child {
+        margin-left: 40px;
+    }
+
+    .header-menu li {
+        float: left;
+        height: 76px;
+        padding-left: 15px;
+        padding-right: 15px;
+        line-height: 76px;
+        margin-right: 4px;
+    }
+
+        .header-menu li:hover {
+            background: #040404;
+        }
+
+        .header-menu li a:hover {
+            color: white;
+        }
+
+        .header-menu li a {
+            height: 100%;
+            width: 100%;
+            color: #747373;
+            font-size: 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+            .header-menu li a:focus {
+                outline: none;
+            }
+
+    .header-menu .active {
+        background: #040404;
+    }
+
+        .header-menu .active a {
+            color: white;
+        }
+</style>
+<div class="tope tope_2" style="background-color:white;width:100%;position:absolute;float:left;z-index:10;top:0px;box-shadow:0px 2px 10px #494949;">
+    <div class="container">
+        <div class="top2">
+            <a href="#"><img src="@ViewBag.Logo"></a>
+            <ul class="header-menu">
+                <li>@Html.ActionLink("酒店首页", "Index", new { id = ViewBag.Id })</li>
+                <li>@Html.ActionLink("会议室", "Boardroom", new { id = ViewBag.Id })</li>
+                <li>@Html.ActionLink("餐饮美食", "Restaurant", new { id = ViewBag.Id })</li>
+                <li>@Html.ActionLink("活动", "Activity", new { id = ViewBag.Id })</li>
+                <li>@Html.ActionLink("酒店图片", "Album", new { id = ViewBag.Id },new { @class = "album-view-btn" })</li>
+                <li>@Html.ActionLink("到达指引", "Map", new { id = ViewBag.Id })</li>
+                <li><a href="/HotelHome/Index/@ViewBag.Id#About">关于酒店</a></li>
+            </ul>
+            <div class="login navbar" style="width:auto;height:76px;line-height:76px;border-bottom:none;padding:0px;">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown visible-md visible-lg" style="border-right:solid 1px #e6e2e2;">
+                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" style="line-height:76px;padding:0 20px;font-size:16px;"> 登录</a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-menu-header">
+                                <strong>登录LANTOLA帐户</strong>
+                            </li>
+                            <li>
+                                <form>
+                                    <input type="text" value="" placeholder="请输入用户名" class="denglu3">
+                                    <input type="password" value="" placeholder="请输入密码" class="denglu4">
+                                    <a href="#" style="display:block">
+                                        <input type="submit" value="登录" class="denglu5">
+                                    </a>
+                                    <a href="#" style="display:block;text-align:right;">忘记密码？</a>
+                                </form><!---->
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown visible-md visible-lg"><a href="javascript:;" style="line-height:76px;padding:0 20px;font-size:16px;" class="Register"> 注册</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="view-box"></div>
+<script>
+    $(document).ready(function () {
+
+        $(".denglu").click(function () {
+            $(".denglu1").css({ 'display': 'block' });
+            $(".denglu6").css({ 'display': 'block' });
+        })
+
+        $(".denglu6").click(function () {
+            $(this).css({ 'display': 'none' });
+            $(".denglu1").css({ 'display': 'none' });
+        })
+        $(".Register").click(function () {
+
+            $(".zhuce1").slideToggle();
+        })
+        var url = window.location.href;
+        $(".header-menu a").each(function (index) {
+            if (url.indexOf($(this).attr("href")) > 0) {
+                $(this).parents().addClass("active");
+            }
+            else {
+                $(this).parents().removeClass("active");
+            }
+        });
+        $(document.body).on("click", ".album-view-btn", function () {
+            var url = $(this).attr("href");
+            $("#view-box").load(url);
+            return false;
+        })
+    })
+</script>

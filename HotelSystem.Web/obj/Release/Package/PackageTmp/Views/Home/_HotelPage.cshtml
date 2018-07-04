@@ -1,0 +1,67 @@
+﻿@model PagedList<HotelSystem.Web.Models.View.HotelView>
+@using Webdiyer.WebControls.Mvc
+<div class="container" style="padding:0px;">
+
+    @foreach (var h in Model)
+    {
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="media">
+                    <div class="media-left">
+                        @if (@h.hotelInfo.HotelImages.Count() > 0)
+                        {
+                            <a href="/HotelHome/Index/@h.hotelInfo.Id" class="media-object" style="background:url('@h.hotelInfo.HotelImages.First().Url') no-repeat;background-size:cover;background-position:center;">
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="/HotelHome/Index/@h.hotelInfo.Id" class="media-object" style="background:url('') no-repeat;background-size:cover;background-position:center;">
+                            </a>
+                        }
+                    </div>
+                    <div class="media-body">
+                        <div class="media-right">
+
+                            <div class="score">
+                                9.3
+                            </div>
+                            <div class="score-info">
+                                <div>评分</div>
+                                <div class="english">121条住客评论</div>
+                            </div>
+                            <div style="clear:both;"></div>
+                            <p class="price">@h.minPrice 元</p>
+                            <a class="btn-details" href="/HotelHome/Index/@h.hotelInfo.Id" target="_blank">查看我们最后几间空房 ></a>
+                        </div>
+                        <h4 class="media-heading">
+                            @h.hotelInfo.Name
+                            @for (var i = 0; i < h.hotelInfo.Star; i++)
+                            {
+                                <span class="fa fa-star star"></span>
+                            }
+                        </h4>
+
+                        <p class="english">@h.hotelInfo.EnglishName</p>
+                        <div class="adress"><span class="fa fa-map-marker"></span> <a href="javascript:;">@h.hotelInfo.City.CityName @h.hotelInfo.District.DistrictName @h.hotelInfo.Adress</a>  </div>
+                        <div class="popularity">
+                            <span class="tag">人气</span>
+                            <span class="summary">最后的预定：6小时之前</span>
+                        </div>
+                        <div class="policy">
+                            @foreach (var p in h.hotelInfo.HotelPolicy)
+                            {
+                                <span>@p.Value</span>
+                            }
+                            <span class="fa fa-institution"></span>
+                            <span class="fa fa-rss-square"></span>
+                            <span class="fa fa-road"></span>
+                            <span class="fa fa-rocket"></span>
+                            <span class="fa fa-ship"></span>
+                            <span class="fa fa-trophy"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

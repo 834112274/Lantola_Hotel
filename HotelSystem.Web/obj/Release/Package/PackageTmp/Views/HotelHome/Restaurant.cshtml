@@ -1,0 +1,92 @@
+﻿@model HotelSystem.Model.Restaurant
+
+
+@{
+    ViewBag.Title = "餐饮美食";
+    Layout = "~/Views/Shared/_LayoutHotel.cshtml";
+}
+<style>
+    .carousel{
+        width:80%;
+        display:inline-block;
+        float:left;
+    }
+    .carousel-inner{
+        height:100%;
+    }
+    .carousel-inner .item{
+        height:100%;
+        text-align:center;
+    }
+    .carousel-inner img{
+        height:100%!important;
+        margin:0px auto;
+    }
+    .restaurant-info{
+        width:20%;
+        display:inline-block;
+        float:left;
+        padding:20px;
+    }
+</style>
+<div class="container-fluid" style="padding:0px;">
+    <div id="slide" class="carousel slide" data-ride="carousel" style="height:500px;">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#slide" data-slide-to="0" class="active"></li>
+            <li data-target="#slide" data-slide-to="1"></li>
+            <li data-target="#slide" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active" style="background:url('@Html.DisplayFor(model => model.Image1)') no-repeat;background-size:cover;background-position:center;">
+                <div class="carousel-caption">
+                    
+                </div>
+            </div>
+            <div class="item" style="background:url('@Html.DisplayFor(model => model.Image2)') no-repeat;background-size:cover;background-position:center;">
+                <div class="carousel-caption">
+                    
+                </div>
+            </div>
+            <div class="item" style="background:url('@Html.DisplayFor(model => model.Image3)') no-repeat;background-size:cover;background-position:center;">
+                <div class="carousel-caption">
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#slide" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#slide" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <div class="restaurant-info">
+        <div class="row">
+            <div></div>
+        </div>
+        @Html.DisplayFor(model => model.Describe)
+        <h4>营业时间：</h4>
+        <hr />
+        @Html.DisplayFor(model => model.BreakfastTime)<br />
+        @Html.DisplayFor(model => model.LunchTime)<br />
+        @Html.DisplayFor(model => model.DinnerTime)<br />
+        @Html.DisplayFor(model => model.Seat)<br />
+        @Html.DisplayFor(model => model.Clothing)<br />
+        @Html.DisplayFor(model => model.Place)<br />
+        @Html.DisplayFor(model => model.Reserve)<br />
+    </div>
+</div>
+<script>
+    $(function () {
+        $("#slide").css("height", $(window).height() - 76-50);
+    })
+</script>
+
+

@@ -1,0 +1,242 @@
+﻿<style>
+    .comment-box {
+        height: 240px;
+        border: 1px solid #e5e5e5;
+        float: left;
+        width: 50%;
+        margin-right: 40px;
+    }
+
+    .comment-textarea {
+        width: 100%;
+        resize: none;
+        height: 172px;
+        border: 0;
+        line-height: 25px;
+        border-bottom: 1px solid #e5e5e5;
+        padding: 15px;
+    }
+
+    .comment-upload {
+        padding: 7px 20px;
+        height: 60px;
+        overflow: hidden;
+        line-height: 44px;
+    }
+
+        .comment-upload .title {
+            width: 60px;
+            font-size: 14px;
+            color: #0080ba;
+            height: 100%;
+            float: left;
+        }
+
+        .comment-upload .upload-btn {
+            background-color: #fff;
+            border: 0px;
+            padding: 0px;
+            cursor: pointer;
+            display: inline-block;
+            height: 100%;
+        }
+
+            .comment-upload .upload-btn span:nth-child(1) {
+                font-size: 42px;
+            }
+
+    .upload-form {
+        float: left;
+        line-height: 44px;
+        height: 100%;
+    }
+
+    .preview {
+        height: 100%;
+        float: left;
+        margin-bottom:8px;
+    }
+
+    .score {
+        float: left;
+    }
+
+        .score .score-item {
+            height: 60px;
+            line-height: 50px;
+        }
+
+            .score .score-item ul {
+                float: left;
+            }
+
+                .score .score-item ul li {
+                    float: left;
+                    margin: 0px 8px;
+                    font-size: 18px;
+                    color: #808080;
+                    color: #ffd800;
+                }
+
+                    .score .score-item ul li span {
+                        cursor: pointer;
+                    }
+
+        .score .title {
+            color: #0080ba;
+            width: 130px;
+            float: left;
+            height: 100%;
+        }
+
+        .score .info-btn {
+            float: left;
+            height: 22px;
+            border: 1px solid #0080ba;
+            color: #0080ba;
+            text-align: center;
+            line-height: 22px;
+            margin: 13px 14px;
+            margin-right: 14px;
+            font-size: 12px;
+            font-family: "宋体";
+            width: 60px;
+            margin-right: 0;
+            background-color: #fff;
+            padding: 0px;
+            display: none;
+        }
+
+    .img-view {
+        height: 100%;
+        width: 44px;
+        float: left;
+        margin: 0 10px;
+        position: relative;
+    }
+
+        .img-view img {
+            height: 100%;
+            width: 100%;
+        }
+
+        .img-view span {
+            display: block;
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            height: 12px;
+            width: 12px;
+            border-radius: 100%;
+            overflow: hidden;
+            font-size: 12px;
+            color: #333;
+            background-color: #fff;
+            line-height: 12px;
+            text-align: center;
+            -webkit-text-size-adjust: none;
+            cursor: pointer;
+        }
+</style>
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title">评论<small>@ViewBag.Order.HotelName</small></h4>
+</div>
+<div class="modal-body">
+    <form id="comment_form">
+        <input name="order" type="hidden" value="@ViewBag.Order.Id">
+        <input name="hotel" type="hidden" value="@ViewBag.Order.HotelInfoId">
+        <div class="comment-container">
+            <div class="comment-box">
+                <textarea name="content" class="comment-textarea"></textarea>
+                <div class="comment-upload">
+                    <div class="title">晒图片</div>
+                    <div class="preview" id="preview">
+                    </div>
+                    <div class="upload-form">
+                        <a class="upload-btn" onclick="$('#upload_file').click();"><span class="fa fa-plus-square-o"></span></a>
+                        <input accept=".jpeg,.png,.jpg" type="file" id="upload_file" class="hide"><!--onchange="commentwriteimg()"-->
+                    </div>
+                    <div class="text-muted" style="line-height:44px;float:left;">最多可上传五张</div>
+                </div>
+            </div>
+            <div class="score">
+                @foreach (var m in ViewBag.ScoreType)
+                {
+                    <div class="score-item">
+                        <div class="title">@m.Name</div>
+                        <ul>
+                            <li><span class="fa fa-star-o"></span></li>
+                            <li><span class="fa fa-star-o"></span></li>
+                            <li><span class="fa fa-star-o"></span></li>
+                            <li><span class="fa fa-star-o"></span></li>
+                            <li><span class="fa fa-star-o"></span></li>
+                        </ul>
+                        <button type="button" class="info-btn">一般</button>
+                        <input name="score" type="hidden" data-scoreid="@m.Id" value="">
+                    </div>
+                }
+            </div>
+            <div class="clear"></div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+    <button type="button" class="btn btn-primary" id="cofim_form">提交评论</button>
+</div>
+<script>
+    $("#upload_file").click(function () {
+        if ($(".preview .remove").length < 5) {
+            return true;
+        }
+        else {
+            alert("上传图片不能超过5张！");
+            return false;
+        }
+    })
+    $("#upload_file").change(function () {
+        var reader = new FileReader();
+        reader.readAsDataURL(this.files[0]);
+        reader.onload = function (e) {
+            $("#preview").append('<div class="img-view"><img src="' + this.result + '" /><input type="hidden" name="imgs" value="' + this.result + '" /><span class="remove">X</span></div>');
+        }
+    });
+    $(".preview").on("click", ".remove", function () {
+        $(this).parent().remove();
+    })
+    $("#cofim_form").click(function () {
+
+        var formData = $("#comment_form").serializeArray();
+        var data = { content:"",score:[],imgs:[]};
+        $.each(formData, function (index,value) {
+            if (value.name == "score") {
+                data.score.push(value.value);
+            }
+            else if (value.name == "imgs") {
+                data.imgs.push(value.value);
+            }
+            else {
+                data[value.name] = value.value;
+            }
+        })
+        $.ajax({
+            url: "/User/CreateComment",
+            type: "post",
+            dateType: "json",
+            data: data,
+            success: function (r) {
+                r = $.parseJSON(r);
+                if (r.result == "success") {
+                    $('#comment_modal').modal('hide')
+                }
+                
+                alert(r.msg);
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+    });
+    
+</script>

@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "站内消息";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Manage", "Notice", FormMethod.Post))
+{
+
+    <div class="container">
+        <div class="page-header">
+            <h1>站内消息 <small></small></h1>
+        </div>
+        @if (ViewBag.Message != null)
+        {
+            <div class="alert alert-warning alert-dismissible fade in" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                @Html.Raw(ViewBag.Message)
+            </div>
+        }
+        <div class="form-group" style="margin-left:0px;margin-right:0px;">
+            <label>接收人</label>
+            <input type="text" name="ToUser" class="form-control" placeholder="散客或企业用户 用户ID、用户名、手机、邮箱" value="@ViewBag.ToUser">
+        </div>
+        <div class="form-group" style="margin-left:0px;margin-right:0px;">
+            <label>消息标题</label>
+            <input type="text" name="Title" class="form-control" placeholder="标题" value="@ViewBag.ToUser">
+        </div>
+
+       
+        <textarea name="Content" style="width:100%;height:150px;resize: none;" placeholder="消息内容（400字以内）">@ViewBag.Content</textarea>
+        <button type="submit" class="btn btn-default">发送</button>
+    </div>
+
+}
+

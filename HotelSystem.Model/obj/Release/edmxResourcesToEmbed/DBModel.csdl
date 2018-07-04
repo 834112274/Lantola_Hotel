@@ -1,0 +1,2517 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="DBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="DBModelContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Menu" EntityType="DBModel.Menu" />
+    <EntitySet Name="Users" EntityType="DBModel.Users" />
+    <EntitySet Name="UserRole" EntityType="DBModel.UserRole" />
+    <AssociationSet Name="MenuUserRole" Association="DBModel.MenuUserRole">
+      <End Role="Menu" EntitySet="Menu" />
+      <End Role="UserRole" EntitySet="UserRole" />
+    </AssociationSet>
+    <EntitySet Name="City" EntityType="DBModel.City" />
+    <EntitySet Name="District" EntityType="DBModel.District" />
+    <EntitySet Name="Province" EntityType="DBModel.Province" />
+    <AssociationSet Name="FK_City_Province" Association="DBModel.FK_City_Province">
+      <End Role="Province" EntitySet="Province" />
+      <End Role="City" EntitySet="City" />
+    </AssociationSet>
+    <AssociationSet Name="FK_District_City" Association="DBModel.FK_District_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="District" EntitySet="District" />
+    </AssociationSet>
+    <EntitySet Name="HotelInfo" EntityType="DBModel.HotelInfo" />
+    <AssociationSet Name="FK_CityHotelInfo" Association="DBModel.FK_CityHotelInfo">
+      <End Role="City" EntitySet="City" />
+      <End Role="HotelInfo" EntitySet="HotelInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DistrictHotelInfo" Association="DBModel.FK_DistrictHotelInfo">
+      <End Role="District" EntitySet="District" />
+      <End Role="HotelInfo" EntitySet="HotelInfo" />
+    </AssociationSet>
+    <EntitySet Name="HotelImages" EntityType="DBModel.HotelImages" />
+    <AssociationSet Name="HotelInfoHotelImages" Association="DBModel.HotelInfoHotelImages">
+      <End Role="HotelInfo" EntitySet="HotelInfo" />
+      <End Role="HotelImages" EntitySet="HotelImages" />
+    </AssociationSet>
+    <EntitySet Name="Policy" EntityType="DBModel.Policy" />
+    <EntitySet Name="HotelPolicy" EntityType="DBModel.HotelPolicy" />
+    <AssociationSet Name="HotelInfoHotelPolicy" Association="DBModel.HotelInfoHotelPolicy">
+      <End Role="HotelInfo" EntitySet="HotelInfo" />
+      <End Role="HotelPolicy" EntitySet="HotelPolicy" />
+    </AssociationSet>
+    <AssociationSet Name="PolicyHotelPolicy" Association="DBModel.PolicyHotelPolicy">
+      <End Role="Policy" EntitySet="Policy" />
+      <End Role="HotelPolicy" EntitySet="HotelPolicy" />
+    </AssociationSet>
+    <EntitySet Name="Restaurant" EntityType="DBModel.Restaurant" />
+    <AssociationSet Name="HotelInfoRestaurant" Association="DBModel.HotelInfoRestaurant">
+      <End Role="HotelInfo" EntitySet="HotelInfo" />
+      <End Role="Restaurant" EntitySet="Restaurant" />
+    </AssociationSet>
+    <EntitySet Name="Guide" EntityType="DBModel.Guide" />
+    <AssociationSet Name="HotelInfoGuide" Association="DBModel.HotelInfoGuide">
+      <End Role="HotelInfo" EntitySet="HotelInfo" />
+      <End Role="Guide" EntitySet="Guide" />
+    </AssociationSet>
+    <EntitySet Name="Activity" EntityType="DBModel.Activity" />
+    <AssociationSet Name="HotelInfoActivity" Association="DBModel.HotelInfoActivity">
+      <End Role="HotelInfo" EntitySet="HotelInfo" />
+      <End Role="Activity" EntitySet="Activity" />
+    </AssociationSet>
+    <EntitySet Name="Conference" EntityType="DBModel.Conference" />
+    <EntitySet Name="ConferenceRoom" EntityType="DBModel.ConferenceRoom" />
+    <AssociationSet Name="HotelInfoConference" Association="DBModel.HotelInfoConference">
+      <End EntitySet="HotelInfo" Role="HotelInfo" />
+      <End EntitySet="Conference" Role="Conference" />
+    </AssociationSet>
+    <AssociationSet Name="ConferenceConferenceRoom" Association="DBModel.ConferenceConferenceRoom">
+      <End EntitySet="Conference" Role="Conference" />
+      <End EntitySet="ConferenceRoom" Role="ConferenceRoom" />
+    </AssociationSet>
+    <EntitySet Name="Room" EntityType="DBModel.Room" />
+    <AssociationSet Name="HotelInfoRoom" Association="DBModel.HotelInfoRoom">
+      <End Role="HotelInfo" EntitySet="HotelInfo" />
+      <End Role="Room" EntitySet="Room" />
+    </AssociationSet>
+    <EntitySet Name="RoomImages" EntityType="DBModel.RoomImages" />
+    <AssociationSet Name="RoomRoomImages" Association="DBModel.RoomRoomImages">
+      <End Role="Room" EntitySet="Room" />
+      <End Role="RoomImages" EntitySet="RoomImages" />
+    </AssociationSet>
+    <EntitySet Name="HotelUsers" EntityType="DBModel.HotelUsers" />
+    <AssociationSet Name="HotelInfoHotelUser" Association="DBModel.HotelInfoHotelUser">
+      <End Role="HotelInfo" EntitySet="HotelInfo" />
+      <End Role="HotelUser" EntitySet="HotelUsers" />
+    </AssociationSet>
+    <EntitySet Name="HotelService" EntityType="DBModel.HotelService" />
+    <AssociationSet Name="HotelInfoHotelService" Association="DBModel.HotelInfoHotelService">
+      <End Role="HotelInfo" EntitySet="HotelInfo" />
+      <End Role="HotelService" EntitySet="HotelService" />
+    </AssociationSet>
+    <EntitySet Name="HomeConfig" EntityType="DBModel.HomeConfig" />
+    <EntitySet Name="Feature" EntityType="DBModel.Feature" />
+    <EntitySet Name="FeatureHotel" EntityType="DBModel.FeatureHotel" />
+    <AssociationSet Name="HotelInfoFeatureHotel" Association="DBModel.HotelInfoFeatureHotel">
+      <End Role="HotelInfo" EntitySet="HotelInfo" />
+      <End Role="FeatureHotel" EntitySet="FeatureHotel" />
+    </AssociationSet>
+    <AssociationSet Name="FeatureFeatureHotel" Association="DBModel.FeatureFeatureHotel">
+      <End Role="Feature" EntitySet="Feature" />
+      <End Role="FeatureHotel" EntitySet="FeatureHotel" />
+    </AssociationSet>
+    <EntitySet Name="Cooperative" EntityType="DBModel.Cooperative" />
+    <EntitySet Name="GuestUser" EntityType="DBModel.GuestUser" />
+    <EntitySet Name="Order" EntityType="DBModel.Order" />
+    <EntitySet Name="Comment" EntityType="DBModel.Comment" />
+    <EntitySet Name="Collection" EntityType="DBModel.Collection" />
+    <EntitySet Name="Message" EntityType="DBModel.Message" />
+    <EntitySet Name="Article" EntityType="DBModel.Article" />
+    <AssociationSet Name="GuestUserOrder" Association="DBModel.GuestUserOrder">
+      <End Role="GuestUser" EntitySet="GuestUser" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="HotelInfoOrder" Association="DBModel.HotelInfoOrder">
+      <End Role="HotelInfo" EntitySet="HotelInfo" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="OrderComment" Association="DBModel.OrderComment">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="Comment" EntitySet="Comment" />
+    </AssociationSet>
+    <AssociationSet Name="GuestUserComment" Association="DBModel.GuestUserComment">
+      <End Role="GuestUser" EntitySet="GuestUser" />
+      <End Role="Comment" EntitySet="Comment" />
+    </AssociationSet>
+    <AssociationSet Name="CollectionGuestUser" Association="DBModel.CollectionGuestUser">
+      <End Role="Collection" EntitySet="Collection" />
+      <End Role="GuestUser" EntitySet="GuestUser" />
+    </AssociationSet>
+    <EntitySet Name="PriceType" EntityType="DBModel.PriceType" />
+    <EntitySet Name="Price" EntityType="DBModel.Price" />
+    <AssociationSet Name="RoomPriceType" Association="DBModel.RoomPriceType">
+      <End Role="Room" EntitySet="Room" />
+      <End Role="PriceType" EntitySet="PriceType" />
+    </AssociationSet>
+    <AssociationSet Name="PriceTypePrice" Association="DBModel.PriceTypePrice">
+      <End Role="PriceType" EntitySet="PriceType" />
+      <End Role="Price" EntitySet="Price" />
+    </AssociationSet>
+    <AssociationSet Name="PriceTypeOrder" Association="DBModel.PriceTypeOrder">
+      <End Role="PriceType" EntitySet="PriceType" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <EntitySet Name="Occupant" EntityType="DBModel.Occupant" />
+    <EntitySet Name="Invoice" EntityType="DBModel.Invoice" />
+    <EntitySet Name="DaysPrice" EntityType="DBModel.DaysPrice" />
+    <AssociationSet Name="PriceTypeDaysPrice" Association="DBModel.PriceTypeDaysPrice">
+      <End Role="PriceType" EntitySet="PriceType" />
+      <End Role="DaysPrice" EntitySet="DaysPrice" />
+    </AssociationSet>
+    <AssociationSet Name="OrderDaysPrice" Association="DBModel.OrderDaysPrice">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="DaysPrice" EntitySet="DaysPrice" />
+    </AssociationSet>
+    <AssociationSet Name="OrderOccupant" Association="DBModel.OrderOccupant">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="Occupant" EntitySet="Occupant" />
+    </AssociationSet>
+    <EntitySet Name="GuestInvoice" EntityType="DBModel.GuestInvoice" />
+    <AssociationSet Name="GuestUserGuestInvoice" Association="DBModel.GuestUserGuestInvoice">
+      <End Role="GuestUser" EntitySet="GuestUser" />
+      <End Role="GuestInvoice" EntitySet="GuestInvoice" />
+    </AssociationSet>
+    <AssociationSet Name="ProvinceInvoice" Association="DBModel.ProvinceInvoice">
+      <End Role="Province" EntitySet="Province" />
+      <End Role="Invoice" EntitySet="Invoice" />
+    </AssociationSet>
+    <AssociationSet Name="CityInvoice" Association="DBModel.CityInvoice">
+      <End Role="City" EntitySet="City" />
+      <End Role="Invoice" EntitySet="Invoice" />
+    </AssociationSet>
+    <AssociationSet Name="DistrictInvoice" Association="DBModel.DistrictInvoice">
+      <End Role="District" EntitySet="District" />
+      <End Role="Invoice" EntitySet="Invoice" />
+    </AssociationSet>
+    <AssociationSet Name="HotelInfoCollection" Association="DBModel.HotelInfoCollection">
+      <End Role="HotelInfo" EntitySet="HotelInfo" />
+      <End Role="Collection" EntitySet="Collection" />
+    </AssociationSet>
+    <EntitySet Name="transaction" EntityType="DBModel.transaction" />
+    <AssociationSet Name="Order_transaction" Association="DBModel.Order_transaction">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="transaction" EntitySet="transaction" />
+    </AssociationSet>
+    <EntitySet Name="Score" EntityType="DBModel.Score" />
+    <AssociationSet Name="HotelInfoScore" Association="DBModel.HotelInfoScore">
+      <End Role="HotelInfo" EntitySet="HotelInfo" />
+      <End Role="Score" EntitySet="Score" />
+    </AssociationSet>
+    <EntitySet Name="ScoreType" EntityType="DBModel.ScoreType" />
+    <AssociationSet Name="ScoreTypeScore" Association="DBModel.ScoreTypeScore">
+      <End Role="ScoreType" EntitySet="ScoreType" />
+      <End Role="Score" EntitySet="Score" />
+    </AssociationSet>
+    <AssociationSet Name="CommentScore" Association="DBModel.CommentScore">
+      <End Role="Comment" EntitySet="Comment" />
+      <End Role="Score" EntitySet="Score" />
+    </AssociationSet>
+    <EntitySet Name="Reply" EntityType="DBModel.Reply" />
+    <AssociationSet Name="HotelUsersReply" Association="DBModel.HotelUsersReply">
+      <End Role="HotelUsers" EntitySet="HotelUsers" />
+      <End Role="Reply" EntitySet="Reply" />
+    </AssociationSet>
+    <AssociationSet Name="CommentReply" Association="DBModel.CommentReply">
+      <End Role="Comment" EntitySet="Comment" />
+      <End Role="Reply" EntitySet="Reply" />
+    </AssociationSet>
+    <EntitySet Name="Stock" EntityType="DBModel.Stock" />
+    <AssociationSet Name="RoomStock" Association="DBModel.RoomStock">
+      <End Role="Room" EntitySet="Room" />
+      <End Role="Stock" EntitySet="Stock" />
+    </AssociationSet>
+    <AssociationSet Name="InvoiceOrder" Association="DBModel.InvoiceOrder">
+      <End Role="Invoice" EntitySet="Invoice" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="GuestUserInvoice" Association="DBModel.GuestUserInvoice">
+      <End Role="GuestUser" EntitySet="GuestUser" />
+      <End Role="Invoice" EntitySet="Invoice" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Menu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" cg:SetterAccess="Public" cg:GetterAccess="Public" MaxLength="40" Unicode="true" FixedLength="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="40" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>菜单名称</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="IcoClass" Type="String" Nullable="false" MaxLength="60" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>菜单图标</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Url" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>地址</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="ParentId" Type="String" Nullable="true" MaxLength="40" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>父级</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Level" Type="Int16" Nullable="false">
+      <Documentation>
+        <Summary>层级</Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="UserRole" Relationship="DBModel.MenuUserRole" FromRole="Menu" ToRole="UserRole" />
+    <Property Name="Type" Type="String" Nullable="false" MaxLength="20">
+      <Documentation>
+        <Summary>类型</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Sort" Type="Int16" Nullable="false">
+      <Documentation>
+        <Summary>排序</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="40" Unicode="true" FixedLength="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="40" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>用户名</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="40" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>密码</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Role" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>账号类型</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="RegisterTime" Type="DateTime" Nullable="true" Precision="3">
+      <Documentation>
+        <Summary>创建时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="RegisterIP" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>创建IP</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="ParentId" Type="String" MaxLength="40">
+      <Documentation>
+        <Summary>父级ID</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Vail" Type="Boolean" Nullable="false">
+      <Documentation>
+        <Summary>是否有效</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Summary" Type="String" MaxLength="100">
+      <Documentation>
+        <Summary>账号说明</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Status" Type="Int16" Nullable="false">
+      <Documentation>
+        <Summary>账号状态</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="40" Unicode="true" FixedLength="false" />
+    <Property Name="UsersId" Type="String" Nullable="false" MaxLength="40" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>用户ID</Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="Menu" Relationship="DBModel.MenuUserRole" FromRole="UserRole" ToRole="Menu" />
+    <Property Name="MenuId" Type="String" Nullable="false" cg:GetterAccess="Public" MaxLength="40" Unicode="true" FixedLength="false" />
+    <Property Name="UserType" Type="String" Nullable="false" MaxLength="30">
+      <Documentation>
+        <Summary>用户类型</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="CreateTime" Type="DateTime" Nullable="false">
+      <Documentation>
+        <Summary>创建时间</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <Association Name="MenuUserRole">
+    <End Type="DBModel.Menu" Role="Menu" Multiplicity="1" />
+    <End Type="DBModel.UserRole" Role="UserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Menu">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserRole">
+        <PropertyRef Name="MenuId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true">
+      <Documentation>
+        <Summary>城市</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProvinceID" Type="Int64" Nullable="false" />
+    <Property Name="DateCreated" Type="DateTime" Precision="3" />
+    <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Province" Relationship="DBModel.FK_City_Province" FromRole="City" ToRole="Province" />
+    <NavigationProperty Name="District" Relationship="DBModel.FK_District_City" FromRole="City" ToRole="District" />
+    <NavigationProperty Name="HotelInfo" Relationship="DBModel.FK_CityHotelInfo" FromRole="City" ToRole="HotelInfo" />
+    <NavigationProperty Name="Invoice" Relationship="DBModel.CityInvoice" FromRole="City" ToRole="Invoice" />
+  </EntityType>
+  <EntityType Name="District">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DistrictName" Type="String" MaxLength="50" FixedLength="false" Unicode="true">
+      <Documentation>
+        <Summary>区县</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="CityID" Type="Int64" Nullable="false" />
+    <Property Name="DateCreated" Type="DateTime" Precision="3" />
+    <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="City" Relationship="DBModel.FK_District_City" FromRole="District" ToRole="City" />
+    <NavigationProperty Name="HotelInfo" Relationship="DBModel.FK_DistrictHotelInfo" FromRole="District" ToRole="HotelInfo" />
+    <NavigationProperty Name="Invoice" Relationship="DBModel.DistrictInvoice" FromRole="District" ToRole="Invoice" />
+  </EntityType>
+  <EntityType Name="Province">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProvinceName" Type="String" MaxLength="50" FixedLength="false" Unicode="true">
+      <Documentation>
+        <Summary>省份</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="DateCreated" Type="DateTime" Precision="3" />
+    <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="City" Relationship="DBModel.FK_City_Province" FromRole="Province" ToRole="City" />
+    <NavigationProperty Name="Invoice" Relationship="DBModel.ProvinceInvoice" FromRole="Province" ToRole="Invoice" />
+  </EntityType>
+  <Association Name="FK_City_Province">
+    <End Type="DBModel.Province" Role="Province" Multiplicity="1" />
+    <End Type="DBModel.City" Role="City" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Province">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="City">
+        <PropertyRef Name="ProvinceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_District_City">
+    <End Type="DBModel.City" Role="City" Multiplicity="1" />
+    <End Type="DBModel.District" Role="District" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="District">
+        <PropertyRef Name="CityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="HotelInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="true">
+      <Documentation>
+        <Summary>名称</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="EnglishName" Type="String" MaxLength="80" FixedLength="false" Unicode="true">
+      <Documentation>
+        <Summary>英文名</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Type" Type="Int16" Nullable="false">
+      <Documentation>
+        <Summary>客户类型</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Adress" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="true">
+      <Documentation>
+        <Summary>地址</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Tel" Type="String" MaxLength="20" FixedLength="false" Unicode="true">
+      <Documentation>
+        <Summary>电话</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Star" Type="Int16" Nullable="false">
+      <Documentation>
+        <Summary>星级</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Contact" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true">
+      <Documentation>
+        <Summary>联系人</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Position" Type="String" MaxLength="40" FixedLength="false" Unicode="true">
+      <Documentation>
+        <Summary>联系人职位</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Phone" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true">
+      <Documentation>
+        <Summary>联系人电话</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Email" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="true">
+      <Documentation>
+        <Summary>邮件</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="BusinessLicense" Type="String" MaxLength="150" FixedLength="false" Unicode="true">
+      <Documentation>
+        <Summary>营业执照</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Franchise" Type="String" MaxLength="150" FixedLength="false" Unicode="true">
+      <Documentation>
+        <Summary>特许经营许可证</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Card" Type="String" MaxLength="150" FixedLength="false" Unicode="true">
+      <Documentation>
+        <Summary>身份证</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Apply" Type="DateTime" Nullable="false" Precision="3">
+      <Documentation>
+        <Summary>申请时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="ExamineTime" Type="DateTime" Precision="3" Nullable="true">
+      <Documentation>
+        <Summary>审核时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="ExamineUser" Type="String" Unicode="true" FixedLength="false" MaxLength="40">
+      <Documentation>
+        <Summary>审核人</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="ExamineStatus" Type="Int32" Nullable="false">
+      <Documentation>
+        <Summary>审核状态</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="DistrictId" Type="Int64" Nullable="false">
+      <Documentation>
+        <Summary>区县Id</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="CityId" Type="Int64" Nullable="false">
+      <Documentation>
+        <Summary>城市Id</Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="City" Relationship="DBModel.FK_CityHotelInfo" FromRole="HotelInfo" ToRole="City" />
+    <NavigationProperty Name="District" Relationship="DBModel.FK_DistrictHotelInfo" FromRole="HotelInfo" ToRole="District" />
+    <NavigationProperty Name="HotelImages" Relationship="DBModel.HotelInfoHotelImages" FromRole="HotelInfo" ToRole="HotelImages" />
+    <Property Name="OpeningTime" Type="DateTime" Nullable="true" Precision="3">
+      <Documentation>
+        <Summary>开业时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Synopsis" Type="String" MaxLength="2000" FixedLength="false" Unicode="true">
+      <Documentation>
+        <Summary>简介</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="RenovationTime" Type="DateTime" Nullable="true" Precision="3">
+      <Documentation>
+        <Summary>装修时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="RoomCount" Type="Int16">
+      <Documentation>
+        <Summary>房间数量</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="DomainName" Type="String" MaxLength="30" FixedLength="false" Unicode="true">
+      <Documentation>
+        <Summary>域名</Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="HotelPolicy" Relationship="DBModel.HotelInfoHotelPolicy" FromRole="HotelInfo" ToRole="HotelPolicy" />
+    <NavigationProperty Name="Restaurant" Relationship="DBModel.HotelInfoRestaurant" FromRole="HotelInfo" ToRole="Restaurant" />
+    <NavigationProperty Name="Guide" Relationship="DBModel.HotelInfoGuide" FromRole="HotelInfo" ToRole="Guide" />
+    <NavigationProperty Name="Activity" Relationship="DBModel.HotelInfoActivity" FromRole="HotelInfo" ToRole="Activity" />
+    <NavigationProperty Name="Conference" Relationship="DBModel.HotelInfoConference" FromRole="HotelInfo" ToRole="Conference" />
+    <NavigationProperty Name="Room" Relationship="DBModel.HotelInfoRoom" FromRole="HotelInfo" ToRole="Room" />
+    <NavigationProperty Name="HotelUser" Relationship="DBModel.HotelInfoHotelUser" FromRole="HotelInfo" ToRole="HotelUser" />
+    <NavigationProperty Name="HotelService" Relationship="DBModel.HotelInfoHotelService" FromRole="HotelInfo" ToRole="HotelService" />
+    <NavigationProperty Name="FeatureHotel" Relationship="DBModel.HotelInfoFeatureHotel" FromRole="HotelInfo" ToRole="FeatureHotel" />
+    <Property Name="Valid" Type="Int16" />
+    <NavigationProperty Name="Order" Relationship="DBModel.HotelInfoOrder" FromRole="HotelInfo" ToRole="Order" />
+    <NavigationProperty Name="Collection" Relationship="DBModel.HotelInfoCollection" FromRole="HotelInfo" ToRole="Collection" />
+    <NavigationProperty Name="Score" Relationship="DBModel.HotelInfoScore" FromRole="HotelInfo" ToRole="Score" />
+  </EntityType>
+  <Association Name="FK_CityHotelInfo">
+    <End Type="DBModel.City" Role="City" Multiplicity="1" />
+    <End Type="DBModel.HotelInfo" Role="HotelInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HotelInfo">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DistrictHotelInfo">
+    <End Type="DBModel.District" Role="District" Multiplicity="1" />
+    <End Type="DBModel.HotelInfo" Role="HotelInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="District">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HotelInfo">
+        <PropertyRef Name="DistrictId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="HotelImages">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="40" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="HotelInfo" Relationship="DBModel.HotelInfoHotelImages" FromRole="HotelImages" ToRole="HotelInfo" />
+    <Property Name="Url" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>图片名</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Summary" Type="String" MaxLength="200" FixedLength="false" Unicode="true">
+      <Documentation>
+        <Summary>图片描述</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Type" Type="Int32" Nullable="false">
+      <Documentation>
+        <Summary>图片类型</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="HotelInfoId" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Sort" Type="Int32" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3">
+      <Documentation>
+        <Summary>上传时间</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <Association Name="HotelInfoHotelImages">
+    <End Type="DBModel.HotelInfo" Role="HotelInfo" Multiplicity="1" />
+    <End Type="DBModel.HotelImages" Role="HotelImages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HotelInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HotelImages">
+        <PropertyRef Name="HotelInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Policy">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="40" Unicode="true" FixedLength="false" />
+    <Property Name="Type" Type="Int32" Nullable="false">
+      <Documentation>
+        <Summary>设施政策类型</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="40" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>名称</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Values" Type="String" MaxLength="200" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>选项值</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Icon" Type="String" Nullable="true" MaxLength="150" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>图标</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="CreateTime" Type="DateTime" Nullable="true" Precision="3" />
+    <NavigationProperty Name="HotelPolicy" Relationship="DBModel.PolicyHotelPolicy" FromRole="Policy" ToRole="HotelPolicy" />
+  </EntityType>
+  <EntityType Name="HotelPolicy">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="40" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="HotelInfo" Relationship="DBModel.HotelInfoHotelPolicy" FromRole="HotelPolicy" ToRole="HotelInfo" />
+    <Property Name="Value" Type="String" MaxLength="40" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>值</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="HotelInfoId" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Policy" Relationship="DBModel.PolicyHotelPolicy" FromRole="HotelPolicy" ToRole="Policy" />
+    <Property Name="PolicyId" Type="String" Nullable="false" MaxLength="40" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <Association Name="HotelInfoHotelPolicy">
+    <End Type="DBModel.HotelInfo" Role="HotelInfo" Multiplicity="1" />
+    <End Type="DBModel.HotelPolicy" Role="HotelPolicy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HotelInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HotelPolicy">
+        <PropertyRef Name="HotelInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PolicyHotelPolicy">
+    <End Type="DBModel.Policy" Role="Policy" Multiplicity="1" />
+    <End Type="DBModel.HotelPolicy" Role="HotelPolicy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Policy">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HotelPolicy">
+        <PropertyRef Name="PolicyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Restaurant">
+    <Documentation>
+      <Summary>餐饮美食</Summary>
+    </Documentation>
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="40" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="HotelInfo" Relationship="DBModel.HotelInfoRestaurant" FromRole="Restaurant" ToRole="HotelInfo" />
+    <Property Name="Describe" Type="String" MaxLength="300" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>描述</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="BreakfastTime" Type="String" MaxLength="60" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>早餐时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="LunchTime" Type="String" MaxLength="60" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>午餐时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="DinnerTime" Type="String" MaxLength="60" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>晚餐时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Seat" Type="String" MaxLength="50" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>席位</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Clothing" Type="String" MaxLength="100" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>着装要求</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Place" Type="String" MaxLength="90" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>地点</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Reserve" Type="String" MaxLength="200" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>预定方式</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Image1" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+    <Property Name="Image2" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+    <Property Name="Image3" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <Association Name="HotelInfoRestaurant">
+    <End Type="DBModel.HotelInfo" Role="HotelInfo" Multiplicity="1" />
+    <End Type="DBModel.Restaurant" Role="Restaurant" Multiplicity="0..1" />
+  </Association>
+  <EntityType Name="Guide">
+    <Documentation>
+      <Summary>到达指引</Summary>
+    </Documentation>
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="40" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="HotelInfo" Relationship="DBModel.HotelInfoGuide" FromRole="Guide" ToRole="HotelInfo" />
+    <Property Name="HotelInfoId" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="Int32" Nullable="false">
+      <Documentation>
+        <Summary>指引类型</Summary>
+        <LongDescription>1机场2火车3地标</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>指引名称</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Describe" Type="String" Nullable="true" MaxLength="100" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>描述</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <Association Name="HotelInfoGuide">
+    <End Type="DBModel.HotelInfo" Role="HotelInfo" Multiplicity="1" />
+    <End Type="DBModel.Guide" Role="Guide" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HotelInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Guide">
+        <PropertyRef Name="HotelInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Activity">
+    <Documentation>
+      <Summary>酒店活动</Summary>
+    </Documentation>
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="40" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="HotelInfo" Relationship="DBModel.HotelInfoActivity" FromRole="Activity" ToRole="HotelInfo" />
+    <Property Name="HotelInfoId" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="60" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>活动标题</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Describe" Type="String" MaxLength="400" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>活动描述</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Images" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>配图</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3">
+      <Documentation>
+        <Summary>活动开始时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="EndTime" Type="DateTime" Precision="3">
+      <Documentation>
+        <Summary>活动结束时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Place" Type="String" MaxLength="100" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>活动地点</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="CreateTime" Type="DateTime" Precision="3">
+      <Documentation>
+        <Summary>创建时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Valid" Type="Boolean" Nullable="false">
+      <Documentation>
+        <Summary>是否有效</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <Association Name="HotelInfoActivity">
+    <End Type="DBModel.HotelInfo" Role="HotelInfo" Multiplicity="1" />
+    <End Type="DBModel.Activity" Role="Activity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HotelInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Activity">
+        <PropertyRef Name="HotelInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Conference">
+    <Documentation>
+      <Summary>会议室</Summary>
+    </Documentation>
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="None" Type="String" />
+    <NavigationProperty Name="HotelInfo" Relationship="DBModel.HotelInfoConference" FromRole="Conference" ToRole="HotelInfo" />
+    <NavigationProperty Name="ConferenceRoom" Relationship="DBModel.ConferenceConferenceRoom" FromRole="Conference" ToRole="ConferenceRoom" />
+    <Property Name="RoomCount" Nullable="false" Type="Int32">
+      <Documentation>
+        <Summary>会议室数量</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="MaxArea" MaxLength="40" FixedLength="false" Unicode="true" Type="String">
+      <Documentation>
+        <Summary>最大面积</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="OpenYear" MaxLength="10" FixedLength="false" Unicode="true" Type="String">
+      <Documentation>
+        <Summary>开业年份</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="NewestRenovation" MaxLength="10" FixedLength="false" Unicode="true" Type="String">
+      <Documentation>
+        <Summary>最新装修年份</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="GuestRoom" Nullable="false" Type="Int32">
+      <Documentation>
+        <Summary>客房数量</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="TeaBreak" MaxLength="50" FixedLength="false" Unicode="true" Type="String">
+      <Documentation>
+        <Summary>茶歇价格</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Buffet" MaxLength="50" FixedLength="false" Unicode="true" Type="String">
+      <Documentation>
+        <Summary>自主餐价格</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Banquet" MaxLength="50" FixedLength="false" Unicode="true" Type="String">
+      <Documentation>
+        <Summary>宴会价格</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="CreateTime" Nullable="false" Precision="3" Type="DateTime">
+      <Documentation>
+        <Summary>创建时间</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <EntityType Name="ConferenceRoom">
+    <Documentation>
+      <Summary>会议室</Summary>
+    </Documentation>
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="None" Type="String" />
+    <NavigationProperty Name="Conference" Relationship="DBModel.ConferenceConferenceRoom" FromRole="ConferenceRoom" ToRole="Conference" />
+    <Property Name="ConferenceId" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" Type="String" />
+    <Property Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" Type="String">
+      <Documentation>
+        <Summary>会议室名称</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Area" MaxLength="40" FixedLength="false" Unicode="true" Type="String">
+      <Documentation>
+        <Summary>面积</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Capacity" Nullable="false" Type="Int32">
+      <Documentation>
+        <Summary>容纳人数</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Storey" Nullable="false" Type="Int32">
+      <Documentation>
+        <Summary>层高</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Size" MaxLength="20" FixedLength="false" Unicode="true" Type="String">
+      <Documentation>
+        <Summary>长宽</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Column" Nullable="false" Type="Int16">
+      <Documentation>
+        <Summary>立柱</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Layout" MaxLength="50" FixedLength="false" Unicode="true" Type="String">
+      <Documentation>
+        <Summary>会议室布局</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="BusinessHours" MaxLength="60" FixedLength="false" Unicode="true" Type="String">
+      <Documentation>
+        <Summary>营业时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Images" MaxLength="150" FixedLength="false" Unicode="true" Type="String">
+      <Documentation>
+        <Summary>图片</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Price" MaxLength="20" FixedLength="false" Unicode="true" Type="String">
+      <Documentation>
+        <Summary>场价</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="HalfPrice" MaxLength="20" FixedLength="false" Unicode="true" Type="String">
+      <Documentation>
+        <Summary>半场价</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <Association Name="HotelInfoConference">
+    <End Type="DBModel.HotelInfo" Multiplicity="1" Role="HotelInfo" />
+    <End Type="DBModel.Conference" Multiplicity="0..1" Role="Conference" />
+  </Association>
+  <Association Name="ConferenceConferenceRoom">
+    <End Type="DBModel.Conference" Multiplicity="1" Role="Conference" />
+    <End Type="DBModel.ConferenceRoom" Multiplicity="*" Role="ConferenceRoom" />
+    <ReferentialConstraint>
+      <Principal Role="Conference">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ConferenceRoom">
+        <PropertyRef Name="ConferenceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Room">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="40" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="HotelInfo" Relationship="DBModel.HotelInfoRoom" FromRole="Room" ToRole="HotelInfo" />
+    <Property Name="HotelInfoId" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="40" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>房型名</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="EnglishName" Type="String" MaxLength="40" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>英文名</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Area" Type="String" MaxLength="20" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>面积</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Storey" Type="Int16" Nullable="false">
+      <Documentation>
+        <Summary>层高</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="BedType" Type="String" MaxLength="20" Nullable="false" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>床型</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="BedDescribe" Type="String" MaxLength="200" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>床型描述</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="OccupancyNumber" Type="Int16" Nullable="false">
+      <Documentation>
+        <Summary>入住人数</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Scenery" Type="String" MaxLength="20" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>风景</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="AddBed" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>加床</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Number" Type="Int16" Nullable="false">
+      <Documentation>
+        <Summary>房型数量</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Smokeless" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>无烟房</Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="RoomImages" Relationship="DBModel.RoomRoomImages" FromRole="Room" ToRole="RoomImages" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3">
+      <Documentation>
+        <Summary>创建时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3">
+      <Documentation>
+        <Summary>修改时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Shower" Type="Boolean" Nullable="false">
+      <Documentation>
+        <Summary>淋浴</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Bathtub" Type="Boolean" Nullable="false">
+      <Documentation>
+        <Summary>浴缸</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="HotSpring" Type="Boolean" Nullable="false">
+      <Documentation>
+        <Summary>温泉</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="RoundBathtub" Type="Boolean" Nullable="false">
+      <Documentation>
+        <Summary>圆形浴缸</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="WindowBathtub" Type="Boolean" Nullable="false">
+      <Documentation>
+        <Summary>邻窗浴缸</Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="PriceType" Relationship="DBModel.RoomPriceType" FromRole="Room" ToRole="PriceType" />
+    <NavigationProperty Name="Stock" Relationship="DBModel.RoomStock" FromRole="Room" ToRole="Stock" />
+  </EntityType>
+  <Association Name="HotelInfoRoom">
+    <End Type="DBModel.HotelInfo" Role="HotelInfo" Multiplicity="1" />
+    <End Type="DBModel.Room" Role="Room" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HotelInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Room">
+        <PropertyRef Name="HotelInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="RoomImages">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="40" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Room" Relationship="DBModel.RoomRoomImages" FromRole="RoomImages" ToRole="Room" />
+    <Property Name="RoomId" Type="String" Nullable="false" MaxLength="40" Unicode="true" FixedLength="false" />
+    <Property Name="Url" Type="String" Nullable="false" MaxLength="150" Unicode="true" FixedLength="false" />
+    <Property Name="Sort" Type="Int16" Nullable="false">
+      <Documentation>
+        <Summary>排序</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Summary" Type="String" MaxLength="200" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>描述</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3">
+      <Documentation>
+        <Summary>创建时间</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <Association Name="RoomRoomImages">
+    <End Type="DBModel.Room" Role="Room" Multiplicity="1" />
+    <End Type="DBModel.RoomImages" Role="RoomImages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Room">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RoomImages">
+        <PropertyRef Name="RoomId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="HotelUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="40" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="HotelInfo" Relationship="DBModel.HotelInfoHotelUser" FromRole="HotelUser" ToRole="HotelInfo" />
+    <Property Name="HotelInfoId" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true">
+      <Documentation>
+        <Summary>酒店ID</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="40" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>用户名</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="40" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>密码</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Role" Type="String" MaxLength="10" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>角色</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3">
+      <Documentation>
+        <Summary>创建时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="LastLogin" Type="DateTime" Nullable="false" Precision="3">
+      <Documentation>
+        <Summary>最后登录</Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="Reply" Relationship="DBModel.HotelUsersReply" FromRole="HotelUsers" ToRole="Reply" />
+    <Property Name="ParentId" Type="String" MaxLength="40">
+      <Documentation>
+        <Summary>父级ID</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Vail" Type="Boolean" Nullable="false">
+      <Documentation>
+        <Summary>是否有效</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Summary" Type="String" MaxLength="100">
+      <Documentation>
+        <Summary>说明</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Status" Type="Int16" Nullable="false">
+      <Documentation>
+        <Summary>账号状态</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <Association Name="HotelInfoHotelUser">
+    <End Type="DBModel.HotelInfo" Role="HotelInfo" Multiplicity="1" />
+    <End Type="DBModel.HotelUsers" Role="HotelUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HotelInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HotelUser">
+        <PropertyRef Name="HotelInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="HotelService">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="40" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="HotelInfo" Relationship="DBModel.HotelInfoHotelService" FromRole="HotelService" ToRole="HotelInfo" />
+    <Property Name="CheckInTime" Type="String" MaxLength="20" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>入住时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="LeaveTime" Type="String" MaxLength="20" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>离店时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Pet" Type="String" MaxLength="20" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>携带宠物</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Buffet" Type="String" MaxLength="30" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>自助餐价格</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="CreditCard" Type="String" MaxLength="300" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>支持信用卡</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <Association Name="HotelInfoHotelService">
+    <End Type="DBModel.HotelInfo" Role="HotelInfo" Multiplicity="1" />
+    <End Type="DBModel.HotelService" Role="HotelService" Multiplicity="0..1" />
+  </Association>
+  <EnumType Name="BedType">
+    <Member Name="大床" />
+    <Member Name="双床" />
+    <Member Name="大床双床" />
+  </EnumType>
+  <EnumType Name="SceneryType">
+    <Member Name="城景" />
+    <Member Name="山景" />
+    <Member Name="海景" />
+    <Member Name="江景" />
+  </EnumType>
+  <EnumType Name="AddBed">
+    <Member Name="不可加床" />
+    <Member Name="可加床" />
+  </EnumType>
+  <EnumType Name="Smokeless">
+    <Member Name="可安排" />
+    <Member Name="不可安排" />
+  </EnumType>
+  <EntityType Name="HomeConfig">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="40" Unicode="true" FixedLength="false" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>标题</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Summary" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>描述</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="ImgUrl" Type="String" Nullable="false" MaxLength="150" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>图片</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3">
+      <Documentation>
+        <Summary>创建时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3">
+      <Documentation>
+        <Summary>修改时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Valid" Type="Boolean" Nullable="false">
+      <Documentation>
+        <Summary>是否有效</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <EntityType Name="Feature">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="40" Unicode="true" FixedLength="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="60" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>标签名</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Summary" Type="String" MaxLength="120" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>说明</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Ico" Type="String" MaxLength="150" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>图标</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Type" Type="Int16" Nullable="false">
+      <Documentation>
+        <Summary>类型</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3">
+      <Documentation>
+        <Summary>创建时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3">
+      <Documentation>
+        <Summary>更新时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Valid" Type="Boolean" Nullable="false">
+      <Documentation>
+        <Summary>是否有效</Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="FeatureHotel" Relationship="DBModel.FeatureFeatureHotel" FromRole="Feature" ToRole="FeatureHotel" />
+  </EntityType>
+  <EntityType Name="FeatureHotel">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="40" Unicode="true" FixedLength="false" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="60" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>标题</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Summary" Type="String" MaxLength="120" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>说明</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="ImgUrl" Type="String" Nullable="false" MaxLength="150" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>图片</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Valid" Type="Boolean" Nullable="false">
+      <Documentation>
+        <Summary>是否有效</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Sort" Type="Int16" Nullable="false">
+      <Documentation>
+        <Summary>排序</Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="HotelInfo" Relationship="DBModel.HotelInfoFeatureHotel" FromRole="FeatureHotel" ToRole="HotelInfo" />
+    <Property Name="HotelInfoId" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true">
+      <Documentation>
+        <Summary>酒店</Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="Feature" Relationship="DBModel.FeatureFeatureHotel" FromRole="FeatureHotel" ToRole="Feature" />
+    <Property Name="FeatureId" Type="String" Nullable="false" MaxLength="40" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>特色</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <Association Name="HotelInfoFeatureHotel">
+    <End Type="DBModel.HotelInfo" Role="HotelInfo" Multiplicity="1" />
+    <End Type="DBModel.FeatureHotel" Role="FeatureHotel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HotelInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FeatureHotel">
+        <PropertyRef Name="HotelInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FeatureFeatureHotel">
+    <End Type="DBModel.Feature" Role="Feature" Multiplicity="1" />
+    <End Type="DBModel.FeatureHotel" Role="FeatureHotel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Feature">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FeatureHotel">
+        <PropertyRef Name="FeatureId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Cooperative">
+    <Documentation>
+      <Summary>合作伙伴</Summary>
+    </Documentation>
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="40" Unicode="true" FixedLength="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>名称</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="LogoUrl" Type="String" Nullable="false" MaxLength="150" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>Logo</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Summary" Type="String" MaxLength="200" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>描述</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Url" Type="String" MaxLength="150" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>官网</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3">
+      <Documentation>
+        <Summary>创建时间</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <EnumType Name="PayType">
+    <Member Name="在线支付" />
+    <Member Name="到店支付" />
+    <Member Name="协议价格" />
+  </EnumType>
+  <EntityType Name="GuestUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="40" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="24">
+      <Documentation>
+        <Summary>用户名</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="40">
+      <Documentation>
+        <Summary>密码</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="NickName" Type="String" MaxLength="24">
+      <Documentation>
+        <Summary>昵称</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="RealName" Type="String" MaxLength="20">
+      <Documentation>
+        <Summary>姓名</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="LastLogin" Type="DateTime" Nullable="false">
+      <Documentation>
+        <Summary>最后登陆</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Phone" Type="String" MaxLength="18">
+      <Documentation>
+        <Summary>手机</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="QQ" Type="String" MaxLength="20">
+      <Documentation>
+        <Summary>QQ</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="WeChat" Type="String" MaxLength="40">
+      <Documentation>
+        <Summary>微信</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Email" Type="String" MaxLength="60">
+      <Documentation>
+        <Summary>邮箱</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Sex" Type="Int16" Nullable="false">
+      <Documentation>
+        <Summary>性别</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="City" Type="String" MaxLength="10">
+      <Documentation>
+        <Summary>城市</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Type" Type="Int16" Nullable="false">
+      <Documentation>
+        <Summary>用户类型</Summary>
+        <LongDescription>1普通用户2企业用</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="Head" Type="String" MaxLength="150">
+      <Documentation>
+        <Summary>头像</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Summary" Type="String" MaxLength="400">
+      <Documentation>
+        <Summary>个人说明</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="RegisterType" Type="String" Nullable="false" MaxLength="40">
+      <Documentation>
+        <Summary>注册方式</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="RegisterIp" Type="String" Nullable="false" MaxLength="20">
+      <Documentation>
+        <Summary>注册IP</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="RegisterTime" Type="DateTime" Nullable="false">
+      <Documentation>
+        <Summary>注册时间</Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="Order" Relationship="DBModel.GuestUserOrder" FromRole="GuestUser" ToRole="Order" />
+    <NavigationProperty Name="Comment" Relationship="DBModel.GuestUserComment" FromRole="GuestUser" ToRole="Comment" />
+    <NavigationProperty Name="Collection" Relationship="DBModel.CollectionGuestUser" FromRole="GuestUser" ToRole="Collection" />
+    <NavigationProperty Name="GuestInvoice" Relationship="DBModel.GuestUserGuestInvoice" FromRole="GuestUser" ToRole="GuestInvoice" />
+    <NavigationProperty Name="Invoice" Relationship="DBModel.GuestUserInvoice" FromRole="GuestUser" ToRole="Invoice" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="40" />
+    <Property Name="Number" Type="String" Nullable="false" MaxLength="30">
+      <Documentation>
+        <Summary>订单编号</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="CreateTime" Type="DateTime" Nullable="false">
+      <Documentation>
+        <Summary>下单时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="State" Type="String" Nullable="false" MaxLength="10">
+      <Documentation>
+        <Summary>订单状态</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="IsValid" Type="Boolean" Nullable="false">
+      <Documentation>
+        <Summary>是否有效</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Source" Type="String" MaxLength="30">
+      <Documentation>
+        <Summary>订单来源</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="ApplyUser" Type="String" Nullable="false" MaxLength="40">
+      <Documentation>
+        <Summary>订单联系人</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="ApplyPhone" Type="String" MaxLength="18">
+      <Documentation>
+        <Summary>联系人手机</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="ApplyEmail" Type="String" MaxLength="60">
+      <Documentation>
+        <Summary>联系人邮箱</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Remarks" Type="String" MaxLength="80">
+      <Documentation>
+        <Summary>备注</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Payment" Type="Boolean" Nullable="false">
+      <Documentation>
+        <Summary>是否支付</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Total" Type="Double" Nullable="false">
+      <Documentation>
+        <Summary>总金额</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="BedType" Type="String" MaxLength="20">
+      <Documentation>
+        <Summary>床型</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Breakfast" Type="String" MaxLength="20">
+      <Documentation>
+        <Summary>早餐</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Broadband" Type="String" MaxLength="20">
+      <Documentation>
+        <Summary>宽带</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="PriceName" Type="String" Nullable="false" MaxLength="40">
+      <Documentation>
+        <Summary>价格名称</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="StartTime" Type="DateTime" Nullable="false">
+      <Documentation>
+        <Summary>入住时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="EndTime" Type="DateTime" Nullable="false">
+      <Documentation>
+        <Summary>退房时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="RoomCount" Type="Int32" Nullable="false">
+      <Documentation>
+        <Summary>客房数量</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="AvgPrice" Type="Double" Nullable="false">
+      <Documentation>
+        <Summary>日均价</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="RoomName" Type="String" Nullable="false" MaxLength="40">
+      <Documentation>
+        <Summary>房型名称</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="HotelName" Type="String" Nullable="false" MaxLength="80">
+      <Documentation>
+        <Summary>酒店名称</Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="GuestUser" Relationship="DBModel.GuestUserOrder" FromRole="Order" ToRole="GuestUser" />
+    <Property Name="GuestUserId" Type="String" Nullable="false" MaxLength="40" />
+    <NavigationProperty Name="HotelInfo" Relationship="DBModel.HotelInfoOrder" FromRole="Order" ToRole="HotelInfo" />
+    <Property Name="HotelInfoId" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Comment" Relationship="DBModel.OrderComment" FromRole="Order" ToRole="Comment" />
+    <NavigationProperty Name="PriceType" Relationship="DBModel.PriceTypeOrder" FromRole="Order" ToRole="PriceType" />
+    <Property Name="PriceTypeId" Type="String" MaxLength="40" Nullable="false" />
+    <Property Name="PaymentMethod" Type="Int16" Nullable="false">
+      <Documentation>
+        <Summary>支付方式</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="IsInvoice" Type="Int16" Nullable="false">
+      <Documentation>
+        <Summary>是否要发票</Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="DaysPrice" Relationship="DBModel.OrderDaysPrice" FromRole="Order" ToRole="DaysPrice" />
+    <NavigationProperty Name="Occupant" Relationship="DBModel.OrderOccupant" FromRole="Order" ToRole="Occupant" />
+    <Property Name="HousingPrice" Type="Double" Nullable="false">
+      <Documentation>
+        <Summary>房价</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="UpdateUser" Type="String" MaxLength="50">
+      <Documentation>
+        <Summary>更新人</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="UpdateTime" Type="DateTime">
+      <Documentation>
+        <Summary>更新时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="CancelRemarks" Type="String" MaxLength="200">
+      <Documentation>
+        <Summary>取消备注</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="PayTime" Type="DateTime">
+      <Documentation>
+        <Summary>支付时间</Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="transaction" Relationship="DBModel.Order_transaction" FromRole="Order" ToRole="transaction" />
+    <NavigationProperty Name="Invoice" Relationship="DBModel.InvoiceOrder" FromRole="Order" ToRole="Invoice" />
+    <Property Name="InvoiceId" Type="String" Nullable="true" MaxLength="40">
+      <Documentation>
+        <Summary>发票ID</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="40" />
+    <Property Name="Content" Type="String" Nullable="false" MaxLength="2000">
+      <Documentation>
+        <Summary>评价</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Images" Type="String" MaxLength="600">
+      <Documentation>
+        <Summary>晒图</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="ParentCommentId" Type="String" MaxLength="40" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="Order" Relationship="DBModel.OrderComment" FromRole="Comment" ToRole="Order" />
+    <Property Name="OrderId" Type="String" Nullable="false" MaxLength="40" />
+    <NavigationProperty Name="GuestUser" Relationship="DBModel.GuestUserComment" FromRole="Comment" ToRole="GuestUser" />
+    <Property Name="GuestUserId" Type="String" Nullable="false" MaxLength="40" />
+    <NavigationProperty Name="Score" Relationship="DBModel.CommentScore" FromRole="Comment" ToRole="Score" />
+    <NavigationProperty Name="Reply" Relationship="DBModel.CommentReply" FromRole="Comment" ToRole="Reply" />
+  </EntityType>
+  <EntityType Name="Collection">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="40" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false">
+      <Documentation>
+        <Summary>收藏时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Remarks" Type="String" MaxLength="200">
+      <Documentation>
+        <Summary>备注</Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="GuestUser" Relationship="DBModel.CollectionGuestUser" FromRole="Collection" ToRole="GuestUser" />
+    <Property Name="GuestUserId" Type="String" Nullable="false" MaxLength="40" />
+    <NavigationProperty Name="HotelInfo" Relationship="DBModel.HotelInfoCollection" FromRole="Collection" ToRole="HotelInfo" />
+    <Property Name="HotelInfoId" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Message">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="40" />
+    <Property Name="ToUser" Type="String" Nullable="false" MaxLength="40">
+      <Documentation>
+        <Summary>接收人</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="FromUser" Type="String" Nullable="false" MaxLength="40">
+      <Documentation>
+        <Summary>发送人</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="100">
+      <Documentation>
+        <Summary>消息标题</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Content" Type="String" Nullable="false" MaxLength="1000">
+      <Documentation>
+        <Summary>消息内容</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="CreateTime" Type="DateTime" Nullable="false">
+      <Documentation>
+        <Summary>创建时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Send" Type="Boolean" Nullable="false">
+      <Documentation>
+        <Summary>是否发送完成</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Read" Type="Boolean" Nullable="false">
+      <Documentation>
+        <Summary>是否阅读</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="ParentMessageId" Type="String" MaxLength="40">
+      <Documentation>
+        <Summary>上级消息</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="SendTime" Type="DateTime" Nullable="false">
+      <Documentation>
+        <Summary>发送时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="RendTime" Type="DateTime" Nullable="false">
+      <Documentation>
+        <Summary>阅读时间</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <EntityType Name="Article">
+    <Documentation>
+      <Summary>文章</Summary>
+    </Documentation>
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="40" />
+    <Property Name="Type" Type="Int16" Nullable="false">
+      <Documentation>
+        <Summary>文章类型</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="IsVaid" Type="Boolean" Nullable="false">
+      <Documentation>
+        <Summary>是否有效</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Content" Type="String" Nullable="false">
+      <Documentation>
+        <Summary>文章内容</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="CreateTime" Type="DateTime" Nullable="false">
+      <Documentation>
+        <Summary>创建时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="CreateUser" Type="String" Nullable="false" MaxLength="40">
+      <Documentation>
+        <Summary>创建人</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="UpdateUser" Type="String" Nullable="false" MaxLength="40">
+      <Documentation>
+        <Summary>更新人</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="UpdateTime" Type="DateTime" Nullable="false">
+      <Documentation>
+        <Summary>更新时间</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <Association Name="GuestUserOrder">
+    <End Type="DBModel.GuestUser" Role="GuestUser" Multiplicity="1" />
+    <End Type="DBModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GuestUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="GuestUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HotelInfoOrder">
+    <End Type="DBModel.HotelInfo" Role="HotelInfo" Multiplicity="1" />
+    <End Type="DBModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HotelInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="HotelInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OrderComment">
+    <End Type="DBModel.Order" Role="Order" Multiplicity="1" />
+    <End Type="DBModel.Comment" Role="Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GuestUserComment">
+    <End Type="DBModel.GuestUser" Role="GuestUser" Multiplicity="1" />
+    <End Type="DBModel.Comment" Role="Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GuestUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="GuestUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CollectionGuestUser">
+    <End Type="DBModel.Collection" Role="Collection" Multiplicity="*" />
+    <End Type="DBModel.GuestUser" Role="GuestUser" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="GuestUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Collection">
+        <PropertyRef Name="GuestUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="PriceType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="40" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="20">
+      <Documentation>
+        <Summary>价格名称</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Breakfast" Type="String" MaxLength="40">
+      <Documentation>
+        <Summary>早餐</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Broadband" Type="String" MaxLength="40">
+      <Documentation>
+        <Summary>宽带</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="PaymentMethod" Type="Int16" Nullable="false">
+      <Documentation>
+        <Summary>支付方式</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Number" Type="String" Nullable="false" MaxLength="20">
+      <Documentation>
+        <Summary>数量</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Remarks" Type="String" MaxLength="50" Nullable="false">
+      <Documentation>
+        <Summary>备注</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="CreateTime" Type="DateTime" Nullable="false">
+      <Documentation>
+        <Summary>创建时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="UpdateTime" Type="DateTime" Nullable="false">
+      <Documentation>
+        <Summary>更新时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="CreateUser" Type="String" Nullable="false" MaxLength="40">
+      <Documentation>
+        <Summary>创建人</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="UpdateUser" Type="String" Nullable="false" MaxLength="40">
+      <Documentation>
+        <Summary>修改人</Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="Room" Relationship="DBModel.RoomPriceType" FromRole="PriceType" ToRole="Room" />
+    <Property Name="RoomId" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Price" Relationship="DBModel.PriceTypePrice" FromRole="PriceType" ToRole="Price" />
+    <Property Name="ExtraBedPrice" Type="String" MaxLength="20">
+      <Documentation>
+        <Summary>加床价</Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="Order" Relationship="DBModel.PriceTypeOrder" FromRole="PriceType" ToRole="Order" />
+    <NavigationProperty Name="DaysPrice" Relationship="DBModel.PriceTypeDaysPrice" FromRole="PriceType" ToRole="DaysPrice" />
+  </EntityType>
+  <EntityType Name="Price">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="40" />
+    <Property Name="Date" Type="DateTime" Nullable="false">
+      <Documentation>
+        <Summary>日期</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="UnitPrice" Type="Double" Nullable="false">
+      <Documentation>
+        <Summary>单价</Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="PriceType" Relationship="DBModel.PriceTypePrice" FromRole="Price" ToRole="PriceType" />
+    <Property Name="PriceTypeId" Type="String" Nullable="false" MaxLength="40" />
+    <Property Name="ConfigId" Type="String" Nullable="false" MaxLength="40">
+      <Documentation>
+        <Summary>配置ID</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Stock" Type="Int16" Nullable="false">
+      <Documentation>
+        <Summary>总库存</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="SurplusStock" Type="Int16" Nullable="false">
+      <Documentation>
+        <Summary>剩余库存</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Status" Type="Int16" Nullable="false" />
+  </EntityType>
+  <Association Name="RoomPriceType">
+    <End Type="DBModel.Room" Role="Room" Multiplicity="1" />
+    <End Type="DBModel.PriceType" Role="PriceType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Room">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PriceType">
+        <PropertyRef Name="RoomId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PriceTypePrice">
+    <End Type="DBModel.PriceType" Role="PriceType" Multiplicity="1" />
+    <End Type="DBModel.Price" Role="Price" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PriceType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Price">
+        <PropertyRef Name="PriceTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PriceTypeOrder">
+    <End Type="DBModel.PriceType" Role="PriceType" Multiplicity="1" />
+    <End Type="DBModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PriceType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="PriceTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Occupant">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="40" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="40">
+      <Documentation>
+        <Summary>姓名</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Sex" Type="Int16">
+      <Documentation>
+        <Summary>性别</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Phone" Type="String" MaxLength="18">
+      <Documentation>
+        <Summary>手机</Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="Order" Relationship="DBModel.OrderOccupant" FromRole="Occupant" ToRole="Order" />
+    <Property Name="OrderId" Type="String" Nullable="false" MaxLength="40" />
+  </EntityType>
+  <EntityType Name="Invoice">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="40" />
+    <Property Name="Company" Type="String" Nullable="false" MaxLength="120">
+      <Documentation>
+        <Summary>公司名称</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Address" Type="String" MaxLength="100">
+      <Documentation>
+        <Summary>公司地址</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Tel" Type="String" MaxLength="20">
+      <Documentation>
+        <Summary>公司电话</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Bank" Type="String" MaxLength="30">
+      <Documentation>
+        <Summary>开户银行</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="BankAccount" Type="String" MaxLength="40">
+      <Documentation>
+        <Summary>银行账户</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="TaxpayerNumber" Type="String" MaxLength="30">
+      <Documentation>
+        <Summary>纳税人识别号</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Addressee" Type="String" Nullable="false" MaxLength="20">
+      <Documentation>
+        <Summary>收件人</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Phone" Type="String" Nullable="false" MaxLength="20">
+      <Documentation>
+        <Summary>收件人手机</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="ReceivingAddress" Type="String" Nullable="false" MaxLength="100">
+      <Documentation>
+        <Summary>收件地址</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Amount" Type="Double">
+      <Documentation>
+        <Summary>发票金额</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Express" Type="String" MaxLength="40">
+      <Documentation>
+        <Summary>快递</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="ExpressNumber" Type="String" MaxLength="20">
+      <Documentation>
+        <Summary>快递单号</Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="Province" Relationship="DBModel.ProvinceInvoice" FromRole="Invoice" ToRole="Province" />
+    <Property Name="ProvinceId" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="City" Relationship="DBModel.CityInvoice" FromRole="Invoice" ToRole="City" />
+    <Property Name="CityId" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="District" Relationship="DBModel.DistrictInvoice" FromRole="Invoice" ToRole="District" />
+    <Property Name="DistrictId" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Order" Relationship="DBModel.InvoiceOrder" FromRole="Invoice" ToRole="Order" />
+    <NavigationProperty Name="GuestUser" Relationship="DBModel.GuestUserInvoice" FromRole="Invoice" ToRole="GuestUser" />
+    <Property Name="GuestUserId" Type="String" Nullable="false" MaxLength="40" />
+    <Property Name="Status" Type="Int16" Nullable="false">
+      <Documentation>
+        <Summary>开票状态</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Type" Type="Int16" Nullable="false">
+      <Documentation>
+        <Summary>发票类型</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="CreateTime" Type="DateTime" Nullable="false">
+      <Documentation>
+        <Summary>创建时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="UpdateTime" Type="DateTime" Nullable="false">
+      <Documentation>
+        <Summary>更新时间</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <EntityType Name="DaysPrice">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="40" />
+    <Property Name="Date" Type="DateTime" Nullable="false" />
+    <Property Name="UnitPrice" Type="Double" Nullable="false" />
+    <Property Name="ConfigId" Type="String" Nullable="false" MaxLength="40" />
+    <NavigationProperty Name="PriceType" Relationship="DBModel.PriceTypeDaysPrice" FromRole="DaysPrice" ToRole="PriceType" />
+    <Property Name="PriceTypeId" Type="String" Nullable="false" MaxLength="40" />
+    <NavigationProperty Name="Order" Relationship="DBModel.OrderDaysPrice" FromRole="DaysPrice" ToRole="Order" />
+    <Property Name="OrderId" Type="String" Nullable="false" MaxLength="40" />
+  </EntityType>
+  <Association Name="PriceTypeDaysPrice">
+    <End Type="DBModel.PriceType" Role="PriceType" Multiplicity="1" />
+    <End Type="DBModel.DaysPrice" Role="DaysPrice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PriceType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DaysPrice">
+        <PropertyRef Name="PriceTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OrderDaysPrice">
+    <End Type="DBModel.Order" Role="Order" Multiplicity="1" />
+    <End Type="DBModel.DaysPrice" Role="DaysPrice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DaysPrice">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OrderOccupant">
+    <End Type="DBModel.Order" Role="Order" Multiplicity="1" />
+    <End Type="DBModel.Occupant" Role="Occupant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Occupant">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="GuestInvoice">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="40" />
+    <Property Name="Company" Type="String" Nullable="false" MaxLength="120">
+      <Documentation>
+        <Summary>公司</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Address" Type="String" MaxLength="100">
+      <Documentation>
+        <Summary>公司地址</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Tel" Type="String" MaxLength="20">
+      <Documentation>
+        <Summary>公司电话</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Bank" Type="String" MaxLength="30">
+      <Documentation>
+        <Summary>开户银行</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="BankAccount" Type="String" MaxLength="40">
+      <Documentation>
+        <Summary>开户银行账户</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="TaxpayerNumber" Type="String" MaxLength="30">
+      <Documentation>
+        <Summary>纳税人识别号</Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="GuestUser" Relationship="DBModel.GuestUserGuestInvoice" FromRole="GuestInvoice" ToRole="GuestUser" />
+    <Property Name="GuestUserId" Type="String" Nullable="false" MaxLength="40" />
+  </EntityType>
+  <Association Name="GuestUserGuestInvoice">
+    <End Type="DBModel.GuestUser" Role="GuestUser" Multiplicity="1" />
+    <End Type="DBModel.GuestInvoice" Role="GuestInvoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GuestUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GuestInvoice">
+        <PropertyRef Name="GuestUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProvinceInvoice">
+    <End Type="DBModel.Province" Role="Province" Multiplicity="1" />
+    <End Type="DBModel.Invoice" Role="Invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Province">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Invoice">
+        <PropertyRef Name="ProvinceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CityInvoice">
+    <End Type="DBModel.City" Role="City" Multiplicity="1" />
+    <End Type="DBModel.Invoice" Role="Invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Invoice">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DistrictInvoice">
+    <End Type="DBModel.District" Role="District" Multiplicity="1" />
+    <End Type="DBModel.Invoice" Role="Invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="District">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Invoice">
+        <PropertyRef Name="DistrictId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EnumType Name="OrderState">
+    <Member Name="已取消" />
+    <Member Name="待确认" />
+    <Member Name="用户入住" />
+    <Member Name="已完成" />
+  </EnumType>
+  <Association Name="HotelInfoCollection">
+    <End Type="DBModel.HotelInfo" Role="HotelInfo" Multiplicity="1" />
+    <End Type="DBModel.Collection" Role="Collection" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HotelInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Collection">
+        <PropertyRef Name="HotelInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="transaction">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="40" />
+    <Property Name="data" Type="String" Nullable="false" MaxLength="1024">
+      <Documentation>
+        <Summary>交易数据</Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="Order" Relationship="DBModel.Order_transaction" FromRole="transaction" ToRole="Order" />
+  </EntityType>
+  <Association Name="Order_transaction">
+    <End Type="DBModel.Order" Role="Order" Multiplicity="1" />
+    <End Type="DBModel.transaction" Role="transaction" Multiplicity="0..1" />
+  </Association>
+  <EntityType Name="Score">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="40" />
+    <NavigationProperty Name="HotelInfo" Relationship="DBModel.HotelInfoScore" FromRole="Score" ToRole="HotelInfo" />
+    <Property Name="Value" Type="Int16" Nullable="false">
+      <Documentation>
+        <Summary>得分</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="HotelInfoId" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ScoreType" Relationship="DBModel.ScoreTypeScore" FromRole="Score" ToRole="ScoreType" />
+    <Property Name="ScoreTypeId" Type="String" Nullable="false" MaxLength="40" />
+    <NavigationProperty Name="Comment" Relationship="DBModel.CommentScore" FromRole="Score" ToRole="Comment" />
+    <Property Name="CommentId" Type="String" Nullable="false" MaxLength="40" />
+  </EntityType>
+  <Association Name="HotelInfoScore">
+    <End Type="DBModel.HotelInfo" Role="HotelInfo" Multiplicity="1" />
+    <End Type="DBModel.Score" Role="Score" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HotelInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Score">
+        <PropertyRef Name="HotelInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ScoreType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="40" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="30">
+      <Documentation>
+        <Summary>得分名称</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Valid" Type="Boolean" Nullable="false">
+      <Documentation>
+        <Summary>是否有效</Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="Score" Relationship="DBModel.ScoreTypeScore" FromRole="ScoreType" ToRole="Score" />
+  </EntityType>
+  <Association Name="ScoreTypeScore">
+    <End Type="DBModel.ScoreType" Role="ScoreType" Multiplicity="1" />
+    <End Type="DBModel.Score" Role="Score" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ScoreType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Score">
+        <PropertyRef Name="ScoreTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CommentScore">
+    <End Type="DBModel.Comment" Role="Comment" Multiplicity="1" />
+    <End Type="DBModel.Score" Role="Score" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Comment">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Score">
+        <PropertyRef Name="CommentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Reply">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="40" />
+    <Property Name="Content" Type="String" Nullable="false" MaxLength="2000">
+      <Documentation>
+        <Summary>回复内容</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="CreateTime" Type="DateTime" Nullable="false">
+      <Documentation>
+        <Summary>回复时间</Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="HotelUsers" Relationship="DBModel.HotelUsersReply" FromRole="Reply" ToRole="HotelUsers" />
+    <Property Name="HotelUsersId" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Comment" Relationship="DBModel.CommentReply" FromRole="Reply" ToRole="Comment" />
+    <Property Name="CommentId" Type="String" Nullable="false" MaxLength="40" />
+  </EntityType>
+  <Association Name="HotelUsersReply">
+    <End Type="DBModel.HotelUsers" Role="HotelUsers" Multiplicity="1" />
+    <End Type="DBModel.Reply" Role="Reply" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HotelUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Reply">
+        <PropertyRef Name="HotelUsersId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CommentReply">
+    <End Type="DBModel.Comment" Role="Comment" Multiplicity="1" />
+    <End Type="DBModel.Reply" Role="Reply" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Comment">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Reply">
+        <PropertyRef Name="CommentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Stock">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="40" />
+    <Property Name="Date" Type="DateTime" Nullable="false">
+      <Documentation>
+        <Summary>日期</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Total" Type="Int16" Nullable="false">
+      <Documentation>
+        <Summary>总库存</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="SurplusStock" Type="Int16" Nullable="false">
+      <Documentation>
+        <Summary>剩余库存</Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="Room" Relationship="DBModel.RoomStock" FromRole="Stock" ToRole="Room" />
+    <Property Name="Status" Type="Int16" Nullable="false">
+      <Documentation>
+        <Summary>状态</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="RoomId" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="RoomStock">
+    <End Type="DBModel.Room" Role="Room" Multiplicity="1" />
+    <End Type="DBModel.Stock" Role="Stock" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Room">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Stock">
+        <PropertyRef Name="RoomId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="InvoiceOrder">
+    <End Type="DBModel.Invoice" Role="Invoice" Multiplicity="0..1" />
+    <End Type="DBModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Invoice">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="InvoiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GuestUserInvoice">
+    <End Type="DBModel.GuestUser" Role="GuestUser" Multiplicity="1" />
+    <End Type="DBModel.Invoice" Role="Invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GuestUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Invoice">
+        <PropertyRef Name="GuestUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

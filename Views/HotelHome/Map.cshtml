@@ -1,0 +1,168 @@
+﻿@{
+    ViewBag.Title = "Map";
+    Layout = "~/Views/Shared/_LayoutHotel.cshtml";
+}
+<style>
+    .map-box {
+        position: relative;
+    }
+
+    .map {
+        float: left;
+        width: 70%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    .map-info {
+        width: 30%;
+        height: 100%;
+        box-shadow: 0px 0px 15px #919ead;
+        z-index: 2;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        border-top: 30px solid #4488ff;
+    }
+
+    .map-item h4 {
+        margin: 0px;
+        padding-left: 10px;
+        background: #3266dd;
+        color: #fff;
+        height: 40px;
+        line-height: 40px;
+    }
+
+    .map-item .map-content {
+        padding: 10px 30px;
+    }
+
+    .guide li {
+        border-bottom: 1px solid #e5e5e5;
+        line-height: 30px;
+        min-height: 30px;
+        color: #313131;
+        font-size: 14px;
+        font-family: "华文细黑";
+    }
+
+        .guide li:last-child {
+            border-bottom: none;
+        }
+
+    .map-search {
+        padding-left: 30px;
+        background-image: url(/Images/mapicon5.png);
+        background-position: left center;
+        background-repeat: no-repeat;
+        color: #606060;
+        line-height: 30px;
+    }
+
+        .map-search .search-box {
+            border: 0;
+            border-bottom-width: 0px;
+            border-bottom-style: none;
+            border-bottom-color: currentcolor;
+            border-bottom: 1px solid #a0a0a0;
+            width: 250px;
+            font-size: 14px;
+            line-height: 29px;
+            height: 29px;
+            color: #4488ff;
+            font-family: "华文细黑";
+            padding: 0px;
+            margin: 0px;
+            margin-right: 0px;
+            vertical-align: top;
+            margin-right: 10px;
+        }
+        .map-search .search-btn {
+            height: 30px;
+            width: 30px;
+            background-color: #4488ff;
+            background-position: center center;
+            background-repeat: no-repeat;
+            border: 0;
+            padding: 0;
+            margin: 0;
+            vertical-align: top;
+            color:#fff;
+        }
+        .map-search .target-adress{
+            margin-top:30px;
+        }
+</style>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=8yxhCfYtFgbKfFGFzLe0tuQNMz2xScIT"></script>
+<div id="map-box" class="map-box">
+    <div class="map" id="map">
+    </div>
+    <div class="map-info">
+        <div class="map-item">
+            <h4><span class="fa fa-map-marker"></span>&nbsp;&nbsp; 路线查询</h4>
+            <div class="map-content">
+                <div class="map-search">
+                    <div class="">
+                        <input class="search-box" id="input" value="" placeholder="" type="text">
+                        <button class="search-btn"><span class="fa fa-search"></span></button>
+                        <div id="message"></div>
+                    </div>
+                    <div class="target-adress">@ViewBag.Adress</div>
+                </div>
+            </div>
+        </div>
+        <div class="map-item">
+            <h4><span class="fa fa-plane"></span>&nbsp;&nbsp;机场信息</h4>
+            <div class="map-content">
+                <ul class="guide">
+                    @foreach (var g in ViewBag.Airport)
+                    {
+                        <li class="hotelroute1 hotelroute2">@g.Name：<span>@g.Describe</span></li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="map-item">
+            <h4><span class="fa fa-subway"></span>&nbsp;&nbsp; 火车信息</h4>
+            <div class="map-content">
+                <ul class="guide">
+                    @foreach (var g in ViewBag.Train)
+                    {
+                        <li class="hotelroute1 hotelroute2">@g.Name：<span>@g.Describe</span></li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="map-item">
+            <h4><span class="fa fa-map-signs"></span>&nbsp;&nbsp; 地标信息</h4>
+            <div class="map-content">
+                <ul class="guide">
+                    @foreach (var g in ViewBag.Landmark)
+                    {
+                        <li class="hotelroute1 hotelroute2">@g.Name：<span>@g.Describe</span></li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#map-box").css("height", $(window).height() - 76 - 50);
+        // 百度地图API功能
+        var map = new BMap.Map("map");    // 创建Map实例
+        map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);  // 初始化地图,设置中心点坐标和地图级别
+        var myGeo = new BMap.Geocoder();
+        // 将地址解析结果显示在地图上，并调整地图视野
+        myGeo.getPoint("中山北路1759号", function (point) {
+            if (point) {
+                map.centerAndZoom(point, 16);
+                map.addOverlay(new BMap.Marker(point));
+            }
+        },
+        "上海市");
+        map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+    });
+</script>

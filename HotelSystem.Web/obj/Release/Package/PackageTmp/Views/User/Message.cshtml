@@ -1,0 +1,61 @@
+﻿@model PagedList<HotelSystem.Model.Message>
+@using Webdiyer.WebControls.Mvc
+@{
+    ViewBag.Title = "消息";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<style>
+    .message-container {
+        margin-top: 20px;
+        min-height: 600px;
+    }
+
+    .title {
+        height: 40px;
+        line-height: 40px;
+        background-color: #eeeeee;
+    }
+
+        .title span {
+            height: 40px;
+            line-height: 40px;
+            background-color: #488ccc;
+            color: #fff;
+            width: 110px;
+            text-align: center;
+            display: inline-block;
+        }
+
+    .content {
+    }
+
+    .item {
+        padding: 20px 0;
+        border-bottom: 1px solid #a6cef3;
+    }
+
+    .item-title {
+        list-style:disc;
+    }
+
+    .item .time {
+        font-weight: normal;
+        font-size: 12px;
+        color: #488ccc;
+        float: right;
+    }
+
+    .item-content {
+        font-size: 12px;
+        color: #333;
+        line-height: 30px;
+        padding-left: 20px;
+    }
+</style>
+<div class="message-container">
+    <div class="title"><span>系统通知</span></div>
+    <div class="content" id="CollectionList">
+        @Html.Partial("_MessageList", Model);
+    </div>
+</div>
+@{Html.RegisterMvcPagerScriptResource();}

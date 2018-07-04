@@ -1,0 +1,111 @@
+﻿@model PagedList<HotelSystem.Model.Comment>
+@using Webdiyer.WebControls.Mvc
+
+@{
+    ViewBag.Title = "评论";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<style>
+    .comment-container {
+        color: #333;
+    }
+
+        .comment-container .item {
+            padding-top: 30px;
+            border-bottom: 1px solid #e1e1e1;
+            padding-bottom: 20px;
+        }
+
+            .comment-container .item .head {
+                float: left;
+                width: 180px;
+                position: absolute;
+                text-align:center;
+            }
+
+                .comment-container .item .head img {
+                    margin: 0 25px 25px;
+                    border-width: 0px;
+                    float: none;
+                    height: 130px;
+                    width: 130px;
+                    margin: 40px auto 20px auto;
+                    border-radius: 100px;
+                    border: 8px solid #fff;
+                    height: 130px;
+                    width: 130px;
+                }
+
+                .comment-container .item .head .summary {
+                    font-size: 12px;
+                    text-align: center;
+                    line-height: 25px;
+                    height: 50px;
+                }
+
+            .comment-container .item .content {
+                float: left;
+                padding-left: 210px;
+                 width:100%;
+            }
+
+                .comment-container .item .content .title {
+                    font-size: 16px;
+                    color: #0053ab;
+                    line-height: 40px;
+                }
+
+                .comment-container .item .content .body {
+                    font-size: 14px;
+                    line-height: 30px;
+                    overflow: hidden;
+                    position: relative;
+                }
+
+                    .comment-container .item .content .body .more {
+                        color: #1453b7;
+                        cursor: pointer;
+                        float: right;
+                        position: absolute;
+                        right: 0;
+                        bottom: 0;
+                        background: #fff;
+                        width: 70px;
+                        height: 30px;
+                        line-height: 30px;
+                        text-align: center;
+                    }
+
+                .comment-container .item .content .time {
+                    font-size: 14px;
+                    line-height: 30px;
+                    overflow: hidden;
+                    position: relative;
+                }
+
+                .comment-container .item .content .img-list {
+                    padding: 10px 0;
+                    padding-bottom: 20px;
+                }
+
+                    .comment-container .item .content .img-list img {
+                        height: 90px;
+                        width: 90px;
+                        margin-right: 10px;
+                    }
+
+                .comment-container .item .content .reply {
+                    background: #eee;
+                    font-size: 12px;
+                    line-height: 25px;
+                    margin-right: 50px;
+                }
+
+                    .comment-container .item .content .reply .reply-user {
+                        font-weight: bold;
+                    }
+</style>
+<div id="CollectionList">
+    @Html.Partial("_CommentList", Model);
+</div>
+@{Html.RegisterMvcPagerScriptResource();}

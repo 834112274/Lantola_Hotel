@@ -1,0 +1,194 @@
+﻿@using HotelSystem.Model;
+@{
+    ViewBag.Title = "首页";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href='~/Scripts/Home/index.css' rel='stylesheet' type='text/css' />
+<div class="scene">
+    <div class="backgound" style="background:url(@ViewBag.HomeConfig.ImgUrl) no-repeat;background-size:cover;background-position:center;">
+    </div>
+    <div class="tool">
+        <div class="container">
+            <div class="header">
+                <div class="search-tag">
+                    <ul>
+                        <li><a href="javascript:;">酒店</a></li>
+                    </ul>
+                </div>
+                <div class="search-title">
+                    <p class="title">@ViewBag.HomeConfig.Title</p>
+                    <p class="summary">@ViewBag.HomeConfig.Summary</p>
+                </div>
+            </div>
+
+            <div class="search-box">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>目的地或酒店名称:</label>
+                                <input type="email" class="form-control" placeholder="上海 长宁区">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label>星级:</label>
+                                <select class="form-control">
+                                    <option>不限</option>
+                                    <option>一星</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group has-feedback">
+                                <label>入住日期:</label>
+                                <input type="email" class="form-control" placeholder="2018-03-13">
+                                <span class="glyphicon glyphicon-calendar form-control-feedback" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group has-feedback">
+                                <label>退房日期:</label>
+                                <input type="email" class="form-control" placeholder="2018-03-20">
+                                <span class="glyphicon glyphicon-calendar form-control-feedback" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label></label>
+                                <input type="submit" class="form-control search-btn" value="搜索" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <!--国内休闲游-->
+    <div class="feature">
+        <ul class="tag">
+            @foreach (var item in ViewBag.Feature)
+            {
+                <li>
+                    <a href="javascript:;" data-target="#@item.Id" class="tag-button">@item.Name</a>
+                </li>
+            }
+        </ul>
+        <div class="tag-content">
+            @foreach (var item in ViewBag.Feature)
+            {
+                <div class="content" id="@item.Id">
+
+                    @{
+
+                        List<FeatureHotel> hotels = ViewBag.Hotels as List<FeatureHotel>;
+                        hotels = hotels.Where(h => h.FeatureId == item.Id).ToList();
+                        foreach (var hotel in hotels)
+                        {
+                            <a class="item" href="/HotelHome/Index/@hotel.HotelInfoId">
+                                <div class="item-content" style="background:url(@hotel.ImgUrl) no-repeat;background-size:cover;background-position:center;">
+                                    <div class="header">
+                                        <h4 class="title">@hotel.Title</h4>
+                                        <p class="summary">@hotel.Summary</p>
+                                    </div>
+                                </div>
+                            </a>
+
+                        }
+                    }
+                </div>
+                        }
+        </div>
+    </div>
+</div>
+<div class="container-fluid tag-hotel">
+
+    <div class="container">
+        @foreach (var item in ViewBag.Tag)
+        {
+            <div class="tag-title">
+                <p><span>@item.Name</span></p>
+            </div>
+            List<FeatureHotel> hotels = ViewBag.TagHotels as List<FeatureHotel>;
+            hotels = hotels.Where(h => h.FeatureId == item.Id).ToList();
+            <div class="row">
+                @foreach (var hotel in hotels)
+                {
+                    <div class="col-sm-3">
+                        <a href="/HotelHome/Index/@hotel.HotelInfoId" class="tag-item">
+
+                            <div class="thumbnail">
+                                <div class="img" style="background:url(@hotel.ImgUrl) no-repeat;background-size:cover;background-position:center;">
+                                </div>
+                                <div class="caption">
+                                    <p class="title">@hotel.Title</p>
+                                    <p class="star">
+                                        @for (var i = 0; i < hotel.HotelInfo.Star; i++)
+                                        {
+                                            <span class="fa fa-star"></span>
+                                        }
+                                    </p>
+                                    <p class="summary">@hotel.Summary</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
+
+        }
+    </div>
+</div>
+
+<div class="container-fluid cooperative">
+    <div class="tag-title">
+        <p><span>合作伙伴</span></p>
+        <div class="container">
+            <hr />
+        </div>
+    </div>
+
+    <div class="cooperative-box">
+        <div class="container">
+            <div class="row">
+                @foreach (var item in ViewBag.Cooperative)
+                {
+                    <div class="col-md-3">
+                        <a href="@item.Url" class="thumbnail">
+                            <img src="@item.LogoUrl" alt="...">
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid payment">
+    <h4>您好！欢迎访问LANTOLA酒店官方直销网站</h4>
+    <div class="container payment-content">
+        <h5>欢迎使用</h5>
+        <ul>
+            <li><img src="~/Images/wechatpay.jpg" /></li>
+            <li><img src="~/Images/alipay.jpg" /></li>
+            <li><img src="~/Images/unionpay.jpg" /></li>
+        </ul>
+    </div>
+</div>
+<script>
+    $(function () {
+        $(".feature").on("click", ".tag-button", function () {
+            var t = $(this).data("target");
+            $(".feature li").removeClass("tag-active");
+            $(this).parent().addClass("tag-active");
+            $(".tag-content .content").removeClass("content-active");
+
+            $(t).addClass("content-active");
+        })
+        $(".feature li:first").addClass("tag-active");
+        $(".feature .tag-content .content:first").addClass("content-active");
+    });
+</script>

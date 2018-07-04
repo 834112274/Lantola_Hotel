@@ -1,0 +1,165 @@
+﻿@model IEnumerable<HotelSystem.Model.Price>
+@{
+    ViewBag.Title = "AddPrice";
+    Layout = "~/Areas/Hotel/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Scripts/assets/plugins/fullcalendar/css/fullcalendar.css" rel="stylesheet">
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2><i class="fa fa-calendar red"></i><strong>编辑价格</strong></h2>
+    </div>
+    <div class="panel-body">
+        @if (ViewBag.Message != null)
+            {
+            <div class="alert alert-warning alert-dismissible fade in" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                @Html.Raw(ViewBag.Message)
+            </div>
+        }
+        @using (Html.BeginForm("AddPrice", ViewContext.RouteData.GetRequiredString("controller"), FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label class="control-label col-md-2">价格</label>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="UnitPrice" name="UnitPrice" placeholder="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">起始时间</label>
+                    <div class="col-md-3">
+                        <div class="input-group date form_date" data-date-format="yyyy-mm-dd" data-link-field="StartTime" data-link-format="yyyy-mm-dd">
+                            <input type="text" class="form-control" id="StartTime" name="StartTime" placeholder="">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+
+                        <div class="input-group date form_date" data-date-format="yyyy-mm-dd" data-link-field="EndTime" data-link-format="yyyy-mm-dd">
+                            <input type="text" class="form-control" id="EndTime" name="EndTime" placeholder="">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                        </div>
+                        <input type="hidden" id="EndTime" name="EndTime" value="" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="week" value="1"> 周一
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="week" value="2"> 周二
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="week" value="3"> 周三
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="week" value="4"> 周四
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="week" value="5"> 周五
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="week" value="6"> 周六
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="week" value="0"> 周日
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" class="btn btn-default" value="保存" />
+                    </div>
+                </div>
+            </div>
+        }
+        <h4>房价详细</h4>
+        <hr />
+        <div class="row">
+
+            <div class="col-lg-12">
+                <div id="calendar" class="col-lg-12"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/assets/plugins/moment/moment.min.js"></script>
+<script src="~/Scripts/assets/plugins/fullcalendar/js/jquery-ui.custom.min.js"></script>
+<script src="~/Scripts/assets/plugins/fullcalendar/js/fullcalendar.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var date = new Date();
+        var d = date.getDate();
+        var m = date.getMonth();
+        var y = date.getFullYear();
+
+        //data = JSON.parse(data.replace(/&quot;/g, '"'));
+
+        //$.each(data, function () {
+        //    this.end = moment(this.end).subtract(-1, "days");
+        //})
+        $('#calendar').fullCalendar({
+            defaultView: 'month',
+            header: {
+                left: 'title',
+                right: 'prev,next'
+            },
+            events: function (start, end, timezone, callback) {
+                $.ajax({
+                    url: '/Hotel/Room/AddPrice/@ViewBag.PriceTypeId',
+                    type: 'GET',
+                    data: {
+                        start: start.format('YYYY-MM-DD'),
+                        end: end.format('YYYY-MM-DD')
+                    },
+                    error: function () {
+                        alert('there was an error while fetching events!');
+                    },
+                    success: function(doc) {
+                        var events = [];
+                        $(doc).each(function () {
+                            this.end = moment(this.end);
+                            this.start = moment(this.start);
+                            events.push(this);
+                        });
+                        callback(events);
+                    }
+                });
+            },
+            eventClick: function (calEvent, jsEvent, view) {
+                let target = $(this);
+                if (calEvent.status==1) {
+                    if (confirm("确定关闭" + moment(calEvent.date).format('YYYY年MM月DD日') + calEvent.title + "么?")) {
+                        
+                        $.post(`/Hotel/Room/ChangePriceTypeStatus?id=${calEvent.priceTypeId}&&start=${moment(calEvent.date).format('YYYY-MM-DD')}&&end=${moment(calEvent.date).format('YYYY-MM-DD')}&&status=0`, function (data) {
+                            if (data.result == "success") {
+                                calEvent.status = 0;
+                                // change the border color just for fun
+                                target.css('background-color', '#ddd').css('border-color', '#ddd');
+                            }
+                            else {
+                                alert(data.msg)
+                            }
+                        });
+                    }
+                }
+                else {
+                    if (confirm("确定开启" + moment(calEvent.date).format('YYYY年MM月DD日') + calEvent.title + "么?")) {
+                        $.post(`/Hotel/Room/ChangePriceTypeStatus?id=${calEvent.priceTypeId}&&start=${moment(calEvent.date).format('YYYY-MM-DD')}&&end=${moment(calEvent.date).format('YYYY-MM-DD')}&&status=1`, function (data) {
+                            if (data.result == "success") {
+                                calEvent.status = 1;
+                                // change the border color just for fun
+                                target.css('background-color', '#5cb85c').css('border-color', '#5cb85c');
+                            }
+                            else {
+                                alert(data.msg)
+                            }
+                        });
+                        
+                    }
+                }
+            }
+        });
+    });
+</script>

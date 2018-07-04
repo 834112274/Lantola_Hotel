@@ -1,0 +1,40 @@
+﻿@model PagedList<HotelSystem.Model.Collection>
+@using Webdiyer.WebControls.Mvc
+@if (Model.Count == 0)
+{
+    <p class="text-center" style="margin-top:40px;">您还未添加任何收藏</p>
+}
+<div class="row">
+    @foreach (var m in Model)
+    {
+
+        <div class="col-md-4">
+            <div class="thumbnail">
+                @if (@m.HotelInfo.HotelImages.Count() > 0)
+                {
+                    <a href="/HotelHome/Index/@m.HotelInfo.Id" class="media-object" style="background:url('@m.HotelInfo.HotelImages.First().Url') no-repeat;background-size:cover;background-position:center;">
+                    </a>
+                }
+                else
+                {
+                    <a href="/HotelHome/Index/@m.HotelInfo.Id" class="media-object" style="background:url('') no-repeat;background-size:cover;background-position:center;">
+                    </a>
+                }
+                <div class="caption">
+                    <h4>@m.HotelInfo.Name</h4>
+
+                    <p>
+                        @for (var i = 0; i < m.HotelInfo.Star; i++)
+                        {
+                            <span class="fa fa-star star"></span>
+                        }
+                    </p>
+                    <p style="color:#808080;">最近预定：无 </p>
+                    <p>@m.Remarks </p>
+                    <p><a href="/HotelHome/Index/@m.HotelInfo.Id" class="btn btn-primary" role="button" target="_blank">查看详情</a></p>
+                </div>
+            </div>
+        </div>
+
+    }
+</div>

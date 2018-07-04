@@ -1,0 +1,86 @@
+﻿<div id="calendar_container_@ViewBag.Id"></div>
+<script>
+    $(document).ready(function () {
+        //获取价格类型列表
+        $.ajax({
+            url: '/Hotel/Room/GetRoomPriceType/@ViewBag.Id',
+            type: 'GET',
+            error: function () {
+                alert('there was an error while fetching events!');
+            },
+            success: function (result) {
+                if (result) {
+                    var sounrces = [];
+                    $(result).each(function (index,value) {
+                        sounrces.push(function (start, end, timezone, callback) {
+                            $.ajax({
+                                url: '/Hotel/Room/AddPrice/' + value,
+                                type: 'GET',
+                                data: {
+                                    start: start.format('YYYY-MM-DD'),
+                                    end: end.format('YYYY-MM-DD')
+                                },
+                                error: function () {
+                                    alert('获取数据错误!');
+                                },
+                                success: function (doc) {
+                                    var events = [];
+                                    $(doc).each(function () {
+                                        this.end = moment(this.end);
+                                        this.start = moment(this.start);
+                                        events.push(this);
+                                    });
+                                    callback(events);
+                                }
+                            });
+                        });
+                    });
+                    //绑定日历控件
+                    $('#calendar_container_@ViewBag.Id').fullCalendar({
+                        defaultView: 'month',
+                        header: {
+                            left: 'title',
+                            right: 'prev,next'
+                        },
+                        eventSources: sounrces,
+                        eventClick: function (calEvent, jsEvent, view) {
+                            let target = $(this);
+                            if (calEvent.status == 1) {
+                                if (confirm("确定关闭" + moment(calEvent.date).format('YYYY年MM月DD日') + calEvent.title + "么?")) {
+
+                                    $.post(`/Hotel/Room/ChangePriceTypeStatus?id=${calEvent.priceTypeId}&&start=${moment(calEvent.date).format('YYYY-MM-DD')}&&end=${moment(calEvent.date).format('YYYY-MM-DD')}&&status=0`, function (data) {
+                                        if (data.result == "success") {
+                                            calEvent.status = 0;
+                                            // change the border color just for fun
+                                            target.css('background-color', '#ddd').css('border-color', '#ddd');
+                                        }
+                                        else {
+                                            alert(data.msg)
+                                        }
+                                    });
+                                }
+                            }
+                            else {
+                                if (confirm("确定开启" + moment(calEvent.date).format('YYYY年MM月DD日') + calEvent.title + "么?")) {
+                                    $.post(`/Hotel/Room/ChangePriceTypeStatus?id=${calEvent.priceTypeId}&&start=${moment(calEvent.date).format('YYYY-MM-DD')}&&end=${moment(calEvent.date).format('YYYY-MM-DD')}&&status=1`, function (data) {
+                                        if (data.result == "success") {
+                                            calEvent.status = 1;
+                                            // change the border color just for fun
+                                            target.css('background-color', '#5cb85c').css('border-color', '#5cb85c');
+                                        }
+                                        else {
+                                            alert(data.msg)
+                                        }
+                                    });
+
+                                }
+                            }
+                        }
+                    });
+                }
+            }
+        });
+    });
+
+    
+</script>

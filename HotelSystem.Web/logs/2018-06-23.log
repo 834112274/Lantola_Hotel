@@ -1,0 +1,28 @@
+2018-06-23 14:35:59.049 INFO NativePay: Native pay mode 2 url is producing...
+2018-06-23 14:35:59.057 DEBUG WxPayApi: UnfiedOrder request : <xml><appid><![CDATA[wxe3986f34c73a20f2]]></appid><attach><![CDATA[test]]></attach><body><![CDATA[Lantola酒店预订]]></body><goods_tag><![CDATA[hotel]]></goods_tag><mch_id><![CDATA[1507219281]]></mch_id><nonce_str><![CDATA[5f2c631131bd46e4b2c8d9a92961d45c]]></nonce_str><notify_url><![CDATA[http://www.Lantola.com:8099/Pay/WxNotify]]></notify_url><out_trade_no><![CDATA[118060748657]]></out_trade_no><product_id><![CDATA[e189847d-5eeb-40bb-8ad6-165f25114a00]]></product_id><sign><![CDATA[0AEC71E0D4D2B5DDEF903869187772C0]]></sign><spbill_create_ip><![CDATA[58.246.98.30]]></spbill_create_ip><time_expire><![CDATA[20180623144559]]></time_expire><time_start><![CDATA[20180623143559]]></time_start><total_fee><![CDATA[1000]]></total_fee><trade_type><![CDATA[NATIVE]]></trade_type></xml>
+2018-06-23 14:35:59.650 DEBUG WxPayApi: UnfiedOrder response : <xml><return_code><![CDATA[SUCCESS]]></return_code>
+<return_msg><![CDATA[OK]]></return_msg>
+<appid><![CDATA[wxe3986f34c73a20f2]]></appid>
+<mch_id><![CDATA[1507219281]]></mch_id>
+<nonce_str><![CDATA[zkPY8PLF56ijWttd]]></nonce_str>
+<sign><![CDATA[602E5B6338C71E9F717556807C177C9C]]></sign>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<prepay_id><![CDATA[wx23143601512880cc35fd62eb2615513158]]></prepay_id>
+<trade_type><![CDATA[NATIVE]]></trade_type>
+<code_url><![CDATA[weixin://wxpay/bizpayurl?pr=BmTXNai]]></code_url>
+</xml>
+2018-06-23 14:35:59.651 INFO NativePay: Get native pay mode 2 url : weixin://wxpay/bizpayurl?pr=BmTXNai
+2018-06-23 14:36:54.223 INFO NativePay: Native pay mode 2 url is producing...
+2018-06-23 14:36:54.224 DEBUG WxPayApi: UnfiedOrder request : <xml><appid><![CDATA[wxe3986f34c73a20f2]]></appid><attach><![CDATA[test]]></attach><body><![CDATA[Lantola酒店预订]]></body><goods_tag><![CDATA[hotel]]></goods_tag><mch_id><![CDATA[1507219281]]></mch_id><nonce_str><![CDATA[bff6908e3372499a9f651b318ca8ba63]]></nonce_str><notify_url><![CDATA[http://www.Lantola.com:8099/Pay/WxNotify]]></notify_url><out_trade_no><![CDATA[118060748657]]></out_trade_no><product_id><![CDATA[e189847d-5eeb-40bb-8ad6-165f25114a00]]></product_id><sign><![CDATA[E2B589098F03568DDAFC2D84AAC286C2]]></sign><spbill_create_ip><![CDATA[58.246.98.30]]></spbill_create_ip><time_expire><![CDATA[20180623144654]]></time_expire><time_start><![CDATA[20180623143654]]></time_start><total_fee><![CDATA[1000]]></total_fee><trade_type><![CDATA[NATIVE]]></trade_type></xml>
+2018-06-23 14:36:54.458 DEBUG WxPayApi: UnfiedOrder response : <xml><return_code><![CDATA[SUCCESS]]></return_code>
+<return_msg><![CDATA[OK]]></return_msg>
+<appid><![CDATA[wxe3986f34c73a20f2]]></appid>
+<mch_id><![CDATA[1507219281]]></mch_id>
+<nonce_str><![CDATA[RlF3EcahY6BY57Kd]]></nonce_str>
+<sign><![CDATA[609387E87E12664A1C25915A3ECCD31E]]></sign>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<prepay_id><![CDATA[wx23143656328469cc35fd62eb0632448744]]></prepay_id>
+<trade_type><![CDATA[NATIVE]]></trade_type>
+<code_url><![CDATA[weixin://wxpay/bizpayurl?pr=UQezeor]]></code_url>
+</xml>
+2018-06-23 14:36:54.458 INFO NativePay: Get native pay mode 2 url : weixin://wxpay/bizpayurl?pr=UQezeor

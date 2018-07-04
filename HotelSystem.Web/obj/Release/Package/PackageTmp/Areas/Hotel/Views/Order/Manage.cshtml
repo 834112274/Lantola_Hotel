@@ -1,0 +1,154 @@
+﻿@model PagedList<HotelSystem.Model.Order>
+@using Webdiyer.WebControls.Mvc
+@{
+    ViewBag.Title = "订单";
+    Layout = "~/Areas/Hotel/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .table p {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .table > thead > tr > th {
+        background: #ddd;
+    }
+
+    .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+        vertical-align: middle;
+        position: relative;
+        font-size: 12px;
+    }
+
+    .table .sort-item {
+        cursor: pointer;
+    }
+
+    .table .sort {
+        position: absolute;
+        top: 13px;
+        left: 65px;
+    }
+
+        .table .sort .acitve {
+            color: #49f;
+        }
+
+        .table .sort i {
+            display: block;
+        }
+
+    .table label {
+        font-weight: 700;
+    }
+
+    label {
+        font-weight: normal;
+        font-size: 12px;
+    }
+
+    .search-btn-container input[type="button"] {
+        border-color: #4876FF;
+        color: #4876FF;
+        padding: 4px 20px;
+    }
+
+        .search-btn-container input[type="button"]:hover {
+            background-color: #4876FF;
+            color: #fff;
+        }
+
+        .search-btn-container input[type="button"]:first-child {
+            border-color: #4876FF;
+            background-color: #4876FF;
+            color: #fff;
+        }
+
+    a {
+        color: #4876FF;
+    }
+
+        a:hover {
+            color: #4876FF;
+        }
+</style>
+<div class="panel panel-default" style="margin-top:14px;box-shadow: none;">
+    <div class="panel-body">
+        @using (Html.BeginForm("Manage", "Order", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-inline", id = "search_order" }))
+        {
+            <div class="form-horizontal">
+                <div class="row" style="margin-bottom:10px;">
+                    <div class="col-md-4">
+                        <div class="form-group col-md-12">
+                            <label for="inputEmail3" class="col-sm-4 control-label">订单号</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control input-sm" name="Number" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group col-md-12">
+                            <label for="inputEmail3" class="col-sm-4 control-label">支付状态</label>
+                            <div class="col-sm-8">
+                                <select class="form-control input-sm" name="Payment">
+                                    <option value="">全部</option>
+                                    <option value="0">已支付</option>
+                                    <option value="1">待支付</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+
+                        <div class="form-group col-md-12">
+                            <label for="inputEmail3" class="col-sm-4 control-label">入住人</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control input-sm" name="Occupant" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:10px;">
+                    <div class="col-md-4">
+                        <div class="form-group col-md-12">
+                            <label for="inputEmail3" class="col-sm-4 control-label">预订日期</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control input-sm" placeholder="" name="CreateStart">
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control input-sm" placeholder="" name="CreateEnd">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+
+                        <div class="form-group col-md-12">
+                            <label for="inputEmail3" class="col-sm-4 control-label">入住日期</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control input-sm" placeholder="" name="StartTime">
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control input-sm" placeholder="" name="EndTime">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:10px;">
+                    <div class="col-md-4 search-btn-container">
+                        <div class="col-md-12">
+                            <div class="col-md-8 col-md-offset-4" style="padding-left:0px;">
+                                <input type="submit" class="btn btn-default btn-sm" value="筛选" />
+                                <input type="button" class="btn btn-default btn-sm" value="清空" />
+                                <input type="button" class="btn btn-default btn-sm" value="导出" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<div id="OrderList">
+    @Html.Partial("_OrderList", Model);
+</div>
+@{Html.RegisterMvcPagerScriptResource();}

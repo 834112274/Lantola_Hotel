@@ -1,0 +1,49 @@
+﻿@charset "utf-8";
+*{vertical-align:top;margin:0;padding:0;outline: none;}
+body{margin:0;font-family:"华文细黑";color:#262626;}
+img{border:0 none;}
+ul{padding:0;margin:0;}
+li{list-style:none;}
+a{text-decoration:none;color:#000;}
+input,textarea{padding:0;margin:0;font-family:'华文细黑';}
+.clear{clear:both;}
+.kuang{width:100%;height:100%;background-color:#f6f6f6;background-image:url(../Images/backstagebackground3.jpg);background-size:100% auto;background-attachment:fixed;background-repeat:no-repeat;min-height:750px;position:relative;}
+.kuang1{margin:0 auto;padding-top:100px;width:330px;}
+.kong{width:100%;clear:both;}
+.logo{height:220px;width:180px;margin:0 auto;}
+.logo img{height:100%;width:100%;}
+.title{height:120px;line-height:120px;font-size:22px;color:#434343;text-align:center;font-weight:bold;letter-spacing:3px;}
+.input{color:#434343;background:#fff;border-radius:5px;}
+.input input{border:0;display:block;float:left;font-size:14px;height:100%;width:247px;padding-left:10px;background:none;}
+.input .input1{width:50px;height:100%;border-right:1px solid #c9c9c9;text-align:center;font-size:16px;float:left;}
+.username{position:relative;z-index:5;border:1px solid #c9c9c9;width:308px;height:30px;line-height:30px;border-top-left-radius:5px;border-top-right-radius:5px;padding:5px 10px;}
+.password{position:relative;top:-1px;z-index:5;width:308px;height:30px;line-height:30px;border:1px solid #c9c9c9;border-bottom-left-radius:5px;border-bottom-right-radius:5px;padding:5px 10px;position:relative;}
+.inputsubmit{position:absolute;right:10px;height:26px;width:26px;top:7px;}
+.inputsubmit input{border:0;height:100%;width:100%;background:none;background-image:url(../Images/backstage1.png);background-size:100% 100%;}
+.inputsubmit1{position:absolute;height:26px;width:26px;top:0;left:0;background:#fff;opacity:0.5;}
+.set{padding:20px;color:#434343;font-size:14px;height:25px;line-height:25px;}
+.set1{float:left;color:#434343;}
+.set1 input{height:13px;width:13px;margin-top:6px;}
+.set2{float:right;display:block;color:#7bb5cc;/*border-bottom:1px solid #e3eef3;*/text-decoration:underline;}
+.bottom{text-align:center;font-size:12px;color:#959595;position:absolute;bottom:50px;width:100%;letter-spacing:2px;LINE-HEIGHT:35PX;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
