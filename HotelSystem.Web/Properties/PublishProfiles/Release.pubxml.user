@@ -6,7 +6,7 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>G:\Project\LANTOLA\Release</_PublishTargetUrl>
+    <_PublishTargetUrl>F:\Project\LANTOLA\Release</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="Areas/Admin/Views/Article/Manage.cshtml">
@@ -181,10 +181,16 @@
       <publishTime>06/18/2018 17:49:25</publishTime>
     </File>
     <File Include="Areas/Hotel/Views/Home/Index.cshtml">
-      <publishTime>05/14/2018 15:37:20</publishTime>
+      <publishTime>07/01/2018 11:41:53</publishTime>
     </File>
     <File Include="Areas/Hotel/Views/Home/Menu.cshtml">
       <publishTime>06/18/2018 16:03:03</publishTime>
+    </File>
+    <File Include="Areas/Hotel/Views/Home/_OrderList.cshtml">
+      <publishTime>07/01/2018 11:22:16</publishTime>
+    </File>
+    <File Include="Areas/Hotel/Views/Home/_OrderPage.cshtml">
+      <publishTime>07/01/2018 11:22:17</publishTime>
     </File>
     <File Include="Areas/Hotel/Views/Info/Index.cshtml">
       <publishTime>05/14/2018 15:37:20</publishTime>
@@ -277,13 +283,13 @@
       <publishTime>03/17/2013 13:26:30</publishTime>
     </File>
     <File Include="bin/HotelSystem.Helper.dll">
-      <publishTime>06/27/2018 17:31:41</publishTime>
+      <publishTime>07/04/2018 14:57:29</publishTime>
     </File>
     <File Include="bin/HotelSystem.Model.dll">
-      <publishTime>06/27/2018 15:30:37</publishTime>
+      <publishTime>07/04/2018 14:57:29</publishTime>
     </File>
     <File Include="bin/HotelSystem.Web.dll">
-      <publishTime>06/29/2018 14:17:40</publishTime>
+      <publishTime>07/04/2018 16:33:52</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>06/15/2015 02:06:24</publishTime>
@@ -1531,13 +1537,13 @@
       <publishTime>05/14/2018 15:37:23</publishTime>
     </File>
     <File Include="Views/HotelHome/Comment.cshtml">
-      <publishTime>06/22/2018 09:50:07</publishTime>
+      <publishTime>07/04/2018 16:33:41</publishTime>
     </File>
     <File Include="Views/HotelHome/Header.cshtml">
       <publishTime>06/14/2018 06:49:59</publishTime>
     </File>
     <File Include="Views/HotelHome/Index.cshtml">
-      <publishTime>06/07/2018 16:55:12</publishTime>
+      <publishTime>07/04/2018 14:51:37</publishTime>
     </File>
     <File Include="Views/HotelHome/Map.cshtml">
       <publishTime>05/14/2018 15:37:23</publishTime>
@@ -1675,7 +1681,7 @@
       <publishTime>05/14/2018 15:37:23</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>06/29/2018 14:17:41</publishTime>
+      <publishTime>07/04/2018 14:57:30</publishTime>
     </File>
   </ItemGroup>
 </Project>

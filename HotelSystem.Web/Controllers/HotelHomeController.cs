@@ -177,7 +177,14 @@ namespace HotelSystem.Web.Controllers
                            where m.Order.HotelInfoId == id
                            select m).OrderByDescending(m => m.CreateTime).ToPagedList(pageIndex, 15);
             var score = from m in DbContext.Score where m.HotelInfoId == id select m;
-            ViewBag.SumAvg = score.Average(m => m.Value);
+            if (score.Count()>0)
+            {
+                ViewBag.SumAvg = score.Average(m => m.Value);
+            }
+            else
+            {
+                ViewBag.SumAvg = 0;
+            }
             var itemAvg = (from m in score
                           group m by m.ScoreType.Name into g
                           select new {name= g.Key,avg= g.Average(m => m.Value) }).ToList().Select(m=> Tuple.Create(m.name,m.avg));

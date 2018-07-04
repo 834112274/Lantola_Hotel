@@ -16,8 +16,14 @@ namespace HotelSystem.Web.Areas.Hotel.Controllers
             var orders = from m in DbContext.Order
                          where m.HotelInfoId == SessionInfo.hotelUser.HotelInfoId && m.State == "1"
                          select m;
-            ViewBag.Total = orders.Sum(m=>m.HousingPrice);
-            ViewBag.Total = orders.Sum(m => m.HousingPrice);
+            if (orders.Count()>9)
+            {
+                ViewBag.Total = orders.Sum(m => m.HousingPrice);
+            }
+            else
+            {
+                ViewBag.Total = 0;
+            }
             var viewOrder = orders.OrderByDescending(m => m.CreateTime).ToPagedList(pageIndex, 15);
             if (Request.IsAjaxRequest())
                 return PartialView("_OrderList", viewOrder);

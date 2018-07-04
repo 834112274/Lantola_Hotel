@@ -185,7 +185,7 @@
 </div>
 <div class="container">
     <div class="score-container">
-        <div class="sum-score">@Math.Round(ViewBag.SumAvg, 2)</div>
+        <div class="sum-score">@Math.Round(double.Parse(ViewBag.SumAvg.ToString()), 2)</div>
         @foreach (var m in ViewBag.ItemAvg)
         {
             <div class="score-item">

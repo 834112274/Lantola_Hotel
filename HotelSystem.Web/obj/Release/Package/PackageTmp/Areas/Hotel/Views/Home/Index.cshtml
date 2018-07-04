@@ -1,8 +1,114 @@
-﻿
+﻿@model PagedList<HotelSystem.Model.Order>
+@using Webdiyer.WebControls.Mvc
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "首页";
     Layout = "~/Areas/Hotel/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+
+<style>
+    .table p {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .table > thead > tr > th {
+        background: #ddd;
+    }
+
+    .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+        vertical-align: middle;
+        position: relative;
+        font-size: 12px;
+    }
+
+    .table .sort-item {
+        cursor: pointer;
+    }
+
+    .table .sort {
+        position: absolute;
+        top: 13px;
+        left: 65px;
+    }
+
+        .table .sort .acitve {
+            color: #49f;
+        }
+
+        .table .sort i {
+            display: block;
+        }
+
+    .table label {
+        font-weight: 700;
+    }
+
+    label {
+        font-weight: normal;
+        font-size: 12px;
+    }
+
+    .search-btn-container input[type="button"] {
+        border-color: #4876FF;
+        color: #4876FF;
+        padding: 4px 20px;
+    }
+
+        .search-btn-container input[type="button"]:hover {
+            background-color: #4876FF;
+            color: #fff;
+        }
+
+        .search-btn-container input[type="button"]:first-child {
+            border-color: #4876FF;
+            background-color: #4876FF;
+            color: #fff;
+        }
+
+    a {
+        color: #4876FF;
+    }
+
+        a:hover {
+            color: #4876FF;
+        }
+        .total-info{
+            margin:0px;
+            padding:0px;
+            overflow:hidden;
+            margin-top:30px;
+            margin-bottom:20px;
+            background: #ddd;
+        }
+        .total-info li{
+            list-style:none;
+            float:left;
+            text-align:center;
+            width:20%;
+            padding:20px;
+        }
+        .total-info li:first-child{
+            background: #00ff90;
+        }
+</style>
+<div class="container-fluid" style="padding:0px;">
+    <ul class="total-info">
+        <li>销售总金额（元）<p>2000.00</p> </li>
+        <li>已结算金额（元）<p>2000.00</p> </li>
+        <li>未结算金额（元）<p>2000.00</p> </li>
+        <li>销售总间夜<p>30</p> </li>
+        <li>昨日订单数<p>20</p> </li>
+    </ul>
+</div>
+<div class="panel panel-default" style="margin-top:14px;box-shadow: none;">
+    <div class="panel-body">
+        <div style="float:left;width:200px;text-align:center;">今日订单数<p>5</p></div>
+        <div style="float:left;width:200px;text-align:center;">未处理订单<p>5</p></div>
+    </div>
+</div>
+<div id="OrderList">
+    @Html.Partial("_OrderList", Model);
+</div>
+@{Html.RegisterMvcPagerScriptResource();}
 
