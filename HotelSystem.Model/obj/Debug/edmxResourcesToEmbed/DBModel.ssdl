@@ -41,6 +41,8 @@
     <EntitySet Name="ScoreType" EntityType="DBModel.Store.ScoreType" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Reply" EntityType="DBModel.Store.Reply" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Stock" EntityType="DBModel.Store.Stock" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserLog" EntityType="DBModel.Store.UserLog" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Settlement" EntityType="DBModel.Store.Settlement" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="MenuUserRole" Association="DBModel.Store.MenuUserRole">
       <End Role="Menu" EntitySet="Menu" />
       <End Role="UserRole" EntitySet="UserRole" />
@@ -216,6 +218,18 @@
     <AssociationSet Name="GuestUserInvoice" Association="DBModel.Store.GuestUserInvoice">
       <End Role="GuestUser" EntitySet="GuestUser" />
       <End Role="Invoice" EntitySet="Invoice" />
+    </AssociationSet>
+    <AssociationSet Name="UsersSettlement" Association="DBModel.Store.UsersSettlement">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Settlement" EntitySet="Settlement" />
+    </AssociationSet>
+    <AssociationSet Name="HotelInfoSettlement" Association="DBModel.Store.HotelInfoSettlement">
+      <End Role="HotelInfo" EntitySet="HotelInfo" />
+      <End Role="Settlement" EntitySet="Settlement" />
+    </AssociationSet>
+    <AssociationSet Name="SettlementOrder" Association="DBModel.Store.SettlementOrder">
+      <End Role="Settlement" EntitySet="Settlement" />
+      <End Role="Order" EntitySet="Order" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Menu">
@@ -599,6 +613,7 @@
     <Property Name="CancelRemarks" Type="nvarchar" Nullable="true" MaxLength="200" />
     <Property Name="PayTime" Type="datetime" Nullable="true" />
     <Property Name="InvoiceId" Type="nvarchar" Nullable="true" MaxLength="40" />
+    <Property Name="SettlementId" Type="nvarchar" Nullable="true" MaxLength="40" />
   </EntityType>
   <EntityType Name="Comment">
     <Key>
@@ -788,6 +803,32 @@
     <Property Name="SurplusStock" Type="smallint" Nullable="false" />
     <Property Name="Status" Type="smallint" Nullable="false" />
     <Property Name="RoomId" Type="nvarchar" Nullable="false" MaxLength="40" />
+  </EntityType>
+  <EntityType Name="UserLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Level" Type="nvarchar" Nullable="false" MaxLength="10" />
+    <Property Name="TypeName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserType" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Settlement">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="StartTime" Type="datetime" Nullable="false" />
+    <Property Name="EndTime" Type="datetime" Nullable="false" />
+    <Property Name="Amount" Type="float" Nullable="false" />
+    <Property Name="OrderCount" Type="int" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="UsersId" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="HotelInfoId" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="HotelName" Type="nvarchar" Nullable="false" MaxLength="80" />
   </EntityType>
   <Association Name="MenuUserRole">
     <End Role="Menu" Type="DBModel.Store.Menu" Multiplicity="1" />
@@ -1314,6 +1355,42 @@
       </Principal>
       <Dependent Role="Invoice">
         <PropertyRef Name="GuestUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UsersSettlement">
+    <End Role="Users" Type="DBModel.Store.Users" Multiplicity="1" />
+    <End Role="Settlement" Type="DBModel.Store.Settlement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Settlement">
+        <PropertyRef Name="UsersId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HotelInfoSettlement">
+    <End Role="HotelInfo" Type="DBModel.Store.HotelInfo" Multiplicity="1" />
+    <End Role="Settlement" Type="DBModel.Store.Settlement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HotelInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Settlement">
+        <PropertyRef Name="HotelInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SettlementOrder">
+    <End Role="Settlement" Type="DBModel.Store.Settlement" Multiplicity="0..1" />
+    <End Role="Order" Type="DBModel.Store.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Settlement">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="SettlementId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

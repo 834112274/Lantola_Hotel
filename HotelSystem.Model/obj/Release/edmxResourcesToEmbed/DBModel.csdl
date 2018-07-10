@@ -217,6 +217,20 @@
       <End Role="GuestUser" EntitySet="GuestUser" />
       <End Role="Invoice" EntitySet="Invoice" />
     </AssociationSet>
+    <EntitySet Name="UserLog" EntityType="DBModel.UserLog" />
+    <EntitySet Name="Settlement" EntityType="DBModel.Settlement" />
+    <AssociationSet Name="UsersSettlement" Association="DBModel.UsersSettlement">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Settlement" EntitySet="Settlement" />
+    </AssociationSet>
+    <AssociationSet Name="HotelInfoSettlement" Association="DBModel.HotelInfoSettlement">
+      <End Role="HotelInfo" EntitySet="HotelInfo" />
+      <End Role="Settlement" EntitySet="Settlement" />
+    </AssociationSet>
+    <AssociationSet Name="SettlementOrder" Association="DBModel.SettlementOrder">
+      <End Role="Settlement" EntitySet="Settlement" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Menu">
     <Key>
@@ -310,6 +324,7 @@
         <Summary>账号状态</Summary>
       </Documentation>
     </Property>
+    <NavigationProperty Name="Settlement" Relationship="DBModel.UsersSettlement" FromRole="Users" ToRole="Settlement" />
   </EntityType>
   <EntityType Name="UserRole">
     <Key>
@@ -562,6 +577,7 @@
     <NavigationProperty Name="Order" Relationship="DBModel.HotelInfoOrder" FromRole="HotelInfo" ToRole="Order" />
     <NavigationProperty Name="Collection" Relationship="DBModel.HotelInfoCollection" FromRole="HotelInfo" ToRole="Collection" />
     <NavigationProperty Name="Score" Relationship="DBModel.HotelInfoScore" FromRole="HotelInfo" ToRole="Score" />
+    <NavigationProperty Name="Settlement" Relationship="DBModel.HotelInfoSettlement" FromRole="HotelInfo" ToRole="Settlement" />
   </EntityType>
   <Association Name="FK_CityHotelInfo">
     <End Type="DBModel.City" Role="City" Multiplicity="1" />
@@ -1708,6 +1724,8 @@
         <Summary>发票ID</Summary>
       </Documentation>
     </Property>
+    <NavigationProperty Name="Settlement" Relationship="DBModel.SettlementOrder" FromRole="Order" ToRole="Settlement" />
+    <Property Name="SettlementId" Type="String" Nullable="true" MaxLength="40" />
   </EntityType>
   <EntityType Name="Comment">
     <Key>
@@ -2511,6 +2529,115 @@
       </Principal>
       <Dependent Role="Invoice">
         <PropertyRef Name="GuestUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="UserLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="40" />
+    <Property Name="Level" Type="String" Nullable="false" MaxLength="10">
+      <Documentation>
+        <Summary>日志等级</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="TypeName" Type="String" Nullable="false">
+      <Documentation>
+        <Summary>日志类型</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Content" Type="String" Nullable="false">
+      <Documentation>
+        <Summary>日志内容</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="UserId" Type="String" Nullable="false">
+      <Documentation>
+        <Summary>用户id</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="UserType" Type="String" Nullable="false">
+      <Documentation>
+        <Summary>用户类型</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="UserName" Type="String" Nullable="false">
+      <Documentation>
+        <Summary>用户名</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <EntityType Name="Settlement">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="40" />
+    <Property Name="StartTime" Type="DateTime" Nullable="false">
+      <Documentation>
+        <Summary>开始时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="EndTime" Type="DateTime" Nullable="false">
+      <Documentation>
+        <Summary>结束时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Amount" Type="Double" Nullable="false">
+      <Documentation>
+        <Summary>结算金额</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="OrderCount" Type="Int32" Nullable="false">
+      <Documentation>
+        <Summary>订单数</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="CreateTime" Type="DateTime" Nullable="false">
+      <Documentation>
+        <Summary>结算时间</Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="Users" Relationship="DBModel.UsersSettlement" FromRole="Settlement" ToRole="Users" />
+    <Property Name="UsersId" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="HotelInfo" Relationship="DBModel.HotelInfoSettlement" FromRole="Settlement" ToRole="HotelInfo" />
+    <Property Name="HotelInfoId" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Order" Relationship="DBModel.SettlementOrder" FromRole="Settlement" ToRole="Order" />
+    <Property Name="HotelName" Type="String" Nullable="false" MaxLength="80" />
+  </EntityType>
+  <Association Name="UsersSettlement">
+    <End Type="DBModel.Users" Role="Users" Multiplicity="1" />
+    <End Type="DBModel.Settlement" Role="Settlement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Settlement">
+        <PropertyRef Name="UsersId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HotelInfoSettlement">
+    <End Type="DBModel.HotelInfo" Role="HotelInfo" Multiplicity="1" />
+    <End Type="DBModel.Settlement" Role="Settlement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HotelInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Settlement">
+        <PropertyRef Name="HotelInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SettlementOrder">
+    <End Type="DBModel.Settlement" Role="Settlement" Multiplicity="0..1" />
+    <End Type="DBModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Settlement">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="SettlementId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

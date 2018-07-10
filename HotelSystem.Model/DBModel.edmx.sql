@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/24/2018 14:10:51
--- Generated from EDMX file: G:\Project\Lantola_HotelSystem\HotelSystem.Model\DBModel.edmx
+-- Date Created: 07/10/2018 16:19:19
+-- Generated from EDMX file: F:\Project\github\Lantola_Hotel\HotelSystem.Model\DBModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -149,6 +149,15 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_GuestUserInvoice]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Invoice] DROP CONSTRAINT [FK_GuestUserInvoice];
 GO
+IF OBJECT_ID(N'[dbo].[FK_UsersSettlement]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Settlement] DROP CONSTRAINT [FK_UsersSettlement];
+GO
+IF OBJECT_ID(N'[dbo].[FK_HotelInfoSettlement]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Settlement] DROP CONSTRAINT [FK_HotelInfoSettlement];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SettlementOrder]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Order] DROP CONSTRAINT [FK_SettlementOrder];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -273,6 +282,12 @@ IF OBJECT_ID(N'[dbo].[Reply]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[Stock]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Stock];
+GO
+IF OBJECT_ID(N'[dbo].[UserLog]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[UserLog];
+GO
+IF OBJECT_ID(N'[dbo].[Settlement]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Settlement];
 GO
 
 -- --------------------------------------------------
@@ -657,7 +672,8 @@ CREATE TABLE [dbo].[Order] (
     [UpdateTime] datetime  NULL,
     [CancelRemarks] nvarchar(200)  NULL,
     [PayTime] datetime  NULL,
-    [InvoiceId] nvarchar(40)  NULL
+    [InvoiceId] nvarchar(40)  NULL,
+    [SettlementId] nvarchar(40)  NULL
 );
 GO
 
@@ -847,6 +863,32 @@ CREATE TABLE [dbo].[Stock] (
     [SurplusStock] smallint  NOT NULL,
     [Status] smallint  NOT NULL,
     [RoomId] nvarchar(40)  NOT NULL
+);
+GO
+
+-- Creating table 'UserLog'
+CREATE TABLE [dbo].[UserLog] (
+    [Id] nvarchar(40)  NOT NULL,
+    [Level] nvarchar(10)  NOT NULL,
+    [TypeName] nvarchar(max)  NOT NULL,
+    [Content] nvarchar(max)  NOT NULL,
+    [UserId] nvarchar(max)  NOT NULL,
+    [UserType] nvarchar(max)  NOT NULL,
+    [UserName] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'Settlement'
+CREATE TABLE [dbo].[Settlement] (
+    [Id] nvarchar(40)  NOT NULL,
+    [StartTime] datetime  NOT NULL,
+    [EndTime] datetime  NOT NULL,
+    [Amount] float  NOT NULL,
+    [OrderCount] int  NOT NULL,
+    [CreateTime] datetime  NOT NULL,
+    [UsersId] nvarchar(40)  NOT NULL,
+    [HotelInfoId] nvarchar(40)  NOT NULL,
+    [HotelName] nvarchar(80)  NOT NULL
 );
 GO
 
@@ -1091,6 +1133,18 @@ GO
 -- Creating primary key on [Id] in table 'Stock'
 ALTER TABLE [dbo].[Stock]
 ADD CONSTRAINT [PK_Stock]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'UserLog'
+ALTER TABLE [dbo].[UserLog]
+ADD CONSTRAINT [PK_UserLog]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'Settlement'
+ALTER TABLE [dbo].[Settlement]
+ADD CONSTRAINT [PK_Settlement]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -1756,6 +1810,51 @@ GO
 CREATE INDEX [IX_FK_GuestUserInvoice]
 ON [dbo].[Invoice]
     ([GuestUserId]);
+GO
+
+-- Creating foreign key on [UsersId] in table 'Settlement'
+ALTER TABLE [dbo].[Settlement]
+ADD CONSTRAINT [FK_UsersSettlement]
+    FOREIGN KEY ([UsersId])
+    REFERENCES [dbo].[Users]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_UsersSettlement'
+CREATE INDEX [IX_FK_UsersSettlement]
+ON [dbo].[Settlement]
+    ([UsersId]);
+GO
+
+-- Creating foreign key on [HotelInfoId] in table 'Settlement'
+ALTER TABLE [dbo].[Settlement]
+ADD CONSTRAINT [FK_HotelInfoSettlement]
+    FOREIGN KEY ([HotelInfoId])
+    REFERENCES [dbo].[HotelInfo]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_HotelInfoSettlement'
+CREATE INDEX [IX_FK_HotelInfoSettlement]
+ON [dbo].[Settlement]
+    ([HotelInfoId]);
+GO
+
+-- Creating foreign key on [SettlementId] in table 'Order'
+ALTER TABLE [dbo].[Order]
+ADD CONSTRAINT [FK_SettlementOrder]
+    FOREIGN KEY ([SettlementId])
+    REFERENCES [dbo].[Settlement]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_SettlementOrder'
+CREATE INDEX [IX_FK_SettlementOrder]
+ON [dbo].[Order]
+    ([SettlementId]);
 GO
 
 -- --------------------------------------------------

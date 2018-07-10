@@ -31,6 +31,7 @@ namespace HotelSystem.Model
             this.Order = new HashSet<Order>();
             this.Collection = new HashSet<Collection>();
             this.Score = new HashSet<Score>();
+            this.Settlement = new HashSet<Settlement>();
         }
     
     	/// <summary>
@@ -189,5 +190,7 @@ namespace HotelSystem.Model
         public virtual ICollection<Collection> Collection { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Score> Score { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Settlement> Settlement { get; set; }
     }
 }

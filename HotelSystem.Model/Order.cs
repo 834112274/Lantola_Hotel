@@ -191,6 +191,11 @@ namespace HotelSystem.Model
         /// </summary>
     	[DisplayName( "发票ID" )]
         public string InvoiceId { get; set; }
+    	/// <summary>
+        /// 
+        /// </summary>
+    	[DisplayName( "" )]
+        public string SettlementId { get; set; }
     
         public virtual GuestUser GuestUser { get; set; }
         public virtual HotelInfo HotelInfo { get; set; }
@@ -203,5 +208,6 @@ namespace HotelSystem.Model
         public virtual ICollection<Occupant> Occupant { get; set; }
         public virtual transaction transaction { get; set; }
         public virtual Invoice Invoice { get; set; }
+        public virtual Settlement Settlement { get; set; }
     }
 }

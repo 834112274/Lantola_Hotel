@@ -90,6 +90,27 @@
     <File Include="Areas/Admin/Views/SearchConfig/Config.cshtml">
       <publishTime>05/14/2018 15:37:21</publishTime>
     </File>
+    <File Include="Areas/Admin/Views/Settlement/History.cshtml">
+      <publishTime>07/10/2018 16:42:21</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/Settlement/HotelList.cshtml">
+      <publishTime>07/10/2018 17:47:00</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/Settlement/OrderList.cshtml">
+      <publishTime>07/10/2018 17:22:02</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/Settlement/_HotelList.cshtml">
+      <publishTime>07/10/2018 16:27:39</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/Settlement/_HotelPage.cshtml">
+      <publishTime>07/10/2018 17:22:06</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/Settlement/_OrderList.cshtml">
+      <publishTime>07/10/2018 15:44:36</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/Settlement/_OrderPage.cshtml">
+      <publishTime>07/10/2018 15:44:34</publishTime>
+    </File>
     <File Include="Areas/Admin/Views/Shared/_Layout.cshtml">
       <publishTime>06/18/2018 17:42:32</publishTime>
     </File>
@@ -283,13 +304,13 @@
       <publishTime>03/17/2013 13:26:30</publishTime>
     </File>
     <File Include="bin/HotelSystem.Helper.dll">
-      <publishTime>07/04/2018 14:57:29</publishTime>
+      <publishTime>07/10/2018 17:47:13</publishTime>
     </File>
     <File Include="bin/HotelSystem.Model.dll">
-      <publishTime>07/04/2018 14:57:29</publishTime>
+      <publishTime>07/10/2018 17:47:13</publishTime>
     </File>
     <File Include="bin/HotelSystem.Web.dll">
-      <publishTime>07/04/2018 16:33:52</publishTime>
+      <publishTime>07/10/2018 17:47:13</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>06/15/2015 02:06:24</publishTime>

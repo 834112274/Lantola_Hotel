@@ -402,6 +402,7 @@
           <ScalarProperty Name="CancelRemarks" ColumnName="CancelRemarks" />
           <ScalarProperty Name="PayTime" ColumnName="PayTime" />
           <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
+          <ScalarProperty Name="SettlementId" ColumnName="SettlementId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -605,6 +606,34 @@
           <ScalarProperty Name="SurplusStock" ColumnName="SurplusStock" />
           <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserLog">
+      <EntityTypeMapping TypeName="IsTypeOf(DBModel.UserLog)">
+        <MappingFragment StoreEntitySet="UserLog">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Settlement">
+      <EntityTypeMapping TypeName="IsTypeOf(DBModel.Settlement)">
+        <MappingFragment StoreEntitySet="Settlement">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="OrderCount" ColumnName="OrderCount" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="UsersId" ColumnName="UsersId" />
+          <ScalarProperty Name="HotelInfoId" ColumnName="HotelInfoId" />
+          <ScalarProperty Name="HotelName" ColumnName="HotelName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

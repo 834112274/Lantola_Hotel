@@ -18,6 +18,12 @@ namespace HotelSystem.Model
     /// </summary>
     public partial class Users
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Users()
+        {
+            this.Settlement = new HashSet<Settlement>();
+        }
+    
     	/// <summary>
         /// 
         /// </summary>
@@ -68,5 +74,8 @@ namespace HotelSystem.Model
         /// </summary>
     	[DisplayName( "账号状态" )]
         public short Status { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Settlement> Settlement { get; set; }
     }
 }

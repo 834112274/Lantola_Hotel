@@ -89,6 +89,11 @@
         <AssociationConnector Association="DBModel.RoomStock" />
         <AssociationConnector Association="DBModel.InvoiceOrder" />
         <AssociationConnector Association="DBModel.GuestUserInvoice" />
+        <EntityTypeShape EntityType="DBModel.UserLog" Width="1.5" PointX="8.875" PointY="3.625" />
+        <EntityTypeShape EntityType="DBModel.Settlement" Width="1.5" PointX="11.25" PointY="4" />
+        <AssociationConnector Association="DBModel.UsersSettlement" />
+        <AssociationConnector Association="DBModel.HotelInfoSettlement" />
+        <AssociationConnector Association="DBModel.SettlementOrder" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

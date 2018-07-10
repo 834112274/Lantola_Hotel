@@ -46,6 +46,8 @@
     <EntitySet Name="ScoreType" EntityType="DBModel.Store.ScoreType" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Reply" EntityType="DBModel.Store.Reply" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Stock" EntityType="DBModel.Store.Stock" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserLog" EntityType="DBModel.Store.UserLog" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Settlement" EntityType="DBModel.Store.Settlement" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="MenuUserRole" Association="DBModel.Store.MenuUserRole">
       <End Role="Menu" EntitySet="Menu" />
       <End Role="UserRole" EntitySet="UserRole" />
@@ -221,6 +223,18 @@
     <AssociationSet Name="GuestUserInvoice" Association="DBModel.Store.GuestUserInvoice">
       <End Role="GuestUser" EntitySet="GuestUser" />
       <End Role="Invoice" EntitySet="Invoice" />
+    </AssociationSet>
+    <AssociationSet Name="UsersSettlement" Association="DBModel.Store.UsersSettlement">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Settlement" EntitySet="Settlement" />
+    </AssociationSet>
+    <AssociationSet Name="HotelInfoSettlement" Association="DBModel.Store.HotelInfoSettlement">
+      <End Role="HotelInfo" EntitySet="HotelInfo" />
+      <End Role="Settlement" EntitySet="Settlement" />
+    </AssociationSet>
+    <AssociationSet Name="SettlementOrder" Association="DBModel.Store.SettlementOrder">
+      <End Role="Settlement" EntitySet="Settlement" />
+      <End Role="Order" EntitySet="Order" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Menu">
@@ -604,6 +618,7 @@
     <Property Name="CancelRemarks" Type="nvarchar" Nullable="true" MaxLength="200" />
     <Property Name="PayTime" Type="datetime" Nullable="true" />
     <Property Name="InvoiceId" Type="nvarchar" Nullable="true" MaxLength="40" />
+    <Property Name="SettlementId" Type="nvarchar" Nullable="true" MaxLength="40" />
   </EntityType>
   <EntityType Name="Comment">
     <Key>
@@ -793,6 +808,32 @@
     <Property Name="SurplusStock" Type="smallint" Nullable="false" />
     <Property Name="Status" Type="smallint" Nullable="false" />
     <Property Name="RoomId" Type="nvarchar" Nullable="false" MaxLength="40" />
+  </EntityType>
+  <EntityType Name="UserLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Level" Type="nvarchar" Nullable="false" MaxLength="10" />
+    <Property Name="TypeName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserType" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Settlement">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="StartTime" Type="datetime" Nullable="false" />
+    <Property Name="EndTime" Type="datetime" Nullable="false" />
+    <Property Name="Amount" Type="float" Nullable="false" />
+    <Property Name="OrderCount" Type="int" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="UsersId" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="HotelInfoId" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="HotelName" Type="nvarchar" Nullable="false" MaxLength="80" />
   </EntityType>
   <Association Name="MenuUserRole">
     <End Role="Menu" Type="DBModel.Store.Menu" Multiplicity="1" />
@@ -1322,6 +1363,42 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="UsersSettlement">
+    <End Role="Users" Type="DBModel.Store.Users" Multiplicity="1" />
+    <End Role="Settlement" Type="DBModel.Store.Settlement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Settlement">
+        <PropertyRef Name="UsersId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HotelInfoSettlement">
+    <End Role="HotelInfo" Type="DBModel.Store.HotelInfo" Multiplicity="1" />
+    <End Role="Settlement" Type="DBModel.Store.Settlement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HotelInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Settlement">
+        <PropertyRef Name="HotelInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SettlementOrder">
+    <End Role="Settlement" Type="DBModel.Store.Settlement" Multiplicity="0..1" />
+    <End Role="Order" Type="DBModel.Store.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Settlement">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="SettlementId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -1543,6 +1620,20 @@
             <End Role="GuestUser" EntitySet="GuestUser" />
             <End Role="Invoice" EntitySet="Invoice" />
           </AssociationSet>
+          <EntitySet Name="UserLog" EntityType="DBModel.UserLog" />
+          <EntitySet Name="Settlement" EntityType="DBModel.Settlement" />
+          <AssociationSet Name="UsersSettlement" Association="DBModel.UsersSettlement">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Settlement" EntitySet="Settlement" />
+          </AssociationSet>
+          <AssociationSet Name="HotelInfoSettlement" Association="DBModel.HotelInfoSettlement">
+            <End Role="HotelInfo" EntitySet="HotelInfo" />
+            <End Role="Settlement" EntitySet="Settlement" />
+          </AssociationSet>
+          <AssociationSet Name="SettlementOrder" Association="DBModel.SettlementOrder">
+            <End Role="Settlement" EntitySet="Settlement" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="Menu">
           <Key>
@@ -1636,6 +1727,7 @@
               <Summary>账号状态</Summary>
             </Documentation>
           </Property>
+          <NavigationProperty Name="Settlement" Relationship="DBModel.UsersSettlement" FromRole="Users" ToRole="Settlement" />
         </EntityType>
         <EntityType Name="UserRole">
           <Key>
@@ -1888,6 +1980,7 @@
           <NavigationProperty Name="Order" Relationship="DBModel.HotelInfoOrder" FromRole="HotelInfo" ToRole="Order" />
           <NavigationProperty Name="Collection" Relationship="DBModel.HotelInfoCollection" FromRole="HotelInfo" ToRole="Collection" />
           <NavigationProperty Name="Score" Relationship="DBModel.HotelInfoScore" FromRole="HotelInfo" ToRole="Score" />
+          <NavigationProperty Name="Settlement" Relationship="DBModel.HotelInfoSettlement" FromRole="HotelInfo" ToRole="Settlement" />
         </EntityType>
         <Association Name="FK_CityHotelInfo">
           <End Type="DBModel.City" Role="City" Multiplicity="1" />
@@ -3034,6 +3127,8 @@
               <Summary>发票ID</Summary>
             </Documentation>
           </Property>
+          <NavigationProperty Name="Settlement" Relationship="DBModel.SettlementOrder" FromRole="Order" ToRole="Settlement" />
+          <Property Name="SettlementId" Type="String" Nullable="true" MaxLength="40" />
         </EntityType>
         <EntityType Name="Comment">
           <Key>
@@ -3840,6 +3935,115 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="UserLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="40" />
+          <Property Name="Level" Type="String" Nullable="false" MaxLength="10" >
+            <Documentation>
+              <Summary>日志等级</Summary>
+            </Documentation>
+          </Property>
+          <Property Name="TypeName" Type="String" Nullable="false" >
+            <Documentation>
+              <Summary>日志类型</Summary>
+            </Documentation>
+          </Property>
+          <Property Name="Content" Type="String" Nullable="false" >
+            <Documentation>
+              <Summary>日志内容</Summary>
+            </Documentation>
+          </Property>
+          <Property Name="UserId" Type="String" Nullable="false" >
+            <Documentation>
+              <Summary>用户id</Summary>
+            </Documentation>
+          </Property>
+          <Property Name="UserType" Type="String" Nullable="false" >
+            <Documentation>
+              <Summary>用户类型</Summary>
+            </Documentation>
+          </Property>
+          <Property Name="UserName" Type="String" Nullable="false" >
+            <Documentation>
+              <Summary>用户名</Summary>
+            </Documentation>
+          </Property>
+        </EntityType>
+        <EntityType Name="Settlement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="40" />
+          <Property Name="StartTime" Type="DateTime" Nullable="false" >
+            <Documentation>
+              <Summary>开始时间</Summary>
+            </Documentation>
+          </Property>
+          <Property Name="EndTime" Type="DateTime" Nullable="false" >
+            <Documentation>
+              <Summary>结束时间</Summary>
+            </Documentation>
+          </Property>
+          <Property Name="Amount" Type="Double" Nullable="false" >
+            <Documentation>
+              <Summary>结算金额</Summary>
+            </Documentation>
+          </Property>
+          <Property Name="OrderCount" Type="Int32" Nullable="false" >
+            <Documentation>
+              <Summary>订单数</Summary>
+            </Documentation>
+          </Property>
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" >
+            <Documentation>
+              <Summary>结算时间</Summary>
+            </Documentation>
+          </Property>
+          <NavigationProperty Name="Users" Relationship="DBModel.UsersSettlement" FromRole="Settlement" ToRole="Users" />
+          <Property Name="UsersId" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="HotelInfo" Relationship="DBModel.HotelInfoSettlement" FromRole="Settlement" ToRole="HotelInfo" />
+          <Property Name="HotelInfoId" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Order" Relationship="DBModel.SettlementOrder" FromRole="Settlement" ToRole="Order" />
+          <Property Name="HotelName" Type="String" Nullable="false" MaxLength="80" />
+        </EntityType>
+        <Association Name="UsersSettlement">
+          <End Type="DBModel.Users" Role="Users" Multiplicity="1" />
+          <End Type="DBModel.Settlement" Role="Settlement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Settlement">
+              <PropertyRef Name="UsersId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="HotelInfoSettlement">
+          <End Type="DBModel.HotelInfo" Role="HotelInfo" Multiplicity="1" />
+          <End Type="DBModel.Settlement" Role="Settlement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HotelInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Settlement">
+              <PropertyRef Name="HotelInfoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SettlementOrder">
+          <End Type="DBModel.Settlement" Role="Settlement" Multiplicity="0..1" />
+          <End Type="DBModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Settlement">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="SettlementId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4247,6 +4451,7 @@
           <ScalarProperty Name="CancelRemarks" ColumnName="CancelRemarks" />
           <ScalarProperty Name="PayTime" ColumnName="PayTime" />
           <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
+          <ScalarProperty Name="SettlementId" ColumnName="SettlementId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -4450,6 +4655,34 @@
           <ScalarProperty Name="SurplusStock" ColumnName="SurplusStock" />
           <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserLog">
+      <EntityTypeMapping TypeName="IsTypeOf(DBModel.UserLog)">
+        <MappingFragment StoreEntitySet="UserLog">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Settlement">
+      <EntityTypeMapping TypeName="IsTypeOf(DBModel.Settlement)">
+        <MappingFragment StoreEntitySet="Settlement">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="OrderCount" ColumnName="OrderCount" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="UsersId" ColumnName="UsersId" />
+          <ScalarProperty Name="HotelInfoId" ColumnName="HotelInfoId" />
+          <ScalarProperty Name="HotelName" ColumnName="HotelName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

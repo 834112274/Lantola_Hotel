@@ -1,0 +1,86 @@
+﻿@model PagedList<HotelSystem.Model.Order>
+@using Webdiyer.WebControls.Mvc
+@{
+    ViewBag.Title = "账单结算";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .table p {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .table > thead > tr > th {
+        background: #ddd;
+    }
+
+    .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+        vertical-align: middle;
+        position: relative;
+        font-size: 12px;
+    }
+
+    .table .sort-item {
+        cursor: pointer;
+    }
+
+    .table .sort {
+        position: absolute;
+        top: 13px;
+        left: 65px;
+    }
+
+        .table .sort .acitve {
+            color: #49f;
+        }
+
+        .table .sort i {
+            display: block;
+        }
+
+    .table label {
+        font-weight: 700;
+    }
+
+    label {
+        font-weight: normal;
+        font-size: 12px;
+    }
+
+    .search-btn-container input[type="button"] {
+        border-color: #4876FF;
+        color: #4876FF;
+        padding: 4px 20px;
+    }
+
+        .search-btn-container input[type="button"]:hover {
+            background-color: #4876FF;
+            color: #fff;
+        }
+
+        .search-btn-container input[type="button"]:first-child {
+            border-color: #4876FF;
+            background-color: #4876FF;
+            color: #fff;
+        }
+
+    a {
+        color: #4876FF;
+    }
+
+        a:hover {
+            color: #4876FF;
+        }
+</style>
+<div class="panel panel-default" style="margin-top:14px;box-shadow: none;">
+    <div class="panel-body">
+        <input type="button" class="btn btn-default btn-sm" value="筛选" />
+        <input type="button" class="btn btn-default btn-sm" value="导出" />
+    </div>
+</div>
+<div id="OrderList">
+    @Html.Partial("_OrderList", Model);
+
+</div>
+@{Html.RegisterMvcPagerScriptResource();}

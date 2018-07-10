@@ -65,7 +65,7 @@ namespace HotelSystem.Web.Models.View
         public HotelView()
         {
             pageIndex = 1;
-            pageIndex = 10;
+            pageSize = 15;
             start = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd"));
             end = start.AddDays(1);
             hotelInfo = new HotelInfo();
@@ -140,7 +140,7 @@ namespace HotelSystem.Web.Models.View
         {
             using (DBModelContainer DbContext = new DBModelContainer())
             {
-                var hotel = from m in DbContext.HotelInfo
+                var hotel = from m in DbContext.HotelInfo.Include("HotelImages").Include("City").Include("District").Include("HotelPolicy")
                             select m;
                 //搜索关键字
                 if (!string.IsNullOrEmpty(k))
@@ -150,12 +150,12 @@ namespace HotelSystem.Web.Models.View
                             select m;
                 }
                 //省份
-                if (!string.IsNullOrEmpty(provice))
-                {
-                    hotel = from m in hotel
-                            where m.City.Province.ProvinceName.Contains(provice)
-                            select m;
-                }
+                //if (!string.IsNullOrEmpty(provice))
+                //{
+                //    hotel = from m in hotel
+                //            where m.City.Province.ProvinceName.Contains(provice)
+                //            select m;
+                //}
                 //城市
                 if (!string.IsNullOrEmpty(city))
                 {
@@ -200,8 +200,8 @@ namespace HotelSystem.Web.Models.View
                                group m by m.id into g
                                select new { id = g.Key, min = g.Min(t => t.min), max = g.Max(t => t.max) };
 
-                    var hv = from r in room
-                             join m in hotel on r.id equals m.Id
+                    var hv = from m in hotel.ToList()
+                             join r in room.ToList() on m.Id equals r.id
                              select new HotelView()
                              {
                                  hotelInfo = m,
@@ -209,7 +209,7 @@ namespace HotelSystem.Web.Models.View
                                  minPrice = r.min
                              };
 
-                    return hv.OrderByDescending(m => m.minPrice).ToPagedList(pageIndex, 15);
+                    return hv.OrderByDescending(m => m.minPrice).ToPagedList(pageIndex, pageSize);
                 }
                 else
                 {

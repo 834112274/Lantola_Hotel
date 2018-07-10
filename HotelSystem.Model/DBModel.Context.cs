@@ -65,5 +65,7 @@ namespace HotelSystem.Model
         public virtual DbSet<ScoreType> ScoreType { get; set; }
         public virtual DbSet<Reply> Reply { get; set; }
         public virtual DbSet<Stock> Stock { get; set; }
+        public virtual DbSet<UserLog> UserLog { get; set; }
+        public virtual DbSet<Settlement> Settlement { get; set; }
     }
 }

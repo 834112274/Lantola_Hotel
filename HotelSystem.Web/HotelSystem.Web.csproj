@@ -484,6 +484,13 @@
     <Content Include="Areas\Admin\Views\Notice\Manage.cshtml" />
     <Content Include="Areas\Hotel\Views\Home\_OrderList.cshtml" />
     <Content Include="Areas\Hotel\Views\Home\_OrderPage.cshtml" />
+    <Content Include="Areas\Admin\Views\Settlement\OrderList.cshtml" />
+    <Content Include="Areas\Admin\Views\Settlement\_OrderList.cshtml" />
+    <Content Include="Areas\Admin\Views\Settlement\_OrderPage.cshtml" />
+    <Content Include="Areas\Admin\Views\Settlement\_HotelList.cshtml" />
+    <Content Include="Areas\Admin\Views\Settlement\_HotelPage.cshtml" />
+    <Content Include="Areas\Admin\Views\Settlement\HotelList.cshtml" />
+    <Content Include="Areas\Admin\Views\Settlement\History.cshtml" />
     <None Include="Properties\PublishProfiles\Release.pubxml" />
     <Content Include="Scripts\assets\fonts\fontawesome-webfont.woff2" />
     <Content Include="Scripts\assets\plugins\bootstrap-daterangepicker-master\.gitignore" />
@@ -524,6 +531,7 @@
     <Compile Include="Areas\Admin\Controllers\FeatureController.cs" />
     <Compile Include="Areas\Admin\Controllers\NoticeController.cs" />
     <Compile Include="Areas\Admin\Controllers\PermissionController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SettlementController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserManageController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\HotelController.cs" />
