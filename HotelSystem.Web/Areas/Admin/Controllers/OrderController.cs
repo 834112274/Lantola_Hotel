@@ -1,4 +1,5 @@
 ﻿using HotelSystem.Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -87,6 +88,18 @@ namespace HotelSystem.Web.Areas.Admin.Controllers
                 invoice.Express = Express;
                 invoice.ExpressNumber = ExpressNumber;
                 invoice.Status = 2;
+                UserLog log = new UserLog()
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Level = "info",
+                    TypeName = "invoices",
+                    UserId = SessionInfo.systemUser.Id,
+                    UserName = SessionInfo.systemUser.Name,
+                    UserType = "system",
+                    Content = string.Format("开票：{0}",JsonConvert.SerializeObject(invoice)),
+                    CreateTime = DateTime.Now
+                };
+                DbContext.UserLog.Add(log);
                 DbContext.SaveChanges();
                 TempData["message"] = "<strong>开票成功!</strong> ";
                 return RedirectToAction("Invoice");

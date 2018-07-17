@@ -1,6 +1,7 @@
 ﻿using HotelSystem.Helper;
 using HotelSystem.Model;
 using HotelSystem.Web.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -64,6 +65,18 @@ namespace HotelSystem.Web.Areas.Admin.Controllers
                 t.Summary = config.Summary;
                 t.Valid = config.Valid;
             }
+            UserLog log = new UserLog()
+            {
+                Id = Guid.NewGuid().ToString(),
+                Level = "info",
+                TypeName = "search-config",
+                UserId = SessionInfo.systemUser.Id,
+                UserName = SessionInfo.systemUser.Name,
+                UserType = "system",
+                Content = string.Format("搜索页配置：{0}", JsonConvert.SerializeObject(config)),
+                CreateTime = DateTime.Now
+            };
+            DbContext.UserLog.Add(log);
             DbContext.SaveChanges();
             return View("Config");
         }

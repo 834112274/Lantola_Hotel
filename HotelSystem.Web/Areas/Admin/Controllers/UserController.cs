@@ -1,5 +1,6 @@
 ﻿using HotelSystem.Helper;
 using HotelSystem.Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,6 +50,19 @@ namespace HotelSystem.Web.Areas.Admin.Controllers
                 }
 
                 Session["SystemUser"] = u;
+                UserLog log = new UserLog()
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Level = "info",
+                    TypeName = "login",
+                    UserId = SessionInfo.systemUser.Id,
+                    UserName = SessionInfo.systemUser.Name,
+                    UserType = "system",
+                    Content = string.Format("登录"),
+                    CreateTime = DateTime.Now
+                };
+                DbContext.UserLog.Add(log);
+                DbContext.SaveChanges();
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -86,6 +100,18 @@ namespace HotelSystem.Web.Areas.Admin.Controllers
                 return View();
             }
             u.Password = Encrypt.Md5(Password);
+            UserLog log = new UserLog()
+            {
+                Id = Guid.NewGuid().ToString(),
+                Level = "info",
+                TypeName = "change-password",
+                UserId = SessionInfo.systemUser.Id,
+                UserName = SessionInfo.systemUser.Name,
+                UserType = "system",
+                Content = string.Format("修改密码"),
+                CreateTime = DateTime.Now
+            };
+            DbContext.UserLog.Add(log);
             DbContext.SaveChanges();
             ViewBag.Message = "<strong>密码修改成功!</strong> 下次登录请使用新密码登录，旧密码已失效.";
             return View();
@@ -128,6 +154,18 @@ namespace HotelSystem.Web.Areas.Admin.Controllers
             user.Status = 1;
             user.ParentId = SessionInfo.systemUser.Id;
             DbContext.Users.Add(user);
+            UserLog log = new UserLog()
+            {
+                Id = Guid.NewGuid().ToString(),
+                Level = "worning",
+                TypeName = "add-user",
+                UserId = SessionInfo.systemUser.Id,
+                UserName = SessionInfo.systemUser.Name,
+                UserType = "system",
+                Content = string.Format("添加用户：{0}", JsonConvert.SerializeObject(user)),
+                CreateTime = DateTime.Now
+            };
+            DbContext.UserLog.Add(log);
             DbContext.SaveChanges();
             TempData["message"] = "<strong> 添加成功!</strong> 用户已成功添加，已分配默认权限，请注意查看修改.";
             return RedirectToAction("Children");
@@ -142,7 +180,19 @@ namespace HotelSystem.Web.Areas.Admin.Controllers
                 return RedirectToAction("Children");
             }
             var u = DbContext.Users.Single(m => m.Id == id);
-            u.Vail = false;
+            DbContext.Users.Remove(u);
+            UserLog log = new UserLog()
+            {
+                Id = Guid.NewGuid().ToString(),
+                Level = "worning",
+                TypeName = "delete-user",
+                UserId = SessionInfo.systemUser.Id,
+                UserName = SessionInfo.systemUser.Name,
+                UserType = "system",
+                Content = string.Format("删除用户：{0}", JsonConvert.SerializeObject(u)),
+                CreateTime = DateTime.Now
+            };
+            DbContext.UserLog.Add(log);
             DbContext.SaveChanges();
             TempData["message"] = "<strong> 删除成功!</strong>" + u.Name + "已成功删除，该账号将无法使用.";
             return RedirectToAction("Children");
@@ -158,6 +208,18 @@ namespace HotelSystem.Web.Areas.Admin.Controllers
             }
             var u = DbContext.Users.Single(m => m.Id == id);
             u.Password = "e10adc3949ba59abbe56e057f20f883e";
+            UserLog log = new UserLog()
+            {
+                Id = Guid.NewGuid().ToString(),
+                Level = "worning",
+                TypeName = "reset-user",
+                UserId = SessionInfo.systemUser.Id,
+                UserName = SessionInfo.systemUser.Name,
+                UserType = "system",
+                Content = string.Format("重置密码：{0}", JsonConvert.SerializeObject(u)),
+                CreateTime = DateTime.Now
+            };
+            DbContext.UserLog.Add(log);
             DbContext.SaveChanges();
             TempData["message"] = "<strong> 重置密码成功!</strong>" + u.Name + "密码已重置，下次登录需使用新密码登录.";
             return RedirectToAction("Children");
@@ -198,6 +260,18 @@ namespace HotelSystem.Web.Areas.Admin.Controllers
                             DbContext.UserRole.Add(r);
                         }
                     }
+                    UserLog log = new UserLog()
+                    {
+                        Id = Guid.NewGuid().ToString(),
+                        Level = "worning",
+                        TypeName = "change-permission",
+                        UserId = SessionInfo.systemUser.Id,
+                        UserName = SessionInfo.systemUser.Name,
+                        UserType = "system",
+                        Content = string.Format("修改用户权限：用户ID{0}", id),
+                        CreateTime = DateTime.Now
+                    };
+                    DbContext.UserLog.Add(log);
                     DbContext.SaveChanges();
                     TempData["message"] = "<strong> 保存成功!</strong> 已成功分配权限，可登录该用户刷新页面查看.";
                 }

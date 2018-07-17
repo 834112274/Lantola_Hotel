@@ -1,6 +1,7 @@
 ﻿using HotelSystem.Helper;
 using HotelSystem.Model;
 using HotelSystem.Web.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,7 +14,8 @@ namespace HotelSystem.Web.Areas.Hotel.Controllers
 {
     public class RoomController : Controller
     {
-        DBModelContainer DbContext = new DBModelContainer();
+        private DBModelContainer DbContext = new DBModelContainer();
+
         // GET: Hotel/Room
         [Login(Area = "Hotel", Role = "hotel")]
         public ActionResult Manage(int pageIndex = 1)
@@ -103,7 +105,7 @@ namespace HotelSystem.Web.Areas.Hotel.Controllers
                     entity.RoundBathtub = room.RoundBathtub;
                     entity.WindowBathtub = room.WindowBathtub;
                 }
-                string TimePath = ServerConfig.GetHotelImgRoute(SessionInfo.hotelUser.HotelInfoId+ "/Room"); 
+                string TimePath = ServerConfig.GetHotelImgRoute(SessionInfo.hotelUser.HotelInfoId + "/Room");
 
                 string pathForSaving = Server.MapPath(TimePath);
 
@@ -117,7 +119,6 @@ namespace HotelSystem.Web.Areas.Hotel.Controllers
                         var path = Path.Combine(pathForSaving, fileName);
 
                         ImgHelper.Compress(file.InputStream, path, ServerConfig.Level);//压缩保存操作
-  
 
                         RoomImages img = new RoomImages()
                         {
@@ -131,6 +132,18 @@ namespace HotelSystem.Web.Areas.Hotel.Controllers
                         DbContext.RoomImages.Add(img);
                     }
                 }
+                UserLog log = new UserLog()
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Level = "worning",
+                    TypeName = "change-room",
+                    UserId = SessionInfo.hotelUser.Id,
+                    UserName = SessionInfo.hotelUser.Name,
+                    UserType = "hotel",
+                    Content = string.Format("编辑房型{0}", JsonConvert.SerializeObject(room)),
+                    CreateTime = DateTime.Now
+                };
+                DbContext.UserLog.Add(log);
                 DbContext.SaveChanges();
                 return RedirectToAction("Manage");
             }
@@ -139,19 +152,21 @@ namespace HotelSystem.Web.Areas.Hotel.Controllers
                 return View();
             }
         }
+
         [Login(Area = "Hotel", Role = "hotel")]
         public ActionResult RoomPrice(string id)
         {
             ViewBag.Id = id;
             return View();
         }
+
         [Login(Area = "Hotel", Role = "hotel")]
         public ActionResult GetRoomPriceType(string id)
         {
             var priceTypes = from m in DbContext.PriceType where m.RoomId == id select m.Id;
             return Json(priceTypes, JsonRequestBehavior.AllowGet);
-
         }
+
         [Login(Area = "Hotel", Role = "hotel")]
         public ActionResult Delete(string id)
         {
@@ -250,17 +265,29 @@ namespace HotelSystem.Web.Areas.Hotel.Controllers
             priceType.UpdateUser = SessionInfo.hotelUser.Id;
             priceType.Remarks = "";
 
-            //使用房型的熟练，该属性无效
+            //使用房型的数量，该属性无效
             priceType.Number = "0";
 
             DbContext.PriceType.Add(priceType);
+            UserLog log = new UserLog()
+            {
+                Id = Guid.NewGuid().ToString(),
+                Level = "worning",
+                TypeName = "add-priceType",
+                UserId = SessionInfo.hotelUser.Id,
+                UserName = SessionInfo.hotelUser.Name,
+                UserType = "hotel",
+                Content = string.Format("添加价格类型{0}", JsonConvert.SerializeObject(priceType)),
+                CreateTime = DateTime.Now
+            };
+            DbContext.UserLog.Add(log);
             DbContext.SaveChanges();
 
             return RedirectToAction("PriceTypeList", new { id = id });
         }
 
         [Login(Area = "Hotel", Role = "hotel")]
-        public ActionResult AddPrice(string id,string start, string end)
+        public ActionResult AddPrice(string id, string start, string end)
         {
             if (Request.IsAjaxRequest())
             {
@@ -278,20 +305,20 @@ namespace HotelSystem.Web.Areas.Hotel.Controllers
                     list = from m in list where m.Date <= End select m;
                 }
                 var calendar = from p in list
-                           select new
-                           {
-                               allDay = true,
-                               title = p.PriceType.Name + "：￥" + p.UnitPrice.ToString(),
-                               end = p.Date,
-                               start = p.Date,
-                               price = p.UnitPrice.ToString(),
-                               id = p.Id,
-                               priceTypeId = p.PriceTypeId,
-                               date = p.Date,
-                               status = p.Status,
-                               color = p.Status == 1 ? "#5cb85c" : "#ddd",   // a non-ajax option
-                               textColor = "#fff" // a non-ajax option
-                           };
+                               select new
+                               {
+                                   allDay = true,
+                                   title = p.PriceType.Name + "：￥" + p.UnitPrice.ToString(),
+                                   end = p.Date,
+                                   start = p.Date,
+                                   price = p.UnitPrice.ToString(),
+                                   id = p.Id,
+                                   priceTypeId = p.PriceTypeId,
+                                   date = p.Date,
+                                   status = p.Status,
+                                   color = p.Status == 1 ? "#5cb85c" : "#ddd",   // a non-ajax option
+                                   textColor = "#fff" // a non-ajax option
+                               };
                 return Json(calendar, JsonRequestBehavior.AllowGet);
             }
 
@@ -372,6 +399,18 @@ namespace HotelSystem.Web.Areas.Hotel.Controllers
                 }
                 d = d.AddDays(1);
             }
+            UserLog log = new UserLog()
+            {
+                Id = Guid.NewGuid().ToString(),
+                Level = "worning",
+                TypeName = "change-price",
+                UserId = SessionInfo.hotelUser.Id,
+                UserName = SessionInfo.hotelUser.Name,
+                UserType = "hotel",
+                Content = string.Format("修改价格:价格类型ID{0};新价格:{1};起始时间{2}", id, UnitPrice, StartTime.ToString("yyyy-MM-dd") + "~" + EndTime.ToString("yyyy-MM-dd")),
+                CreateTime = DateTime.Now
+            };
+            DbContext.UserLog.Add(log);
             DbContext.SaveChanges();
             TempData["message"] = "<strong>保存成功!</strong> .";
             return RedirectToAction("AddPrice", new { id = id });
@@ -420,6 +459,18 @@ namespace HotelSystem.Web.Areas.Hotel.Controllers
                 {
                     m.Status = status;
                 }
+                UserLog log = new UserLog()
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Level = "worning",
+                    TypeName = "close-price",
+                    UserId = SessionInfo.hotelUser.Id,
+                    UserName = SessionInfo.hotelUser.Name,
+                    UserType = "hotel",
+                    Content = string.Format("更改价格状态:价格类型ID{0};起始时间{1};状态:{2}", id, start.ToString("yyyy-MM-dd") + "~" + end.ToString("yyyy-MM-dd"), status == 0 ? "关闭" : "开启"),
+                    CreateTime = DateTime.Now
+                };
+                DbContext.UserLog.Add(log);
                 DbContext.SaveChanges();
                 return Json(new { result = "success", msg = "修改成功!" });
             }

@@ -1,5 +1,6 @@
 ﻿using HotelSystem.Model;
 using System.Web;
+using System.Linq;
 
 namespace HotelSystem.Web
 {
@@ -19,6 +20,19 @@ namespace HotelSystem.Web
             {
                 var u = HttpContext.Current.Session["HotelUser"] as HotelUsers;
                 return u;
+            }
+        }
+        public static HotelInfo hotel
+        {
+            get
+            {
+                var u = HttpContext.Current.Session["HotelUser"] as HotelUsers;
+                using (DBModelContainer DbContext = new DBModelContainer())
+                {
+                    var hotelInfo = (from m in DbContext.HotelUsers where m.Id == u.Id select m.HotelInfo).First();
+                    return hotelInfo;
+                }
+                    
             }
         }
         public static GuestUser guestUser

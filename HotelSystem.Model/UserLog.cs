@@ -53,5 +53,10 @@ namespace HotelSystem.Model
         /// </summary>
     	[DisplayName( "用户名" )]
         public string UserName { get; set; }
+    	/// <summary>
+        /// 创建时间
+        /// </summary>
+    	[DisplayName( "创建时间" )]
+        public System.DateTime CreateTime { get; set; }
     }
 }

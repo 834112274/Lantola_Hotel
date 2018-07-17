@@ -30,6 +30,13 @@
         
     </div>
 </div>
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-warning alert-dismissible fade in" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+        @Html.Raw(ViewBag.Message)
+    </div>
+}
 <div id="HotelList">
     @Html.Partial("_HotelList", Model);
 </div>
