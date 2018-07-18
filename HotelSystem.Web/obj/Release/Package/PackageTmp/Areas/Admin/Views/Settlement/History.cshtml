@@ -1,8 +1,60 @@
-﻿
+﻿@model PagedList<HotelSystem.Model.Settlement>
+@using Webdiyer.WebControls.Mvc
 @{
-    ViewBag.Title = "账单结算历史";
+    ViewBag.Title = "酒店账单结算历史";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+<link rel="stylesheet" type="text/css" media="all" href="~/Scripts/assets/plugins/bootstrap-daterangepicker-master/daterangepicker.css" />
+<div class="panel panel-default" style="margin-top:14px;box-shadow: none;">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-4 form-horizontal">
+                <div class="form-group form-group-sm has-feedback">
+                    <label class="col-md-3 control-label">起始日期</label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control" id="SearchDate" aria-describedby="inputSuccess2Status" style="">
+                        <span class="glyphicon glyphicon-calendar form-control-feedback" aria-hidden="true"></span>
+                        <span id="inputSuccess2Status" class="sr-only">(success)</span>
+                    </div>
 
-<h2>History</h2>
+                    <input type="hidden" id="start" name="start" value="" />
+                    <input type="hidden" id="end" name="end" value="" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <input type="submit" class="btn btn-default btn-sm" value="查询" />
+                <input type="button" class="btn btn-default btn-sm" value="导出" />
+            </div>
+        </div>
 
+
+    </div>
+</div>
+<div id="HistoryList">
+    @Html.Partial("_HistoryList", Model);
+</div>
+@{Html.RegisterMvcPagerScriptResource();}
+<script type="text/javascript" src="~/Scripts/assets/plugins/bootstrap-daterangepicker-master/moment.js"></script>
+<script type="text/javascript" src="~/Scripts/assets/plugins/bootstrap-daterangepicker-master/daterangepicker.js"></script>
+<script type="text/javascript" src="~/Scripts/assets/plugins/bootstrap-daterangepicker-master/language.js"></script>
+<script>
+    $(function () {
+
+        var s = moment().add(-1, 'months');
+        var e = moment();
+        function setDateValue(start, end) {
+            $("#start").val(start.format('YYYY-MM-DD'));
+            $("#end").val(end.format('YYYY-MM-DD'));
+        }
+        setDateValue(s, e);
+        $("#SearchDate").daterangepicker({
+            "autoApply": true,
+            "startDate": s.format('YYYY年MM月DD日'),
+            "endDate": e.format('YYYY年MM月DD日'),
+            "opens": "center",
+            locale: locale
+        }, function (start, end, label) {
+            setDateValue(start, end);
+        });
+    });
+</script>

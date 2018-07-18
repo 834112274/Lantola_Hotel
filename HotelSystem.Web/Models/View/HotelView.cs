@@ -217,5 +217,6 @@ namespace HotelSystem.Web.Models.View
                 }
             }
         }
+
     }
 }

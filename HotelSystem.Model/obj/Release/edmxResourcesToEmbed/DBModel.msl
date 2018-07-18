@@ -619,6 +619,7 @@
           <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="UserType" ColumnName="UserType" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

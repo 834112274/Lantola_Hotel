@@ -387,7 +387,7 @@ namespace HotelSystem.Web.Areas.Hotel.Controllers
         [Login(Area = "Hotel", Role = "hotel")]
         public ActionResult Log()
         {
-
+            return View();
         }
     }
 }

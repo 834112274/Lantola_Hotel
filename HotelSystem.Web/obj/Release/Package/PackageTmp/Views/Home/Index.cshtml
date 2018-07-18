@@ -1,4 +1,5 @@
 ﻿@using HotelSystem.Model;
+@using HotelSystem.Web.Models.View
 @{
     ViewBag.Title = "首页";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -172,9 +173,7 @@
 
                     @{
 
-                        List<FeatureHotel> hotels = ViewBag.Hotels as List<FeatureHotel>;
-                        hotels = hotels.Where(h => h.FeatureId == item.Id).ToList();
-                        foreach (var hotel in hotels)
+                        foreach (var hotel in item.FeatureHotel)
                         {
                             <a class="item" href="/HotelHome/Index/@hotel.HotelInfoId" target="_blank">
                                 <div class="item-content" style="background:url(@hotel.ImgUrl) no-repeat;background-size:cover;background-position:center;">
@@ -195,38 +194,42 @@
 <div class="container-fluid tag-hotel">
 
     <div class="container">
-        @foreach (var item in ViewBag.Tag)
-        {
-            <div class="tag-title">
-                <p><span>@item.Name</span></p>
-            </div>
-            List<FeatureHotel> hotels = ViewBag.TagHotels as List<FeatureHotel>;
-            hotels = hotels.Where(h => h.FeatureId == item.Id).ToList();
-            <div class="row">
-                @foreach (var hotel in hotels)
+        @{
+            List<HotelView> hotels = ViewBag.TagHotelsPrice as List<HotelView>;
+
+            foreach (var item in ViewBag.Tag)
+            {
+                <div class="tag-title">
+                    <p><span>@item.Name</span></p>
+                </div>
+
+                <div class="row">
+                    @foreach (var hotel in item.FeatureHotel)
                 {
-                    <div class="col-sm-3">
-                        <a href="/HotelHome/Index/@hotel.HotelInfoId" class="tag-item" target="_blank">
+                        <div class="col-sm-3">
+                            <a href="/HotelHome/Index/@hotel.HotelInfoId" class="tag-item" target="_blank">
 
-                            <div class="thumbnail">
-                                <div class="img" style="background:url(@hotel.ImgUrl) no-repeat;background-size:cover;background-position:center;">
-                                </div>
-                                <div class="caption">
-                                    <p class="title">@hotel.Title</p>
-                                    <p class="star">
-                                        @for (var i = 0; i < hotel.HotelInfo.Star; i++)
-                                        {
-                                            <span class="fa fa-star"></span>
-                                        }
-                                    </p>
-                                    <p class="summary">@hotel.Summary</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                }
-            </div>
+                                <div class="thumbnail">
+                                    <div class="img" style="background:url(@hotel.ImgUrl) no-repeat;background-size:cover;background-position:center;">
+                                    </div>
+                                    <div class="caption">
+                                        <p style="font-size:11px;float:right;margin-top:25px;">￥<span style="font-size:16px;color:#FF5F00;">@hotels.Single(m => m.hotelInfo.Id == hotel.HotelInfo.Id).minPrice</span>起</p>
 
+                                        <p class="title">@hotel.Title</p>
+                                        <p class="star">
+                                            @for (var i = 0; i < hotel.HotelInfo.Star; i++)
+                                            {
+                                                <span class="fa fa-star"></span>
+                                            }
+                                        </p>
+                                        <p class="summary">@hotel.Summary</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                </div>
+            }
         }
     </div>
 </div>
@@ -243,7 +246,7 @@
 </div>
 <div class="container-fluid cooperative">
     <div class="tag-title">
-        <p><span>合作伙伴</span></p>
+        <p><span>合作伙伴 Cooperations</span></p>
         <div class="container">
             <hr />
         </div>

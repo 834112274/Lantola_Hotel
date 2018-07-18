@@ -810,11 +810,12 @@
     </Key>
     <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="40" />
     <Property Name="Level" Type="nvarchar" Nullable="false" MaxLength="10" />
-    <Property Name="TypeName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="UserId" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="UserType" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TypeName" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Content" Type="nvarchar" Nullable="false" MaxLength="2000" />
+    <Property Name="UserId" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="UserType" Type="nvarchar" Nullable="false" MaxLength="10" />
+    <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="80" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="Settlement">
     <Key>

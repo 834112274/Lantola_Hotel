@@ -21,15 +21,15 @@
     }
 
         .feature .tag li:hover {
-            border-bottom: 2px solid #0da9f8;
+            border-bottom: 2px solid #4785FF;
         }
 
     .feature .tag .tag-active {
-        border-bottom: 2px solid #0da9f8;
+        border-bottom: 2px solid #4785FF;
     }
 
         .feature .tag .tag-active a {
-            color: #0da9f8;
+            color: #4785FF;
         }
 
     .feature .tag-content .content .item {
@@ -46,38 +46,38 @@
     }
 
         .feature .tag-content .content .item:nth-child(1) {
-            width: 800px;
-            height: 300px;
+            width: 770px;
+            height: 400px;
             top: 0px;
             left: 0px;
         }
 
         .feature .tag-content .content .item:nth-child(2) {
-            width: 350px;
-            height: 350px;
+            width: 360px;
+            height: 305px;
             top: 0px;
-            left: 800px;
+            left: 770px;
         }
 
         .feature .tag-content .content .item:nth-child(3) {
-            width: 400px;
-            height: 220px;
-            top: 300px;
+            width: 385px;
+            height: 210px;
+            top: 400px;
             left: 0px;
         }
 
         .feature .tag-content .content .item:nth-child(4) {
-            width: 400px;
-            height: 220px;
-            top: 300px;
-            left: 400px;
+            width: 385px;
+            height: 210px;
+            top: 400px;
+            left: 380px;
         }
 
         .feature .tag-content .content .item:nth-child(5) {
-            width: 350px;
-            height: 170px;
-            top: 350px;
-            left: 800px;
+            width: 360px;
+            height: 305px;
+            top: 305px;
+            left: 770px;
         }
 }
 
@@ -96,14 +96,17 @@
     position: absolute;
     color: white;
     bottom: 4px;
+    width:100%;
     max-width: 100%;
     padding-left: 10px;
+    background:rgba(0, 0, 0, 0.4);
 }
 
 .feature .tag-content .content .item .item-content {
     width: 100%;
     height: 100%;
     overflow: hidden;
+    position:relative;
 }
 
 .feature .tag-content .content {
@@ -117,7 +120,8 @@
 
 .feature .tag .tag-button {
     color: black;
-    font-size: 18px;
+    font-size: 16px;
+    font-weight:bold;
     text-decoration: none;
     padding: 10px;
     padding-left: 40px;
@@ -130,7 +134,7 @@
     }
 
     .feature .tag .tag-button:hover {
-        color: #0da9f8;
+        color: #4785FF;
     }
 
 /*标签酒店*/
@@ -148,7 +152,7 @@
 
     .tag-item .thumbnail .img {
         width: 100%;
-        height: 180px;
+        height: 200px;
         overflow: hidden;
     }
 
@@ -164,7 +168,7 @@
     }
 
     .tag-item .thumbnail .title {
-        font-weight: bold;
+        font-size:16px;
         padding: 0px;
         margin: 0px;
     }
@@ -176,11 +180,8 @@
 
 .tag-title {
     text-align: center;
-    /*border:1px solid #1dadf6;*/
-    position: relative;
-    height: 0px;
-    margin-top: 90px;
-    margin-bottom: 90px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .tag-item, .tag-item:hover {
@@ -193,11 +194,10 @@
 
 .tag-title p {
     text-align: center;
-    margin-top: -20px;
 }
 
 .tag-title span {
-    font-size: 24px;
+    font-size: 20px;
     line-height: 40px;
     padding-left: 5px;
     padding-right: 5px;
@@ -298,7 +298,8 @@
 }
 
     .payment h4 {
-        font-weight: bold;
+        font-size:20px;
+        font-weight:400;
     }
 
 .payment-content {
@@ -311,6 +312,7 @@
     .payment-content h5 {
         margin-bottom: 30px;
         margin-top: 20px;
+        font-size:16px;
         font-weight: 400;
     }
 

@@ -2542,29 +2542,34 @@
         <Summary>日志等级</Summary>
       </Documentation>
     </Property>
-    <Property Name="TypeName" Type="String" Nullable="false">
+    <Property Name="TypeName" Type="String" Nullable="false" MaxLength="20">
       <Documentation>
         <Summary>日志类型</Summary>
       </Documentation>
     </Property>
-    <Property Name="Content" Type="String" Nullable="false">
+    <Property Name="Content" Type="String" Nullable="false" MaxLength="2000">
       <Documentation>
         <Summary>日志内容</Summary>
       </Documentation>
     </Property>
-    <Property Name="UserId" Type="String" Nullable="false">
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="40">
       <Documentation>
         <Summary>用户id</Summary>
       </Documentation>
     </Property>
-    <Property Name="UserType" Type="String" Nullable="false">
+    <Property Name="UserType" Type="String" Nullable="false" MaxLength="10">
       <Documentation>
         <Summary>用户类型</Summary>
       </Documentation>
     </Property>
-    <Property Name="UserName" Type="String" Nullable="false">
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="80">
       <Documentation>
         <Summary>用户名</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="CreateTime" Type="DateTime" Nullable="false">
+      <Documentation>
+        <Summary>创建时间</Summary>
       </Documentation>
     </Property>
   </EntityType>

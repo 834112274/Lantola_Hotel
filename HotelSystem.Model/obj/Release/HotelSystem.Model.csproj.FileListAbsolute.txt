@@ -58,3 +58,15 @@ F:\Project\github\Lantola_Hotel\HotelSystem.Model\bin\Release\zh-Hans\EntityFram
 F:\Project\github\Lantola_Hotel\HotelSystem.Model\obj\Release\HotelSystem.Model.csprojResolveAssemblyReference.cache
 F:\Project\github\Lantola_Hotel\HotelSystem.Model\obj\Release\HotelSystem.Model.dll
 F:\Project\github\Lantola_Hotel\HotelSystem.Model\obj\Release\HotelSystem.Model.pdb
+G:\Github\Lantola\HotelSystem.Model\bin\Release\HotelSystem.Model.dll.config
+G:\Github\Lantola\HotelSystem.Model\bin\Release\HotelSystem.Model.dll
+G:\Github\Lantola\HotelSystem.Model\bin\Release\HotelSystem.Model.pdb
+G:\Github\Lantola\HotelSystem.Model\bin\Release\EntityFramework.dll
+G:\Github\Lantola\HotelSystem.Model\bin\Release\EntityFramework.SqlServer.dll
+G:\Github\Lantola\HotelSystem.Model\bin\Release\EntityFramework.xml
+G:\Github\Lantola\HotelSystem.Model\bin\Release\EntityFramework.SqlServer.xml
+G:\Github\Lantola\HotelSystem.Model\bin\Release\zh-Hans\EntityFramework.resources.dll
+G:\Github\Lantola\HotelSystem.Model\bin\Release\zh-Hans\EntityFramework.SqlServer.resources.dll
+G:\Github\Lantola\HotelSystem.Model\obj\Release\HotelSystem.Model.csprojResolveAssemblyReference.cache
+G:\Github\Lantola\HotelSystem.Model\obj\Release\HotelSystem.Model.dll
+G:\Github\Lantola\HotelSystem.Model\obj\Release\HotelSystem.Model.pdb

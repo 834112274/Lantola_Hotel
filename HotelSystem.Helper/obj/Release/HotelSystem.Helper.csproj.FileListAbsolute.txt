@@ -22,3 +22,8 @@ F:\Project\github\Lantola_Hotel\HotelSystem.Helper\bin\Release\HotelSystem.Helpe
 F:\Project\github\Lantola_Hotel\HotelSystem.Helper\obj\Release\HotelSystem.Helper.csprojResolveAssemblyReference.cache
 F:\Project\github\Lantola_Hotel\HotelSystem.Helper\obj\Release\HotelSystem.Helper.dll
 F:\Project\github\Lantola_Hotel\HotelSystem.Helper\obj\Release\HotelSystem.Helper.pdb
+G:\Github\Lantola\HotelSystem.Helper\bin\Release\HotelSystem.Helper.dll
+G:\Github\Lantola\HotelSystem.Helper\bin\Release\HotelSystem.Helper.pdb
+G:\Github\Lantola\HotelSystem.Helper\obj\Release\HotelSystem.Helper.csprojResolveAssemblyReference.cache
+G:\Github\Lantola\HotelSystem.Helper\obj\Release\HotelSystem.Helper.dll
+G:\Github\Lantola\HotelSystem.Helper\obj\Release\HotelSystem.Helper.pdb

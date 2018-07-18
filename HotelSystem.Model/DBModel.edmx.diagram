@@ -6,91 +6,91 @@
     <edmx:Diagrams>
       <Diagram DiagramId="ac2ca7c09ff2425f8e9e0acf79a02116" Name="Diagram1" ShowGrid="true" ZoomLevel="100" SnapToGrid="true" DisplayType="false" >
         <EntityTypeShape EntityType="DBModel.Menu" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.Users" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Users" Width="1.5" PointX="7.5" PointY="44.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DBModel.UserRole" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
         <AssociationConnector Association="DBModel.MenuUserRole" />
-        <EntityTypeShape EntityType="DBModel.City" Width="1.5" PointX="3" PointY="34.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.District" Width="1.5" PointX="5.25" PointY="34.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.Province" Width="1.5" PointX="0.75" PointY="34.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.City" Width="1.5" PointX="3" PointY="37.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.District" Width="1.5" PointX="5.25" PointY="37.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Province" Width="1.5" PointX="0.75" PointY="37.875" IsExpanded="true" />
         <AssociationConnector Association="DBModel.FK_City_Province" />
         <AssociationConnector Association="DBModel.FK_District_City" />
-        <EntityTypeShape EntityType="DBModel.HotelInfo" Width="1.5" PointX="7.5" PointY="31.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.HotelInfo" Width="1.5" PointX="7.5" PointY="34.5" IsExpanded="true" />
         <AssociationConnector Association="DBModel.FK_CityHotelInfo" />
         <AssociationConnector Association="DBModel.FK_DistrictHotelInfo" />
-        <EntityTypeShape EntityType="DBModel.HotelImages" Width="2.125" PointX="9.75" PointY="38.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.HotelImages" Width="2.125" PointX="9.75" PointY="44.125" IsExpanded="true" />
         <AssociationConnector Association="DBModel.HotelInfoHotelImages" />
-        <EntityTypeShape EntityType="DBModel.Policy" Width="1.5" PointX="10.5" PointY="12.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.HotelPolicy" Width="1.5" PointX="12.75" PointY="34.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Policy" Width="1.5" PointX="10.5" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.HotelPolicy" Width="1.5" PointX="12.75" PointY="37.875" IsExpanded="true" />
         <AssociationConnector Association="DBModel.HotelInfoHotelPolicy" />
         <AssociationConnector Association="DBModel.PolicyHotelPolicy" />
-        <EntityTypeShape EntityType="DBModel.Restaurant" Width="1.5" PointX="9.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Restaurant" Width="1.5" PointX="9.75" PointY="33.5" IsExpanded="true" />
         <AssociationConnector Association="DBModel.HotelInfoRestaurant" />
-        <EntityTypeShape EntityType="DBModel.Guide" Width="1.5" PointX="9.75" PointY="41.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Guide" Width="1.5" PointX="9.75" PointY="47.375" IsExpanded="true" />
         <AssociationConnector Association="DBModel.HotelInfoGuide" />
-        <EntityTypeShape EntityType="DBModel.Activity" Width="1.5" PointX="9.75" PointY="44.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Activity" Width="1.5" PointX="9.75" PointY="50.25" IsExpanded="true" />
         <AssociationConnector Association="DBModel.HotelInfoActivity" />
-        <EntityTypeShape EntityType="DBModel.Conference" PointX="9.75" PointY="23.625" Width="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.ConferenceRoom" PointX="12" PointY="23.375" Width="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Conference" PointX="9.75" PointY="29.375" Width="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.ConferenceRoom" PointX="12" PointY="29.25" Width="1.5" IsExpanded="true" />
         <AssociationConnector Association="DBModel.HotelInfoConference" />
         <AssociationConnector Association="DBModel.ConferenceConferenceRoom" />
-        <EntityTypeShape EntityType="DBModel.Room" Width="1.5" PointX="9.75" PointY="49.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Room" Width="1.5" PointX="9.75" PointY="56.375" IsExpanded="true" />
         <AssociationConnector Association="DBModel.HotelInfoRoom" />
-        <EntityTypeShape EntityType="DBModel.RoomImages" Width="1.5" PointX="12" PointY="53.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.RoomImages" Width="1.5" PointX="12" PointY="58.875" IsExpanded="true" />
         <AssociationConnector Association="DBModel.RoomRoomImages" />
-        <EntityTypeShape EntityType="DBModel.HotelUsers" Width="1.5" PointX="9.75" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.HotelUsers" Width="1.5" PointX="9.75" PointY="22" IsExpanded="true" />
         <AssociationConnector Association="DBModel.HotelInfoHotelUser" />
-        <EntityTypeShape EntityType="DBModel.HotelService" Width="1.5" PointX="9.75" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.HotelService" Width="1.5" PointX="9.75" PointY="26.125" IsExpanded="true" />
         <AssociationConnector Association="DBModel.HotelInfoHotelService" />
-        <EntityTypeShape EntityType="DBModel.HomeConfig" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.Feature" Width="1.5" PointX="7.5" PointY="27.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.FeatureHotel" Width="1.5" PointX="9.75" PointY="34.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.HomeConfig" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Feature" Width="1.5" PointX="10.5" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.FeatureHotel" Width="1.5" PointX="12.75" PointY="33.5" IsExpanded="true" />
         <AssociationConnector Association="DBModel.HotelInfoFeatureHotel" />
         <AssociationConnector Association="DBModel.FeatureFeatureHotel" />
-        <EntityTypeShape EntityType="DBModel.Cooperative" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.GuestUser" Width="1.5" PointX="12" PointY="62.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.Order" Width="1.5" PointX="14.25" PointY="45" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.Comment" Width="1.5" PointX="16.5" PointY="54.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.Collection" Width="1.5" PointX="9.75" PointY="63.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.Message" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.Article" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Cooperative" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.GuestUser" Width="1.5" PointX="12" PointY="68" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Order" Width="1.5" PointX="14.25" PointY="49.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Comment" Width="1.5" PointX="19.5" PointY="59.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Collection" Width="1.5" PointX="9.75" PointY="69.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Message" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Article" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="DBModel.GuestUserOrder" />
         <AssociationConnector Association="DBModel.HotelInfoOrder" />
         <AssociationConnector Association="DBModel.OrderComment" />
         <AssociationConnector Association="DBModel.GuestUserComment" />
         <AssociationConnector Association="DBModel.CollectionGuestUser" />
-        <EntityTypeShape EntityType="DBModel.PriceType" Width="1.5" PointX="12" PointY="48.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.Price" Width="1.5" PointX="14.25" PointY="58.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.PriceType" Width="1.5" PointX="12" PointY="54" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Price" Width="1.5" PointX="14.25" PointY="64.375" IsExpanded="true" />
         <AssociationConnector Association="DBModel.RoomPriceType" />
         <AssociationConnector Association="DBModel.PriceTypePrice" />
         <AssociationConnector Association="DBModel.PriceTypeOrder" />
-        <EntityTypeShape EntityType="DBModel.Occupant" Width="1.5" PointX="16.5" PointY="61.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.Invoice" Width="1.5" PointX="16.5" PointY="41.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.DaysPrice" Width="1.5" PointX="16.5" PointY="48" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Occupant" Width="1.5" PointX="16.5" PointY="61" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Invoice" Width="1.5" PointX="17.25" PointY="49.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.DaysPrice" Width="1.5" PointX="19.5" PointY="52.625" IsExpanded="true" />
         <AssociationConnector Association="DBModel.PriceTypeDaysPrice" />
         <AssociationConnector Association="DBModel.OrderDaysPrice" />
         <AssociationConnector Association="DBModel.OrderOccupant" />
-        <EntityTypeShape EntityType="DBModel.GuestInvoice" Width="1.5" PointX="14.25" PointY="63.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.GuestInvoice" Width="1.5" PointX="14.25" PointY="75.875" IsExpanded="true" />
         <AssociationConnector Association="DBModel.GuestUserGuestInvoice" />
         <AssociationConnector Association="DBModel.ProvinceInvoice" />
         <AssociationConnector Association="DBModel.CityInvoice" />
         <AssociationConnector Association="DBModel.DistrictInvoice" />
         <AssociationConnector Association="DBModel.HotelInfoCollection" />
-        <EntityTypeShape EntityType="DBModel.transaction" Width="1.5" PointX="16.5" PointY="59.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.transaction" Width="1.5" PointX="16.5" PointY="58.625" IsExpanded="true" />
         <AssociationConnector Association="DBModel.Order_transaction" />
-        <EntityTypeShape EntityType="DBModel.Score" Width="1.5" PointX="18.75" PointY="43.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Score" Width="1.5" PointX="21.75" PointY="47.5" IsExpanded="true" />
         <AssociationConnector Association="DBModel.HotelInfoScore" />
-        <EntityTypeShape EntityType="DBModel.ScoreType" Width="1.5" PointX="16.5" PointY="38.5" />
+        <EntityTypeShape EntityType="DBModel.ScoreType" Width="1.5" PointX="19.5" PointY="47.875" />
         <AssociationConnector Association="DBModel.ScoreTypeScore" />
         <AssociationConnector Association="DBModel.CommentScore" />
-        <EntityTypeShape EntityType="DBModel.Reply" Width="1.5" PointX="18.75" PointY="35.75" />
+        <EntityTypeShape EntityType="DBModel.Reply" Width="1.5" PointX="21.75" PointY="41.25" />
         <AssociationConnector Association="DBModel.HotelUsersReply" />
         <AssociationConnector Association="DBModel.CommentReply" />
-        <EntityTypeShape EntityType="DBModel.Stock" Width="1.5" PointX="9.875" PointY="55.875" />
+        <EntityTypeShape EntityType="DBModel.Stock" Width="1.5" PointX="12" PointY="61.875" />
         <AssociationConnector Association="DBModel.RoomStock" />
         <AssociationConnector Association="DBModel.InvoiceOrder" />
         <AssociationConnector Association="DBModel.GuestUserInvoice" />
-        <EntityTypeShape EntityType="DBModel.UserLog" Width="1.5" PointX="8.875" PointY="3.625" />
-        <EntityTypeShape EntityType="DBModel.Settlement" Width="1.5" PointX="11.25" PointY="4" />
+        <EntityTypeShape EntityType="DBModel.UserLog" Width="1.5" PointX="6.75" PointY="4.75" />
+        <EntityTypeShape EntityType="DBModel.Settlement" Width="1.5" PointX="9.75" PointY="38.375" />
         <AssociationConnector Association="DBModel.UsersSettlement" />
         <AssociationConnector Association="DBModel.HotelInfoSettlement" />
         <AssociationConnector Association="DBModel.SettlementOrder" />

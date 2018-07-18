@@ -1,0 +1,32 @@
+﻿@model PagedList<HotelSystem.Model.Settlement>
+
+@using Webdiyer.WebControls.Mvc
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>酒店</th>
+            <th>结算开始日期</th>
+            <th>结算结束日期</th>
+            <th>订单数</th>
+            <th>账单金额</th>
+            <th>结算时间</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var hotel in Model)
+        {
+            <tr>
+                <td>@hotel.HotelName</td>
+                <td>@hotel.StartTime.ToString("yyyy-MM-dd")</td>
+                <td>@hotel.EndTime.ToString("yyyy-MM-dd")</td>
+                <td><label>@hotel.OrderCount</label></td>
+                <td><label>@hotel.Amount</label> </td>
+                <td>@hotel.CreateTime.ToString("yyyy-MM-dd")</td>
+                <td>
+                    <a href="/Admin/Settlement/OrderList/start=@hotel.StartTime.ToString("yyyy-MM-dd")&end=@hotel.EndTime.ToString("yyyy-MM-dd")&hotel=@hotel.HotelInfoId" target="_blank">详情</a> |
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
