@@ -499,6 +499,12 @@
     <Content Include="Areas\Hotel\Views\Settlement\_OrderList.cshtml" />
     <Content Include="Areas\Hotel\Views\Settlement\_HistoryPage.cshtml" />
     <Content Include="Areas\Hotel\Views\Settlement\_HistoryList.cshtml" />
+    <Content Include="Areas\Hotel\Views\User\Log.cshtml" />
+    <Content Include="Areas\Hotel\Views\User\_LogList.cshtml" />
+    <Content Include="Areas\Hotel\Views\User\_LogPage.cshtml" />
+    <Content Include="Areas\Admin\Views\User\_LogList.cshtml" />
+    <Content Include="Areas\Admin\Views\User\_LogPage.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Log.cshtml" />
     <None Include="Properties\PublishProfiles\Release.pubxml" />
     <Content Include="Scripts\assets\fonts\fontawesome-webfont.woff2" />
     <Content Include="Scripts\assets\plugins\bootstrap-daterangepicker-master\.gitignore" />

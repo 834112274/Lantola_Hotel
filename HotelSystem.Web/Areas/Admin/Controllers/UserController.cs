@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using Webdiyer.WebControls.Mvc;
 
 namespace HotelSystem.Web.Areas.Admin.Controllers
 {
@@ -285,6 +286,14 @@ namespace HotelSystem.Web.Areas.Admin.Controllers
                 TempData["message"] = "<strong> 保存失败!</strong> 未知用户.";
             }
             return RedirectToAction("Children");
+        }
+        [Login(Area = "Admin", Role = "system")]
+        public ActionResult Log(int pageIndex = 1)
+        {
+            var dataView = (from m in DbContext.UserLog where m.UserType=="system" select m).OrderByDescending(m => m.CreateTime).ToPagedList(pageIndex, 15);
+            if (Request.IsAjaxRequest())
+                return PartialView("_LogList", dataView);
+            return View(dataView);
         }
     }
 }

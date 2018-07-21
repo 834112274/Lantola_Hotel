@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Webdiyer.WebControls.Mvc;
 
 namespace HotelSystem.Web.Areas.Hotel.Controllers
 {
@@ -382,12 +383,16 @@ namespace HotelSystem.Web.Areas.Hotel.Controllers
             {
                 TempData["message"] = "<strong> 保存失败!</strong> 未知用户.";
             }
-            return RedirectToAction("Children");
+            return RedirectToAction("Children");                                                              
         }
         [Login(Area = "Hotel", Role = "hotel")]
-        public ActionResult Log()
+        public ActionResult Log(int pageIndex=1)
         {
-            return View();
+            var ids = from m in DbContext.HotelUsers where m.HotelInfoId == SessionInfo.hotelUser.HotelInfoId select m.Id;
+            var dataView=(from m in DbContext.UserLog where ids.Contains(m.UserId) select m).OrderByDescending(m => m.CreateTime).ToPagedList(pageIndex, 15);
+            if (Request.IsAjaxRequest())
+                return PartialView("_LogList", dataView);  
+            return View(dataView);
         }
     }
 }

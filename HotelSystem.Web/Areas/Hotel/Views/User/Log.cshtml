@@ -1,0 +1,12 @@
+﻿@model PagedList<HotelSystem.Model.UserLog>
+@using Webdiyer.WebControls.Mvc
+@{
+    ViewBag.Title = "日志";
+    Layout = "~/Areas/Hotel/Views/Shared/_Layout.cshtml";
+}
+
+<div id="LogList">
+    @Html.Partial("_LogList", Model);
+</div>
+@{Html.RegisterMvcPagerScriptResource();}
+
