@@ -43,6 +43,7 @@
     <EntitySet Name="Stock" EntityType="DBModel.Store.Stock" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="UserLog" EntityType="DBModel.Store.UserLog" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Settlement" EntityType="DBModel.Store.Settlement" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Company" EntityType="DBModel.Store.Company" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="MenuUserRole" Association="DBModel.Store.MenuUserRole">
       <End Role="Menu" EntitySet="Menu" />
       <End Role="UserRole" EntitySet="UserRole" />
@@ -230,6 +231,22 @@
     <AssociationSet Name="SettlementOrder" Association="DBModel.Store.SettlementOrder">
       <End Role="Settlement" EntitySet="Settlement" />
       <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="ProvinceCompany" Association="DBModel.Store.ProvinceCompany">
+      <End Role="Province" EntitySet="Province" />
+      <End Role="Company" EntitySet="Company" />
+    </AssociationSet>
+    <AssociationSet Name="CityCompany" Association="DBModel.Store.CityCompany">
+      <End Role="City" EntitySet="City" />
+      <End Role="Company" EntitySet="Company" />
+    </AssociationSet>
+    <AssociationSet Name="DistrictCompany" Association="DBModel.Store.DistrictCompany">
+      <End Role="District" EntitySet="District" />
+      <End Role="Company" EntitySet="Company" />
+    </AssociationSet>
+    <AssociationSet Name="CompanyGuestUser" Association="DBModel.Store.CompanyGuestUser">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="GuestUser" EntitySet="GuestUser" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Menu">
@@ -575,6 +592,7 @@
     <Property Name="RegisterType" Type="nvarchar" Nullable="false" MaxLength="40" />
     <Property Name="RegisterIp" Type="nvarchar" Nullable="false" MaxLength="20" />
     <Property Name="RegisterTime" Type="datetime" Nullable="false" />
+    <Property Name="Company_Id" Type="nvarchar" MaxLength="40" Nullable="false" />
   </EntityType>
   <EntityType Name="Order">
     <Key>
@@ -830,6 +848,25 @@
     <Property Name="UsersId" Type="nvarchar" Nullable="false" MaxLength="40" />
     <Property Name="HotelInfoId" Type="nvarchar" Nullable="false" MaxLength="40" />
     <Property Name="HotelName" Type="nvarchar" Nullable="false" MaxLength="80" />
+  </EntityType>
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Tel" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Address" Type="nvarchar" Nullable="false" MaxLength="120" />
+    <Property Name="Contact" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Phone" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="BusinessLicense" Type="nvarchar" Nullable="false" MaxLength="150" />
+    <Property Name="CardPositive" Type="nvarchar" Nullable="false" MaxLength="150" />
+    <Property Name="CardOpposite" Type="nvarchar" Nullable="false" MaxLength="150" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="ProvinceId" Type="bigint" Nullable="false" />
+    <Property Name="CityId" Type="bigint" Nullable="false" />
+    <Property Name="DistrictId" Type="bigint" Nullable="false" />
   </EntityType>
   <Association Name="MenuUserRole">
     <End Role="Menu" Type="DBModel.Store.Menu" Multiplicity="1" />
@@ -1392,6 +1429,54 @@
       </Principal>
       <Dependent Role="Order">
         <PropertyRef Name="SettlementId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProvinceCompany">
+    <End Role="Province" Type="DBModel.Store.Province" Multiplicity="1" />
+    <End Role="Company" Type="DBModel.Store.Company" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Province">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Company">
+        <PropertyRef Name="ProvinceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CityCompany">
+    <End Role="City" Type="DBModel.Store.City" Multiplicity="1" />
+    <End Role="Company" Type="DBModel.Store.Company" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Company">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DistrictCompany">
+    <End Role="District" Type="DBModel.Store.District" Multiplicity="1" />
+    <End Role="Company" Type="DBModel.Store.Company" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="District">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Company">
+        <PropertyRef Name="DistrictId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CompanyGuestUser">
+    <End Role="Company" Type="DBModel.Store.Company" Multiplicity="1" />
+    <End Role="GuestUser" Type="DBModel.Store.GuestUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GuestUser">
+        <PropertyRef Name="Company_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

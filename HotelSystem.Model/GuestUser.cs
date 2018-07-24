@@ -129,5 +129,6 @@ namespace HotelSystem.Model
         public virtual ICollection<GuestInvoice> GuestInvoice { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Invoice> Invoice { get; set; }
+        public virtual Company Company { get; set; }
     }
 }

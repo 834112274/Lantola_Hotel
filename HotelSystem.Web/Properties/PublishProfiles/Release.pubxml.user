@@ -91,25 +91,25 @@
       <publishTime>07/17/2018 16:59:34</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Settlement/History.cshtml">
-      <publishTime>07/17/2018 17:09:20</publishTime>
+      <publishTime>07/24/2018 14:48:18</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Settlement/HotelList.cshtml">
-      <publishTime>07/17/2018 17:12:00</publishTime>
+      <publishTime>07/24/2018 14:45:10</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Settlement/OrderList.cshtml">
-      <publishTime>07/17/2018 16:59:34</publishTime>
+      <publishTime>07/24/2018 14:55:21</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Settlement/_HistoryList.cshtml">
-      <publishTime>07/17/2018 17:05:46</publishTime>
+      <publishTime>07/24/2018 14:48:52</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Settlement/_HistoryPage.cshtml">
-      <publishTime>07/17/2018 17:09:16</publishTime>
+      <publishTime>07/24/2018 17:16:08</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Settlement/_HotelList.cshtml">
-      <publishTime>07/17/2018 16:59:34</publishTime>
+      <publishTime>07/24/2018 14:42:42</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Settlement/_HotelPage.cshtml">
-      <publishTime>07/17/2018 16:59:34</publishTime>
+      <publishTime>07/24/2018 17:18:45</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Settlement/_OrderList.cshtml">
       <publishTime>07/17/2018 16:59:34</publishTime>
@@ -129,11 +129,20 @@
     <File Include="Areas/Admin/Views/User/CreateUser.cshtml">
       <publishTime>07/17/2018 16:59:34</publishTime>
     </File>
+    <File Include="Areas/Admin/Views/User/Log.cshtml">
+      <publishTime>07/21/2018 16:55:55</publishTime>
+    </File>
     <File Include="Areas/Admin/Views/User/Login.cshtml">
       <publishTime>07/17/2018 16:59:34</publishTime>
     </File>
     <File Include="Areas/Admin/Views/User/Permission.cshtml">
       <publishTime>07/17/2018 16:59:34</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/User/_LogList.cshtml">
+      <publishTime>07/21/2018 16:55:55</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/User/_LogPage.cshtml">
+      <publishTime>07/21/2018 16:55:55</publishTime>
     </File>
     <File Include="Areas/Admin/Views/UserManage/Guest.cshtml">
       <publishTime>07/17/2018 16:59:34</publishTime>
@@ -274,16 +283,16 @@
       <publishTime>07/17/2018 16:59:34</publishTime>
     </File>
     <File Include="Areas/Hotel/Views/Settlement/History.cshtml">
-      <publishTime>07/17/2018 18:16:24</publishTime>
+      <publishTime>07/24/2018 14:48:32</publishTime>
     </File>
     <File Include="Areas/Hotel/Views/Settlement/OrderList.cshtml">
-      <publishTime>07/17/2018 18:16:24</publishTime>
+      <publishTime>07/24/2018 14:55:35</publishTime>
     </File>
     <File Include="Areas/Hotel/Views/Settlement/_HistoryList.cshtml">
-      <publishTime>07/17/2018 18:16:24</publishTime>
+      <publishTime>07/24/2018 14:48:24</publishTime>
     </File>
     <File Include="Areas/Hotel/Views/Settlement/_HistoryPage.cshtml">
-      <publishTime>07/17/2018 18:16:24</publishTime>
+      <publishTime>07/24/2018 17:16:44</publishTime>
     </File>
     <File Include="Areas/Hotel/Views/Settlement/_OrderList.cshtml">
       <publishTime>07/17/2018 18:16:24</publishTime>
@@ -303,6 +312,9 @@
     <File Include="Areas/Hotel/Views/User/CreateUser.cshtml">
       <publishTime>07/17/2018 16:59:34</publishTime>
     </File>
+    <File Include="Areas/Hotel/Views/User/Log.cshtml">
+      <publishTime>07/21/2018 15:37:09</publishTime>
+    </File>
     <File Include="Areas/Hotel/Views/User/Login.cshtml">
       <publishTime>07/17/2018 16:59:34</publishTime>
     </File>
@@ -314,6 +326,12 @@
     </File>
     <File Include="Areas/Hotel/Views/User/RegisterResult.cshtml">
       <publishTime>07/17/2018 16:59:34</publishTime>
+    </File>
+    <File Include="Areas/Hotel/Views/User/_LogList.cshtml">
+      <publishTime>07/21/2018 15:38:21</publishTime>
+    </File>
+    <File Include="Areas/Hotel/Views/User/_LogPage.cshtml">
+      <publishTime>07/21/2018 15:42:27</publishTime>
     </File>
     <File Include="Areas/Hotel/Views/web.config">
       <publishTime>07/17/2018 16:59:34</publishTime>
@@ -334,7 +352,7 @@
       <publishTime>07/18/2018 19:23:47</publishTime>
     </File>
     <File Include="bin/HotelSystem.Web.dll">
-      <publishTime>07/18/2018 19:23:47</publishTime>
+      <publishTime>07/24/2018 17:19:02</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>06/15/2015 02:06:24</publishTime>

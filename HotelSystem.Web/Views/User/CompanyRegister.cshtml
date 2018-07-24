@@ -1,0 +1,86 @@
+﻿@model HotelSystem.Model.Company
+@{
+    ViewBag.Title = "CompanyRegister";
+    Layout = "~/Views/Shared/_LayoutHeader.cshtml";
+}
+
+<div class="cooperationbanner" style="background-image:url(/Images/lantola_companyregister.png);height:400px;">
+    <div class="banneranimate">
+        <div class="banneranimate1"></div>
+        <div class="banneranimate2"></div>
+        <div class="banneranimate3"></div>
+    </div>
+</div>
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-warning alert-dismissible fade in" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+        @Html.Raw(ViewBag.Message)
+    </div>
+}
+<form class="hotelregister" action="User/CompanyRegister" method="post" enctype="multipart/form-data">
+    <div class="hotelregister1">
+        <div class="hotelregistertitle">企业信息</div>
+        <div class="hotelregistercontent">
+            <div class="hotelregisterinput"><div class="word">企业名称</div><input style="padding-left:20px;width:350px;" type="text" name="Name" /></div>
+            <div class="hotelregisterinput">
+                <div class="word">联系电话</div>
+                <input style="padding-left:20px;width:60px;" type="text" name="telarea" placeholder="区号" /> - <input style="padding-left:20px;width:120px;" type="text" name="Tel" placeholder="电话" />
+            </div>
+            <div class="hotelregisterinput1">
+                <div class="word">企业地址</div>
+                @Html.DropDownListFor(m => m.ProvinceId, new SelectList(ViewBag.Province, "Id", "ProvinceName"), "==请选择==", new { @class = "form-control province", @style = "padding-left:20px;width:100px;display:inline-block;", type = "text", @data_target = "#City" })-
+                <div id="City" style="display:inline-block;">
+                    @Html.DropDownListFor(m => m.CityId, new SelectList(ViewBag.City, "Id", "CityName"), "==请选择==", new { @class = "form-control city", @style = "padding-left:20px;width:100px;display:inline-block;", @data_target = "#District" })-
+                </div>
+                <div id="District" style="display:inline-block;">
+
+                    @Html.DropDownListFor(m => m.DistrictId, new SelectList(ViewBag.District, "Id", "DistrictName"), "==请选择==", new { @class = "form-control district",@style = "padding-left:20px;width:100px;display:inline-block;" })-
+                </div>
+                <input class="form-control" style="padding-left:20px;width:380px;display:inline-block;" type="text" name="Address" placeholder="地址" />
+            </div>
+
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="hotelregister1">
+        <div class="hotelregistertitle">联系人信息</div>
+        <div class="hotelregistercontent">
+            <div class="hotelregisterinput"><div class="word">联系姓名</div><input style="padding-left:20px;width:90px;" type="text" name="Contact" placeholder="必填" /></div>
+            <div class="hotelregisterinput"><div class="word">联系手机</div><input style="padding-left:20px;width:170px;" type="text" name="Phone" placeholder="必填" /></div>
+            <div class="hotelregisterinput"><div class="word">联系邮箱</div><input style="padding-left:20px;width:200px;" type="text" name="Email" placeholder="必填" /></div>
+
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="hotelregister1">
+        <div class="hotelregistertitle">资质证明</div>
+        <div class="hotelregistercontent" style="padding-bottom:60px;">
+            <input name="BusinessLicense" type="file" accept=".jpg,.png,jpeg" style="display:none;" id="BusinessLicense" class="hotelregisterimageup2 upload-image" />
+            <div class="hotelregisterimageup" onclick="jQuery('#BusinessLicense').click();">
+                <div class="word">营业执照</div>
+                <div class="hotelregisterimageup4 preview"></div>
+                <span>+</span>
+            </div>
+            <input name="CardPositive" type="file" accept=".jpg,.png,jpeg" style="display:none;" id="CardPositive" class="hotelregisterimageup2 upload-image" />
+            <div class="hotelregisterimageup" onclick="jQuery('#CardPositive').click();">
+                <div class="word">法人身份证（正面）</div>
+                <div class="hotelregisterimageup4 preview"></div>
+                <span>+</span>
+            </div>
+            <input name="CardOpposite" type="file" accept=".jpg,.png,jpeg" style="display:none;" id="CardOpposite" class="hotelregisterimageup2 upload-image" />
+            <div class="hotelregisterimageup" onclick="jQuery('#CardOpposite').click();">
+                <div class="word">法人身份证（反面）</div>
+                <div class="hotelregisterimageup4 preview"></div>
+                <span>+</span>
+            </div>
+
+            <div class="hotelregisterimageword">证件上传说明：<br />1. 保证证件的真实有效性。<br />2. 检查证件是否在有效期内，可正常使用<br />3. 保证证件图片内文字清晰可辨认。<br />4. 上传证件图片大小在2M以内。</div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <input type="submit" class="hotelregisterbutton" value="提交信息" />
+</form>
+<script src="~/Scripts/upload.preview.js"></script>
+<script src="~/Scripts/city.cascading.js"></script>

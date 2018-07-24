@@ -94,6 +94,11 @@
         <AssociationConnector Association="DBModel.UsersSettlement" />
         <AssociationConnector Association="DBModel.HotelInfoSettlement" />
         <AssociationConnector Association="DBModel.SettlementOrder" />
+        <EntityTypeShape EntityType="DBModel.Company" Width="1.5" PointX="5.25" PointY="71.625" />
+        <AssociationConnector Association="DBModel.ProvinceCompany" />
+        <AssociationConnector Association="DBModel.CityCompany" />
+        <AssociationConnector Association="DBModel.DistrictCompany" />
+        <AssociationConnector Association="DBModel.CompanyGuestUser" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

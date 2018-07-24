@@ -72,6 +72,9 @@
     <Compile Include="Comment.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Company.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Conference.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>

@@ -77,12 +77,6 @@ namespace HotelSystem.Web.Controllers
         {
             return View();
         }
-
-        public ActionResult Login()
-        {
-            return View();
-        }
-
         [HttpPost]
         public ActionResult Login(GuestUser user, string remember)
         {
@@ -132,6 +126,104 @@ namespace HotelSystem.Web.Controllers
                 return View();
             }
         }
+        public ActionResult CompanyRegister()
+        {
+            var p = DbContext.Province.ToList();
+            ViewBag.Province = p;
+            var id = p.First().Id;
+            var c = DbContext.City.Where(m => m.ProvinceID == id).ToList();
+            ViewBag.City = c;
+            id = c.First().Id;
+            ViewBag.District = DbContext.District.Where(m => m.CityID == id).ToList();
+            return View();
+        }
+        [HttpPost]
+        public ActionResult CompanyRegister(Company company,string telarea, HttpPostedFileBase BusinessLicense, HttpPostedFileBase CardPositive, HttpPostedFileBase CardOpposite)
+        {
+            company.Tel = telarea + "-" + company.Tel;
+            if (string.IsNullOrEmpty(company.Name))
+            {
+                ViewBag.Message = "注册错误：公司名称不能为空";
+                return View();
+            }
+            if (string.IsNullOrEmpty(company.Tel))
+            {
+                ViewBag.Message = "注册错误：电话不能为空";
+                return View();
+            }
+            if (string.IsNullOrEmpty(company.Address))
+            {
+                ViewBag.Message = "注册错误：地址不能为空";
+                return View();
+            }
+            if (string.IsNullOrEmpty(company.Contact))
+            {
+                ViewBag.Message = "注册错误：联系人不能为空";
+                return View();
+            }
+            if (string.IsNullOrEmpty(company.Email))
+            {
+                ViewBag.Message = "注册错误：邮箱不能为空";
+                return View();
+            }
+            if (string.IsNullOrEmpty(company.Phone))
+            {
+                ViewBag.Message = "注册错误：联系人电话不能为空";
+                return View();
+            }
+            string TimePath = ServerConfig.UserImgRoute;
+            if (BusinessLicense != null)
+            {
+                string FileType = BusinessLicense.FileName.Substring(BusinessLicense.FileName.LastIndexOf(".") + 1); //得到文件的后缀名
+                company.BusinessLicense = TimePath + Guid.NewGuid().ToString() + "." + FileType; //得到重命名的文件名
+
+                ImgHelper.Compress(BusinessLicense.InputStream, Server.MapPath(company.BusinessLicense), ServerConfig.Level);//压缩保存操作
+
+            }
+            else
+            {
+                ViewBag.Message = "注册错误：需上传营业执照";
+                return View();
+            }
+            if (CardPositive != null)
+            {
+                string FileType = CardPositive.FileName.Substring(CardPositive.FileName.LastIndexOf(".") + 1); //得到文件的后缀名
+                company.CardPositive = TimePath + Guid.NewGuid().ToString() + "." + FileType; //得到重命名的文件名
+
+                ImgHelper.Compress(CardPositive.InputStream, Server.MapPath(company.CardPositive), ServerConfig.Level);//压缩保存操作
+
+            }
+            else
+            {
+                Directory.Delete(Server.MapPath(company.BusinessLicense), true);
+                ViewBag.Message = "注册错误：需上传法人身份证正面";
+                return View();
+            }
+            if (CardOpposite != null)
+            {
+                string FileType = CardOpposite.FileName.Substring(CardOpposite.FileName.LastIndexOf(".") + 1); //得到文件的后缀名
+                company.CardOpposite = TimePath + Guid.NewGuid().ToString() + "." + FileType; //得到重命名的文件名
+
+                ImgHelper.Compress(CardOpposite.InputStream, Server.MapPath(company.CardOpposite), ServerConfig.Level);//压缩保存操作
+
+            }
+            else
+            {
+                Directory.Delete(Server.MapPath(company.BusinessLicense), true);
+                Directory.Delete(Server.MapPath(company.CardPositive), true);
+                ViewBag.Message = "注册错误：需上传法人身份证反面";
+                return View();
+            }
+            DbContext.Company.Add(company);
+            DbContext.SaveChanges();
+            return Redirect("/Hotel/User/RegisterResult");
+        }
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        
 
         public ActionResult LoginOut()
         {

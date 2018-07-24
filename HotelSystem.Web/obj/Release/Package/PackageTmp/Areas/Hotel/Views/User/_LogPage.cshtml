@@ -1,0 +1,25 @@
+﻿@model PagedList<HotelSystem.Model.UserLog>
+@using Webdiyer.WebControls.Mvc
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>级别</th>
+            <th>类型</th>
+            <th>操作人</th>
+            <th>记录时间</th>
+            <th>操作内容</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var log in Model)
+        {
+            <tr>
+                <td>@log.Level</td>
+                <td>@log.TypeName</td>
+                <td>@log.UserName</td>
+                <td>@log.CreateTime.ToString("yyyy-MM-dd HH:mm")</td>
+                <td>@log.Content</td>
+            </tr>
+        }
+    </tbody>
+</table>

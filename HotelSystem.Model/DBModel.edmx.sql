@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 07/17/2018 17:34:23
+-- Date Created: 07/24/2018 20:08:21
 -- Generated from EDMX file: G:\Github\Lantola\HotelSystem.Model\DBModel.edmx
 -- --------------------------------------------------
 
@@ -158,6 +158,18 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_SettlementOrder]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Order] DROP CONSTRAINT [FK_SettlementOrder];
 GO
+IF OBJECT_ID(N'[dbo].[FK_ProvinceCompany]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Company] DROP CONSTRAINT [FK_ProvinceCompany];
+GO
+IF OBJECT_ID(N'[dbo].[FK_CityCompany]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Company] DROP CONSTRAINT [FK_CityCompany];
+GO
+IF OBJECT_ID(N'[dbo].[FK_DistrictCompany]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Company] DROP CONSTRAINT [FK_DistrictCompany];
+GO
+IF OBJECT_ID(N'[dbo].[FK_CompanyGuestUser]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[GuestUser] DROP CONSTRAINT [FK_CompanyGuestUser];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -288,6 +300,9 @@ IF OBJECT_ID(N'[dbo].[UserLog]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[Settlement]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Settlement];
+GO
+IF OBJECT_ID(N'[dbo].[Company]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Company];
 GO
 
 -- --------------------------------------------------
@@ -634,7 +649,8 @@ CREATE TABLE [dbo].[GuestUser] (
     [Summary] nvarchar(400)  NULL,
     [RegisterType] nvarchar(40)  NOT NULL,
     [RegisterIp] nvarchar(20)  NOT NULL,
-    [RegisterTime] datetime  NOT NULL
+    [RegisterTime] datetime  NOT NULL,
+    [Company_Id] nvarchar(40)  NOT NULL
 );
 GO
 
@@ -893,6 +909,25 @@ CREATE TABLE [dbo].[Settlement] (
 );
 GO
 
+-- Creating table 'Company'
+CREATE TABLE [dbo].[Company] (
+    [Id] nvarchar(40)  NOT NULL,
+    [Name] nvarchar(100)  NOT NULL,
+    [Tel] nvarchar(20)  NOT NULL,
+    [Address] nvarchar(120)  NOT NULL,
+    [Contact] nvarchar(20)  NOT NULL,
+    [Email] nvarchar(100)  NOT NULL,
+    [Phone] nvarchar(20)  NOT NULL,
+    [BusinessLicense] nvarchar(150)  NOT NULL,
+    [CardPositive] nvarchar(150)  NOT NULL,
+    [CardOpposite] nvarchar(150)  NOT NULL,
+    [CreateTime] datetime  NOT NULL,
+    [ProvinceId] bigint  NOT NULL,
+    [CityId] bigint  NOT NULL,
+    [DistrictId] bigint  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -1146,6 +1181,12 @@ GO
 -- Creating primary key on [Id] in table 'Settlement'
 ALTER TABLE [dbo].[Settlement]
 ADD CONSTRAINT [PK_Settlement]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'Company'
+ALTER TABLE [dbo].[Company]
+ADD CONSTRAINT [PK_Company]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -1856,6 +1897,66 @@ GO
 CREATE INDEX [IX_FK_SettlementOrder]
 ON [dbo].[Order]
     ([SettlementId]);
+GO
+
+-- Creating foreign key on [ProvinceId] in table 'Company'
+ALTER TABLE [dbo].[Company]
+ADD CONSTRAINT [FK_ProvinceCompany]
+    FOREIGN KEY ([ProvinceId])
+    REFERENCES [dbo].[Province]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ProvinceCompany'
+CREATE INDEX [IX_FK_ProvinceCompany]
+ON [dbo].[Company]
+    ([ProvinceId]);
+GO
+
+-- Creating foreign key on [CityId] in table 'Company'
+ALTER TABLE [dbo].[Company]
+ADD CONSTRAINT [FK_CityCompany]
+    FOREIGN KEY ([CityId])
+    REFERENCES [dbo].[City]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CityCompany'
+CREATE INDEX [IX_FK_CityCompany]
+ON [dbo].[Company]
+    ([CityId]);
+GO
+
+-- Creating foreign key on [DistrictId] in table 'Company'
+ALTER TABLE [dbo].[Company]
+ADD CONSTRAINT [FK_DistrictCompany]
+    FOREIGN KEY ([DistrictId])
+    REFERENCES [dbo].[District]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_DistrictCompany'
+CREATE INDEX [IX_FK_DistrictCompany]
+ON [dbo].[Company]
+    ([DistrictId]);
+GO
+
+-- Creating foreign key on [Company_Id] in table 'GuestUser'
+ALTER TABLE [dbo].[GuestUser]
+ADD CONSTRAINT [FK_CompanyGuestUser]
+    FOREIGN KEY ([Company_Id])
+    REFERENCES [dbo].[Company]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CompanyGuestUser'
+CREATE INDEX [IX_FK_CompanyGuestUser]
+ON [dbo].[GuestUser]
+    ([Company_Id]);
 GO
 
 -- --------------------------------------------------

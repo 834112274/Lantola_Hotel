@@ -7,8 +7,10 @@
 <link rel="stylesheet" type="text/css" media="all" href="~/Scripts/assets/plugins/bootstrap-daterangepicker-master/daterangepicker.css" />
 <div class="panel panel-default" style="margin-top:14px;box-shadow: none;">
     <div class="panel-body">
+        @using (Html.BeginForm("HotelList", "Settlement", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", id = "Search" }))
+        {
         <div class="row">
-            <div class="col-md-4 form-horizontal">
+            <div class="col-md-4">
                 <div class="form-group form-group-sm has-feedback">
                     <label class="col-md-3 control-label">起始日期</label>
                     <div class="col-md-9">
@@ -26,8 +28,8 @@
                 <input type="button" class="btn btn-default btn-sm" value="导出" />
             </div>
         </div>
-        
-        
+        }
+
     </div>
 </div>
 @if (ViewBag.Message != null)

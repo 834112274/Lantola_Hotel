@@ -12,16 +12,21 @@ namespace HotelSystem.Web.Areas.Hotel.Controllers
 
         // GET: Admin/Settlement
         [Login(Area = "Admin", Role = "system")]
-        public ActionResult OrderList(string hotel, DateTime start, DateTime end, int pageIndex = 1)
+        public ActionResult OrderList(string hotel, DateTime start, DateTime end, string settlementType, int pageIndex = 1)
         {
             var orders = from m in DbContext.Order
-                         where m.CreateTime >= start && m.CreateTime <= end && m.HotelInfoId == hotel && m.SettlementId == null
+                         where m.EndTime >= start && m.EndTime <= end && m.HotelInfoId == hotel
                          && m.Payment == true
                          && m.State != "0"
                          && m.IsValid == true
                          select m;
+            string type = string.Empty;
+            if (settlementType != "1")
+            {
+                orders = from m in orders where m.SettlementId == null select m;
+            }
 
-            var viewOrder = orders.OrderByDescending(m => m.CreateTime).ToPagedList(pageIndex, 15);
+            var viewOrder = orders.OrderByDescending(m => m.EndTime).ToPagedList(pageIndex, 15);
             if (Request.IsAjaxRequest())
                 return PartialView("_OrderList", viewOrder);
             return View(viewOrder);

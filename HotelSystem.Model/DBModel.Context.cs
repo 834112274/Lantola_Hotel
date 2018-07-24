@@ -67,5 +67,6 @@ namespace HotelSystem.Model
         public virtual DbSet<Stock> Stock { get; set; }
         public virtual DbSet<UserLog> UserLog { get; set; }
         public virtual DbSet<Settlement> Settlement { get; set; }
+        public virtual DbSet<Company> Company { get; set; }
     }
 }

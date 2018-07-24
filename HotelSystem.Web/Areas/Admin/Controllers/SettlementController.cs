@@ -12,14 +12,20 @@ namespace HotelSystem.Web.Areas.Admin.Controllers
 
         // GET: Admin/Settlement
         [Login(Area = "Admin", Role = "system")]
-        public ActionResult OrderList(string hotel, DateTime start, DateTime end, int pageIndex = 1)
+        public ActionResult OrderList(string hotel, DateTime start, DateTime end,string settlementType, int pageIndex = 1)
         {
             var orders = from m in DbContext.Order
-                         where m.CreateTime >= start && m.CreateTime <= end && m.HotelInfoId == hotel && m.SettlementId == null
+                         where m.EndTime >= start && m.EndTime <= end && m.HotelInfoId == hotel
                          && m.Payment == true
                          && m.State != "0"
                          && m.IsValid == true
                          select m;
+            string type = string.Empty;
+            if(settlementType!="1")
+            {
+                orders = from m in orders where m.SettlementId == null select m;
+            }
+            
 
             var viewOrder = orders.OrderByDescending(m => m.CreateTime).ToPagedList(pageIndex, 15);
             if (Request.IsAjaxRequest())
@@ -34,8 +40,8 @@ namespace HotelSystem.Web.Areas.Admin.Controllers
             DateTime Start = DateTime.Parse(string.IsNullOrEmpty(start) ? DateTime.Now.AddMonths(-1).ToString("yyyy-MM-dd") : start);
             DateTime End = DateTime.Parse(string.IsNullOrEmpty(end) ? DateTime.Now.ToString("yyyy-MM-dd") : end);
             var orders = (from m in DbContext.Order
-                          where m.CreateTime >= Start
-                          && m.CreateTime <= End
+                          where m.EndTime >= Start
+                          && m.EndTime <= End
                           && m.SettlementId == null
                           && m.Payment == true
                           && m.State != "0"
@@ -67,7 +73,7 @@ namespace HotelSystem.Web.Areas.Admin.Controllers
             }
             var hotelInfo = DbContext.HotelInfo.Single(m=>m.Id==hotel);
             var orders = from m in DbContext.Order
-                         where m.CreateTime >= start && m.CreateTime <= end && m.HotelInfoId == hotel && m.SettlementId == null
+                         where m.EndTime >= start && m.EndTime <= end && m.HotelInfoId == hotel && m.SettlementId == null
                          && m.Payment == true
                          && m.State != "0"
                          && m.IsValid == true
@@ -81,7 +87,8 @@ namespace HotelSystem.Web.Areas.Admin.Controllers
                 OrderCount = orders.Count(),
                 CreateTime = DateTime.Now,
                 HotelInfoId = hotelInfo.Id,
-                HotelName = hotelInfo.Name
+                HotelName = hotelInfo.Name,
+                UsersId= SessionInfo.systemUser.Id
             };
             foreach (var order in orders)
             {

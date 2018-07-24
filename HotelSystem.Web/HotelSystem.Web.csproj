@@ -112,6 +112,8 @@
     <Content Include="Images\backstagebackground3.jpg" />
     <Content Include="Images\backstagelogo.png" />
     <Content Include="Images\banner.png" />
+    <Content Include="Images\banneranimate1.png" />
+    <Content Include="Images\banneranimate2.png" />
     <Content Include="Images\btn_blue.png" />
     <Content Include="Images\btn_orange.png" />
     <Content Include="Images\cooperation1.png" />
@@ -143,6 +145,7 @@
     <Content Include="Images\hotelregister1.png" />
     <Content Include="Images\hotelregister3.png" />
     <Content Include="Images\lantola-logo.png" />
+    <Content Include="Images\lantola_companyregister.png" />
     <Content Include="Images\login_bg.jpg" />
     <Content Include="Images\logo-WT.png" />
     <Content Include="Images\mapicon5.png" />
@@ -717,6 +720,7 @@
     <Content Include="Views\User\CancelOrder.cshtml" />
     <Content Include="Views\User\_MessageList.cshtml" />
     <Content Include="Views\User\_MessagePage.cshtml" />
+    <Content Include="Views\User\CompanyRegister.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -728,8 +732,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Hotel\Models\" />
-    <Folder Include="HotelImages\" />
-    <Folder Include="PolicyImages\" />
     <Folder Include="Scripts\Hotel\Js\" />
     <Folder Include="Views\InsideApi\" />
     <Folder Include="Views\Pay\" />

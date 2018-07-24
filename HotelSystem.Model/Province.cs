@@ -23,6 +23,7 @@ namespace HotelSystem.Model
         {
             this.City = new HashSet<City>();
             this.Invoice = new HashSet<Invoice>();
+            this.Company = new HashSet<Company>();
         }
     
     	/// <summary>
@@ -50,5 +51,7 @@ namespace HotelSystem.Model
         public virtual ICollection<City> City { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Invoice> Invoice { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Company> Company { get; set; }
     }
 }
