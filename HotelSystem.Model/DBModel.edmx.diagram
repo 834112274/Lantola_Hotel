@@ -98,7 +98,7 @@
         <AssociationConnector Association="DBModel.ProvinceCompany" />
         <AssociationConnector Association="DBModel.CityCompany" />
         <AssociationConnector Association="DBModel.DistrictCompany" />
-        <AssociationConnector Association="DBModel.CompanyGuestUser" />
+        <AssociationConnector Association="DBModel.GuestUserCompany" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

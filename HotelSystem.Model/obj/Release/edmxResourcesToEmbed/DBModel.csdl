@@ -231,6 +231,23 @@
       <End Role="Settlement" EntitySet="Settlement" />
       <End Role="Order" EntitySet="Order" />
     </AssociationSet>
+    <EntitySet Name="Company" EntityType="DBModel.Company" />
+    <AssociationSet Name="ProvinceCompany" Association="DBModel.ProvinceCompany">
+      <End Role="Province" EntitySet="Province" />
+      <End Role="Company" EntitySet="Company" />
+    </AssociationSet>
+    <AssociationSet Name="CityCompany" Association="DBModel.CityCompany">
+      <End Role="City" EntitySet="City" />
+      <End Role="Company" EntitySet="Company" />
+    </AssociationSet>
+    <AssociationSet Name="DistrictCompany" Association="DBModel.DistrictCompany">
+      <End Role="District" EntitySet="District" />
+      <End Role="Company" EntitySet="Company" />
+    </AssociationSet>
+    <AssociationSet Name="GuestUserCompany" Association="DBModel.GuestUserCompany">
+      <End Role="GuestUser" EntitySet="GuestUser" />
+      <End Role="Company" EntitySet="Company" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Menu">
     <Key>
@@ -379,6 +396,7 @@
     <NavigationProperty Name="District" Relationship="DBModel.FK_District_City" FromRole="City" ToRole="District" />
     <NavigationProperty Name="HotelInfo" Relationship="DBModel.FK_CityHotelInfo" FromRole="City" ToRole="HotelInfo" />
     <NavigationProperty Name="Invoice" Relationship="DBModel.CityInvoice" FromRole="City" ToRole="Invoice" />
+    <NavigationProperty Name="Company" Relationship="DBModel.CityCompany" FromRole="City" ToRole="Company" />
   </EntityType>
   <EntityType Name="District">
     <Key>
@@ -396,6 +414,7 @@
     <NavigationProperty Name="City" Relationship="DBModel.FK_District_City" FromRole="District" ToRole="City" />
     <NavigationProperty Name="HotelInfo" Relationship="DBModel.FK_DistrictHotelInfo" FromRole="District" ToRole="HotelInfo" />
     <NavigationProperty Name="Invoice" Relationship="DBModel.DistrictInvoice" FromRole="District" ToRole="Invoice" />
+    <NavigationProperty Name="Company" Relationship="DBModel.DistrictCompany" FromRole="District" ToRole="Company" />
   </EntityType>
   <EntityType Name="Province">
     <Key>
@@ -411,6 +430,7 @@
     <Property Name="DateUpdated" Type="DateTime" Precision="3" />
     <NavigationProperty Name="City" Relationship="DBModel.FK_City_Province" FromRole="Province" ToRole="City" />
     <NavigationProperty Name="Invoice" Relationship="DBModel.ProvinceInvoice" FromRole="Province" ToRole="Invoice" />
+    <NavigationProperty Name="Company" Relationship="DBModel.ProvinceCompany" FromRole="Province" ToRole="Company" />
   </EntityType>
   <Association Name="FK_City_Province">
     <End Type="DBModel.Province" Role="Province" Multiplicity="1" />
@@ -1562,6 +1582,7 @@
     <NavigationProperty Name="Collection" Relationship="DBModel.CollectionGuestUser" FromRole="GuestUser" ToRole="Collection" />
     <NavigationProperty Name="GuestInvoice" Relationship="DBModel.GuestUserGuestInvoice" FromRole="GuestUser" ToRole="GuestInvoice" />
     <NavigationProperty Name="Invoice" Relationship="DBModel.GuestUserInvoice" FromRole="GuestUser" ToRole="Invoice" />
+    <NavigationProperty Name="Company" Relationship="DBModel.GuestUserCompany" FromRole="GuestUser" ToRole="Company" />
   </EntityType>
   <EntityType Name="Order">
     <Key>
@@ -2645,5 +2666,140 @@
         <PropertyRef Name="SettlementId" />
       </Dependent>
     </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="40" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100">
+      <Documentation>
+        <Summary>公司</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Tel" Type="String" Nullable="false" MaxLength="20">
+      <Documentation>
+        <Summary>电话</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="120">
+      <Documentation>
+        <Summary>地址</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Contact" Type="String" Nullable="false" MaxLength="20">
+      <Documentation>
+        <Summary>联系人</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="100">
+      <Documentation>
+        <Summary>邮箱</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Phone" Type="String" Nullable="false" MaxLength="20">
+      <Documentation>
+        <Summary>手机</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="BusinessLicense" Type="String" Nullable="false" MaxLength="150">
+      <Documentation>
+        <Summary>营业执照</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="CardPositive" Type="String" Nullable="false" MaxLength="150">
+      <Documentation>
+        <Summary>法人身份证正面</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="CardOpposite" Type="String" Nullable="false" MaxLength="150">
+      <Documentation>
+        <Summary>法人身份证反面</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="CreateTime" Type="DateTime" Nullable="false">
+      <Documentation>
+        <Summary>创建时间</Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="Province" Relationship="DBModel.ProvinceCompany" FromRole="Company" ToRole="Province" />
+    <Property Name="ProvinceId" Type="Int64" Nullable="false">
+      <Documentation>
+        <Summary>省份ID</Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="City" Relationship="DBModel.CityCompany" FromRole="Company" ToRole="City" />
+    <Property Name="CityId" Type="Int64" Nullable="false">
+      <Documentation>
+        <Summary>城市ID</Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="District" Relationship="DBModel.DistrictCompany" FromRole="Company" ToRole="District" />
+    <Property Name="DistrictId" Type="Int64" Nullable="false">
+      <Documentation>
+        <Summary>区县ID</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Status" Type="Int16" Nullable="false">
+      <Documentation>
+        <Summary>状态</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="ExamineUser" Type="String" MaxLength="40">
+      <Documentation>
+        <Summary>审核人</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="ExamineTime" Type="DateTime" Nullable="false">
+      <Documentation>
+        <Summary>审核时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Opinion" Type="String" MaxLength="200">
+      <Documentation>
+        <Summary>审核说明意见</Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="GuestUser" Relationship="DBModel.GuestUserCompany" FromRole="Company" ToRole="GuestUser" />
+  </EntityType>
+  <Association Name="ProvinceCompany">
+    <End Type="DBModel.Province" Role="Province" Multiplicity="1" />
+    <End Type="DBModel.Company" Role="Company" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Province">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Company">
+        <PropertyRef Name="ProvinceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CityCompany">
+    <End Type="DBModel.City" Role="City" Multiplicity="1" />
+    <End Type="DBModel.Company" Role="Company" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Company">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DistrictCompany">
+    <End Type="DBModel.District" Role="District" Multiplicity="1" />
+    <End Type="DBModel.Company" Role="Company" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="District">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Company">
+        <PropertyRef Name="DistrictId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GuestUserCompany">
+    <End Type="DBModel.GuestUser" Role="GuestUser" Multiplicity="0..1" />
+    <End Type="DBModel.Company" Role="Company" Multiplicity="0..1" />
   </Association>
 </Schema>

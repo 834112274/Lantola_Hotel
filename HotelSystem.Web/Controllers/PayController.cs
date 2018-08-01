@@ -7,12 +7,16 @@ using System.Web.Mvc;
 
 namespace HotelSystem.Web.Controllers
 {
-    public class PayController : PayNotifyController
+    public class PayController: PayNotifyController
     {
         // GET: Pay
         public void WxNotify()
         {
-            CheckOrder();
+            WxCheckOrder();
+        }
+        public void AlipayNotify()
+        {
+            AlipayCheckOrder();
         }
     }
 }

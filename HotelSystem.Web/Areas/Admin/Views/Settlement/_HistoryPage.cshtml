@@ -10,6 +10,7 @@
             <th>订单数</th>
             <th>账单金额</th>
             <th>结算时间</th>
+            <th>转账时间</th>
             <th></th>
         </tr>
     </thead>
@@ -24,7 +25,18 @@
                 <td><label>@hotel.Amount</label> </td>
                 <td>@hotel.CreateTime.ToString("yyyy-MM-dd")</td>
                 <td>
+                    @if (hotel.IsPay != 0)
+                {
+                    <span>@hotel.PayTime.ToString("yyyy-MM-dd HH:mm")</span>
+
+                }
+                </td>
+
+                <td>
+
                     <a href="/Admin/Settlement/OrderList?start=@hotel.StartTime.ToString("yyyy-MM-dd")&end=@hotel.EndTime.ToString("yyyy-MM-dd")&hotel=@hotel.HotelInfoId&settlementType=1" target="_blank">详情</a> |
+
+                    <a href="/Admin/Settlement/Pay/@hotel.Id" onclick="return confirm('确定已转账吗？');">转账</a>
                 </td>
             </tr>
         }

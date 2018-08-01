@@ -276,7 +276,6 @@ F:\Project\github\Lantola_Hotel\HotelSystem.Web\bin\zh-Hans\System.Web.Mvc.resou
 F:\Project\github\Lantola_Hotel\HotelSystem.Web\obj\Debug\HotelSystem.Web.csprojResolveAssemblyReference.cache
 F:\Project\github\Lantola_Hotel\HotelSystem.Web\obj\Debug\HotelSystem.Web.dll
 F:\Project\github\Lantola_Hotel\HotelSystem.Web\obj\Debug\HotelSystem.Web.pdb
-G:\Github\Lantola\HotelSystem.Web\obj\Debug\HotelSystem.Web.csprojResolveAssemblyReference.cache
 G:\Github\Lantola\HotelSystem.Web\bin\HotelSystem.Web.dll.config
 G:\Github\Lantola\HotelSystem.Web\bin\HotelSystem.Web.dll
 G:\Github\Lantola\HotelSystem.Web\bin\HotelSystem.Web.pdb
@@ -285,8 +284,13 @@ G:\Github\Lantola\HotelSystem.Web\bin\EntityFramework.SqlServer.dll
 G:\Github\Lantola\HotelSystem.Web\bin\Gma.QrCodeNet.Encoding.dll
 G:\Github\Lantola\HotelSystem.Web\bin\HotelSystem.Helper.dll
 G:\Github\Lantola\HotelSystem.Web\bin\HotelSystem.Model.dll
+G:\Github\Lantola\HotelSystem.Web\bin\ICSharpCode.SharpZipLib.dll
 G:\Github\Lantola\HotelSystem.Web\bin\Microsoft.Web.Infrastructure.dll
 G:\Github\Lantola\HotelSystem.Web\bin\Newtonsoft.Json.dll
+G:\Github\Lantola\HotelSystem.Web\bin\NPOI.dll
+G:\Github\Lantola\HotelSystem.Web\bin\NPOI.OOXML.dll
+G:\Github\Lantola\HotelSystem.Web\bin\NPOI.OpenXml4Net.dll
+G:\Github\Lantola\HotelSystem.Web\bin\NPOI.OpenXmlFormats.dll
 G:\Github\Lantola\HotelSystem.Web\bin\System.Web.Helpers.dll
 G:\Github\Lantola\HotelSystem.Web\bin\System.Web.Mvc.dll
 G:\Github\Lantola\HotelSystem.Web\bin\System.Web.Razor.dll
@@ -301,6 +305,7 @@ G:\Github\Lantola\HotelSystem.Web\bin\EntityFramework.SqlServer.xml
 G:\Github\Lantola\HotelSystem.Web\bin\Gma.QrCodeNet.Encoding.pdb
 G:\Github\Lantola\HotelSystem.Web\bin\Gma.QrCodeNet.Encoding.xml
 G:\Github\Lantola\HotelSystem.Web\bin\Newtonsoft.Json.xml
+G:\Github\Lantola\HotelSystem.Web\bin\NPOI.xml
 G:\Github\Lantola\HotelSystem.Web\bin\Webdiyer.MvcPager.xml
 G:\Github\Lantola\HotelSystem.Web\bin\System.Web.Razor.xml
 G:\Github\Lantola\HotelSystem.Web\bin\System.Web.Webpages.xml
@@ -318,5 +323,8 @@ G:\Github\Lantola\HotelSystem.Web\bin\zh-Hans\System.Web.Webpages.Deployment.res
 G:\Github\Lantola\HotelSystem.Web\bin\zh-Hans\System.Web.Webpages.Razor.resources.dll
 G:\Github\Lantola\HotelSystem.Web\bin\zh-Hans\System.Web.Helpers.resources.dll
 G:\Github\Lantola\HotelSystem.Web\bin\zh-Hans\System.Web.Mvc.resources.dll
+G:\Github\Lantola\HotelSystem.Web\obj\Debug\HotelSystem.Web.csprojResolveAssemblyReference.cache
 G:\Github\Lantola\HotelSystem.Web\obj\Debug\HotelSystem.Web.dll
 G:\Github\Lantola\HotelSystem.Web\obj\Debug\HotelSystem.Web.pdb
+G:\Github\Lantola\HotelSystem.Web\bin\AopSdk.dll
+G:\Github\Lantola\HotelSystem.Web\bin\AopSdk.pdb

@@ -635,6 +635,8 @@
           <ScalarProperty Name="UsersId" ColumnName="UsersId" />
           <ScalarProperty Name="HotelInfoId" ColumnName="HotelInfoId" />
           <ScalarProperty Name="HotelName" ColumnName="HotelName" />
+          <ScalarProperty Name="IsPay" ColumnName="IsPay" />
+          <ScalarProperty Name="PayTime" ColumnName="PayTime" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -655,6 +657,10 @@
           <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
           <ScalarProperty Name="CityId" ColumnName="CityId" />
           <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ExamineUser" ColumnName="ExamineUser" />
+          <ScalarProperty Name="ExamineTime" ColumnName="ExamineTime" />
+          <ScalarProperty Name="Opinion" ColumnName="Opinion" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -690,13 +696,14 @@
         <ScalarProperty Name="id" ColumnName="id" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="CompanyGuestUser" TypeName="DBModel.CompanyGuestUser" StoreEntitySet="GuestUser">
-      <EndProperty Name="Company">
-        <ScalarProperty Name="Id" ColumnName="Company_Id" />
-      </EndProperty>
+    <AssociationSetMapping Name="GuestUserCompany" TypeName="DBModel.GuestUserCompany" StoreEntitySet="Company">
       <EndProperty Name="GuestUser">
+        <ScalarProperty Name="Id" ColumnName="GuestUser_Id" />
+      </EndProperty>
+      <EndProperty Name="Company">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
+      <Condition ColumnName="GuestUser_Id" IsNull="false" />
     </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

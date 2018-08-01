@@ -27,10 +27,17 @@ namespace HotelSystem.Web
             get
             {
                 var u = HttpContext.Current.Session["HotelUser"] as HotelUsers;
-                using (DBModelContainer DbContext = new DBModelContainer())
+                if(u!=null)
                 {
-                    var hotelInfo = (from m in DbContext.HotelUsers where m.Id == u.Id select m.HotelInfo).First();
-                    return hotelInfo;
+                    using (DBModelContainer DbContext = new DBModelContainer())
+                    {
+                        var hotelInfo = (from m in DbContext.HotelUsers where m.Id == u.Id select m.HotelInfo).First();
+                        return hotelInfo;
+                    }
+                }
+                else
+                {
+                    return null;
                 }
                     
             }

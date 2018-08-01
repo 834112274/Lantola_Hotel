@@ -1,17 +1,8 @@
 ﻿@{
-    Layout = null;
+    ViewBag.Title = "登录";
+    Layout = "~/Views/Shared/_LayoutHeader.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>登录</title>
-    <link href="~/Scripts/assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="~/Scripts/assets/css/font-awesome.min.css" rel="stylesheet">
-    <script src="~/Scripts/jquery-1.7.2.min.js"></script>
-    <script src="~/Scripts/assets/js/bootstrap.min.js"></script>
     <style>
         body {
             margin: 0px;
@@ -55,9 +46,11 @@
             .register-btn:hover {
                 text-decoration: none;
             }
+            #kong2{
+                background-color:rgb(242,242,242);
+            }
     </style>
-</head>
-<body>
+
     <div class="login-container">
         @using (Html.BeginForm("Login", "User", FormMethod.Post, new { enctype = "multipart/form-data", @class = "login-box" }))
         {
@@ -86,14 +79,12 @@
             <hr />
             <div>
                 <span class="text-muted" style="line-height:34px;">还没有账号！</span>
-                <a href="javascript:;" class="register-btn">点击注册</a>
+                <a href="javascript:;" class="register-btn Register">点击注册</a>
             </div>
         }
     </div>
     <script>
         $(document).ready(function () {
-            $(".login-container").css("margin-top",($(window).height()-550)/2);
+            $(".login-container").css("margin-top",($(window).height()-630)/2);
         });
     </script>
-</body>
-</html>

@@ -5,7 +5,33 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 <link rel="stylesheet" type="text/css" media="all" href="~/Scripts/assets/plugins/bootstrap-daterangepicker-master/daterangepicker.css" />
+<div class="panel panel-default" style="margin-top:14px;box-shadow: none;">
+    <div class="panel-body">
+        @using (Html.BeginForm("History", "Settlement", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", id = "Search" }))
+        {
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group form-group-sm has-feedback">
+                        <label class="col-md-3 control-label">账单创建日期</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" id="SearchDate" aria-describedby="inputSuccess2Status" style="">
+                            <span class="glyphicon glyphicon-calendar form-control-feedback" aria-hidden="true"></span>
+                            <span id="inputSuccess2Status" class="sr-only">(success)</span>
+                        </div>
 
+                        <input type="hidden" id="start" name="start" value="" />
+                        <input type="hidden" id="end" name="end" value="" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <input type="submit" class="btn btn-default btn-sm" value="查询" />
+                    <a id="ExportToExcel" href="javascript:;" class="btn btn-default btn-sm" target="_blank">导出</a>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
 <div id="HistoryList">
     @Html.Partial("_HistoryList", Model);
 </div>
@@ -31,6 +57,12 @@
             locale: locale
         }, function (start, end, label) {
             setDateValue(start, end);
+        });
+        $("#ExportToExcel").click(function () {
+            var start = $('#start').val();
+            var end = $('#end').val();
+            $(this).attr('href', `/Admin/Settlement/ExportBill?history=1&start=${start}&end=${end}&hotelId=true`);
+
         });
     });
 </script>

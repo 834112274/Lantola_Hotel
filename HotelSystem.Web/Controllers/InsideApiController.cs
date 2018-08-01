@@ -1,4 +1,6 @@
-﻿using Gma.QrCodeNet.Encoding;
+﻿using Com.Alipay.Business;
+using Com.Alipay.Model;
+using Gma.QrCodeNet.Encoding;
 using Gma.QrCodeNet.Encoding.Windows.Render;
 using HotelSystem.Model;
 using HotelSystem.Web.Models;
@@ -142,6 +144,55 @@ namespace HotelSystem.Web.Controllers
 
                 string buffer = Convert.ToBase64String(ms.GetBuffer());
                 return Json(new { result = "success", msg = "二维码已生成", qrcode = buffer }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(new { result = "fail", msg = "订单不存在" }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        public ActionResult AlipayQrCode(string orderId)
+        {
+            var orders = (from m in DbContext.Order where m.Id == orderId select m).ToList();
+            if (orders.Count > 0)
+            {
+                var order = orders.First();
+                if (order.Payment)
+                {
+                    return Json(new { result = "fail", msg = "订单已支付完成" }, JsonRequestBehavior.AllowGet);
+                }
+                Alipay alipay = new Alipay();
+                AlipayF2FPrecreateResult precreateResult = alipay.GetPayUrl(order);
+                switch (precreateResult.Status)
+                {
+                    case ResultEnum.SUCCESS:
+                        QrEncoder qrEncoder = new QrEncoder(ErrorCorrectionLevel.H);
+                        QrCode qrCode = new QrCode();
+                        qrEncoder.TryEncode(precreateResult.response.QrCode, out qrCode);
+                        var renderer = new GraphicsRenderer(new FixedModuleSize(12, QuietZoneModules.Two));
+                        //Renderer renderer = new Renderer(5, Brushes.Black, Brushes.White);
+                        MemoryStream ms = new MemoryStream();
+                        renderer.WriteToStream(qrCode.Matrix, ImageFormat.Png, ms);
+
+                        string buffer = Convert.ToBase64String(ms.GetBuffer());
+                        return Json(new { result = "success", msg = "二维码已生成", qrcode = buffer });
+
+                    case ResultEnum.FAILED:
+                        return Json(new { result = "fail", msg = precreateResult.response.Body });
+
+                    case ResultEnum.UNKNOWN:
+                        if (precreateResult.response == null)
+                        {
+                            return Json(new { result = "fail", msg = "配置或网络异常，请检查后重试" });
+                        }
+                        else
+                        {
+                            return Json(new { result = "fail", msg = "系统异常，请更新外部订单后重新发起请求" });
+                        }
+
+                    default:
+                        return Json(new { result = "fail", msg = "未知错误" });
+                }
             }
             else
             {

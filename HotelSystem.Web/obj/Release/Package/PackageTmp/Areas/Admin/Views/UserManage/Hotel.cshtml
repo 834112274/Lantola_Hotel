@@ -1,8 +1,59 @@
-﻿
+﻿@model PagedList<HotelSystem.Model.HotelUsers>
+@using Webdiyer.WebControls.Mvc
 @{
     ViewBag.Title = "Hotel";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2><i class="fa fa-table red"></i><span class="break"></span><strong>用户列表</strong></h2>
+    </div>
+    <div class="panel-body">
+        @using (Html.BeginForm("Hotel", ViewContext.RouteData.GetRequiredString("controller"), FormMethod.Post, new { id = "HotelSearch" }))
+        {
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="key" placeholder="用户名、酒店">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">搜索(S)</button>
+                        </span>
+                    </div><!-- /input-group -->
+                </div><!-- /.col-lg-6 -->
+            </div><!-- /.row -->
+        }
+        <div id="GuestUserList">
+            @Html.Partial("_HotelList", Model);
+        </div>
+    </div>
+</div>
+<script>
 
-<h2>Hotel</h2>
+    $(document.body).ready(function () {
+        $(document.body).on("click", ".ResetPassword", function () {
+            var id = $(this).data("user");
+            $.ajax({
+                url: "/Admin/UserManage/HotelUserResetPassword",
+                type: "post",
+                dateType: "json",
+                data: {
+                    id: id
+                },
+                success: function (r) {
+                    console.log(r);
+                    if (r == "success") {
+                        alert("重置成功");
+                    } else {
+                        alert(r);
+                    }
+
+                },
+                error: function (e) {
+                    console.log(e);
+                }
+            });
+
+        });
+    });
+</script>
 

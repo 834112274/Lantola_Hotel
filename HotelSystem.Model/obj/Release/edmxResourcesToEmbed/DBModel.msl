@@ -638,6 +638,30 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Company">
+      <EntityTypeMapping TypeName="IsTypeOf(DBModel.Company)">
+        <MappingFragment StoreEntitySet="Company">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="BusinessLicense" ColumnName="BusinessLicense" />
+          <ScalarProperty Name="CardPositive" ColumnName="CardPositive" />
+          <ScalarProperty Name="CardOpposite" ColumnName="CardOpposite" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ExamineUser" ColumnName="ExamineUser" />
+          <ScalarProperty Name="ExamineTime" ColumnName="ExamineTime" />
+          <ScalarProperty Name="Opinion" ColumnName="Opinion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="HotelInfoRestaurant" TypeName="DBModel.HotelInfoRestaurant" StoreEntitySet="Restaurant">
       <EndProperty Name="HotelInfo">
         <ScalarProperty Name="Id" ColumnName="HotelInfo_Id" />
@@ -669,6 +693,15 @@
       <EndProperty Name="transaction">
         <ScalarProperty Name="id" ColumnName="id" />
       </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GuestUserCompany" TypeName="DBModel.GuestUserCompany" StoreEntitySet="Company">
+      <EndProperty Name="GuestUser">
+        <ScalarProperty Name="Id" ColumnName="GuestUser_Id" />
+      </EndProperty>
+      <EndProperty Name="Company">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="GuestUser_Id" IsNull="false" />
     </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

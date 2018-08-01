@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 07/24/2018 20:08:21
+-- Date Created: 08/01/2018 19:48:14
 -- Generated from EDMX file: G:\Github\Lantola\HotelSystem.Model\DBModel.edmx
 -- --------------------------------------------------
 
@@ -167,8 +167,8 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_DistrictCompany]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Company] DROP CONSTRAINT [FK_DistrictCompany];
 GO
-IF OBJECT_ID(N'[dbo].[FK_CompanyGuestUser]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[GuestUser] DROP CONSTRAINT [FK_CompanyGuestUser];
+IF OBJECT_ID(N'[dbo].[FK_GuestUserCompany]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Company] DROP CONSTRAINT [FK_GuestUserCompany];
 GO
 
 -- --------------------------------------------------
@@ -524,7 +524,7 @@ CREATE TABLE [dbo].[Room] (
     [Name] nvarchar(40)  NOT NULL,
     [EnglishName] nvarchar(40)  NULL,
     [Area] nvarchar(20)  NULL,
-    [Storey] smallint  NOT NULL,
+    [Storey] nvarchar(20)  NOT NULL,
     [BedType] nvarchar(20)  NOT NULL,
     [BedDescribe] nvarchar(200)  NULL,
     [OccupancyNumber] smallint  NOT NULL,
@@ -649,8 +649,7 @@ CREATE TABLE [dbo].[GuestUser] (
     [Summary] nvarchar(400)  NULL,
     [RegisterType] nvarchar(40)  NOT NULL,
     [RegisterIp] nvarchar(20)  NOT NULL,
-    [RegisterTime] datetime  NOT NULL,
-    [Company_Id] nvarchar(40)  NOT NULL
+    [RegisterTime] datetime  NOT NULL
 );
 GO
 
@@ -905,7 +904,9 @@ CREATE TABLE [dbo].[Settlement] (
     [CreateTime] datetime  NOT NULL,
     [UsersId] nvarchar(40)  NOT NULL,
     [HotelInfoId] nvarchar(40)  NOT NULL,
-    [HotelName] nvarchar(80)  NOT NULL
+    [HotelName] nvarchar(80)  NOT NULL,
+    [IsPay] smallint  NOT NULL,
+    [PayTime] datetime  NOT NULL
 );
 GO
 
@@ -924,7 +925,12 @@ CREATE TABLE [dbo].[Company] (
     [CreateTime] datetime  NOT NULL,
     [ProvinceId] bigint  NOT NULL,
     [CityId] bigint  NOT NULL,
-    [DistrictId] bigint  NOT NULL
+    [DistrictId] bigint  NOT NULL,
+    [Status] smallint  NOT NULL,
+    [ExamineUser] nvarchar(40)  NULL,
+    [ExamineTime] datetime  NOT NULL,
+    [Opinion] nvarchar(200)  NULL,
+    [GuestUser_Id] nvarchar(40)  NULL
 );
 GO
 
@@ -1944,19 +1950,19 @@ ON [dbo].[Company]
     ([DistrictId]);
 GO
 
--- Creating foreign key on [Company_Id] in table 'GuestUser'
-ALTER TABLE [dbo].[GuestUser]
-ADD CONSTRAINT [FK_CompanyGuestUser]
-    FOREIGN KEY ([Company_Id])
-    REFERENCES [dbo].[Company]
+-- Creating foreign key on [GuestUser_Id] in table 'Company'
+ALTER TABLE [dbo].[Company]
+ADD CONSTRAINT [FK_GuestUserCompany]
+    FOREIGN KEY ([GuestUser_Id])
+    REFERENCES [dbo].[GuestUser]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating non-clustered index for FOREIGN KEY 'FK_CompanyGuestUser'
-CREATE INDEX [IX_FK_CompanyGuestUser]
-ON [dbo].[GuestUser]
-    ([Company_Id]);
+-- Creating non-clustered index for FOREIGN KEY 'FK_GuestUserCompany'
+CREATE INDEX [IX_FK_GuestUserCompany]
+ON [dbo].[Company]
+    ([GuestUser_Id]);
 GO
 
 -- --------------------------------------------------

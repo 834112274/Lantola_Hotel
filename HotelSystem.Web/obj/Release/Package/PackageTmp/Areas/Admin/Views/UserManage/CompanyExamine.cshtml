@@ -1,0 +1,188 @@
+﻿@model HotelSystem.Model.Company
+
+@{
+    ViewBag.Title = "CompanyExamine";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <h4>企业用户审核</h4>
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-warning alert-dismissible fade in" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+            @Html.Raw(ViewBag.Message)
+        </div>
+    }
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Tel)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Tel)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Address)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Address)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CardPositive)
+                </dt>
+
+                <dd>
+                    <img style="height:300px;" src="@Html.DisplayFor(model => model.CardPositive)" />
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.BusinessLicense)
+                </dt>
+
+                <dd>
+                    <img style="height:300px;" src="@Html.DisplayFor(model => model.BusinessLicense)" />
+
+                </dd>
+
+               
+                
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.CreateTime)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CreateTime)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Status)
+                </dt>
+
+                <dd>
+                    @(Model.Status == 0 ? "未审核" : Model.Status == 1 ? "通过" : "未通过")
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ExamineUser)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ExamineUser)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ExamineTime)
+                </dt>
+
+                <dd>
+                    @Model.ExamineTime.ToString("yyyy-MM-dd HH:mm")
+                </dd>
+
+            </dl>
+        </div>
+        <div class="col-md-6">
+            <dl class="dl-horizontal">
+                
+                <dt>
+                    @Html.DisplayNameFor(model => model.Contact)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Contact)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Email)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Phone)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Phone)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CardOpposite)
+                </dt>
+
+                <dd>
+                    <img style="height:300px;" src="@Html.DisplayFor(model => model.CardOpposite)" />
+                </dd>
+            </dl>
+        </div>
+    </div>
+    
+    @if (Model.Status == 0)
+    {
+        <form action="/Admin/UserManage/CompanyExamine/@Model.Id" method="post" enctype="multipart/form-data">
+            <dl class="dl-horizontal">
+                <dt>
+                    审核意见
+                </dt>
+
+                <dd>
+                    @if (string.IsNullOrEmpty(Model.Opinion))
+                    {
+                        <textarea placeholder="审核意见" name="opinion" style="resize:none;height:60px;width:1000px;">@Model.Opinion</textarea>
+
+                    }
+                    else
+                    {
+                        <textarea placeholder="审核意见" name="opinion" style="resize:none;height:60px;width:1000px;"></textarea>
+                    }
+                </dd>
+                <dd>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <input type="submit" class="btn btn btn-danger btn-lg btn-block" name="result" onclick="return confirm('确认否决申请吗？')" value="退回">
+                        </div>
+                        <div class="col-md-4">
+
+                            <input type="submit" class="btn btn btn-success btn-lg btn-block" name="result" onclick="return confirm('确认通过申请吗？')" value="通过">
+                        </div>
+                    </div>
+                </dd>
+            </dl>
+
+
+
+        </form>
+    }
+    else
+    {
+        <dl class="dl-horizontal">
+            <dt>
+                审核意见
+            </dt>
+
+            <dd>
+                <textarea placeholder="审核意见" name="opinion" style="resize:none;height:60px;width:300px;">
+                    @Html.DisplayFor(model => model.Opinion)
+                </textarea>
+            </dd>
+        </dl>
+    }
+</div>
+<p>
+    @Html.ActionLink("返回列表", "CompanyUser")
+</p>

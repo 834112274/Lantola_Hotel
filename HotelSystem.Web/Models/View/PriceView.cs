@@ -13,5 +13,6 @@ namespace HotelSystem.Web.Models.View
         public double avg;
         public double sum;
         public int days;
+        public bool enough;
     }
 }

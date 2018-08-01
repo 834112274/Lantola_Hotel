@@ -55,7 +55,7 @@ namespace HotelSystem.Model
         /// 层高
         /// </summary>
     	[DisplayName( "层高" )]
-        public short Storey { get; set; }
+        public string Storey { get; set; }
     	/// <summary>
         /// 床型
         /// </summary>

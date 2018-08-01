@@ -249,9 +249,9 @@
       <End Role="District" EntitySet="District" />
       <End Role="Company" EntitySet="Company" />
     </AssociationSet>
-    <AssociationSet Name="CompanyGuestUser" Association="DBModel.Store.CompanyGuestUser">
-      <End Role="Company" EntitySet="Company" />
+    <AssociationSet Name="GuestUserCompany" Association="DBModel.Store.GuestUserCompany">
       <End Role="GuestUser" EntitySet="GuestUser" />
+      <End Role="Company" EntitySet="Company" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Menu">
@@ -471,7 +471,7 @@
     <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="40" />
     <Property Name="EnglishName" Type="nvarchar" Nullable="true" MaxLength="40" />
     <Property Name="Area" Type="nvarchar" Nullable="true" MaxLength="20" />
-    <Property Name="Storey" Type="smallint" Nullable="false" />
+    <Property Name="Storey" Type="nvarchar" Nullable="false" MaxLength="20" />
     <Property Name="BedType" Type="nvarchar" Nullable="false" MaxLength="20" />
     <Property Name="BedDescribe" Type="nvarchar" Nullable="true" MaxLength="200" />
     <Property Name="OccupancyNumber" Type="smallint" Nullable="false" />
@@ -597,7 +597,6 @@
     <Property Name="RegisterType" Type="nvarchar" Nullable="false" MaxLength="40" />
     <Property Name="RegisterIp" Type="nvarchar" Nullable="false" MaxLength="20" />
     <Property Name="RegisterTime" Type="datetime" Nullable="false" />
-    <Property Name="Company_Id" Type="nvarchar" MaxLength="40" Nullable="false" />
   </EntityType>
   <EntityType Name="Order">
     <Key>
@@ -853,6 +852,8 @@
     <Property Name="UsersId" Type="nvarchar" Nullable="false" MaxLength="40" />
     <Property Name="HotelInfoId" Type="nvarchar" Nullable="false" MaxLength="40" />
     <Property Name="HotelName" Type="nvarchar" Nullable="false" MaxLength="80" />
+    <Property Name="IsPay" Type="smallint" Nullable="false" />
+    <Property Name="PayTime" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="Company">
     <Key>
@@ -872,6 +873,11 @@
     <Property Name="ProvinceId" Type="bigint" Nullable="false" />
     <Property Name="CityId" Type="bigint" Nullable="false" />
     <Property Name="DistrictId" Type="bigint" Nullable="false" />
+    <Property Name="Status" Type="smallint" Nullable="false" />
+    <Property Name="ExamineUser" Type="nvarchar" Nullable="true" MaxLength="40" />
+    <Property Name="ExamineTime" Type="datetime" Nullable="false" />
+    <Property Name="Opinion" Type="nvarchar" Nullable="true" MaxLength="200" />
+    <Property Name="GuestUser_Id" Type="nvarchar" MaxLength="40" Nullable="true" />
   </EntityType>
   <Association Name="MenuUserRole">
     <End Role="Menu" Type="DBModel.Store.Menu" Multiplicity="1" />
@@ -1473,15 +1479,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="CompanyGuestUser">
-    <End Role="Company" Type="DBModel.Store.Company" Multiplicity="1" />
-    <End Role="GuestUser" Type="DBModel.Store.GuestUser" Multiplicity="*" />
+  <Association Name="GuestUserCompany">
+    <End Role="GuestUser" Type="DBModel.Store.GuestUser" Multiplicity="0..1" />
+    <End Role="Company" Type="DBModel.Store.Company" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Company">
+      <Principal Role="GuestUser">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="GuestUser">
-        <PropertyRef Name="Company_Id" />
+      <Dependent Role="Company">
+        <PropertyRef Name="GuestUser_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1733,9 +1739,9 @@
             <End Role="District" EntitySet="District" />
             <End Role="Company" EntitySet="Company" />
           </AssociationSet>
-          <AssociationSet Name="CompanyGuestUser" Association="DBModel.CompanyGuestUser">
-            <End Role="Company" EntitySet="Company" />
+          <AssociationSet Name="GuestUserCompany" Association="DBModel.GuestUserCompany">
             <End Role="GuestUser" EntitySet="GuestUser" />
+            <End Role="Company" EntitySet="Company" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="Menu">
@@ -2539,7 +2545,7 @@
               <Summary>面积</Summary>
             </Documentation>
           </Property>
-          <Property Name="Storey" Type="Int16" Nullable="false" >
+          <Property Name="Storey" Type="String" Nullable="false" MaxLength="20" >
             <Documentation>
               <Summary>层高</Summary>
             </Documentation>
@@ -3071,7 +3077,7 @@
           <NavigationProperty Name="Collection" Relationship="DBModel.CollectionGuestUser" FromRole="GuestUser" ToRole="Collection" />
           <NavigationProperty Name="GuestInvoice" Relationship="DBModel.GuestUserGuestInvoice" FromRole="GuestUser" ToRole="GuestInvoice" />
           <NavigationProperty Name="Invoice" Relationship="DBModel.GuestUserInvoice" FromRole="GuestUser" ToRole="Invoice" />
-          <NavigationProperty Name="Company" Relationship="DBModel.CompanyGuestUser" FromRole="GuestUser" ToRole="Company" />
+          <NavigationProperty Name="Company" Relationship="DBModel.GuestUserCompany" FromRole="GuestUser" ToRole="Company" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -4119,6 +4125,16 @@
           <Property Name="HotelInfoId" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Order" Relationship="DBModel.SettlementOrder" FromRole="Settlement" ToRole="Order" />
           <Property Name="HotelName" Type="String" Nullable="false" MaxLength="80" />
+          <Property Name="IsPay" Type="Int16" Nullable="false" >
+            <Documentation>
+              <Summary>是否转账</Summary>
+            </Documentation>
+          </Property>
+          <Property Name="PayTime" Type="DateTime" Nullable="false" >
+            <Documentation>
+              <Summary>转账时间</Summary>
+            </Documentation>
+          </Property>
         </EntityType>
         <Association Name="UsersSettlement">
           <End Type="DBModel.Users" Role="Users" Multiplicity="1" />
@@ -4212,12 +4228,44 @@
             </Documentation>
           </Property>
           <NavigationProperty Name="Province" Relationship="DBModel.ProvinceCompany" FromRole="Company" ToRole="Province" />
-          <Property Name="ProvinceId" Type="Int64" Nullable="false" />
+          <Property Name="ProvinceId" Type="Int64" Nullable="false" >
+            <Documentation>
+              <Summary>省份ID</Summary>
+            </Documentation>
+          </Property>
           <NavigationProperty Name="City" Relationship="DBModel.CityCompany" FromRole="Company" ToRole="City" />
-          <Property Name="CityId" Type="Int64" Nullable="false" />
+          <Property Name="CityId" Type="Int64" Nullable="false" >
+            <Documentation>
+              <Summary>城市ID</Summary>
+            </Documentation>
+          </Property>
           <NavigationProperty Name="District" Relationship="DBModel.DistrictCompany" FromRole="Company" ToRole="District" />
-          <Property Name="DistrictId" Type="Int64" Nullable="false" />
-          <NavigationProperty Name="GuestUser" Relationship="DBModel.CompanyGuestUser" FromRole="Company" ToRole="GuestUser" />
+          <Property Name="DistrictId" Type="Int64" Nullable="false" >
+            <Documentation>
+              <Summary>区县ID</Summary>
+            </Documentation>
+          </Property>
+          <Property Name="Status" Type="Int16" Nullable="false" >
+            <Documentation>
+              <Summary>状态</Summary>
+            </Documentation>
+          </Property>
+          <Property Name="ExamineUser" Type="String" MaxLength="40" >
+            <Documentation>
+              <Summary>审核人</Summary>
+            </Documentation>
+          </Property>
+          <Property Name="ExamineTime" Type="DateTime" Nullable="false" >
+            <Documentation>
+              <Summary>审核时间</Summary>
+            </Documentation>
+          </Property>
+          <Property Name="Opinion" Type="String" MaxLength="200" >
+            <Documentation>
+              <Summary>审核说明意见</Summary>
+            </Documentation>
+          </Property>
+          <NavigationProperty Name="GuestUser" Relationship="DBModel.GuestUserCompany" FromRole="Company" ToRole="GuestUser" />
         </EntityType>
         <Association Name="ProvinceCompany">
           <End Type="DBModel.Province" Role="Province" Multiplicity="1" />
@@ -4255,9 +4303,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="CompanyGuestUser">
-          <End Type="DBModel.Company" Role="Company" Multiplicity="1" />
+        <Association Name="GuestUserCompany">
           <End Type="DBModel.GuestUser" Role="GuestUser" Multiplicity="0..1" />
+          <End Type="DBModel.Company" Role="Company" Multiplicity="0..1" />
         </Association>
         </Schema>
     </edmx:ConceptualModels>
@@ -4899,6 +4947,8 @@
           <ScalarProperty Name="UsersId" ColumnName="UsersId" />
           <ScalarProperty Name="HotelInfoId" ColumnName="HotelInfoId" />
           <ScalarProperty Name="HotelName" ColumnName="HotelName" />
+          <ScalarProperty Name="IsPay" ColumnName="IsPay" />
+          <ScalarProperty Name="PayTime" ColumnName="PayTime" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -4919,6 +4969,10 @@
           <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
           <ScalarProperty Name="CityId" ColumnName="CityId" />
           <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ExamineUser" ColumnName="ExamineUser" />
+          <ScalarProperty Name="ExamineTime" ColumnName="ExamineTime" />
+          <ScalarProperty Name="Opinion" ColumnName="Opinion" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -4954,13 +5008,14 @@
         <ScalarProperty Name="id" ColumnName="id" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="CompanyGuestUser" TypeName="DBModel.CompanyGuestUser" StoreEntitySet="GuestUser">
-      <EndProperty Name="Company">
-        <ScalarProperty Name="Id" ColumnName="Company_Id" />
-      </EndProperty>
+    <AssociationSetMapping Name="GuestUserCompany" TypeName="DBModel.GuestUserCompany" StoreEntitySet="Company">
       <EndProperty Name="GuestUser">
+        <ScalarProperty Name="Id" ColumnName="GuestUser_Id" />
+      </EndProperty>
+      <EndProperty Name="Company">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
+      <Condition ColumnName="GuestUser_Id" IsNull="false" />
     </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>

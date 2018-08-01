@@ -74,20 +74,40 @@ namespace HotelSystem.Model
     	[DisplayName( "创建时间" )]
         public System.DateTime CreateTime { get; set; }
     	/// <summary>
-        /// 
+        /// 省份ID
         /// </summary>
-    	[DisplayName( "" )]
+    	[DisplayName( "省份ID" )]
         public long ProvinceId { get; set; }
     	/// <summary>
-        /// 
+        /// 城市ID
         /// </summary>
-    	[DisplayName( "" )]
+    	[DisplayName( "城市ID" )]
         public long CityId { get; set; }
     	/// <summary>
-        /// 
+        /// 区县ID
         /// </summary>
-    	[DisplayName( "" )]
+    	[DisplayName( "区县ID" )]
         public long DistrictId { get; set; }
+    	/// <summary>
+        /// 状态
+        /// </summary>
+    	[DisplayName( "状态" )]
+        public short Status { get; set; }
+    	/// <summary>
+        /// 审核人
+        /// </summary>
+    	[DisplayName( "审核人" )]
+        public string ExamineUser { get; set; }
+    	/// <summary>
+        /// 审核时间
+        /// </summary>
+    	[DisplayName( "审核时间" )]
+        public System.DateTime ExamineTime { get; set; }
+    	/// <summary>
+        /// 审核说明意见
+        /// </summary>
+    	[DisplayName( "审核说明意见" )]
+        public string Opinion { get; set; }
     
         public virtual Province Province { get; set; }
         public virtual City City { get; set; }

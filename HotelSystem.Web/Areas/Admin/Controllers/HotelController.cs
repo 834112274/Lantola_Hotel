@@ -87,7 +87,9 @@ namespace HotelSystem.Web.Areas.Admin.Controllers
                     Password = "e10adc3949ba59abbe56e057f20f883e",
                     Role="hotel",
                     CreateTime = DateTime.Now,
-                    LastLogin = DateTime.Now
+                    LastLogin = DateTime.Now,
+                    Vail=true,
+                    Status=0
                 };
                 DbContext.HotelUsers.Add(user);
                 //分配所有权限

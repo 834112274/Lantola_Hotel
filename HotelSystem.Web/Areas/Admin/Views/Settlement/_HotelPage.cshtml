@@ -23,7 +23,7 @@
                 <td><label>@hotel.Amount</label> </td>
                 <td>
                     <a href="/Admin/Settlement/OrderList?start=@hotel.StartTime.ToString("yyyy-MM-dd")&end=@hotel.EndTime.ToString("yyyy-MM-dd")&hotel=@hotel.HotelInfoId" target="_blank">详情</a> |
-                    <a href="/Admin/Settlement/CreateSettlement?start=@hotel.StartTime.ToString("yyyy-MM-dd")&end=@hotel.EndTime.ToString("yyyy-MM-dd")&hotel=@hotel.HotelInfoId" onclick="return confirm('确定结算吗？');">生成账单</a>
+                    <a href="/Admin/Settlement/CreateSettlement?start=@hotel.StartTime.ToString("yyyy-MM-dd")&end=@hotel.EndTime.ToString("yyyy-MM-dd")&hotel=@hotel.HotelInfoId" onclick="return confirm('确定生成账单吗？');">生成账单</a>
                 </td>
             </tr>
         }

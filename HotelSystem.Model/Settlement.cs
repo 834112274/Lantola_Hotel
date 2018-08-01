@@ -69,6 +69,16 @@ namespace HotelSystem.Model
         /// </summary>
     	[DisplayName( "" )]
         public string HotelName { get; set; }
+    	/// <summary>
+        /// 是否转账
+        /// </summary>
+    	[DisplayName( "是否转账" )]
+        public short IsPay { get; set; }
+    	/// <summary>
+        /// 转账时间
+        /// </summary>
+    	[DisplayName( "转账时间" )]
+        public System.DateTime PayTime { get; set; }
     
         public virtual Users Users { get; set; }
         public virtual HotelInfo HotelInfo { get; set; }

@@ -244,9 +244,9 @@
       <End Role="District" EntitySet="District" />
       <End Role="Company" EntitySet="Company" />
     </AssociationSet>
-    <AssociationSet Name="CompanyGuestUser" Association="DBModel.Store.CompanyGuestUser">
-      <End Role="Company" EntitySet="Company" />
+    <AssociationSet Name="GuestUserCompany" Association="DBModel.Store.GuestUserCompany">
       <End Role="GuestUser" EntitySet="GuestUser" />
+      <End Role="Company" EntitySet="Company" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Menu">
@@ -466,7 +466,7 @@
     <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="40" />
     <Property Name="EnglishName" Type="nvarchar" Nullable="true" MaxLength="40" />
     <Property Name="Area" Type="nvarchar" Nullable="true" MaxLength="20" />
-    <Property Name="Storey" Type="smallint" Nullable="false" />
+    <Property Name="Storey" Type="nvarchar" Nullable="false" MaxLength="20" />
     <Property Name="BedType" Type="nvarchar" Nullable="false" MaxLength="20" />
     <Property Name="BedDescribe" Type="nvarchar" Nullable="true" MaxLength="200" />
     <Property Name="OccupancyNumber" Type="smallint" Nullable="false" />
@@ -592,7 +592,6 @@
     <Property Name="RegisterType" Type="nvarchar" Nullable="false" MaxLength="40" />
     <Property Name="RegisterIp" Type="nvarchar" Nullable="false" MaxLength="20" />
     <Property Name="RegisterTime" Type="datetime" Nullable="false" />
-    <Property Name="Company_Id" Type="nvarchar" MaxLength="40" Nullable="false" />
   </EntityType>
   <EntityType Name="Order">
     <Key>
@@ -848,6 +847,8 @@
     <Property Name="UsersId" Type="nvarchar" Nullable="false" MaxLength="40" />
     <Property Name="HotelInfoId" Type="nvarchar" Nullable="false" MaxLength="40" />
     <Property Name="HotelName" Type="nvarchar" Nullable="false" MaxLength="80" />
+    <Property Name="IsPay" Type="smallint" Nullable="false" />
+    <Property Name="PayTime" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="Company">
     <Key>
@@ -867,6 +868,11 @@
     <Property Name="ProvinceId" Type="bigint" Nullable="false" />
     <Property Name="CityId" Type="bigint" Nullable="false" />
     <Property Name="DistrictId" Type="bigint" Nullable="false" />
+    <Property Name="Status" Type="smallint" Nullable="false" />
+    <Property Name="ExamineUser" Type="nvarchar" Nullable="true" MaxLength="40" />
+    <Property Name="ExamineTime" Type="datetime" Nullable="false" />
+    <Property Name="Opinion" Type="nvarchar" Nullable="true" MaxLength="200" />
+    <Property Name="GuestUser_Id" Type="nvarchar" MaxLength="40" Nullable="true" />
   </EntityType>
   <Association Name="MenuUserRole">
     <End Role="Menu" Type="DBModel.Store.Menu" Multiplicity="1" />
@@ -1468,15 +1474,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="CompanyGuestUser">
-    <End Role="Company" Type="DBModel.Store.Company" Multiplicity="1" />
-    <End Role="GuestUser" Type="DBModel.Store.GuestUser" Multiplicity="*" />
+  <Association Name="GuestUserCompany">
+    <End Role="GuestUser" Type="DBModel.Store.GuestUser" Multiplicity="0..1" />
+    <End Role="Company" Type="DBModel.Store.Company" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Company">
+      <Principal Role="GuestUser">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="GuestUser">
-        <PropertyRef Name="Company_Id" />
+      <Dependent Role="Company">
+        <PropertyRef Name="GuestUser_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

@@ -1,1 +1,31 @@
-﻿
+﻿@model PagedList<HotelSystem.Model.HotelUsers>
+@using Webdiyer.WebControls.Mvc
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>用户名</th>
+            <th>酒店</th>
+            <th>是否有效</th>
+            <th>用户状态</th>
+            <th>说明</th>
+            <th>最后登录</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var m in Model)
+        {
+            <tr>
+                <td>@m.Name</td>
+                <td>@m.HotelInfo.Name</td>
+                <td>@(m.Vail?"有效":"失效")</td>
+                <td>@(m.Status==0?"": m.Status ==1?"黑名单":"静止使用")</td>
+                <td>@m.Summary</td>
+                <td>@m.LastLogin.ToString("yyyy-MM-dd HH:mm")</td>
+                <td>
+                    <a href="javascript:;" class="ResetPassword" onclick="return confirm('确定重置密码吗？');" data-user="@m.Id">重置密码</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

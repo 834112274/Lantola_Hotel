@@ -24,8 +24,16 @@
                 </div>
             </div>
             <div class="col-md-4">
+                <div class="form-group form-group-sm">
+                    <label class="col-md-3 control-label">酒店</label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control" name="searchHotel" id="searchHotel">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
                 <input type="submit" class="btn btn-default btn-sm" value="查询" />
-                <input type="button" class="btn btn-default btn-sm" value="导出" />
+                <a id="ExportToExcel" href="javascript:;" class="btn btn-default btn-sm" target="_blank">导出</a>
             </div>
         </div>
         }
@@ -64,6 +72,13 @@
             locale: locale
         }, function (start, end, label) {
             setDateValue(start, end);
+        });
+        $("#ExportToExcel").click(function () {
+            var start = $('#start').val();
+            var end = $('#end').val();
+            var search = $('#searchHotel').val();
+            $(this).attr('href', `/Admin/Settlement/ExportBill?start=${start}&end=${end}&searchHotel=${search}`);
+            
         });
     });
 </script>

@@ -53,9 +53,29 @@
       <HintPath>..\packages\QrCode.Net.0.4.0.0\lib\net45\Gma.QrCodeNet.Encoding.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI, Version=2.3.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.3.0\lib\net40\NPOI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.3.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.3.0\lib\net40\NPOI.OOXML.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.3.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.3.0\lib\net40\NPOI.OpenXml4Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.3.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.3.0\lib\net40\NPOI.OpenXmlFormats.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Activities" />
@@ -508,6 +528,10 @@
     <Content Include="Areas\Admin\Views\User\_LogList.cshtml" />
     <Content Include="Areas\Admin\Views\User\_LogPage.cshtml" />
     <Content Include="Areas\Admin\Views\User\Log.cshtml" />
+    <Content Include="Areas\Admin\Views\UserManage\CompanyUser.cshtml" />
+    <Content Include="Areas\Admin\Views\UserManage\_CompanyList.cshtml" />
+    <Content Include="Areas\Admin\Views\UserManage\_CompanyPage.cshtml" />
+    <Content Include="Areas\Admin\Views\UserManage\CompanyExamine.cshtml" />
     <None Include="Properties\PublishProfiles\Release.pubxml" />
     <Content Include="Scripts\assets\fonts\fontawesome-webfont.woff2" />
     <Content Include="Scripts\assets\plugins\bootstrap-daterangepicker-master\.gitignore" />
@@ -580,6 +604,35 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Alipay.cs" />
+    <Compile Include="Models\Alipay\Business\AlipayCore.cs" />
+    <Compile Include="Models\Alipay\Business\AlipayF2FMonitorResult.cs" />
+    <Compile Include="Models\Alipay\Business\AlipayF2FPayResult.cs" />
+    <Compile Include="Models\Alipay\Business\AlipayF2FPrepayResult.cs" />
+    <Compile Include="Models\Alipay\Business\AlipayF2FQueryResult.cs" />
+    <Compile Include="Models\Alipay\Business\AlipayF2FRefundResult.cs" />
+    <Compile Include="Models\Alipay\Business\AlipayMonitorImpl.cs" />
+    <Compile Include="Models\Alipay\Business\Alipaynotify.cs" />
+    <Compile Include="Models\Alipay\Business\AlipayTradeImpl.cs" />
+    <Compile Include="Models\Alipay\Business\F2FBiz.cs" />
+    <Compile Include="Models\Alipay\Business\F2FMonitor.cs" />
+    <Compile Include="Models\Alipay\Business\F2FResult.cs" />
+    <Compile Include="Models\Alipay\Business\IAlipayMonitor.cs" />
+    <Compile Include="Models\Alipay\Business\IAlipayTradeService.cs" />
+    <Compile Include="Models\Alipay\Config.cs" />
+    <Compile Include="Models\Alipay\Domain\AlipayMonitorContentBuilder.cs" />
+    <Compile Include="Models\Alipay\Domain\AlipayTradePayContentBuilder.cs" />
+    <Compile Include="Models\Alipay\Domain\AlipayTradePrecreateContentBuilder.cs" />
+    <Compile Include="Models\Alipay\Domain\AlipayTradeQueryCententBuilder.cs" />
+    <Compile Include="Models\Alipay\Domain\AlipayTradeRefundContentBuilder.cs" />
+    <Compile Include="Models\Alipay\Domain\JsonBuilder.cs" />
+    <Compile Include="Models\Alipay\LogHelper.cs" />
+    <Compile Include="Models\Alipay\Model\ExtendParams.cs" />
+    <Compile Include="Models\Alipay\Model\GoodsInfo.cs" />
+    <Compile Include="Models\Alipay\Model\PayResultModel.cs" />
+    <Compile Include="Models\Alipay\Model\ResultEnum.cs" />
+    <Compile Include="Models\Alipay\Model\TradeInfo.cs" />
+    <Compile Include="Models\Alipay\Model\TradeStatusModel.cs" />
     <Compile Include="Models\DomainRoute.cs" />
     <Compile Include="Models\HttpCommon.cs" />
     <Compile Include="Models\Query.cs" />
@@ -737,6 +790,10 @@
     <Folder Include="Views\Pay\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\alipay-sdk-NET-3.0.2\AopSdk.csproj">
+      <Project>{9C11CAE5-5188-4E71-825B-68FC3135728A}</Project>
+      <Name>AopSdk</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HotelSystem.Helper\HotelSystem.Helper.csproj">
       <Project>{f05dc75a-0c67-4702-be50-d7da94f541d9}</Project>
       <Name>HotelSystem.Helper</Name>

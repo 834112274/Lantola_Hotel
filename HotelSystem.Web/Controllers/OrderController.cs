@@ -39,9 +39,13 @@ namespace HotelSystem.Web.Controllers
             var room = HotelView.Single(order.HotelInfoId, id, order.RoomCount, order.StartTime, order.EndTime, out days);
             if (room == null)
             {
-                return Redirect(Request.UrlReferrer.ToString());
+                ViewBag.RoomView = null;
+                ViewBag.Message = "库存不足，请重新选择";
             }
-            ViewBag.RoomView = room;
+            else
+            {
+                ViewBag.RoomView = room;
+            }
 
             ViewBag.RoomCount = order.RoomCount;
             ViewBag.Days = days;
@@ -114,8 +118,13 @@ namespace HotelSystem.Web.Controllers
             }
             //减少库存
 
+            var stocks = from m in DbContext.Stock where m.RoomId == room.room.Id && m.Date >= order.StartTime && m.Date < order.EndTime select m;
+            foreach(var stock in stocks)
+            {
+                stock.SurplusStock -=short.Parse( order.RoomCount.ToString());
+            }
             //入住人
-            List<Occupant> os = new List<Occupant>();
+            List < Occupant > os = new List<Occupant>();
             for (int i = 0; i < surname.Count; i++)
             {
                 if (!string.IsNullOrEmpty(surname[i]))

@@ -497,7 +497,16 @@
                                                 <div class="col-md-2"><a href="javascript:;">退订政策</a></div>
                                                 <div class="col-md-2">@Enum.GetName(typeof(PayType), price.priceType.PaymentMethod)</div>
                                                 <div class="col-md-2"><span class="price-value"><span class="fa fa-rmb"></span> @Math.Round(price.avg, 2)</span> </div>
-                                                <div class="col-md-2"><a class="reserve-btn" href="/Order/Apply/@price.priceType.Id?HotelInfoId=@ViewBag.Hotel.Id&StartTime=@ViewBag.startDate&EndTime=@ViewBag.endDate" target="_blank">立即预定</a></div>
+                                                <div class="col-md-2">
+                                                    @if (price.enough)
+                                                    {
+                                                        <a class="reserve-btn" href="/Order/Apply/@price.priceType.Id?HotelInfoId=@ViewBag.Hotel.Id&StartTime=@ViewBag.startDate&EndTime=@ViewBag.endDate" target="_blank">立即预定</a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>已售完</span>
+                                                    }
+                                                </div>
                                             </div>
                                         </li>
                                     }

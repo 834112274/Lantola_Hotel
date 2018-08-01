@@ -47,7 +47,7 @@
 .hotelregister{width:1260px;margin:0 auto;padding:20px 0 50px 0;}
 .hotelregister1{padding-bottom:50px;}
 .hotelregistertitle{background-color:#488ccc;background-repeat:no-repeat;background-position:10px center;text-align:center;font-size:14px;color:#fff;width:125px;height:40px;line-height:40px;}
-.hotelregistercontent{padding:30px 0 0 50px;background-color:#dae8f5;}
+.hotelregistercontent{padding:30px 0 30px 50px;background-color:#dae8f5;}
 .hotelregisterinput{height:32px;padding-bottom:40px;line-height:32px;width:570px;float:left;font-size:14px;color:#488ccc;}
 .hotelregisterinput .word{display:inline-block;width:80px;vertical-align:top;color:#313131;}
 .hotelregisterinput input{padding:0;margin:0;height:30px;border:1px solid #b5b5b5;border-radius:3px;color:#488ccc;line-height:30px;}
@@ -55,7 +55,7 @@
 /*企业地址区*/
 .hotelregisterinput1{height:32px;padding-bottom:40px;line-height:32px;width:1140px;float:left;font-size:14px;color:#488ccc;}
 .hotelregisterinput1 .word{display:inline-block;width:80px;vertical-align:top;color:#313131;}
-.hotelregisterinput1 input{padding:0;margin:0;height:30px;border:1px solid #b5b5b5;border-radius:3px;color:#488ccc;line-height:30px;}
+.hotelregisterinput1 input{padding:0;margin:0;border:1px solid #b5b5b5;border-radius:3px;color:#488ccc;line-height:30px;}
 
 
 
@@ -79,7 +79,7 @@
     height:50px;
     display:block;
     text-align:center;
-    line-height:40px;
+    line-height:50px;
     border: dashed 2px white;
     border-radius:50px;
     margin:40px auto auto 50px;
@@ -92,10 +92,21 @@
 .hotelregisterbutton{width:120px;height:35px;display:block;margin:0 auto;border:0;color:#fff;font-size:14px;text-align:center;line-height:35px;padding:0;background-color:#4b90cf;font-family:"微软雅黑";border-radius:3px;box-shadow:0px 0px 5px #7e9fbb;margin-top:40px;}
 /**/
 .cooperationbanner .banneranimate{width:1300px;margin:0 auto;position:relative;}
-.cooperationbanner .banneranimate1{position:absolute;background-image:url(../img/banneranimate1.png);width:85px;height:89px;top:160px;left:410px;opacity:0;width:0;height:0;margin:42.5px 0 0 44.5px;background-size:100% 100%;transition:transform 1s linear;}
-.cooperationbanner .banneranimate2{display:none;position:absolute;background-image:url(../img/banneranimate2.png);width:115px;height:74px;top:160px;left:790px;height:0;width:0;margin:57.5px 0 0 37px;opacity:0;background-size:100% 100%;/*animation: huangahuang 5s;*/transition:transform 1s linear;}
-.cooperationbanner .banneranimate3{position:absolute;background-image:url(../img/banneranimate2.png);width:115px;height:74px;top:160px;left:790px;background-size:100% 100%;animation:huangahuang 2s;}
+.cooperationbanner .banneranimate1{position:absolute;background-image:url(/Images/banneranimate1.png);width:85px;height:89px;top:160px;left:410px;background-size:100% 100%;transition:transform 1s linear;animation:rotate 2s;}
+.cooperationbanner .banneranimate2{display:none;position:absolute;background-image:url(/Images/banneranimate2.png);width:115px;height:74px;top:160px;left:790px;height:0;width:0;margin:57.5px 0 0 37px;opacity:0;background-size:100% 100%;/*animation: huangahuang 5s;*/transition:transform 1s linear;}
+.cooperationbanner .banneranimate3{position:absolute;background-image:url(/Images/banneranimate2.png);width:115px;height:74px;top:160px;left:790px;background-size:100% 100%;animation:huangahuang 2s;}
 
+@keyframes rotate
+
+{
+0%  {width: 93.5px; height: 97.9px; margin: -4.25px 0 0 -4.45px; opacity: 0;margin: 42.5px 0 0 44.5px;}
+70%  {width: 85px; height: 89px;margin: 0; opacity: 1;}
+    100% {
+        transform: rotateZ(360deg);
+        opacity: 1;
+        margin:0px;
+    }
+}
 
 @keyframes huangahuang
 {

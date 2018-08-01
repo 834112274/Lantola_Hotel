@@ -76,17 +76,22 @@ namespace HotelSystem.Web.Models.View
             using (DBModelContainer DbContext = new DBModelContainer())
             {
                 int d = (end - start).Days;
+                var stocks = from m in DbContext.Stock where m.Date >= start && m.Date < end && m.Room.HotelInfoId == id select new { m.RoomId, m.Date, SurplusStock = m.SurplusStock > 0 ? 1 : 0 };
                 var rooms = from r in DbContext.Room.Include("RoomImages") where r.HotelInfoId == id select r;
                 List<RoomView> roomViews = new List<RoomView>();
                 foreach (var r in rooms)
                 {
-                    var price = from p in (from t in DbContext.Price
-                                           where t.PriceType.Room.HotelInfoId == id && t.Date >= start && t.Date < end && t.Status == 1
+                    var priceList = from t in DbContext.Price
+                                    join m in stocks on new { t.PriceType.RoomId, t.Date } equals new { m.RoomId, m.Date }
+                                    where t.PriceType.Room.HotelInfoId == id && t.Date >= start && t.Date < end && t.Status == 1
+                                    select new { t.PriceTypeId, t.UnitPrice, m.SurplusStock };
+                    var price = from p in (from t in priceList
                                            group t by t.PriceTypeId into g
-                                           select new { g.Key, days = g.Count(), avg = g.Average(t => t.UnitPrice), sum = g.Sum(t => t.UnitPrice) })
+                                           where g.Count() >= d
+                                           select new { g.Key, avg = g.Average(t => t.UnitPrice), sum = g.Sum(t => t.UnitPrice), enough = g.Sum(m => m.SurplusStock) })
                                 join t in DbContext.PriceType on p.Key equals t.Id
-                                where p.days >= d && t.RoomId == r.Id
-                                select new PriceView { priceType = t, avg = p.avg, days = p.days, sum = p.sum };
+                                where t.RoomId == r.Id
+                                select new PriceView { priceType = t, avg = p.avg, days = d, sum = p.sum, enough = p.enough >= d };
                     if (price.Count() > 0)
                     {
                         RoomView rw = new RoomView()
@@ -110,22 +115,29 @@ namespace HotelSystem.Web.Models.View
             using (DBModelContainer DbContext = new DBModelContainer())
             {
                 int d = days = (end - start).Days;
+                //检查库存
+                var stocks = from m in DbContext.Stock where m.SurplusStock > roomCount&&  m.Date >= start && m.Date < end && m.Room.HotelInfoId == id select m;
+                if (stocks.Count() < d)
+                {
+                    return null;
+                }
                 var Rooms = from p in (from t in DbContext.Price
                                        where t.PriceType.Room.HotelInfoId == id && t.Date >= start && t.Date < end && t.Status == 1
                                        group t by t.PriceTypeId into g
-                                       select new { g.Key, days = g.Count(), avg = g.Average(t => t.UnitPrice), sum = g.Sum(t => t.UnitPrice) })
+                                       where g.Count() >= d
+                                       select new { g.Key, avg = g.Average(t => t.UnitPrice), sum = g.Sum(t => t.UnitPrice) })
                             join t in DbContext.PriceType on p.Key equals t.Id
-                            where p.days >= d && t.Id == priceTypeId
+                            where t.Id == priceTypeId
                             select new RoomView
-                            {
+                            { 
                                 room = t.Room,
                                 priceView = new PriceView
                                 {
                                     priceType = t,
                                     price = t.Price.Where(m => m.Date >= start && m.Date < end).OrderBy(m => m.Date).ToList(),
                                     avg = p.avg,
-                                    days = p.days,
-                                    sum = p.sum * roomCount
+                                    days = d,
+                                    sum = p.sum * roomCount,enough=true
                                 }
                             };
                 if (Rooms.Count() > 0)
@@ -188,6 +200,7 @@ namespace HotelSystem.Web.Models.View
                 if (start > DateTime.Now.AddDays(-1))
                 {
                     var d = (end - start).Days;
+
                     var price = from t in DbContext.Price
                                 where t.Date >= start && t.Date < end && t.Status == 1
                                 group t by t.PriceTypeId into g
@@ -217,6 +230,5 @@ namespace HotelSystem.Web.Models.View
                 }
             }
         }
-
     }
 }

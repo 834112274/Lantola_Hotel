@@ -214,6 +214,10 @@ namespace HotelSystem.Web.Controllers
                 ViewBag.Message = "注册错误：需上传法人身份证反面";
                 return View();
             }
+            company.Id = Guid.NewGuid().ToString();
+            company.CreateTime = DateTime.Now;
+            company.ExamineTime = DateTime.Now;
+            company.Status = 0;
             DbContext.Company.Add(company);
             DbContext.SaveChanges();
             return Redirect("/Hotel/User/RegisterResult");

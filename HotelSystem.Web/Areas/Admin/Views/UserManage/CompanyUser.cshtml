@@ -1,0 +1,30 @@
+﻿@model PagedList<HotelSystem.Model.Company>
+@using Webdiyer.WebControls.Mvc
+@{
+    ViewBag.Title = "CompanyUser";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2><i class="fa fa-table red"></i><span class="break"></span><strong>用户列表</strong></h2>
+    </div>
+    <div class="panel-body">
+        @using (Html.BeginForm("CompanyUser", ViewContext.RouteData.GetRequiredString("controller"), FormMethod.Post, new { id = "CompanySearch" }))
+        {
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="key" placeholder="公司、联系人手机">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">搜索(S)</button>
+                        </span>
+                    </div><!-- /input-group -->
+                </div><!-- /.col-lg-6 -->
+            </div><!-- /.row -->
+        }
+        <div id="GuestUserList">
+            @Html.Partial("_CompanyList", Model);
+        </div>
+    </div>
+</div>
+
