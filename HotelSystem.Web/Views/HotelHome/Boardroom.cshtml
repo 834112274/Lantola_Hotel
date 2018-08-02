@@ -4,12 +4,13 @@
     Layout = "~/Views/Shared/_LayoutHotel.cshtml";
 }
 <style>
+    body{
+        background: #f5f5f5;
+    }
     /*客房列表*/
     .room-box {
-        background: #f5f5f5;
-        padding-top: 30px;
-        padding-bottom: 30px;
-        min-height:700px;
+        
+        padding-top: 20px;
     }
 
     .media-left .img {
@@ -55,28 +56,58 @@
                 height: 40px;
             }
 
+    .personal-info {
+        height: 280px;
+        background: url(/Images/user_bg.jpg) no-repeat;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+    }
+
     .hotel-info .star {
         margin-left: 10px;
     }
+
+    .item-box {
+        margin-bottom: 30px;
+    }
+
+    .item-row {
+        font-size: 12px;
+        line-height: 20px;
+        padding: 10px 0px;
+        border-bottom: 1px dashed #dcdcdc;
+        overflow: hidden;
+        margin: 0px 15px 0px 15px;
+    }
 </style>
+<div class="personal-info">
+</div>
 <div class="container-fluid room-box">
     <div class="container">
-        <div class="hotel-info">
-            <h4>
-                @ViewBag.Hotel.Name
-                @for (var i = 0; i < @ViewBag.Hotel.Star; i++)
-                {
-                    <span class="fa fa-star star"></span>
-                }
-            </h4>
-            <p class="text-muted">@ViewBag.Hotel.EnglishName &nbsp;&nbsp;&nbsp;&nbsp; </p>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <table style="width:100%;line-height:40px;">
+                    <tbody>
+                        <tr>
+                            <td>会议室数量：@Model.RoomCount</td>
+                            <td>最大会议室面积：@Model.MaxArea</td>
+                            <td>开业年份：@(ViewBag.Hotel.OpeningTime == null ? "" : DateTime.Parse(ViewBag.Hotel.OpeningTime.ToString()).ToString("yyyy"))</td>
+                            <td>客房数量：@ViewBag.Hotel.RoomCount</td>
+                        </tr>
+                        <tr>
+                            <td>茶歇：<span class="fa fa-rmb"></span>@Model.TeaBreak 起/位</td>
+                            <td>自助餐 <span class="fa fa-rmb"></span>@Model.Buffet /人</td>
+                            <td>宴会：<span class="fa fa-rmb"></span>@Model.Banquet 起/桌</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <div>
-            @Model.MaxArea
-            @Model.TeaBreak
-            @Model.Buffet
-            @Model.Banquet
-        </div>
+    </div>
+</div>
+<div class="container-fluid room-box">
+    <div class="container">
         <div class="room-list">
             @foreach (var room in Model.ConferenceRoom)
             {
@@ -102,7 +133,7 @@
                                             <tr>
                                                 <td>层高：@room.Storey</td>
                                                 <td>长度/宽度： @room.Size </td>
-                                                <td>立柱：@room.Column </td>
+                                                <td>立柱：@(room.Column==0?"无":"有") </td>
                                             </tr>
                                             <tr>
                                                 <td colspan="3">收费：</td>
@@ -121,4 +152,94 @@
                                     }
         </div>
     </div>
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div style="background:#fff;padding:15px;padding-bottom:40px;">
+                    <h4>酒店设施</h4>
+                    <hr />
+                    <div class="item-box">
+                        <div class="row">
+                            <div class="item-row">
+                                <span class="col-lg-2 col-md-2 col-sm-12"> 通用项目： </span>
+                                <div class="col-lg-10 col-md-10">
+
+                                    @foreach (var p in ViewBag.Policy0)
+                                    {
+                                        <img style="height:30px;" src="@p.Icon" alt="..."> @p.Name
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="item-row">
+                                <span class="col-lg-2 col-md-2 col-sm-12"> 服务项目： </span>
+                                <div class="col-lg-10 col-md-10">
+
+                                    @foreach (var p in ViewBag.Policy1)
+                                    {
+                                        <img style="height:30px;" src="@p.Icon" alt="..."> @p.Name
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="item-row">
+                                <span class="col-lg-2 col-md-2 col-sm-12"> 客房设施： </span>
+                                <div class="col-lg-10 col-md-10">
+
+                                    @foreach (var p in ViewBag.Policy2)
+                                    {
+                                        <img style="height:30px;" src="@p.Icon" alt="..."> @p.Name
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h4>酒店政策</h4>
+                    <hr />
+                    <div class="item-box">
+                        <div class="row">
+                            <div class="item-row">
+                                <div class="col-md-6" style="padding:0px;">
+                                    <span class="col-lg-3 col-md-3 col-sm-12"> 入住和离店： </span>
+                                    <div class="col-lg-9 col-md-9">
+                                        @ViewBag.Service.CheckInTime - @ViewBag.Service.LeaveTime
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6" style="padding:0px;">
+                                    <span class="col-lg-3 col-md-3 col-sm-12">携带宠物： </span>
+                                    <div class="col-lg-9 col-md-9">
+                                        @ViewBag.Service.Pet
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="item-row">
+                                <div class="col-md-6" style="padding:0px;">
+                                    <span class="col-lg-3 col-md-3 col-sm-12"> 自助早餐： </span>
+                                    <div class="col-lg-9 col-md-9">
+                                        @ViewBag.Service.Buffet
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6" style="padding:0px;">
+                                    <span class="col-lg-3 col-md-3 col-sm-12"> 接受信用卡： </span>
+                                    <div class="col-lg-9 col-md-9">
+                                        @ViewBag.Service.CreditCard
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+

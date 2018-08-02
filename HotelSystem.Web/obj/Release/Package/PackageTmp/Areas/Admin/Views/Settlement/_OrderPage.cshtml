@@ -14,7 +14,7 @@
             <th>来源</th>
             <th>订单状态</th>
             <th>支付状态</th>
-
+            <th>结算状态</th>
         </tr>
     </thead>
     <tbody>
@@ -36,6 +36,7 @@
                 <td>@(order.GuestUser.Type==1?"普通客户":"企业客户")</td>
                 <td>@Enum.GetName(typeof(OrderState), Convert.ToInt32(order.State)) </td>
                 <td>@(order.Payment ? "已支付" : "未支付")</td>
+                <td>@(order.SettlementId==null ? "未结算" : "已结算")</td>
             </tr>
         }
     </tbody>

@@ -9,7 +9,8 @@ namespace HotelSystem.Web.Controllers
 {
     public class HotelHomeController : Controller
     {
-        DBModelContainer DbContext = new DBModelContainer();
+        private DBModelContainer DbContext = new DBModelContainer();
+
         // GET: HotelHome
         public ActionResult Index(string id, string startDate, string endDate)
         {
@@ -83,6 +84,15 @@ namespace HotelSystem.Web.Controllers
             {
                 end = DateTime.Parse(endDate);
             }
+            var score = from m in DbContext.Score where m.HotelInfoId == id select m;
+            if (score.Count() > 0)
+            {
+                ViewBag.Score = Math.Round(score.Average(m => m.Value), 1);
+            }
+            else
+            {
+                ViewBag.Score = 10;
+            }
             ViewBag.startDate = start.ToString("yyyy-MM-dd");
             ViewBag.endDate = end.ToString("yyyy-MM-dd");
             //搜索房型
@@ -152,6 +162,20 @@ namespace HotelSystem.Web.Controllers
                 return View(new Conference());
             var h = DbContext.HotelInfo.Single(m => m.Id == id);
             @ViewBag.Hotel = h;
+            //酒店设施
+            var p = (from m in DbContext.HotelPolicy where m.HotelInfoId == id select m.Policy).ToList();
+            ViewBag.Policy0 = p.Where(m => m.Type == 0);
+            ViewBag.Policy1 = p.Where(m => m.Type == 1);
+            ViewBag.Policy2 = p.Where(m => m.Type == 2);
+
+            if (h.HotelService == null)
+            {
+                ViewBag.Service = new HotelService();
+            }
+            else
+            {
+                ViewBag.Service = h.HotelService;
+            }
             return View(h.Conference);
         }
 
@@ -177,17 +201,24 @@ namespace HotelSystem.Web.Controllers
                            where m.Order.HotelInfoId == id
                            select m).OrderByDescending(m => m.CreateTime).ToPagedList(pageIndex, 15);
             var score = from m in DbContext.Score where m.HotelInfoId == id select m;
-            if (score.Count()>0)
+            if (score.Count() > 0)
             {
-                ViewBag.SumAvg = score.Average(m => m.Value);
+                ViewBag.SumAvg = Math.Round(score.Average(m => m.Value), 1);
             }
             else
             {
-                ViewBag.SumAvg = 0;
+                ViewBag.SumAvg = 10;
             }
-            var itemAvg = (from m in score
-                          group m by m.ScoreType.Name into g
-                          select new {name= g.Key,avg= g.Average(m => m.Value) }).ToList().Select(m=> Tuple.Create(m.name,m.avg));
+            var t = from m in DbContext.ScoreType.ToList()
+                    join s in score.ToList() on m.Id equals s.ScoreTypeId into tmp1
+
+                    from tmp2 in tmp1.DefaultIfEmpty(new Score{ Id = "", Value = 10 })
+                    select new { name = m.Name, value = tmp2.Value };
+
+            var itemAvg = (from m in t
+                           group m by m.name into g
+                           select new { name = g.Key, avg = g.Average(m => m.value) }).ToList().Select(m => Tuple.Create(m.name, m.avg));
+
             ViewBag.ItemAvg = itemAvg;
             if (Request.IsAjaxRequest())
                 return PartialView("_CommentList", comment);

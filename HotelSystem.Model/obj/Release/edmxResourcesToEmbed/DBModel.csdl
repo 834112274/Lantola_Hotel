@@ -1050,7 +1050,7 @@
         <Summary>面积</Summary>
       </Documentation>
     </Property>
-    <Property Name="Storey" Type="Int16" Nullable="false">
+    <Property Name="Storey" Type="String" Nullable="false" MaxLength="20">
       <Documentation>
         <Summary>层高</Summary>
       </Documentation>
@@ -2630,6 +2630,16 @@
     <Property Name="HotelInfoId" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Order" Relationship="DBModel.SettlementOrder" FromRole="Settlement" ToRole="Order" />
     <Property Name="HotelName" Type="String" Nullable="false" MaxLength="80" />
+    <Property Name="IsPay" Type="Int16" Nullable="false">
+      <Documentation>
+        <Summary>是否转账</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="PayTime" Type="DateTime" Nullable="false">
+      <Documentation>
+        <Summary>转账时间</Summary>
+      </Documentation>
+    </Property>
   </EntityType>
   <Association Name="UsersSettlement">
     <End Type="DBModel.Users" Role="Users" Multiplicity="1" />

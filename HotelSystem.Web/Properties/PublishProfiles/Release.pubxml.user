@@ -79,7 +79,7 @@
       <publishTime>07/17/2018 16:59:34</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Order/_OrderPage.cshtml">
-      <publishTime>07/17/2018 16:59:34</publishTime>
+      <publishTime>08/01/2018 18:30:56</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Permission/CreateMenu.cshtml">
       <publishTime>07/17/2018 16:59:34</publishTime>
@@ -91,31 +91,31 @@
       <publishTime>07/17/2018 16:59:34</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Settlement/History.cshtml">
-      <publishTime>07/24/2018 14:48:18</publishTime>
+      <publishTime>08/01/2018 19:23:29</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Settlement/HotelList.cshtml">
-      <publishTime>07/24/2018 14:45:10</publishTime>
+      <publishTime>08/01/2018 17:18:27</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Settlement/OrderList.cshtml">
-      <publishTime>07/24/2018 14:55:21</publishTime>
+      <publishTime>08/01/2018 19:14:43</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Settlement/_HistoryList.cshtml">
-      <publishTime>07/24/2018 14:48:52</publishTime>
+      <publishTime>08/01/2018 18:52:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Settlement/_HistoryPage.cshtml">
-      <publishTime>07/24/2018 17:16:08</publishTime>
+      <publishTime>08/01/2018 18:38:16</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Settlement/_HotelList.cshtml">
       <publishTime>07/24/2018 14:42:42</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Settlement/_HotelPage.cshtml">
-      <publishTime>07/24/2018 17:18:45</publishTime>
+      <publishTime>08/01/2018 19:02:52</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Settlement/_OrderList.cshtml">
       <publishTime>07/17/2018 16:59:34</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Settlement/_OrderPage.cshtml">
-      <publishTime>07/17/2018 16:59:34</publishTime>
+      <publishTime>08/01/2018 19:10:56</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Shared/_Layout.cshtml">
       <publishTime>07/17/2018 16:59:34</publishTime>
@@ -295,22 +295,22 @@
       <publishTime>07/17/2018 16:59:34</publishTime>
     </File>
     <File Include="Areas/Hotel/Views/Settlement/History.cshtml">
-      <publishTime>07/24/2018 14:48:32</publishTime>
+      <publishTime>08/01/2018 19:28:10</publishTime>
     </File>
     <File Include="Areas/Hotel/Views/Settlement/OrderList.cshtml">
-      <publishTime>07/24/2018 14:55:35</publishTime>
+      <publishTime>08/01/2018 19:44:05</publishTime>
     </File>
     <File Include="Areas/Hotel/Views/Settlement/_HistoryList.cshtml">
-      <publishTime>07/24/2018 14:48:24</publishTime>
+      <publishTime>08/01/2018 19:23:02</publishTime>
     </File>
     <File Include="Areas/Hotel/Views/Settlement/_HistoryPage.cshtml">
-      <publishTime>07/24/2018 17:16:44</publishTime>
+      <publishTime>08/01/2018 19:42:13</publishTime>
     </File>
     <File Include="Areas/Hotel/Views/Settlement/_OrderList.cshtml">
       <publishTime>07/17/2018 18:16:24</publishTime>
     </File>
     <File Include="Areas/Hotel/Views/Settlement/_OrderPage.cshtml">
-      <publishTime>07/17/2018 18:16:24</publishTime>
+      <publishTime>08/01/2018 19:42:46</publishTime>
     </File>
     <File Include="Areas/Hotel/Views/Shared/_Layout.cshtml">
       <publishTime>07/17/2018 16:59:34</publishTime>
@@ -348,6 +348,9 @@
     <File Include="Areas/Hotel/Views/web.config">
       <publishTime>07/17/2018 16:59:34</publishTime>
     </File>
+    <File Include="bin/AopSdk.dll">
+      <publishTime>08/01/2018 23:30:19</publishTime>
+    </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>07/17/2018 16:59:36</publishTime>
     </File>
@@ -358,13 +361,16 @@
       <publishTime>07/17/2018 16:59:36</publishTime>
     </File>
     <File Include="bin/HotelSystem.Helper.dll">
-      <publishTime>07/30/2018 17:00:45</publishTime>
+      <publishTime>08/01/2018 23:30:14</publishTime>
     </File>
     <File Include="bin/HotelSystem.Model.dll">
-      <publishTime>07/30/2018 17:00:45</publishTime>
+      <publishTime>08/01/2018 23:30:14</publishTime>
     </File>
     <File Include="bin/HotelSystem.Web.dll">
-      <publishTime>07/30/2018 17:00:45</publishTime>
+      <publishTime>08/01/2018 23:30:20</publishTime>
+    </File>
+    <File Include="bin/ICSharpCode.SharpZipLib.dll">
+      <publishTime>01/03/2011 14:16:38</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>06/15/2015 02:06:24</publishTime>
@@ -374,6 +380,18 @@
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>07/17/2018 16:59:36</publishTime>
+    </File>
+    <File Include="bin/NPOI.dll">
+      <publishTime>03/21/2017 07:53:26</publishTime>
+    </File>
+    <File Include="bin/NPOI.OOXML.dll">
+      <publishTime>03/21/2017 07:53:26</publishTime>
+    </File>
+    <File Include="bin/NPOI.OpenXml4Net.dll">
+      <publishTime>03/21/2017 07:53:26</publishTime>
+    </File>
+    <File Include="bin/NPOI.OpenXmlFormats.dll">
+      <publishTime>03/21/2017 07:53:26</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>06/18/2015 20:19:46</publishTime>
@@ -646,7 +664,7 @@
       <publishTime>07/17/2018 16:59:34</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>07/17/2018 16:59:34</publishTime>
+      <publishTime>08/01/2018 16:21:54</publishTime>
     </File>
     <File Include="Scripts/Admin/hotel_backstage.js">
       <publishTime>07/17/2018 16:59:34</publishTime>
@@ -1651,7 +1669,7 @@
       <publishTime>07/17/2018 16:59:35</publishTime>
     </File>
     <File Include="Views/Order/Pay.cshtml">
-      <publishTime>07/17/2018 16:59:35</publishTime>
+      <publishTime>08/01/2018 23:27:31</publishTime>
     </File>
     <File Include="Views/Partial/City.cshtml">
       <publishTime>07/17/2018 16:59:35</publishTime>
@@ -1768,7 +1786,7 @@
       <publishTime>07/17/2018 16:59:35</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>07/30/2018 17:00:46</publishTime>
+      <publishTime>08/01/2018 23:30:21</publishTime>
     </File>
   </ItemGroup>
 </Project>

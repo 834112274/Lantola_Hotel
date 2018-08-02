@@ -279,3 +279,11 @@ G:\Github\Lantola\HotelSystem.Web\bin\zh-Hans\System.Web.Webpages.Deployment.res
 G:\Github\Lantola\HotelSystem.Web\bin\zh-Hans\System.Web.Webpages.Razor.resources.dll
 G:\Github\Lantola\HotelSystem.Web\bin\zh-Hans\System.Web.Helpers.resources.dll
 G:\Github\Lantola\HotelSystem.Web\bin\zh-Hans\System.Web.Mvc.resources.dll
+G:\Github\Lantola\HotelSystem.Web\bin\AopSdk.dll
+G:\Github\Lantola\HotelSystem.Web\bin\ICSharpCode.SharpZipLib.dll
+G:\Github\Lantola\HotelSystem.Web\bin\NPOI.dll
+G:\Github\Lantola\HotelSystem.Web\bin\NPOI.OOXML.dll
+G:\Github\Lantola\HotelSystem.Web\bin\NPOI.OpenXml4Net.dll
+G:\Github\Lantola\HotelSystem.Web\bin\NPOI.OpenXmlFormats.dll
+G:\Github\Lantola\HotelSystem.Web\bin\AopSdk.pdb
+G:\Github\Lantola\HotelSystem.Web\bin\NPOI.xml

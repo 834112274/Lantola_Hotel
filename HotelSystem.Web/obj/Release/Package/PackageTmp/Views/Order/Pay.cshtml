@@ -117,12 +117,10 @@
             width: 150px;
             height: 60px;
             float: left;
-            margin-right: 20px;
             position: relative;
             background-position: center center;
             background-repeat: no-repeat;
         }
-
         .pay-type .item-mask {
             position: absolute;
             top: 0;
@@ -184,7 +182,48 @@
             font-size: 16px;
             color: #929090;
         }
-
+        .qr-code{
+            position:fixed;
+            top:0px;
+            bottom:0px;
+            right:0px;
+            left:0px;
+            background-color:rgba(0, 0, 0, 0.4);
+        }
+        .qr-code-container{
+            height:300px;
+            width:300px;
+            margin:200px auto auto auto;
+            padding:6px;
+            background-color:white;
+            text-align:center;
+            line-height:288px;
+            border-radius:6px;
+            box-shadow:0px 0px 10px;
+            position:relative;
+        }
+        .qr-code-close{
+            position:absolute;
+            top:-18px;
+            right:-18px;
+            font-size:26px;
+            color:#ccc;
+            border:1px solid #929090;
+            line-height:26px;
+            text-align:center;
+            cursor:pointer;
+            display:inline-block;
+            height:30px;
+            width:30px;
+            background-color:rgba(255, 255, 255, 1);
+            border-radius:30px;
+            outline:none;
+            text-decoration:none;
+        }
+    .qr-code-close:hover {
+        outline:none;
+        text-decoration:none;
+    }
     body {
         background: #f1f1f1;
     }
@@ -230,7 +269,7 @@
         <div class="col-md-3" style="padding:0px;"><div class="col-md-6">间夜数量</div> <label>@Model.RoomCount 间@((Model.StartTime - Model.EndTime).Days.ToString())晚</label> </div>
     </div>
     <div class="row" style="margin-bottom:20px;">
-        <div class="col-md-12" style="padding:0px;"><div class="col-md-1">取消政策</div> <label>根据酒店取消内容显示 </label><p>（取消政策我们已经谈过很多次，固定时间段可以取消全站酒店统一，别搞事啊）</p> </div>
+        <div class="col-md-12" style="padding:0px;"><div class="col-md-1">取消政策</div> <label>入住3天前可以取消订单 </label> </div>
     </div>
 
     <div class="pay-summary">
@@ -241,13 +280,18 @@
         <span class="index29content31">第三方支付</span>  <span class="value">￥@Model.Total</span>
     </div>
     <div class="pay-type">
-        <div class="item alipay" style="background-image:url(/Images/payicon1.png)"><div class="item-mask"></div><input type="hidden" value="支付宝" /></div>
-        <div class="item wxpay" style="background-image:url(/Images/payicon2.png)"><div class="item-mask"></div><input type="hidden" value="微信" /></div>
-        <div class="item unionpay" style="background-image:url(/Images/payicon3.png)"><div class="item-mask"></div><input type="hidden" value="银联" /></div>
+        <div class="item alipay" id="alipay" style="background-image:url(/Images/payicon1.png)"><div class="item-mask"></div><input type="hidden" value="支付宝" /></div>
+        <div class="item wxpay" id="wxpay" style="background-image:url(/Images/payicon2.png)"><div class="item-mask"></div><input type="hidden" value="微信" /></div>
+        <div class="item unionpay" id="unionpay" style="background-image:url(/Images/payicon3.png)"><div class="item-mask"></div><input type="hidden" value="银联" /></div>
         <input name="paytype" id="paytype" type="hidden" value="银联" />
         <div style="clear:both;"></div>
-        <div class="qr-code">
-            <img id="qr_code" style="width:200px;height:200px;" src="data:image/jpeg;base64,@ViewBag.QrCode" />
+        <div class="qr-code" style="display:none;">
+            <div class="qr-code-container">
+                <a class="qr-code-close" href="javascript:;">x</a>
+                <i class="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom" id="qr_code_mask"></i>
+                <img id="qr_code" style="width:280px;height:280px;display:none;" src="data:image/jpeg;base64," />
+            </div>
+            
         </div>
         
     </div>
@@ -283,9 +327,13 @@
             }
         });
     };
+    $(".qr-code-close").click(function () {
+        $(".qr-code").hide();
+    });
     $(document).ready(function () {
         CheckPay();
-        $(".wxpay").click(function () {
+        $("#wxpay").click(function () {
+            $(".qr-code").show();
             $.ajax({
                 url: "/InsideApi/WxQRCode",
                 type: "post",
@@ -296,10 +344,13 @@
                 success: function (r) {
                     console.log(r);
                     if (r.result == "success") {
-                        $("#qr_code").attr('src','data:image/jpeg;base64,'+r.qrcode);
+                        $("#qr_code").attr('src', 'data:image/jpeg;base64,' + r.qrcode);
+                        $("#qr_code_mask").hide();
+                        $("#qr_code").show();
                     }
                     else {
                         alert(r.msg);
+                        $(".qr-code").hide();
                     }
 
                 },
@@ -307,6 +358,36 @@
                     console.log(e);
                 }
             });
+        });
+        $("#alipay").click(function () {
+            $(".qr-code").show();
+            $.ajax({
+                url: "/InsideApi/AlipayQrCode",
+                type: "post",
+                dateType: "json",
+                data: {
+                    orderId: $("#Id").val()
+                },
+                success: function (r) {
+                    console.log(r);
+                    if (r.result == "success") {
+                        $("#qr_code").attr('src', 'data:image/jpeg;base64,' + r.qrcode);
+                        $("#qr_code_mask").hide();
+                        $("#qr_code").show();
+                    }
+                    else {
+                        alert(r.msg);
+                        $(".qr-code").hide();
+                    }
+
+                },
+                error: function (e) {
+                    console.log(e);
+                }
+            });
+        });
+        $("#unionpay").click(function () {
+            alert('暂不支持银联支付');
         });
     });
 </script>

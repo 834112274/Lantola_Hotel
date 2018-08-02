@@ -73,9 +73,13 @@
             color: #4876FF;
         }
 </style>
+<input type="hidden" value="@ViewBag.start" id="start" />
+<input type="hidden" value="@ViewBag.end" id="end" />
+<input type="hidden" value="@ViewBag.hotel" id="hotel" />
+<input type="hidden" value="@ViewBag.settlementType" id="settlementType" />
 <div class="panel panel-default" style="margin-top:14px;box-shadow: none;">
     <div class="panel-body">
-        <input type="button" class="btn btn-default btn-sm" value="导出" />
+        <a href="javascript:;" class="btn btn-default btn-sm" id="ExportToExcel">导出</a>
     </div>
 </div>
 <div id="OrderList">
@@ -83,3 +87,15 @@
 
 </div>
 @{Html.RegisterMvcPagerScriptResource();}
+<script>
+    $(function () {
+        $("#ExportToExcel").click(function () {
+            var start = $('#start').val();
+            var end = $('#end').val();
+            var hotel = $('#hotel').val();
+            var settlementType = $('#settlementType').val();
+            $(this).attr('href', `/Admin/Settlement/ExportOrder?start=${start}&end=${end}&hotel=${hotel}&settlementType=${settlementType}`);
+
+        });
+    });
+</script>

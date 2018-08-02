@@ -635,6 +635,8 @@
           <ScalarProperty Name="UsersId" ColumnName="UsersId" />
           <ScalarProperty Name="HotelInfoId" ColumnName="HotelInfoId" />
           <ScalarProperty Name="HotelName" ColumnName="HotelName" />
+          <ScalarProperty Name="IsPay" ColumnName="IsPay" />
+          <ScalarProperty Name="PayTime" ColumnName="PayTime" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

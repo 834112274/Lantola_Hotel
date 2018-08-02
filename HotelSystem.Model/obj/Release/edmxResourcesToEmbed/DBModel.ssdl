@@ -466,7 +466,7 @@
     <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="40" />
     <Property Name="EnglishName" Type="nvarchar" Nullable="true" MaxLength="40" />
     <Property Name="Area" Type="nvarchar" Nullable="true" MaxLength="20" />
-    <Property Name="Storey" Type="smallint" Nullable="false" />
+    <Property Name="Storey" Type="nvarchar" Nullable="false" MaxLength="20" />
     <Property Name="BedType" Type="nvarchar" Nullable="false" MaxLength="20" />
     <Property Name="BedDescribe" Type="nvarchar" Nullable="true" MaxLength="200" />
     <Property Name="OccupancyNumber" Type="smallint" Nullable="false" />
@@ -847,6 +847,8 @@
     <Property Name="UsersId" Type="nvarchar" Nullable="false" MaxLength="40" />
     <Property Name="HotelInfoId" Type="nvarchar" Nullable="false" MaxLength="40" />
     <Property Name="HotelName" Type="nvarchar" Nullable="false" MaxLength="80" />
+    <Property Name="IsPay" Type="smallint" Nullable="false" />
+    <Property Name="PayTime" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="Company">
     <Key>

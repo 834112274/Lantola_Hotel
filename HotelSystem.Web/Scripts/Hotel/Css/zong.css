@@ -192,7 +192,7 @@ body #dl1{height:56px;border-top:0px solid #fff;border-bottom:0px solid #fff;opa
 #buttom2{width:200px;height:40px;float:left;margin-top:18px;}
 #buttom3{width:1020px;color:#fff;height:40px;float:left;font-size:18px;font-family:"微软雅黑";line-height:68px;display:none;}
 #kong1{width:1000px;height:80px;margin:0 auto;line-height:88px;}
-#kong2{width:100%;margin:0 auto;padding:15px 0px;line-height:30px;font-size:12px;color:#898989;font-family:"微软雅黑";-webkit-user-select: none; -moz-user-select: none;    -khtml-user-select: none;  -ms-user-select: none;text-align:center;background:#fff;clear:both;}
+#kong2{width:100%;margin:0 auto;padding:15px 0px;line-height:30px;font-size:12px;color:#898989;font-family:"微软雅黑";-webkit-user-select: none; -moz-user-select: none;    -khtml-user-select: none;  -ms-user-select: none;text-align:center;clear:both;}
 #kong1 a{padding-right:26px;font-size:14px;color:#fff;}
 /*.dlu{color:#fff!important;}*/
 #kong1 a:hover{color:#1599aa;}

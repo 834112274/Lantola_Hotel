@@ -72,9 +72,10 @@
             color: #4876FF;
         }
 </style>
+<input type="hidden" id="state" value="@ViewBag.state" />
 <div class="panel panel-default" style="margin-top:14px;box-shadow: none;">
     <div class="panel-body">
-        @using (Html.BeginForm("Manage", "Order", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-inline", id = "search_order" }))
+        @using (Html.BeginForm("Manage", "Order", FormMethod.Post, new { enctype = "multipart/form-data", id = "search_order" }))
         {
             <div class="form-horizontal">
                 <div class="row" style="margin-bottom:10px;">
@@ -92,8 +93,8 @@
                             <div class="col-sm-8">
                                 <select class="form-control input-sm" name="Payment">
                                     <option value="">全部</option>
-                                    <option value="0">已支付</option>
-                                    <option value="1">待支付</option>
+                                    <option value="1">已支付</option>
+                                    <option value="0">待支付</option>
                                 </select>
                             </div>
                         </div>
@@ -138,8 +139,8 @@
                         <div class="col-md-12">
                             <div class="col-md-8 col-md-offset-4" style="padding-left:0px;">
                                 <input type="submit" class="btn btn-default btn-sm" value="筛选" />
-                                <input type="button" class="btn btn-default btn-sm" value="清空" />
-                                <input type="button" class="btn btn-default btn-sm" value="导出" />
+                                <input type="button" id="clear" class="btn btn-default btn-sm" value="清空" />
+                                <a href="javascript:;" id="export" class="btn btn-default btn-sm" target="_blank">导出</a>
                             </div>
                         </div>
                     </div>
@@ -152,3 +153,20 @@
     @Html.Partial("_OrderList", Model);
 </div>
 @{Html.RegisterMvcPagerScriptResource();}
+<script>
+    $("#export").click(function () {
+        var state=$("#state").val();
+        var Payment=$("input[name='Payment']").val();
+        var CreateStart = $("input[name='CreateStart']").val();
+        var CreateEnd = $("input[name='CreateEnd']").val();
+        var Number = $("input[name='Number']").val();
+        var Occupant = $("input[name='Occupant']").val();
+        var StartTime = $("input[name='StartTime']").val();
+        var EndTime = $("input[name='EndTime']").val();
+        $(this).attr('href', `/Hotel/Order/ExportOrder?state=${state}&Payment=${Payment}&CreateStart=${CreateStart}&CreateEnd=${CreateEnd}&Number=${Number}&Occupant=${Occupant}&StartTime=${StartTime}&EndTime=${EndTime}`);
+    });
+    $("#clear").click(function () {
+        $("input[name]").val('');
+        $("select").val('');
+    });
+</script>
