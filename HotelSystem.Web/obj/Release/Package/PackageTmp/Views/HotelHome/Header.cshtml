@@ -153,6 +153,7 @@
         $(document.body).on("click", ".album-view-btn", function () {
             var url = $(this).attr("href");
             $("#view-box").load(url);
+            $(document.body).css("overflow", "hidden");
             return false;
         })
     })

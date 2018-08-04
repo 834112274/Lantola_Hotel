@@ -1,10 +1,10 @@
-﻿@model PagedList<HotelSystem.Model.Policy>
+﻿@model List<HotelSystem.Model.Policy>
 @using Webdiyer.WebControls.Mvc
 @{
     ViewBag.Title = "酒店设施及政策选项配置";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-<link href='~/Scripts/ico/ico.css' rel='stylesheet' type='text/css' />
+<link href='~/Scripts/ico/icon.css' rel='stylesheet' type='text/css' />
 <style>
     .ico-container {
         overflow: hidden;
@@ -12,28 +12,27 @@
 
         .ico-container ul {
             list-style: none;
-            display: table;
+            /*display: table;*/
         }
 
             .ico-container ul li {
                 float: left;
                 width: 10%;
                 margin: 4px 5px;
-                padding: 4px;
-                height:40px;
-                display: table-cell;
-                vertical-align: middle;
-                 border-radius:4px;
+                border-radius: 4px;
+                overflow:hidden;
+                padding:8px;
+                /*line-height:40px;*/
             }
-
                 .ico-container ul li:hover {
                     border: 1px solid #ccc;
-                   
                 }
 
                 .ico-container ul li span, .ico-container ul li i {
-                    display: table-cell;
-                    vertical-align: middle;
+                    /*line-height:30px;*/
+                    /*float:left;*/
+                    vertical-align:middle;
+                    
                 }
 
                 .ico-container ul li span {
@@ -47,95 +46,127 @@
                 <h2><i class="fa fa-table red"></i><span class="break"></span><strong>酒店设施及政策选项配置</strong></h2>
             </div>
             <div class="panel-body">
-                <p class="text-danger text-center">@ViewBag.Message</p>
-                @using (Html.BeginForm("Policy", ViewContext.RouteData.GetRequiredString("controller"), new { id = "" }, FormMethod.Post, new { id = "PolicySearch" }))
+                @if (ViewBag.Message != null)
+                {
+                    <div class="alert alert-warning alert-dismissible fade in" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        @Html.Raw(ViewBag.Message)
+                    </div>
+                }
+                <p>打包文件命名：</p>
+                <p>图标类型_中文名_英文名（服务设施_免费停车_FreeParking）</p>
+                <p>名称不能含“_”</p>
+                <p>导出样式需修改内容路径background-image:url(/Scripts/ico/icon.png);</p>
+                <p>为保证系统正确运行，已存在图标不会被修改，请上传前认真核对信息</p>
+                @using (Html.BeginForm("Policy", ViewContext.RouteData.GetRequiredString("controller"), new { id = "" }, FormMethod.Post, new { @class = "form-inline", enctype = "multipart/form-data" }))
                 {
                     <div class="row">
-                        <div class="col-lg-4">
-                            <div class="input-group">
-                                <input type="text" class="form-control" name="key" placeholder="酒店名、地址">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="submit">搜索(S)</button>
-                                </span>
-                            </div><!-- /input-group -->
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>图标图片</label>
+                                <div class="input-group">
+
+                                    <input type="file" name="IcoFile" id="IcoFile" placeholder="PNG" />
+                                </div><!-- /input-group -->
+                            </div>
+                        </div><!-- /.col-lg-6 -->
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>图标配置数据</label>
+                                <div class="input-group">
+
+                                    <input type="file" name="JsonFile" id="JsonFile" placeholder="JSON" />
+                                </div><!-- /input-group -->
+                            </div>
+                        </div><!-- /.col-lg-6 -->
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>图标Css文件</label>
+                                <div class="input-group">
+                                    <input type="file" name="CssFile" id="CssFile" placeholder="Css" />
+                                </div><!-- /input-group -->
+                            </div>
+                        </div><!-- /.col-lg-6 -->
+                        <div class="col-md-3">
+                            <input class="btn btn-default" type="submit" value="上传">
                         </div><!-- /.col-lg-6 -->
                     </div><!-- /.row -->
                 }
-                <br />
+                <div class="page-header">
+                    <h1>预览</h1>
+                </div>
                 <div class="ico-container">
+                    @if (ViewBag.Ico == null)
+                    {
+                        <p class="text-center;">暂无配置</p>
+                    }
                     <ul>
 
-                        @{
-                            if (ViewBag.Ico != null)
-                            {
-                                var item = ViewBag.Ico.frames;
-                                foreach (var t in item)
-                                {
-                                    <li>
-                                        <i class="sprite @t.filename.ToString().Remove(t.filename.ToString().LastIndexOf("."))"></i><span>@t.filename.ToString()</span>
-                                    </li>
+                        @foreach (var t in Model)
+                        {
+                            <li>
+                                <i class="sprite @t.Icon"></i><span>@t.Name</span>
+                            </li>
 
-                                }
-                            }
                         }
                     </ul>
                 </div>
-                <button class="btn btn-primary" data-toggle="modal" data-target="#addPolicy">添加</button>
-                @using (Html.BeginForm("AddPolicy", ViewContext.RouteData.GetRequiredString("controller"), FormMethod.Post, new { enctype = "multipart/form-data" }))
-                {
-                    <div class="modal fade" id="addPolicy" tabindex="-1" role="dialog" aria-labelledby="addPolicy">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title" id="myModalLabel">设施政策</h4>
-                                </div>
-                                <div class="modal-body">
+                @*<button class="btn btn-primary" data-toggle="modal" data-target="#addPolicy">添加</button>
+                    @using (Html.BeginForm("AddPolicy", ViewContext.RouteData.GetRequiredString("controller"), FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <div class="modal fade" id="addPolicy" tabindex="-1" role="dialog" aria-labelledby="addPolicy">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">设施政策</h4>
+                                    </div>
+                                    <div class="modal-body">
 
-                                    <div class="form-horizontal">
-                                        <div class="form-group">
-                                            <label class="col-sm-4 control-label"><font color="red">*</font> @Html.DisplayNameFor(model => model.Name)</label>
-                                            <div class="col-sm-8 input-group">
-                                                <input name="Name" type="text" class="form-control" placeholder="必填" value="" required>
+                                        <div class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label"><font color="red">*</font> @Html.DisplayNameFor(model => model.Name)</label>
+                                                <div class="col-sm-8 input-group">
+                                                    <input name="Name" type="text" class="form-control" placeholder="必填" value="" required>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-4 control-label"><font color="red">*</font> @Html.DisplayNameFor(model => model.Type)</label>
-                                            <div class="col-sm-8 input-group">
-                                                <select class="form-control" name="Type">
-                                                    <option value="0" selected>通用项目</option>
-                                                    <option value="1">服务项目</option>
-                                                    <option value="2">客服设施</option>
-                                                    <option value="3">酒店政策</option>
-                                                </select>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label"><font color="red">*</font> @Html.DisplayNameFor(model => model.Type)</label>
+                                                <div class="col-sm-8 input-group">
+                                                    <select class="form-control" name="Type">
+                                                        <option value="0" selected>通用项目</option>
+                                                        <option value="1">服务项目</option>
+                                                        <option value="2">客服设施</option>
+                                                        <option value="3">酒店政策</option>
+                                                    </select>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-4 control-label"><font color="red"></font> @Html.DisplayNameFor(model => model.Values)</label>
-                                            <div class="col-sm-8 input-group">
-                                                <input name="Values" type="text" class="form-control" placeholder="" value="">
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label"><font color="red"></font> @Html.DisplayNameFor(model => model.Values)</label>
+                                                <div class="col-sm-8 input-group">
+                                                    <input name="Values" type="text" class="form-control" placeholder="" value="">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-4 control-label"><font color="red">*</font> @Html.DisplayNameFor(model => model.Icon)</label>
-                                            <div class="col-sm-8 input-group">
-                                                <input name="Icon" type="file" value="" accept=".jpg,.png">
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label"><font color="red">*</font> @Html.DisplayNameFor(model => model.Icon)</label>
+                                                <div class="col-sm-8 input-group">
+                                                    <input name="Icon" type="file" value="" accept=".jpg,.png">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                                    <button type="submit" class="btn btn-primary">添加</button>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                        <button type="submit" class="btn btn-primary">添加</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                }
-                <br />
-                <div id="PolicyList">
-                    @Html.Partial("_PolicyList", Model);
-                </div>
+                    }
+                    <br />
+                    <div id="PolicyList">
+                        @Html.Partial("_PolicyList", Model);
+                    </div>*@
             </div>
         </div>
     </div><!--/col-->

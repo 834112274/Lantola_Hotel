@@ -23,15 +23,15 @@
                         <div class="media-right">
 
                             <div class="score">
-                                9.3
+                                @(h.score==0?10:h.score)
                             </div>
                             <div class="score-info">
                                 <div>评分</div>
-                                <div class="english">121条住客评论</div>
+                                <div class="english">@h.commentCount 条住客评论</div>
                             </div>
                             <div style="clear:both;"></div>
                             <p class="price">@h.minPrice 元</p>
-                            <a class="btn-details" href="/HotelHome/Index/@h.hotelInfo.Id" target="_blank">查看我们最后几间空房 ></a>
+                            <a class="btn-details" href="/HotelHome/Index/@h.hotelInfo.Id" target="_blank">查看剩余空房 ></a>
                         </div>
                         <h4 class="media-heading">
                             @h.hotelInfo.Name
@@ -48,16 +48,10 @@
                             <span class="summary">最后的预定：6小时之前</span>
                         </div>
                         <div class="policy">
-                            @foreach (var p in h.hotelInfo.HotelPolicy)
+                            @foreach (var p in h.policy)
                             {
-                                <span>@p.Value</span>
+                                <span class="sprite @p.Icon"></span>
                             }
-                            <span class="fa fa-institution"></span>
-                            <span class="fa fa-rss-square"></span>
-                            <span class="fa fa-road"></span>
-                            <span class="fa fa-rocket"></span>
-                            <span class="fa fa-ship"></span>
-                            <span class="fa fa-trophy"></span>
                         </div>
                     </div>
                 </div>

@@ -46,7 +46,7 @@
       <publishTime>07/17/2018 16:59:34</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Hotel/Policy.cshtml">
-      <publishTime>07/17/2018 16:59:34</publishTime>
+      <publishTime>08/04/2018 17:58:01</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Hotel/_HotelList.cshtml">
       <publishTime>07/17/2018 16:59:34</publishTime>
@@ -67,7 +67,7 @@
       <publishTime>07/17/2018 16:59:34</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Order/Manage.cshtml">
-      <publishTime>07/17/2018 16:59:34</publishTime>
+      <publishTime>08/02/2018 21:02:42</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Order/_InvoiceList.cshtml">
       <publishTime>07/17/2018 16:59:34</publishTime>
@@ -76,7 +76,7 @@
       <publishTime>07/17/2018 16:59:34</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Order/_OrderList.cshtml">
-      <publishTime>07/17/2018 16:59:34</publishTime>
+      <publishTime>08/02/2018 20:31:49</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Order/_OrderPage.cshtml">
       <publishTime>08/01/2018 18:30:56</publishTime>
@@ -241,13 +241,13 @@
       <publishTime>07/17/2018 16:59:34</publishTime>
     </File>
     <File Include="Areas/Hotel/Views/Info/Index.cshtml">
-      <publishTime>07/17/2018 16:59:34</publishTime>
+      <publishTime>08/04/2018 19:51:47</publishTime>
     </File>
     <File Include="Areas/Hotel/Views/Info/Map.cshtml">
       <publishTime>07/17/2018 16:59:34</publishTime>
     </File>
     <File Include="Areas/Hotel/Views/Info/Policy.cshtml">
-      <publishTime>07/17/2018 16:59:34</publishTime>
+      <publishTime>08/04/2018 18:26:40</publishTime>
     </File>
     <File Include="Areas/Hotel/Views/Info/Restaurant.cshtml">
       <publishTime>07/17/2018 16:59:34</publishTime>
@@ -256,7 +256,7 @@
       <publishTime>02/12/2018 09:22:59</publishTime>
     </File>
     <File Include="Areas/Hotel/Views/Order/Manage.cshtml">
-      <publishTime>07/17/2018 16:59:34</publishTime>
+      <publishTime>08/02/2018 21:02:59</publishTime>
     </File>
     <File Include="Areas/Hotel/Views/Order/_OrderList.cshtml">
       <publishTime>07/17/2018 16:59:34</publishTime>
@@ -334,7 +334,7 @@
       <publishTime>07/17/2018 16:59:34</publishTime>
     </File>
     <File Include="Areas/Hotel/Views/User/Register.cshtml">
-      <publishTime>07/17/2018 16:59:34</publishTime>
+      <publishTime>08/04/2018 19:51:51</publishTime>
     </File>
     <File Include="Areas/Hotel/Views/User/RegisterResult.cshtml">
       <publishTime>07/17/2018 16:59:34</publishTime>
@@ -364,10 +364,10 @@
       <publishTime>08/01/2018 23:30:14</publishTime>
     </File>
     <File Include="bin/HotelSystem.Model.dll">
-      <publishTime>08/01/2018 23:30:14</publishTime>
+      <publishTime>08/04/2018 23:56:44</publishTime>
     </File>
     <File Include="bin/HotelSystem.Web.dll">
-      <publishTime>08/01/2018 23:30:20</publishTime>
+      <publishTime>08/04/2018 23:58:54</publishTime>
     </File>
     <File Include="bin/ICSharpCode.SharpZipLib.dll">
       <publishTime>01/03/2011 14:16:38</publishTime>
@@ -1545,11 +1545,14 @@
     <File Include="Scripts/city.cascading.js">
       <publishTime>07/17/2018 16:59:35</publishTime>
     </File>
+    <File Include="Scripts/cityTemplate.js">
+      <publishTime>08/04/2018 23:04:29</publishTime>
+    </File>
     <File Include="Scripts/collection.js">
       <publishTime>07/17/2018 16:59:35</publishTime>
     </File>
     <File Include="Scripts/Home/index.css">
-      <publishTime>07/18/2018 19:22:44</publishTime>
+      <publishTime>08/02/2018 21:18:04</publishTime>
     </File>
     <File Include="Scripts/Hotel/Css/header.css">
       <publishTime>07/17/2018 16:59:35</publishTime>
@@ -1558,7 +1561,7 @@
       <publishTime>07/24/2018 20:48:08</publishTime>
     </File>
     <File Include="Scripts/Hotel/Css/zong.css">
-      <publishTime>07/30/2018 15:12:44</publishTime>
+      <publishTime>08/02/2018 22:08:10</publishTime>
     </File>
     <File Include="Scripts/ico/ico.css">
       <publishTime>07/17/2018 16:59:35</publishTime>
@@ -1567,6 +1570,15 @@
       <publishTime>07/17/2018 16:59:35</publishTime>
     </File>
     <File Include="Scripts/ico/ico.png">
+      <publishTime>07/17/2018 16:59:35</publishTime>
+    </File>
+    <File Include="Scripts/ico/icon.css">
+      <publishTime>08/04/2018 17:35:57</publishTime>
+    </File>
+    <File Include="Scripts/ico/icon.json">
+      <publishTime>08/04/2018 17:35:57</publishTime>
+    </File>
+    <File Include="Scripts/ico/icon.png">
       <publishTime>07/17/2018 16:59:35</publishTime>
     </File>
     <File Include="Scripts/imagesloaded.pkgd.min.js">
@@ -1621,31 +1633,31 @@
       <publishTime>07/18/2018 19:23:09</publishTime>
     </File>
     <File Include="Views/Home/Search.cshtml">
-      <publishTime>07/17/2018 16:59:35</publishTime>
+      <publishTime>08/04/2018 23:15:20</publishTime>
     </File>
     <File Include="Views/Home/_HotelList.cshtml">
-      <publishTime>07/17/2018 16:59:35</publishTime>
+      <publishTime>08/04/2018 20:09:09</publishTime>
     </File>
     <File Include="Views/Home/_HotelPage.cshtml">
-      <publishTime>07/17/2018 16:59:35</publishTime>
+      <publishTime>08/04/2018 23:47:57</publishTime>
     </File>
     <File Include="Views/HotelHome/Activity.cshtml">
       <publishTime>07/17/2018 16:59:35</publishTime>
     </File>
     <File Include="Views/HotelHome/Album.cshtml">
-      <publishTime>07/17/2018 16:59:35</publishTime>
+      <publishTime>08/04/2018 19:26:24</publishTime>
     </File>
     <File Include="Views/HotelHome/Boardroom.cshtml">
-      <publishTime>07/17/2018 16:59:35</publishTime>
+      <publishTime>08/04/2018 18:36:24</publishTime>
     </File>
     <File Include="Views/HotelHome/Comment.cshtml">
-      <publishTime>07/17/2018 16:59:35</publishTime>
+      <publishTime>08/02/2018 22:37:22</publishTime>
     </File>
     <File Include="Views/HotelHome/Header.cshtml">
-      <publishTime>07/17/2018 16:59:35</publishTime>
+      <publishTime>08/04/2018 18:58:43</publishTime>
     </File>
     <File Include="Views/HotelHome/Index.cshtml">
-      <publishTime>07/30/2018 16:14:56</publishTime>
+      <publishTime>08/04/2018 18:32:35</publishTime>
     </File>
     <File Include="Views/HotelHome/Map.cshtml">
       <publishTime>07/17/2018 16:59:35</publishTime>
@@ -1660,7 +1672,7 @@
       <publishTime>07/17/2018 16:59:35</publishTime>
     </File>
     <File Include="Views/HotelHome/_CommentPage.cshtml">
-      <publishTime>07/17/2018 16:59:35</publishTime>
+      <publishTime>08/02/2018 22:39:10</publishTime>
     </File>
     <File Include="Views/Order/Apply.cshtml">
       <publishTime>07/30/2018 16:57:17</publishTime>
@@ -1699,10 +1711,10 @@
       <publishTime>07/17/2018 16:59:35</publishTime>
     </File>
     <File Include="Views/Shared/_LayoutHotel.cshtml">
-      <publishTime>07/17/2018 16:59:35</publishTime>
+      <publishTime>08/02/2018 22:08:13</publishTime>
     </File>
     <File Include="Views/Shared/_LayoutUser.cshtml">
-      <publishTime>07/17/2018 16:59:35</publishTime>
+      <publishTime>08/02/2018 21:21:54</publishTime>
     </File>
     <File Include="Views/User/ApplyInvoice.cshtml">
       <publishTime>07/17/2018 16:59:35</publishTime>

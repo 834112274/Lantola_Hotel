@@ -1,7 +1,16 @@
-﻿@{
+﻿@using HotelSystem.Model;
+@{
     ViewBag.Title = "Policy";
     Layout = "~/Areas/Hotel/Views/Shared/_Layout.cshtml";
 }
+<link href='~/Scripts/ico/icon.css' rel='stylesheet' type='text/css' />
+<style>
+    .icon span, .icon i {
+        /*line-height:30px;*/
+        /*float:left;*/
+        vertical-align: middle;
+    }
+</style>
 
 <form enctype="multipart/form-data" class="form-horizontal group-border" role="form" method="post" action="/Hotel/Info/ChangePolicy">
     <div class="row">
@@ -11,43 +20,80 @@
                     <h2><i class="fa fa-indent red"></i><strong>酒店设施</strong></h2>
                 </div>
                 <div class="panel-body">
+                    @{
+                        List<HotelPolicy> hotelPolicy = new List<HotelPolicy>();
+                        if (ViewBag.HotelPolicy != null)
+                        {
+                            hotelPolicy = ViewBag.HotelPolicy as List<HotelPolicy>;
+                            <span>@hotelPolicy.Count()</span>
+                        }
 
-                    <div class="form-group">
-                        <label class="col-lg-2 col-md-2 col-sm-12 control-label"><font color="red">*</font> 通用项目 </label>
-                        <div class="col-lg-10 col-md-10">
-                            @foreach (var p in ViewBag.Policy0)
-                            {
-                                <label class="checkbox-inline">
-                                    <input type="checkbox" name="policy" value="@p.Id"><img style="height:30px;" src="@p.Icon" alt="..."> @p.Name
-                                </label>
-                            }
+                        <div class="form-group">
+                            <label class="col-lg-2 col-md-2 col-sm-12 control-label"><font color="red">*</font> 通用项目 </label>
+                            <div class="col-lg-10 col-md-10">
+                                @foreach (var p in ViewBag.Policy0)
+                                {
+                                    var check = "";
+                                    foreach (var t in hotelPolicy)
+                                    {
+                                        if (t.PolicyId == p.Id)
+                                        {
+                                            check = "checked";
+                                            break;
+                                        }
+                                    }
+                                    <label class="checkbox-inline icon">
+                                        <input type="checkbox" name="policy" value="@p.Id" @check><i class="sprite @p.Icon"></i><span>@p.Name</span>
+                                    </label>
+
+                                }
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label class="col-lg-2 col-md-2 col-sm-12 control-label"><font color="red">*</font> 服务项目 </label>
-                        <div class="col-lg-10 col-md-10">
+                        <div class="form-group">
+                            <label class="col-lg-2 col-md-2 col-sm-12 control-label"><font color="red">*</font> 服务项目 </label>
+                            <div class="col-lg-10 col-md-10">
 
-                            @foreach (var p in ViewBag.Policy1)
-                            {
-                                <label class="checkbox-inline">
-                                    <input type="checkbox" name="policy" value="@p.Id"><img style="height:30px;" src="@p.Icon" alt="..."> @p.Name
-                                </label>
-                            }
+                                @foreach (var p in ViewBag.Policy1)
+                                {
+
+                                    var check = "";
+                                    foreach (var t in hotelPolicy)
+                                    {
+                                        if (t.PolicyId == p.Id)
+                                        {
+                                            check = "checked";
+                                            break;
+                                        }
+                                    }
+                                    <label class="checkbox-inline icon">
+                                        <input type="checkbox" name="policy" value="@p.Id" @check><i class="sprite @p.Icon"></i><span>@p.Name</span>
+                                    </label>
+                                }
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label class="col-lg-2 col-md-2 col-sm-12 control-label"><font color="red">*</font> 客房设施 </label>
-                        <div class="col-lg-10 col-md-10">
-                            @foreach (var p in ViewBag.Policy2)
-                            {
-                                <label class="checkbox-inline">
-                                    <input type="checkbox" name="policy" value="@p.Id"><img style="height:30px;" src="@p.Icon" alt="..."> @p.Name
-                                </label>
-                            }
+                        <div class="form-group">
+                            <label class="col-lg-2 col-md-2 col-sm-12 control-label"><font color="red">*</font> 客房设施 </label>
+                            <div class="col-lg-10 col-md-10">
+                                @foreach (var p in ViewBag.Policy2)
+                                {
+                                    var check = "";
+                                    foreach (var t in hotelPolicy)
+                                    {
+                                        if (t.PolicyId == p.Id)
+                                        {
+                                            check = "checked";
+                                            break;
+                                        }
+                                    }
+                                    <label class="checkbox-inline icon">
+                                        <input type="checkbox" name="policy" value="@p.Id" @check><i class="sprite @p.Icon"></i><span>@p.Name</span>
+                                    </label>
+                                }
+                            </div>
                         </div>
-                    </div>
+                    }
                 </div>
             </div>
         </div><!--.col-->
@@ -65,8 +111,8 @@
                         <label class="col-lg-2 col-md-2 col-sm-12 control-label"><font color="red">*</font> 入住时间</label>
                         <div class="col-lg-1 col-md-10">
                             <select name="CheckInTime" class="form-control" placeholder="必填">
-                                <option value="12:00之后" @(ViewBag.Service.CheckInTime=="12:00之后"?"selected":"")>12:00之后</option>
-                                <option value="14:00之后" @(ViewBag.Service.CheckInTime== "14:00之后" ? "selected":"")>14:00之后</option>
+                                <option value="12:00之后" @(ViewBag.Service.CheckInTime == "12:00之后" ? "selected" : "")>12:00之后</option>
+                                <option value="14:00之后" @(ViewBag.Service.CheckInTime == "14:00之后" ? "selected" : "")>14:00之后</option>
                             </select>
                         </div>
                     </div>
@@ -75,9 +121,9 @@
                         <label class="col-lg-2 col-md-2 col-sm-12 control-label"><font color="red">*</font> 离店时间</label>
                         <div class="col-lg-1 col-md-10">
                             <select name="LeaveTime" class="form-control" placeholder="必填">
-                                <option value="12:00之前" @(ViewBag.Service.LeaveTime == "12:00之前" ? "selected":"")>12:00之前</option>
-                                <option value="13:00之前" @(ViewBag.Service.LeaveTime == "13:00之前" ? "selected":"")>13:00之前</option>
-                                <option value="14:00之前" @(ViewBag.Service.LeaveTime == "14:00之前" ? "selected":"")>14:00之前</option>
+                                <option value="12:00之前" @(ViewBag.Service.LeaveTime == "12:00之前" ? "selected" : "")>12:00之前</option>
+                                <option value="13:00之前" @(ViewBag.Service.LeaveTime == "13:00之前" ? "selected" : "")>13:00之前</option>
+                                <option value="14:00之前" @(ViewBag.Service.LeaveTime == "14:00之前" ? "selected" : "")>14:00之前</option>
                             </select>
                         </div>
                     </div>
@@ -86,8 +132,8 @@
                         <label class="col-lg-2 col-md-2 col-sm-12 control-label"><font color="red">*</font> 携带宠物</label>
                         <div class="col-lg-1 col-md-10">
                             <select name="Pet" class="form-control" placeholder="必填">
-                                <option value="不可携带" @(ViewBag.Service.Pet == "不可携带" ? "selected":"")>不可携带</option>
-                                <option value="可以携带" @(ViewBag.Service.Pet == "可以携带" ? "selected":"")>可以携带</option>
+                                <option value="不可携带" @(ViewBag.Service.Pet == "不可携带" ? "selected" : "")>不可携带</option>
+                                <option value="可以携带" @(ViewBag.Service.Pet == "可以携带" ? "selected" : "")>可以携带</option>
                             </select>
                         </div>
                     </div>
@@ -102,20 +148,20 @@
                     <div class="form-group">
                         <label class="col-lg-2 col-md-2 col-sm-12 control-label"><font color="red">*</font> 接受信用卡</label>
                         <div class="col-lg-10 col-md-10">
-                            @{ 
+                            @{
                                 if (ViewBag.Service.CreditCard == null)
                                 {
                                     ViewBag.Service.CreditCard = "";
                                 }
                             }
                             <label class="checkbox-inline">
-                                <input type="checkbox" name="CreditCard" value="招商银行" @(ViewBag.Service.CreditCard.Contains("招商银行") ? "checked":"")> 招商银行
+                                <input type="checkbox" name="CreditCard" value="招商银行" @(ViewBag.Service.CreditCard.Contains("招商银行") ? "checked" : "")> 招商银行
                             </label>
                             <label class="checkbox-inline">
-                                <input type="checkbox" name="CreditCard" value="建设银行" @(ViewBag.Service.CreditCard.Contains("建设银行") ? "checked":"")> 建设银行
+                                <input type="checkbox" name="CreditCard" value="建设银行" @(ViewBag.Service.CreditCard.Contains("建设银行") ? "checked" : "")> 建设银行
                             </label>
                             <label class="checkbox-inline">
-                                <input type="checkbox" name="CreditCard" value="交通银行" @(ViewBag.Service.CreditCard.Contains("交通银行") ? "checked":"")> 交通银行
+                                <input type="checkbox" name="CreditCard" value="交通银行" @(ViewBag.Service.CreditCard.Contains("交通银行") ? "checked" : "")> 交通银行
                             </label>
                         </div>
                     </div>

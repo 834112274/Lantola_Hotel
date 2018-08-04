@@ -1,6 +1,10 @@
 ﻿@model PagedList<HotelSystem.Model.Comment>
 @using Webdiyer.WebControls.Mvc
 <div class="comment-container">
+    @if (Model == null || Model.Count == 0)
+    {
+        <p class="text-center" style="margin:20px;">抱歉暂无评价，期待您的入住点评</p>
+    }
     @foreach (var item in Model)
     {
 

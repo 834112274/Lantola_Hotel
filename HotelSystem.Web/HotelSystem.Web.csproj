@@ -460,8 +460,8 @@
     <Content Include="Scripts\Hotel\Css\header.css" />
     <Content Include="Scripts\Hotel\Css\lantola.css" />
     <Content Include="Scripts\Hotel\Css\zong.css" />
-    <Content Include="Scripts\ico\ico.css" />
-    <Content Include="Scripts\ico\ico.png" />
+    <Content Include="Scripts\ico\icon.css" />
+    <Content Include="Scripts\ico\icon.png" />
     <Content Include="Scripts\imagesloaded.pkgd.min.js" />
     <Content Include="Areas\Hotel\Views\Room\PriceTypeList.cshtml" />
     <Content Include="Areas\Hotel\Views\Room\CreatePriceType.cshtml" />
@@ -541,13 +541,13 @@
     <Content Include="Scripts\assets\plugins\bootstrap-daterangepicker-master\example\browserify\README.md" />
     <Content Include="Scripts\assets\plugins\bootstrap-daterangepicker-master\package.json" />
     <Content Include="Scripts\assets\plugins\bootstrap-daterangepicker-master\README.md" />
-    <Content Include="Scripts\ico\ico.json" />
     <Content Include="Scripts\assets\plugins\summernote-master\font\summernote.eot" />
     <Content Include="Scripts\assets\plugins\summernote-master\font\summernote.ttf" />
     <Content Include="Scripts\assets\plugins\summernote-master\font\summernote.woff" />
     <Content Include="Scripts\assets\plugins\summernote-master\summernote-bs4.js.map" />
     <Content Include="Scripts\assets\plugins\summernote-master\summernote-lite.js.map" />
     <Content Include="Scripts\assets\plugins\summernote-master\summernote.js.map" />
+    <Content Include="Scripts\ico\icon.json" />
     <None Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />

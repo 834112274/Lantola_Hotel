@@ -5,6 +5,7 @@
     Layout = "~/Views/Shared/_LayoutHeader.cshtml";
 }
 <link rel="stylesheet" type="text/css" media="all" href="~/Scripts/assets/plugins/bootstrap-daterangepicker-master/daterangepicker.css" />
+<link href='~/Scripts/ico/icon.css' rel='stylesheet' type='text/css' />
 <style>
     .date-box .fa {
         color: #ccc;
@@ -135,28 +136,37 @@
     .search-message {
         margin-top: 40px;
     }
-            .sort{
-            margin:6px 0px 6px 0px;
-            overflow:hidden;
-        }
-    .sort ul {
-        border-top: 3px solid #4876FF;
-        overflow:hidden;
+
+    .sort {
+        margin: 6px 0px 6px 0px;
+        overflow: hidden;
     }
 
-        .sort ul li {
-            float: left;
-            border:1px solid #4876FF;
-            padding:2px 6px;
-            width:25%;
-            text-align:center;
-            cursor:pointer;
+        .sort ul {
+            border-top: 3px solid #4876FF;
+            overflow: hidden;
         }
-        .sort ul li a{
-            outline:none;
-            text-decoration:none;
-            color:#4876FF;
-        }
+
+            .sort ul li {
+                float: left;
+                border: 1px solid #4876FF;
+                padding: 2px 6px;
+                width: 33.33%;
+                text-align: center;
+                cursor: pointer;
+            }
+            .sort ul li span{
+                display:none;
+            }
+            .sort .selected span{
+                display:inline-block;
+            }
+                .sort ul li a {
+                    outline: none;
+                    text-decoration: none;
+                    color: #4876FF;
+                }
+
     .media-object {
         display: inline-block;
         width: 300px;
@@ -202,16 +212,12 @@
         }
 
     .policy {
-        margin-top: 10px;
+        margin-top: 30px;
     }
 
         .policy span {
             display: inline-block;
             margin: 2px;
-            padding: 4px;
-            font-size: 14px;
-            border: 1px solid #49f;
-            border-radius: 24px;
         }
 
     .media-right {
@@ -249,16 +255,93 @@
             color: #fff;
         }
 
+    #destination {
+        background: url(../images/sui.png) no-repeat 96% center;
+    }
+
+    #in_city {
+        background: #ddd;
+        position: absolute;
+        z-index: 999;
+        border: solid 1px #d7d7d7;
+        background: #fff;
+        padding-bottom: 6px;
+    }
+
+    .screen {
+        overflow: hidden;
+    }
+
+        .screen a {
+            float: left;
+            color: #129ace;
+            padding: 1px 12.6px;
+            text-align: center;
+            border-bottom: solid 1px #c92436;
+        }
+
+            .screen a:hover {
+                color: #c92436;
+            }
+
+        .screen .shar {
+            color: #404040;
+            border: solid 1px #c92436;
+            border-bottom: none;
+        }
+
+    .city_a_le1 {
+        padding: 10px;
+        overflow: hidden;
+    }
+
+        .city_a_le1 a {
+            float: left;
+            width: 20%;
+            margin: 2px 0;
+        }
+
+    .Letter span {
+        width: 12%;
+        float: left;
+        text-align: center;
+        padding: 2px 0;
+    }
+
+    .Letter div {
+        width: 88%;
+        float: left;
+    }
+
+    .city_a_le1 a:hover {
+        color: #c92436;
+    }
+
+    .Letter div a {
+        width: 25%;
+    }
+
+    #in_city h1 {
+        padding: 10px 0;
+        color: #ababab;
+        text-indent: 3%;
+        font-size: 18px;
+    }
 </style>
-<div class="search-container">
-    <div class="container">
-        @using (Html.BeginForm("Search", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
-        {
+@using (Html.BeginForm("Search", "Home", FormMethod.Post, new { enctype = "multipart/form-data", id = "search" }))
+{
+    <div class="search-container">
+        <div class="container">
+
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-2">
+                    <input type="text" class="form-control" placeholder="选择城市" id="place" value="@ViewBag.SearchParams.city" name="city" style="border-radius:0px;">
+                    <div id="in_city" style="display: none"></div>
+                </div>
+                <div class="col-md-3">
                     <input type="text" name="k" class="form-control" value="@ViewBag.SearchParams.k" placeholder="请输入酒店、目的地" style="border-radius: 0px;border:none;">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <div class="daterange">
                         <div class="day"><span class="day-value">1</span><span class="fa fa-moon-o"></span></div>
                         <div class="date-box start">
@@ -284,78 +367,72 @@
                     <input type="submit" value="搜索酒店" class="search-btn" id="J_search_hotel">
                 </div>
             </div>
-        }
-    </div>
-</div>
-<div class="filter-container">
-    <div class="container">
-        <div class="row filter-item">
-            <div class="col-md-1 text-center"><span class="title">位置</span> </div>
-            <div class="col-md-11">
-                <ul class="select-item">
-                    <li class="selected"><a href="javascript:;">不限</a> </li>
-                    <li><a href="javascript:;">黄埔区</a> </li>
-                    <li><a href="javascript:;">浦东区</a> </li>
-                    <li><a href="javascript:;">普陀区</a> </li>
-                </ul>
-            </div>
         </div>
-        <div class="row filter-item">
-            <div class="col-md-1 text-center"><span class="title">设施</span></div>
-            <div class="col-md-11">
-                <ul class="select-item facilities">
-                    <li class="selected"><a href="javascript:;">不限</a> </li>
-                    <li><a href="javascript:;">免费停车</a> </li>
-                    <li><a href="javascript:;">会议室</a> </li>
-                    <li><a href="javascript:;">中餐厅</a> </li>
-                    <li><a href="javascript:;">西餐厅</a> </li>
-                    <li><a href="javascript:;">免费停车</a> </li>
-                    <li><a href="javascript:;">会议室</a> </li>
-                    <li><a href="javascript:;">中餐厅</a> </li>
-                    <li><a href="javascript:;">西餐厅</a> </li>
-                    <li><a href="javascript:;">免费停车</a> </li>
-                    <li><a href="javascript:;">会议室</a> </li>
-                    <li><a href="javascript:;">中餐厅</a> </li>
-                    <li><a href="javascript:;">西餐厅</a> </li>
-                    <li><a href="javascript:;">免费停车</a> </li>
-                    <li><a href="javascript:;">会议室</a> </li>
-                    <li><a href="javascript:;">中餐厅</a> </li>
-                    <li><a href="javascript:;">西餐厅</a> </li>
-                    <li><a href="javascript:;">免费停车</a> </li>
-                    <li><a href="javascript:;">会议室</a> </li>
-                    <li><a href="javascript:;">中餐厅</a> </li>
-                    <li><a href="javascript:;">西餐厅</a> </li>
-                    <li><a href="javascript:;">免费停车</a> </li>
-                    <li><a href="javascript:;">会议室</a> </li>
-                    <li><a href="javascript:;">中餐厅</a> </li>
-                    <li><a href="javascript:;">西餐厅</a> </li>
-                    <li><a href="javascript:;">免费停车</a> </li>
-                    <li><a href="javascript:;">会议室</a> </li>
-                    <li><a href="javascript:;">中餐厅</a> </li>
-                    <li><a href="javascript:;">西餐厅</a> </li>
-                    <li><a href="javascript:;">免费停车</a> </li>
-                    <li><a href="javascript:;">会议室</a> </li>
-                    <li><a href="javascript:;">中餐厅</a> </li>
-                    <li><a href="javascript:;">西餐厅</a> </li>
-                </ul>
-                <div class="text-center"><button type="button" class="more">展开</button> </div>
+    </div>
+    <div class="filter-container">
+        <div class="container">
+            <div class="row filter-item">
+                <div class="col-md-1 text-center"><span class="title">位置</span> </div>
+                <div class="col-md-11">
+                    <ul class="select-item area">
+                        <li class="selected"><a href="javascript:;">不限</a><input type="radio" value="" name="county" style="display:none;" /> </li>
+                        <li><a href="javascript:;">黄埔区</a><input type="radio" value="" name="county" style="display:none;" />  </li>
+                        <li><a href="javascript:;">浦东区</a><input type="radio" value="" name="county" style="display:none;" />  </li>
+                        <li><a href="javascript:;">普陀区</a><input type="radio" value="" name="county" style="display:none;" />  </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row filter-item">
+                <div class="col-md-1 text-center"><span class="title">星级</span></div>
+                <div class="col-md-11">
+                    <ul class="select-item starValue">
+                        <li class="selected"><a href="javascript:;">不限</a><input type="radio" value="" name="star" style="display:none;" /> </li>
+                        <li><a href="javascript:;">超五星/奢华型</a><input type="radio" value="6" name="star" style="display:none;" />  </li>
+                        <li><a href="javascript:;">五星级/豪华型</a><input type="radio" value="5" name="star" style="display:none;" /> </li>
+                        <li><a href="javascript:;">四星级/高档型</a><input type="radio" value="4" name="star" style="display:none;" /> </li>
+                        <li><a href="javascript:;">三星级/舒适型</a><input type="radio" value="3" name="star" style="display:none;" /> </li>
+                        <li><a href="javascript:;">二星级/经济型</a><input type="radio" value="2" name="star" style="display:none;" /> </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row filter-item">
+                <div class="col-md-1 text-center"><span class="title">设施</span></div>
+                <div class="col-md-11">
+                    <ul class="select-item facilities">
+                        <li class="selected"><a href="javascript:;">不限</a><input type="checkbox" value="" name="facilities" style="display:none;" /> </li>
+                        <li><a href="javascript:;">免费停车场</a><input type="checkbox" value="免费停车场" name="facilities" style="display:none;" /> </li>
+                        <li><a href="javascript:;">会议室</a><input type="checkbox" value="会议室" name="facilities" style="display:none;" /> </li>
+                        <li><a href="javascript:;">游泳池</a><input type="checkbox" value="游泳池" name="facilities" style="display:none;" /> </li>
+                        <li><a href="javascript:;">健身房</a><input type="checkbox" value="健身房" name="facilities" style="display:none;" /> </li>
+                        <li><a href="javascript:;">高尔夫</a><input type="checkbox" value="高尔夫" name="facilities" style="display:none;" /> </li>
+                        <li><a href="javascript:;">温泉</a><input type="checkbox" value="温泉" name="facilities" style="display:none;" /> </li>
+                        <li><a href="javascript:;">SPA</a><input type="checkbox" value="SPA" name="facilities" style="display:none;" /> </li>
+                        <li><a href="javascript:;">酒吧</a><input type="checkbox" value="酒吧" name="facilities" style="display:none;" /> </li>
+                        <li><a href="javascript:;">棋牌室</a><input type="checkbox" value="棋牌室" name="facilities" style="display:none;" /> </li>
+                        <li><a href="javascript:;">机场接送</a><input type="checkbox" value="机场接送" name="facilities" style="display:none;" /> </li>
+                        <li><a href="javascript:;">穿梭机场巴士</a><input type="checkbox" value="穿梭机场巴士" name="facilities" style="display:none;" /> </li>
+                        <li><a href="javascript:;">无障碍设施</a><input type="checkbox" value="无障碍设施" name="facilities" style="display:none;" /> </li>
+                        <li><a href="javascript:;">允许携带宠物</a><input type="checkbox" value="允许携带宠物" name="facilities" style="display:none;" /> </li>
+                    </ul>
+                    <div class="text-center"><button type="button" class="more">展开</button> </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="search-message">
-    <div class="container" style="padding:0px;">
-        <h4>上海：共<span>200</span>住宿-<span class="red">3</span>家住宿符合条件 </h4>
-        <div class="sort">
-            <ul>
-                <li><a href="javascript:;">热门推荐 <span class="fa fa-caret-down"></span></a> </li>
-                <li><a href="javascript:;">价格从低到高</a></li>
-                <li><a href="javascript:;">按评分和价格</a></li>
-                <li><a href="javascript:;">评分</a></li>
-            </ul>
+    <div class="search-message">
+        <div class="container" style="padding:0px;">
+            <h4>@ViewBag.SearchParams.city：共<span>@Model.TotalItemCount</span>住宿符合条件 </h4>
+            <div class="sort">
+                <ul>
+                    <li class="selected"><a href="javascript:;">热门推荐 <span class="fa fa-caret-down"></span></a> <input type="radio" value="1" name="sortHot" style="display:none;" /></li>
+                    <li><a href="javascript:;">价格从低到高 <span class="fa fa-caret-down"></span><input type="radio" value="1" name="sortPrice" style="display:none;" /></a></li>
+                    <li><a href="javascript:;">评分 <span class="fa fa-caret-down"></span></a> <input type="radio" value="1" name="sortScore" style="display:none;" /></li>
+                </ul>
+            </div>
         </div>
     </div>
-</div>
+}
+
 <div id="HotelList">
     @Html.Partial("_HotelList", Model);
 </div>
@@ -363,6 +440,7 @@
 <script type="text/javascript" src="~/Scripts/assets/plugins/bootstrap-daterangepicker-master/moment.js"></script>
 <script type="text/javascript" src="~/Scripts/assets/plugins/bootstrap-daterangepicker-master/daterangepicker.js"></script>
 <script type="text/javascript" src="~/Scripts/assets/plugins/bootstrap-daterangepicker-master/language.js"></script>
+<script type="text/javascript" src="~/Scripts/cityTemplate.js"></script>
 <script>
     var current = moment();
     var s = moment("@ViewBag.SearchParams.start");
@@ -398,6 +476,93 @@
             else {
                 $(this).removeClass("active");
             }
+        });
+
+        $(".facilities li").click(function () {
+            var ck = $(this).find("input");
+            if ($(this).hasClass("selected")) {
+                ck.prop('checked', false);
+                $(this).removeClass("selected")
+            }
+            else {
+                ck.prop('checked', true);
+                $(this).addClass("selected")
+            }
+            $("#search").submit();
+        })
+        $(".area li,.starValue li,.sort li").click(function () {
+            $(this).parent().find("li").removeClass("selected")
+            var ck = $(this).find("input");
+            if ($(this).hasClass("selected")) {
+                ck.prop('checked', false);
+                $(this).removeClass("selected")
+            }
+            else {
+                ck.prop('checked', true);
+                $(this).addClass("selected")
+            }
+            $("#search").submit();
+        })
+        $.get("/Partial/GetCityData", function (data) {
+
+            var cityData = [];
+            $.each(data, function (i, v) {
+                cityData.push(v.value);
+            });
+
+            inCity.allCity = cityData;
+            var citys = inCity.allCity, match, letter,
+            regEx = inCity.regEx,
+            reg2 = /^[a-z]$/i;
+            if (!inCity.oCity) {
+                inCity.oCity = { hot: {}, ABCDEFG: {}, HIJKL: {}, MNOPQRST: {}, WXYZ: {} };
+                //console.log(citys.length);
+                for (var i = 0, n = citys.length; i < n; i++) {
+                    match = regEx.exec(citys[i]); //exec
+                    letter = match[3].toUpperCase(); //转换字母为大写
+
+                    if (reg2.test(letter)) { //test检测一个字符串是否匹配某个模式
+                        if (!inCity.oCity.ABCDEFG[letter]) inCity.oCity.ABCDEFG[letter] = [];
+                        inCity.oCity.ABCDEFG[letter].push(match[1]);
+                    } else if (reg3.test(letter)) {
+                        if (!inCity.oCity.HIJKL[letter]) inCity.oCity.HIJKL[letter] = [];
+                        inCity.oCity.HIJKL[letter].push(match[1]);
+                    } else if (reg4.test(letter)) {
+                        if (!inCity.oCity.MNOPQRST[letter]) inCity.oCity.MNOPQRST[letter] = [];
+                        inCity.oCity.MNOPQRST[letter].push(match[1]);
+                    } else if (reg5.test(letter)) {
+                        if (!inCity.oCity.WXYZ[letter]) inCity.oCity.WXYZ[letter] = [];
+                        inCity.oCity.WXYZ[letter].push(match[1]);
+                    }
+                }
+                /* 热门城市 页面固定JS数据 */
+                for (var i = 0, n = inCity.hotCitys.length; i < n; i++) {
+                    match = regEx.exec(inCity.hotCitys[i]); //exec
+                    if (!inCity.oCity.hot['hot']) inCity.oCity.hot['hot'] = [];
+                    inCity.oCity.hot['hot'].push(match[1]);
+                }
+            }
+            var cityA = $(".city_a_le1 a"); //城市
+            var pla = $("#place");  //出发地
+            // 默认值
+            inCity.width = "700";  //城市选择框  宽
+            inCity.height = "auto";  //城市选择框  高
+            inCity.id = "#in_city";  //城市选择框  父级ID
+            inCity.Children = '.city_a_le1';  //城市名box
+            // 初始化 城市HTML模板
+            $(inCity.id).prepend(inCity._template.join(''));
+            inCity.Hot(cityA);
+
+            //城市 导航
+            var apay = $(".screen a");
+
+            var placeThis; //当前选择标签
+            apay.click(function (obj) {  //城市导航
+                inCity.payment($(this));
+            })
+
+            inCity.place(pla); //出发地
+            inCity.cityClick(cityA); //显示赋值城市
         });
 
     });

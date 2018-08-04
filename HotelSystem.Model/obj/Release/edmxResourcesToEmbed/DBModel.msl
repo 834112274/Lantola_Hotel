@@ -51,6 +51,8 @@
           <ScalarProperty Name="ProvinceID" ColumnName="ProvinceID" />
           <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
           <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+          <ScalarProperty Name="PY" ColumnName="PY" />
+          <ScalarProperty Name="PinYin" ColumnName="PinYin" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

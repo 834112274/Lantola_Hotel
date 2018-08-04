@@ -297,6 +297,8 @@
     <Property Name="ProvinceID" Type="bigint" Nullable="false" />
     <Property Name="DateCreated" Type="datetime" Nullable="true" />
     <Property Name="DateUpdated" Type="datetime" Nullable="true" />
+    <Property Name="PY" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="PinYin" Type="nvarchar" Nullable="true" MaxLength="120" />
   </EntityType>
   <EntityType Name="District">
     <Key>

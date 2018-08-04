@@ -397,6 +397,16 @@
     <NavigationProperty Name="HotelInfo" Relationship="DBModel.FK_CityHotelInfo" FromRole="City" ToRole="HotelInfo" />
     <NavigationProperty Name="Invoice" Relationship="DBModel.CityInvoice" FromRole="City" ToRole="Invoice" />
     <NavigationProperty Name="Company" Relationship="DBModel.CityCompany" FromRole="City" ToRole="Company" />
+    <Property Name="PY" Type="String" MaxLength="20">
+      <Documentation>
+        <Summary>拼音缩写</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="PinYin" Type="String" MaxLength="120">
+      <Documentation>
+        <Summary>全拼</Summary>
+      </Documentation>
+    </Property>
   </EntityType>
   <EntityType Name="District">
     <Key>
@@ -2812,4 +2822,11 @@
     <End Type="DBModel.GuestUser" Role="GuestUser" Multiplicity="0..1" />
     <End Type="DBModel.Company" Role="Company" Multiplicity="0..1" />
   </Association>
+  <EnumType Name="Star">
+    <Member Name="二星级_经济型" Value="2" />
+    <Member Name="三星级_舒适型" Value="3" />
+    <Member Name="四星级_高档型" Value="4" />
+    <Member Name="五星级_豪华型" Value="5" />
+    <Member Name="超五星_奢华型" Value="6" />
+  </EnumType>
 </Schema>
