@@ -110,9 +110,10 @@ namespace HotelSystem.Web.Areas.Hotel.Controllers
         [Login(Area = "Hotel", Role = "hotel")]
         public ActionResult Policy()
         {
-            ViewBag.Policy0 = DbContext.Policy.Where(p => p.Type == 0);
-            ViewBag.Policy1 = DbContext.Policy.Where(p => p.Type == 1);
-            ViewBag.Policy2 = DbContext.Policy.Where(p => p.Type == 2);
+            ViewBag.Policy0 = DbContext.Policy.Where(p => p.Type == 1);
+            ViewBag.Policy1 = DbContext.Policy.Where(p => p.Type == 2);
+            ViewBag.Policy2 = DbContext.Policy.Where(p => p.Type == 3);
+            ViewBag.HotelPolicy= DbContext.HotelPolicy.Where(m=>m.HotelInfoId== SessionInfo.hotelUser.HotelInfoId).ToList();
             var s = DbContext.HotelInfo.Where(p => p.Id == SessionInfo.hotelUser.HotelInfoId).First().HotelService;
             if (s == null)
             {

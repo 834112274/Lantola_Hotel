@@ -286,7 +286,7 @@ namespace HotelSystem.Web.Areas.Hotel.Controllers
                 {
                     occ += t.Name + "/";
                 }
-                occ.TrimEnd('/');
+                occ=occ.TrimEnd('/');
                 row.CreateCell(7).SetCellValue(occ);
 
                 row.CreateCell(8).SetCellValue(ExportData[i].StartTime.ToString("yyyy-MM-dd"));

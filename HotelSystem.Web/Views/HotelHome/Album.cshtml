@@ -58,26 +58,34 @@
         right: 80px;
         top: 70px;
     }
+    .prev-img{
+        font-size:120px;color:#fff;float:left;margin-top:350px;cursor:pointer;
+    }
+    .next-img{
+        font-size:120px;color:#fff;float:right;margin-top:350px;cursor:pointer;
+    }
 </style>
-<div class="album-container">
+<div class="album-container" style="overflow-x:hidden;overflow-y:auto;">
 
     <div class="container-fluid">
         <div class="row" id="album">
             @foreach (var image in Model)
             {
-                <div class="col-md-2 item">
+                <div class="col-md-2 item" data-id="@image.Id">
 
-                    <div class="img-item">
+                    <div class="img-item" >
 
-                        <img src="@image.Url" alt="...">
+                        <img src="@image.Url" alt="..." data-id="@image.Id">
                     </div>
                 </div>
             }
         </div>
     </div>
-    <span class="album-close"><i class="fa fa-times-circle-o"></i></span>
+    <span class="album-close" data-top="true"><i class="fa fa-times-circle-o"></i></span>
     <div id="LightBox" class="light-box">
-        <img src="" alt="...">
+        <img src="" id="preview" alt="..." data-id="">
+        <i class="fa fa-angle-left prev-img"></i>
+        <i class="fa fa-angle-right next-img"></i>
         <span class="album-close"><i class="fa fa-times-circle-o"></i></span>
     </div>
 </div>
@@ -91,12 +99,16 @@
             $("#album").masonry();
         });
         $("#album").on("click", "img", function () {
-            $("#LightBox img").attr("src", $(this).attr("src"));
+            $("#preview").attr("src", $(this).attr("src")).data("id",$(this).data("id"));
             $("#LightBox").show();
         });
         $(".album-close").click(function () {
             $(this).parent().hide();
             $(this).prev().css("height", "auto");
+            //$(document.body).css("overflow", "hidden");
+            if ($(this).data("top")) {
+                $(document.body).css("overflow", "auto");
+            }
         });
         var img = $("#LightBox img");
 
@@ -112,5 +124,25 @@
 
             $(this).css("height", newHeight);
         })
+        $(".prev-img").click(function () {
+            var id = $("#preview").data("id");
+            var img = $(".item[data-id='" + id + "']").prev().find("img");
+            if (img.length==0) {
+                img = $(".item").eq(0).find("img");
+            }
+            var newId = img.data("id");
+            var src = img.attr("src");
+            $("#preview").attr("src", src).data("id", newId);
+        });
+        $(".next-img").click(function () {
+            var id = $("#preview").data("id");
+            var img = $(".item[data-id='" + id + "']").next().find("img");
+            if (img.length == 0) {
+                img = $(".item").eq(0).find("img");
+            }
+            var newId = img.data("id");
+            var src = img.attr("src");
+            $("#preview").attr("src", src).data("id", newId);
+        });
     });
 </script>

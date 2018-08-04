@@ -101,9 +101,9 @@ namespace HotelSystem.Web.Controllers
 
             //酒店设施
             var p = (from m in DbContext.HotelPolicy where m.HotelInfoId == id select m.Policy).ToList();
-            ViewBag.Policy0 = p.Where(m => m.Type == 0);
-            ViewBag.Policy1 = p.Where(m => m.Type == 1);
-            ViewBag.Policy2 = p.Where(m => m.Type == 2);
+            ViewBag.Policy0 = p.Where(m => m.Type == 1);
+            ViewBag.Policy1 = p.Where(m => m.Type == 2);
+            ViewBag.Policy2 = p.Where(m => m.Type == 3);
 
             if (Hotel.HotelService == null)
             {
@@ -164,9 +164,9 @@ namespace HotelSystem.Web.Controllers
             @ViewBag.Hotel = h;
             //酒店设施
             var p = (from m in DbContext.HotelPolicy where m.HotelInfoId == id select m.Policy).ToList();
-            ViewBag.Policy0 = p.Where(m => m.Type == 0);
-            ViewBag.Policy1 = p.Where(m => m.Type == 1);
-            ViewBag.Policy2 = p.Where(m => m.Type == 2);
+            ViewBag.Policy0 = p.Where(m => m.Type == 1);
+            ViewBag.Policy1 = p.Where(m => m.Type == 2);
+            ViewBag.Policy2 = p.Where(m => m.Type == 3);
 
             if (h.HotelService == null)
             {
@@ -175,6 +175,10 @@ namespace HotelSystem.Web.Controllers
             else
             {
                 ViewBag.Service = h.HotelService;
+            }
+            if (h.Conference == null)
+            {
+                return View(new Conference());
             }
             return View(h.Conference);
         }

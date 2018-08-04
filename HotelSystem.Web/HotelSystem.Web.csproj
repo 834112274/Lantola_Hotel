@@ -454,6 +454,7 @@
     <Content Include="Scripts\assets\plugins\xcharts\css\xcharts.min.css" />
     <Content Include="Scripts\assets\plugins\xcharts\js\xcharts.min.js" />
     <Content Include="Scripts\city.cascading.js" />
+    <Content Include="Scripts\cityTemplate.js" />
     <Content Include="Scripts\collection.js" />
     <Content Include="Scripts\Home\index.css" />
     <Content Include="Scripts\Hotel\Css\header.css" />

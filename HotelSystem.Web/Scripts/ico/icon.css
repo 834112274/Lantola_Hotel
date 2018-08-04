@@ -10,7 +10,7 @@
 
 */
 
-.sprite {display:inline-block; overflow:hidden; background-repeat: no-repeat;background-image:url(ico.png);}
+.sprite {display:inline-block; overflow:hidden; background-repeat: no-repeat;background-image:url(/Scripts/ico/icon.png);}
 
 .L001 {width:24px; height:24px; background-position: -86px -152px}
 .L002 {width:22px; height:24px; background-position: -26px -176px}

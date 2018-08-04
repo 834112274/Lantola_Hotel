@@ -84,8 +84,10 @@ namespace HotelSystem.Web.Controllers
         {
             return View();
         }
-        public ActionResult Search(HotelView hotelView)
+        public ActionResult Search(HotelView hotelView,string city)
         {
+            var c = DbContext.City.ToList();
+            ViewBag.City = c;
             ViewBag.SearchParams = hotelView;
             var hotels = hotelView.Search();
             if (Request.IsAjaxRequest())

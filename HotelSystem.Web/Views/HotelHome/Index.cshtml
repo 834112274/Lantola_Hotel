@@ -4,8 +4,19 @@
     Layout = "~/Views/Shared/_LayoutHotel.cshtml";
 }
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=8yxhCfYtFgbKfFGFzLe0tuQNMz2xScIT"></script>
-
+<link href='~/Scripts/ico/icon.css' rel='stylesheet' type='text/css' />
 <style>
+    .icon{
+        padding-left:60px;
+    }
+    .icon span, .icon i {
+        /*line-height:30px;*/
+        /*float:left;*/
+        vertical-align: middle;
+    }
+    .icon span {
+        margin-left:6px;
+    }
     .slide-img {
         height: 100%;
     }
@@ -563,12 +574,12 @@
         <div class="item-box">
             <div class="row">
                 <div class="item-row">
-                    <span class="col-lg-2 col-md-2 col-sm-12"> 通用项目： </span>
-                    <div class="col-lg-10 col-md-10">
+                    <span class="col-md-1"> 通用项目： </span>
+                    <div class="col-md-11 icon">
 
                         @foreach (var p in ViewBag.Policy0)
                         {
-                            <img style="height:30px;" src="@p.Icon" alt="..."> @p.Name
+                            <i class="sprite @p.Icon"></i><span>@p.Name</span>
                         }
                     </div>
                 </div>
@@ -576,12 +587,12 @@
 
             <div class="row">
                 <div class="item-row">
-                    <span class="col-lg-2 col-md-2 col-sm-12"> 服务项目： </span>
-                    <div class="col-lg-10 col-md-10">
+                    <span class="col-md-1"> 服务项目： </span>
+                    <div class="col-md-11 icon">
 
                         @foreach (var p in ViewBag.Policy1)
                         {
-                            <img style="height:30px;" src="@p.Icon" alt="..."> @p.Name
+                            <i class="sprite @p.Icon"></i><span>@p.Name</span>
                         }
                     </div>
                 </div>
@@ -589,12 +600,12 @@
 
             <div class="row">
                 <div class="item-row">
-                    <span class="col-lg-2 col-md-2 col-sm-12"> 客房设施： </span>
-                    <div class="col-lg-10 col-md-10">
+                    <span class="col-md-1"> 客房设施： </span>
+                    <div class="col-md-11 icon">
 
                         @foreach (var p in ViewBag.Policy2)
                         {
-                            <img style="height:30px;" src="@p.Icon" alt="..."> @p.Name
+                            <i class="sprite @p.Icon"></i><span>@p.Name</span>
                         }
                     </div>
                 </div>

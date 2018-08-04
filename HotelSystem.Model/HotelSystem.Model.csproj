@@ -199,6 +199,9 @@
     <Compile Include="Smokeless.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Star.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Stock.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>

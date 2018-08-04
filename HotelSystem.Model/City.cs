@@ -57,6 +57,16 @@ namespace HotelSystem.Model
         /// </summary>
     	[DisplayName( "" )]
         public Nullable<System.DateTime> DateUpdated { get; set; }
+    	/// <summary>
+        /// 拼音缩写
+        /// </summary>
+    	[DisplayName( "拼音缩写" )]
+        public string PY { get; set; }
+    	/// <summary>
+        /// 全拼
+        /// </summary>
+    	[DisplayName( "全拼" )]
+        public string PinYin { get; set; }
     
         public virtual Province Province { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -6,7 +6,8 @@ namespace HotelSystem.Web.Controllers
 {
     public class PartialController : Controller
     {
-        DBModelContainer DbContext = new DBModelContainer();
+        private DBModelContainer DbContext = new DBModelContainer();
+
         // GET: Partial
         public ActionResult Province()
         {
@@ -30,6 +31,12 @@ namespace HotelSystem.Web.Controllers
         public ActionResult Demo()
         {
             return View();
+        }
+
+        public ActionResult GetCityData()
+        {
+            var citys = DbContext.City.Select(m => new { value = m.CityName + "|" + m.PinYin + "|" + m.PY }).ToList();
+            return Json(citys,JsonRequestBehavior.AllowGet);
         }
     }
 }

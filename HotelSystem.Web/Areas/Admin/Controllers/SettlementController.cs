@@ -375,7 +375,7 @@ namespace HotelSystem.Web.Areas.Admin.Controllers
                 {
                     Occupant += t.Name + "/";
                 }
-                Occupant.TrimEnd('/');
+                Occupant=Occupant.TrimEnd('/');
                 row.CreateCell(7).SetCellValue(Occupant);
 
                 row.CreateCell(8).SetCellValue(ExportData[i].StartTime.ToString("yyyy-MM-dd"));

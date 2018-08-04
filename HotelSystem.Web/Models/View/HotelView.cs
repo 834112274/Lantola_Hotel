@@ -11,6 +11,9 @@ namespace HotelSystem.Web.Models.View
         public HotelInfo hotelInfo;
         public double minPrice;
         public double maxPrice;
+        public double score;
+        public int commentCount;
+        public List<Policy> policy;
 
         /// <summary>
         /// 省份
@@ -30,7 +33,7 @@ namespace HotelSystem.Web.Models.View
         /// <summary>
         /// 酒店设施
         /// </summary>
-        public string facilities { get; set; }
+        public List<string> facilities { get; set; }
 
         /// <summary>
         /// 搜索关键字（地址OR名称）
@@ -61,6 +64,18 @@ namespace HotelSystem.Web.Models.View
         /// 页大小
         /// </summary>
         public int pageSize { get; set; }
+        /// <summary>
+        /// 评分排序
+        /// </summary>
+        public string sortScore { get; set; }
+        /// <summary>
+        /// 价格排序
+        /// </summary>
+        public string sortPrice { get; set; }
+        /// <summary>
+        /// 热门排序
+        /// </summary>
+        public string sortHot { get; set; }
 
         public HotelView()
         {
@@ -69,6 +84,7 @@ namespace HotelSystem.Web.Models.View
             start = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd"));
             end = start.AddDays(1);
             hotelInfo = new HotelInfo();
+            city = "上海";
         }
 
         public static List<RoomView> GetRooms(string id, DateTime start, DateTime end)
@@ -190,12 +206,16 @@ namespace HotelSystem.Web.Models.View
                             select m;
                 }
                 //设施
-                if (!string.IsNullOrEmpty(facilities))
+                if (facilities!=null&& facilities.Count>0)
                 {
+                   
+                    var ids = from m in DbContext.Policy where facilities.Contains(m.Name) select m.Id;
+                    var hotels = (from m in DbContext.HotelPolicy where ids.Contains(m.PolicyId) select m.HotelInfoId).Distinct();
                     hotel = from m in hotel
-                            where m.HotelPolicy.Where(t => facilities.Contains(t.Value)).Count() > 0
+                            where hotels.Contains(m.Id)
                             select m;
                 }
+                
                 //入住退房日期
                 if (start > DateTime.Now.AddDays(-1))
                 {
@@ -213,16 +233,55 @@ namespace HotelSystem.Web.Models.View
                                group m by m.id into g
                                select new { id = g.Key, min = g.Min(t => t.min), max = g.Max(t => t.max) };
 
+                    var hotelIds = from m in hotel select m.Id;
+                    var policy = (from m in DbContext.HotelPolicy where hotelIds.Contains(m.HotelInfoId) select new { id=m.HotelInfoId, m.Policy } ).ToList();
+                    
                     var hv = from m in hotel.ToList()
                              join r in room.ToList() on m.Id equals r.id
                              select new HotelView()
                              {
                                  hotelInfo = m,
                                  maxPrice = r.max,
-                                 minPrice = r.min
+                                 minPrice = r.min,
+                                 policy= policy.Where(p => p.id == m.Id).Select(p=> p.Policy).ToList(),
                              };
-
-                    return hv.OrderByDescending(m => m.minPrice).ToPagedList(pageIndex, pageSize);
+                    //得分
+                    var scores = (from m in DbContext.Score group m by m.HotelInfoId into g select new { g.Key, score = g.Average(m => m.Value) }).ToList();
+                    foreach(var s in scores)
+                    {
+                        var h= hv.Where(m => m.hotelInfo.Id == s.Key);
+                        if (h.Count() > 0)
+                        {
+                            h.First().score = s.score;
+                        }
+                    }
+                    //评论数
+                    var comments= (from m in DbContext.Comment group m by m.Order.HotelInfoId into g select new { g.Key, value = g.Count() }).ToList();
+                    foreach (var s in comments)
+                    {
+                        var h = hv.Where(m => m.hotelInfo.Id == s.Key);
+                        if (h.Count() > 0)
+                        {
+                            h.First().commentCount = s.value;
+                        }
+                    }
+                    
+                    bool isSort = false;
+                    if (!string.IsNullOrEmpty( sortPrice))
+                    {
+                        hv = hv.OrderBy(m => m.minPrice);
+                        isSort = true;
+                    }
+                    if (!string.IsNullOrEmpty(sortScore))
+                    {
+                        hv = hv.OrderByDescending(m => m.score);
+                        isSort = true;
+                    }
+                    if (!isSort)
+                    {
+                        hv = hv.OrderByDescending(m => m.commentCount);
+                    }
+                    return hv.ToPagedList(pageIndex, pageSize);
                 }
                 else
                 {

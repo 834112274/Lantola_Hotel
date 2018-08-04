@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 08/01/2018 19:48:14
+-- Date Created: 08/04/2018 21:56:49
 -- Generated from EDMX file: G:\Github\Lantola\HotelSystem.Model\DBModel.edmx
 -- --------------------------------------------------
 
@@ -354,7 +354,9 @@ CREATE TABLE [dbo].[City] (
     [ZipCode] nvarchar(50)  NULL,
     [ProvinceID] bigint  NOT NULL,
     [DateCreated] datetime  NULL,
-    [DateUpdated] datetime  NULL
+    [DateUpdated] datetime  NULL,
+    [PY] nvarchar(20)  NULL,
+    [PinYin] nvarchar(120)  NULL
 );
 GO
 
