@@ -23,7 +23,7 @@ namespace Com.Alipay
         public static string merchant_public_key = System.Web.Configuration.WebConfigurationManager.AppSettings["merchant_public_key"];
 
         //应用ID
-        public static string appId = System.Web.Configuration.WebConfigurationManager.AppSettings["appId"];
+        public static string appId = System.Web.Configuration.WebConfigurationManager.AppSettings["alipayappId"];
 
         //合作伙伴ID：partnerID
         public static string pid = System.Web.Configuration.WebConfigurationManager.AppSettings["pid"];

@@ -1,0 +1,5 @@
+2018-08-06 16:00:03.001 INFO NativePay: Native pay mode 2 url is producing...
+2018-08-06 16:00:03.011 DEBUG WxPayApi: UnfiedOrder request : <xml><appid><![CDATA[]]></appid><attach><![CDATA[test]]></attach><body><![CDATA[Lantola酒店预订]]></body><goods_tag><![CDATA[hotel]]></goods_tag><mch_id><![CDATA[1507219281]]></mch_id><nonce_str><![CDATA[e3df0d058ad040ef9a273be99c64023c]]></nonce_str><notify_url><![CDATA[http://www.Lantola.com:8099/Pay/WxNotify]]></notify_url><out_trade_no><![CDATA[118080621353]]></out_trade_no><product_id><![CDATA[17883b1f-2b31-4674-9eaf-fd573f5bff13]]></product_id><sign><![CDATA[EFC14213110C81CA0D540E767E7D54F0]]></sign><spbill_create_ip><![CDATA[58.246.98.30]]></spbill_create_ip><time_expire><![CDATA[20180806161003]]></time_expire><time_start><![CDATA[20180806160003]]></time_start><total_fee><![CDATA[102400]]></total_fee><trade_type><![CDATA[NATIVE]]></trade_type></xml>
+2018-08-06 16:00:03.280 DEBUG WxPayApi: UnfiedOrder response : <xml><return_code><![CDATA[FAIL]]></return_code>
+<return_msg><![CDATA[appid参数长度有误]]></return_msg>
+</xml>

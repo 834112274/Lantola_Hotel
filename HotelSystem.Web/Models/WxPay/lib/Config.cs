@@ -16,7 +16,7 @@ namespace WxPayAPI
         * KEY：商户支付密钥，参考开户邮件设置（必须配置）
         * APPSECRET：公众帐号secert（仅JSAPI支付的时候需要配置）
         */
-        public static string APPID = System.Web.Configuration.WebConfigurationManager.AppSettings["APPID"];
+        public static string APPID = System.Web.Configuration.WebConfigurationManager.AppSettings["WXAPPID"];
         public static string MCHID = System.Web.Configuration.WebConfigurationManager.AppSettings["MCHID"];
         public static string KEY = System.Web.Configuration.WebConfigurationManager.AppSettings["KEY"];
         public static string APPSECRET = System.Web.Configuration.WebConfigurationManager.AppSettings["APPSECRET"];
