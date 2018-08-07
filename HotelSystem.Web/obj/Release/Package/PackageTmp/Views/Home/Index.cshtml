@@ -169,11 +169,17 @@
         <div class="tag-content">
             @foreach (var item in ViewBag.Feature)
             {
+
                 <div class="content" id="@item.Id">
 
                     @{
-
+                        List<FeatureHotel> hs = new List<FeatureHotel>();
                         foreach (var hotel in item.FeatureHotel)
+                        {
+                            hs.Add(hotel);
+                        }
+                        var sortHotel = hs.OrderBy(m => m.Sort);
+                        foreach (var hotel in sortHotel)
                         {
                             <a class="item" href="/HotelHome/Index/@hotel.HotelInfoId" target="_blank">
                                 <div class="item-content" style="background:url(@hotel.ImgUrl) no-repeat;background-size:cover;background-position:center;">
@@ -199,37 +205,47 @@
 
             foreach (var item in ViewBag.Tag)
             {
+
                 <div class="tag-title">
                     <p><span>@item.Name</span></p>
                 </div>
 
                 <div class="row">
-                    @foreach (var hotel in item.FeatureHotel)
-                {
-                        <div class="col-sm-3">
-                            <a href="/HotelHome/Index/@hotel.HotelInfoId" class="tag-item" target="_blank">
+                    @{
+                        List<FeatureHotel> hs = new List<FeatureHotel>();
+                        foreach (var hotel in item.FeatureHotel)
+                        {
+                            hs.Add(hotel);
+                        }
+                        var sortHotel = hs.OrderBy(m => m.Sort);
 
-                                <div class="thumbnail">
-                                    <div class="img" style="background:url(@hotel.ImgUrl) no-repeat;background-size:cover;background-position:center;">
-                                    </div>
-                                    <div class="caption">
-                                        <p style="font-size:11px;float:right;margin-top:25px;">￥<span style="font-size:16px;color:#FF5F00;">@hotels.Single(m => m.hotelInfo.Id == hotel.HotelInfo.Id).minPrice</span>起</p>
+                        foreach (var hotel in sortHotel)
+                        {
+                            <div class="col-sm-3">
+                                <a href="/HotelHome/Index/@hotel.HotelInfoId" class="tag-item" target="_blank">
 
-                                        <p class="title">@hotel.Title</p>
-                                        <p class="star">
-                                            @for (var i = 0; i < hotel.HotelInfo.Star; i++)
-                                            {
-                                                <span class="fa fa-star"></span>
-                                            }
-                                        </p>
-                                        <p class="summary">@hotel.Summary</p>
+                                    <div class="thumbnail">
+                                        <div class="img" style="background:url(@hotel.ImgUrl) no-repeat;background-size:cover;background-position:center;">
+                                        </div>
+                                        <div class="caption">
+                                            <p style="font-size:11px;float:right;margin-top:25px;">￥<span style="font-size:16px;color:#FF5F00;">@hotels.Single(m => m.hotelInfo.Id == hotel.HotelInfo.Id).minPrice</span>起</p>
+
+                                            <p class="title">@hotel.Title</p>
+                                            <p class="star">
+                                                @for (var i = 0; i < hotel.HotelInfo.Star; i++)
+                                                {
+                                                    <span class="fa fa-star"></span>
+                                                }
+                                            </p>
+                                            <p class="summary">@hotel.Summary</p>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                        </div>
+                                </a>
+                            </div>
+                        }
                     }
                 </div>
-            }
+                        }
         }
     </div>
 </div>

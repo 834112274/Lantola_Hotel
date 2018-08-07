@@ -367,7 +367,7 @@
       <publishTime>08/04/2018 23:56:44</publishTime>
     </File>
     <File Include="bin/HotelSystem.Web.dll">
-      <publishTime>08/06/2018 16:02:37</publishTime>
+      <publishTime>08/07/2018 16:23:09</publishTime>
     </File>
     <File Include="bin/ICSharpCode.SharpZipLib.dll">
       <publishTime>01/03/2011 14:16:38</publishTime>
@@ -1630,7 +1630,7 @@
       <publishTime>07/17/2018 16:59:35</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>07/18/2018 19:23:09</publishTime>
+      <publishTime>08/07/2018 16:22:47</publishTime>
     </File>
     <File Include="Views/Home/Search.cshtml">
       <publishTime>08/04/2018 23:15:20</publishTime>
@@ -1798,7 +1798,7 @@
       <publishTime>07/17/2018 16:59:35</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>08/06/2018 16:02:38</publishTime>
+      <publishTime>08/07/2018 16:23:11</publishTime>
     </File>
   </ItemGroup>
 </Project>
