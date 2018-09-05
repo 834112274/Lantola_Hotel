@@ -156,7 +156,7 @@ namespace HotelSystem.Web.Areas.Admin.Controllers
                 ViewBag.Message = "错误：" + ex.Message;
             }
 
-            return View();
+            return View(company);
         }
     }
 }

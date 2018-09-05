@@ -248,7 +248,7 @@
 <script src="~/Scripts/upload.preview.js"></script>
 <script>
     $(function () {
-        var elem = $("#upload_images").find(".item").eq(0).clone();
+        var elem = $("#upload_images").find(".item:last").clone();
         $("#upload_images").on("change", ".upload-image", function () {
             $(this).next().removeClass("upload-button").addClass("upload-button-remove");
             $(this).next().find("span").removeClass("fa-plus").addClass("fa-trash-o remove");

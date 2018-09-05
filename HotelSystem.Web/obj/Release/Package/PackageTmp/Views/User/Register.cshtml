@@ -83,21 +83,24 @@
                 {
 
                     <input type="text" value="" id="Register_Phone" name="Phone" placeholder="手机号" class="zhuce72" />
-                    <button type="button" id="btn_send_verification">发送验证码</button>
+
                     <div class="h20"></div>
-                    <input type="text" value="" name="verification" placeholder="验证码" class="zhuce73" />
-                    
-                    <div class="h20">*填写Email以便接受活动及订单信息</div>
+                    <div style="position:relative;">
+                        <input type="text" value="" name="verification" placeholder="验证码" class="zhuce73" />
+                        <button type="button" id="btn_send_verification" style="background-color:#fff;border:0px;position:absolute;right:1px;top:1px;height:43px;border-radius:4px;color:#4785FF;">发送验证码</button>
+                    </div>
+
+                    <div class="h20"></div>
 
                     <table>
                         <tr>
 
-                            <td><span class="tbl-txt"><input type="password" id="pass" placeholder="请输入密码" class="zhuce750 input-style" size="30" maxlength="30" name="Password" /></span></td>
+                            <td><span class="tbl-txt"><input type="password" id="pass" placeholder="8-16位 数字、字母或符号" class="zhuce750 input-style" size="30" maxlength="30" name="Password" /></span></td>
                         </tr>
                         <tr>
 
                             <td id="level" class="pw-strength">
-                                <div class="pw-bar"><div class="h21 zc-length"><img src="/Images/zhuce17.png" />长度不够</div></div>
+                                @*<div class="pw-bar"><div class="h21 zc-length"><img src="/Images/zhuce17.png" />长度不够</div></div>*@
                                 <div class="pw-bar-on"></div>
                                 <div class="pw-txt">
                                     <span></span>
@@ -114,9 +117,14 @@
                     <div class="zhuce76">
                         <div class="zhuce78">已是郎拓拉会员请<a class="zhucedenglu">登录</a></div>
                         <input type="submit" value="立即注册" class="zhuce77" />
-                        <a href="/User/CompanyRegister" style="float:right;margin-right:10px;" target="_blank">企业用户注册</a>
+                        <a href="/User/CompanyRegister" style="float:right;margin-right:10px;color:#4785FF;" target="_blank">企业用户注册</a>
                     </div>
-                    <div class="zhuce79"><input id="zhuce791" class="zhuce791" type="checkbox" value="" checked="checked" />点击以上按钮，即表示您已阅读并同意LANTOLA（郎拓拉）的<a href="lantola_about.html">服务条款</a>和<a href="">隐私政策</a></div>
+                    <div class="zhuce79" style="margin-top:20px;">
+                        <input id="zhuce791" class="zhuce791" type="checkbox" value="" checked="checked" />
+                        点击以上按钮，即表示您已阅读并同意LANTOLA（郎拓拉）的
+                        <a href="/Article/Index/Help" target="_blank">服务条款</a>和
+                        <a href="/Article/Index/Safe" target="_blank">隐私政策</a>
+                    </div>
                 }
             </div>
             <div class="zc4"></div>
@@ -168,7 +176,7 @@
         $("#btn_send_verification").text(timeSpan);
         if (timeSpan > 0) {
             setTimeout(function () {
-                timeSpan = timeSpan-1;
+                timeSpan = timeSpan - 1;
                 sentTime(timeSpan);
             }, 1000)
         }
@@ -183,7 +191,7 @@
                 url: "/InsideApi/SendSms",
                 type: "post",
                 dateType: "json",
-                data:{
+                data: {
                     phone: $("#Register_Phone").val()
                 },
                 success: function (r) {
@@ -197,9 +205,9 @@
                     } else {
                         alert(r);
                     }
-                    
+
                 },
-                error:function(e){
+                error: function (e) {
 
                 }
             });

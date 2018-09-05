@@ -55,7 +55,7 @@ namespace HotelSystem.Web.Controllers
             {
                 var order = orders.First();
                 var days = (DateTime.Now - order.StartTime).Days;
-                if (days > 3)
+                if (days < 3)
                 {
                     TempData["message"] = "<strong>取消失败!</strong> 入住前3天内不可取消订单.";
                     return RedirectToAction("Order");
@@ -599,7 +599,18 @@ namespace HotelSystem.Web.Controllers
                 Response.End();
             }
         }
-
+        [Login(Area = "Guest", Role = "guest")]
+        public ActionResult DeleteCollection(string id)
+        {
+            var collection = DbContext.Collection.Where(m => m.HotelInfoId == id && m.GuestUserId == SessionInfo.guestUser.Id);
+            if (collection.Count() > 0)
+            {
+                DbContext.Collection.RemoveRange(collection);
+                DbContext.SaveChanges();
+                
+            }
+            return RedirectToAction("Collection");
+        }
         [Login(Area = "Guest", Role = "guest")]
         public ActionResult Comment(int pageIndex = 1)
         {
@@ -646,22 +657,25 @@ namespace HotelSystem.Web.Controllers
             comment.GuestUserId = SessionInfo.guestUser.Id;
             comment.OrderId = order;
             comment.Images = "";
-
-            foreach (var img in imgs)
+            if (imgs != null)
             {
-                if (!string.IsNullOrEmpty(img))
+                foreach (var img in imgs)
                 {
-                    var tempath = ServerConfig.UserImgRoute + Guid.NewGuid().ToString() + ".jpg";
-                    Stream s = DataHelper.Base64StringToImage(img.Split(',')[1]);
-                    
-                    if (s!=null)
+                    if (!string.IsNullOrEmpty(img))
                     {
-                        ImgHelper.Compress(s, Server.MapPath(tempath), ServerConfig.Level);//压缩保存操作
-                        comment.Images += tempath + ",";
+                        var tempath = ServerConfig.UserImgRoute + Guid.NewGuid().ToString() + ".jpg";
+                        Stream s = DataHelper.Base64StringToImage(img.Split(',')[1]);
+
+                        if (s != null)
+                        {
+                            ImgHelper.Compress(s, Server.MapPath(tempath), ServerConfig.Level);//压缩保存操作
+                            comment.Images += tempath + ",";
+                        }
                     }
                 }
+                comment.Images = comment.Images.TrimEnd(',');
             }
-            comment.Images = comment.Images.TrimEnd(',');
+            
             DbContext.Comment.Add(comment);
             foreach (var s in score)
             {

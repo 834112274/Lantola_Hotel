@@ -533,6 +533,7 @@
     <Content Include="Areas\Admin\Views\UserManage\_CompanyList.cshtml" />
     <Content Include="Areas\Admin\Views\UserManage\_CompanyPage.cshtml" />
     <Content Include="Areas\Admin\Views\UserManage\CompanyExamine.cshtml" />
+    <Content Include="Areas\Hotel\Views\Order\CancelOrder.cshtml" />
     <None Include="Properties\PublishProfiles\Release.pubxml" />
     <Content Include="Scripts\assets\fonts\fontawesome-webfont.woff2" />
     <Content Include="Scripts\assets\plugins\bootstrap-daterangepicker-master\.gitignore" />

@@ -1,4 +1,5 @@
 ﻿using HotelSystem.Model;
+using HotelSystem.Web.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -103,7 +104,33 @@ namespace HotelSystem.Web.Areas.Admin.Controllers
                                  select m).ToList().Select(m => new UserRole() { Id = Guid.NewGuid().ToString(), UsersId = user.Id, MenuId = m.Id, CreateTime = DateTime.Now, UserType = "hotel" }).ToList();
 
                 DbContext.UserRole.AddRange(new_menus);
-                DbContext.SaveChanges();
+                try
+                {
+                    DbContext.SaveChanges();
+                    //短信通知
+                    if (hotel.Valid == 1)
+                    {
+                        string msg = string.Format("尊敬的客户，您申请的酒店入驻管理员已审核通过,登录用户：{0},初始密码：{2},请及时登录修改密码。",
+                                user.Name,
+                                "123456");
+                        SMS.Send(msg, hotel.Phone, 0);
+                    }
+                    else
+                    {
+                        string msg = string.Format("尊敬的客户，您申请的酒店入驻审核未通过,公司名{0}，手机{1}。失败原因：{2}",
+                                hotel.Name,
+                                hotel.Phone,
+                                "管理员太懒，没告知原因");
+                        SMS.Send(msg, hotel.Phone, 0);
+                    }
+                    ViewBag.Message = "审核成功,已短信通知用户";
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.Message = "错误：" + ex.Message;
+                }
+
+                
                 return View("ExamineDetails", hotel);
             }
         }

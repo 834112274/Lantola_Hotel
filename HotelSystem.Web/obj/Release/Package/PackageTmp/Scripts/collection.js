@@ -22,6 +22,8 @@
                         if (r == "true") {
                             t.addClass("disabled");
                             t.text("已收藏该酒店");
+                            alert("收藏成功")
+                            window.location = window.location;
                         } else {
                             alert(r);
                         }

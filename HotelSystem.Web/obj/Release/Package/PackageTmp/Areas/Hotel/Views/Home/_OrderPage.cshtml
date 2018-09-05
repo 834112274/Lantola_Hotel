@@ -39,7 +39,11 @@
                     @if (!string.IsNullOrEmpty(order.CancelRemarks))
                     {<span>(@order.CancelRemarks)</span> }
                 </td>
-                <td>@(order.Payment ? "已支付" : "未支付")</td>
+                <td>
+                    <p>@Enum.GetName(typeof(PayType), Convert.ToInt32(order.PaymentMethod))</p>
+                    <p>@(order.Payment ? "已支付" : "未支付")</p>
+               
+                </td>
                 <td>
                     @if (order.State == "1")
                 {

@@ -31,7 +31,10 @@
                     </p>
                     <p style="color:#808080;">最近预定：无 </p>
                     <p>@m.Remarks </p>
-                    <p><a href="/HotelHome/Index/@m.HotelInfo.Id" class="btn btn-primary" role="button" target="_blank">查看详情</a></p>
+                    <p>
+                        <a href="/HotelHome/Index/@m.HotelInfo.Id" class="btn btn-primary" role="button" target="_blank">查看详情</a>
+                        <a href="/User/DeleteCollection/@m.HotelInfo.Id" class="btn btn-danger" onclick="confirm('确认删除该收藏么？')" role="button">删除</a>
+                    </p>
                 </div>
             </div>
         </div>

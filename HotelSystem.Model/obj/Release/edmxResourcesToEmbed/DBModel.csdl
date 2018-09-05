@@ -2354,7 +2354,7 @@
   <EnumType Name="OrderState">
     <Member Name="已取消" />
     <Member Name="待确认" />
-    <Member Name="用户入住" />
+    <Member Name="已确认" />
     <Member Name="已完成" />
   </EnumType>
   <Association Name="HotelInfoCollection">

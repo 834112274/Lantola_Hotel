@@ -15,7 +15,7 @@ namespace HotelSystem.Model
     {
         已取消 = 0,
         待确认 = 1,
-        用户入住 = 2,
+        已确认 = 2,
         已完成 = 3
     }
 }

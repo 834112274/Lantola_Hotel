@@ -69,14 +69,3 @@ F:\Project\github\Lantola_Hotel\HotelSystem.Model\bin\Debug\zh-Hans\EntityFramew
 F:\Project\github\Lantola_Hotel\HotelSystem.Model\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
 F:\Project\github\Lantola_Hotel\HotelSystem.Model\obj\Debug\HotelSystem.Model.dll
 F:\Project\github\Lantola_Hotel\HotelSystem.Model\obj\Debug\HotelSystem.Model.pdb
-G:\Github\Lantola\HotelSystem.Model\bin\Debug\HotelSystem.Model.dll.config
-G:\Github\Lantola\HotelSystem.Model\bin\Debug\HotelSystem.Model.dll
-G:\Github\Lantola\HotelSystem.Model\bin\Debug\HotelSystem.Model.pdb
-G:\Github\Lantola\HotelSystem.Model\bin\Debug\EntityFramework.dll
-G:\Github\Lantola\HotelSystem.Model\bin\Debug\EntityFramework.SqlServer.dll
-G:\Github\Lantola\HotelSystem.Model\bin\Debug\EntityFramework.xml
-G:\Github\Lantola\HotelSystem.Model\bin\Debug\EntityFramework.SqlServer.xml
-G:\Github\Lantola\HotelSystem.Model\bin\Debug\zh-Hans\EntityFramework.resources.dll
-G:\Github\Lantola\HotelSystem.Model\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
-G:\Github\Lantola\HotelSystem.Model\obj\Debug\HotelSystem.Model.dll
-G:\Github\Lantola\HotelSystem.Model\obj\Debug\HotelSystem.Model.pdb

@@ -1,5 +1,0 @@
-G:\Github\Lantola\alipay-sdk-NET-3.0.2\bin\Debug\AopSdk.dll
-G:\Github\Lantola\alipay-sdk-NET-3.0.2\bin\Debug\AopSdk.pdb
-G:\Github\Lantola\alipay-sdk-NET-3.0.2\obj\Debug\AopSdk.csprojResolveAssemblyReference.cache
-G:\Github\Lantola\alipay-sdk-NET-3.0.2\obj\Debug\AopSdk.dll
-G:\Github\Lantola\alipay-sdk-NET-3.0.2\obj\Debug\AopSdk.pdb

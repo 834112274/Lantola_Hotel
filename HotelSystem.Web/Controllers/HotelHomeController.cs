@@ -131,6 +131,17 @@ namespace HotelSystem.Web.Controllers
             {
                 ViewBag.Login = "false";
             }
+            var logo = from m in DbContext.HotelImages
+                       where m.HotelInfoId == id && m.Type == 0
+                       select m;
+            if (logo.Count() > 0)
+            {
+                ViewBag.Logo = logo.First().Url;
+            }
+            else
+            {
+                ViewBag.Logo = "/Images/lantola-logo.png";
+            }
             return View();
         }
 
@@ -233,7 +244,7 @@ namespace HotelSystem.Web.Controllers
         {
             var images = from m in DbContext.HotelImages
                          where m.HotelInfoId == id && (m.Type == 2 || m.Type == 3)
-                         orderby m.CreateTime descending
+                         orderby m.CreateTime
                          select m;
             return View(images);
         }
@@ -246,8 +257,21 @@ namespace HotelSystem.Web.Controllers
             ViewBag.Airport = g.Where(m => m.Type == 1);
             ViewBag.Train = g.Where(m => m.Type == 2);
             ViewBag.Landmark = g.Where(m => m.Type == 3);
+            
             var Hotel = DbContext.HotelInfo.Single(m => m.Id == id);
+            ViewBag.Hotel = Hotel;
             ViewBag.Adress = Hotel.City.CityName + " " + Hotel.District.DistrictName + " " + Hotel.Adress;
+            var logo = from m in DbContext.HotelImages
+                       where m.HotelInfoId == id && m.Type == 0
+                       select m;
+            if (logo.Count() > 0)
+            {
+                ViewBag.Logo = logo.First().Url;
+            }
+            else
+            {
+                ViewBag.Logo = "/Images/lantola-logo.png";
+            }
             return View();
         }
     }

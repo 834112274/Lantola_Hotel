@@ -375,10 +375,11 @@
                 <div class="col-md-1 text-center"><span class="title">位置</span> </div>
                 <div class="col-md-11">
                     <ul class="select-item area">
-                        <li class="selected"><a href="javascript:;">不限</a><input type="radio" value="" name="county" style="display:none;" /> </li>
-                        <li><a href="javascript:;">黄埔区</a><input type="radio" value="" name="county" style="display:none;" />  </li>
-                        <li><a href="javascript:;">浦东区</a><input type="radio" value="" name="county" style="display:none;" />  </li>
-                        <li><a href="javascript:;">普陀区</a><input type="radio" value="" name="county" style="display:none;" />  </li>
+                        <li class="selected"><a href="javascript:;">不限</a><input type="radio" value="" name="county" style="display:none;" checked /> </li>
+                        @foreach (var d in ViewBag.District)
+                        {
+                            <li><a href="javascript:;">@d.DistrictName</a><input type="radio" value="@d.DistrictName" name="county" style="display:none;" />  </li>
+                        }
                     </ul>
                 </div>
             </div>
@@ -386,7 +387,7 @@
                 <div class="col-md-1 text-center"><span class="title">星级</span></div>
                 <div class="col-md-11">
                     <ul class="select-item starValue">
-                        <li class="selected"><a href="javascript:;">不限</a><input type="radio" value="" name="star" style="display:none;" /> </li>
+                        <li class="selected"><a href="javascript:;">不限</a><input type="radio" value="" name="star" style="display:none;" checked /> </li>
                         <li><a href="javascript:;">超五星/奢华型</a><input type="radio" value="6" name="star" style="display:none;" />  </li>
                         <li><a href="javascript:;">五星级/豪华型</a><input type="radio" value="5" name="star" style="display:none;" /> </li>
                         <li><a href="javascript:;">四星级/高档型</a><input type="radio" value="4" name="star" style="display:none;" /> </li>
@@ -399,7 +400,7 @@
                 <div class="col-md-1 text-center"><span class="title">设施</span></div>
                 <div class="col-md-11">
                     <ul class="select-item facilities">
-                        <li class="selected"><a href="javascript:;">不限</a><input type="checkbox" value="" name="facilities" style="display:none;" /> </li>
+                        <li class="selected" data-unlimited="true"><a href="javascript:;">不限</a> </li>
                         <li><a href="javascript:;">免费停车场</a><input type="checkbox" value="免费停车场" name="facilities" style="display:none;" /> </li>
                         <li><a href="javascript:;">会议室</a><input type="checkbox" value="会议室" name="facilities" style="display:none;" /> </li>
                         <li><a href="javascript:;">游泳池</a><input type="checkbox" value="游泳池" name="facilities" style="display:none;" /> </li>
@@ -461,9 +462,19 @@
         "endDate": e.format('YYYY年MM月DD日'),
         "opens": "center",
         "minDate": current.format('YYYY年MM月DD日'),
+        "maxSpan": {
+            days:7
+        },
         locale: locale
     }, function (start, end, label) {
-        showDefaultDate(this.element, start, end);
+        if (moment(start.format('YYYY-MM-DD')).isSame(end.format('YYYY-MM-DD'))) {
+            alert("日期间隔必须大于或等于1天");
+
+        }
+        else {
+            showDefaultDate(this.element, start, end);
+        }
+        
     });
     $(document).ready(function () {
         $("#user_menu").find("li").removeClass("active");
@@ -480,18 +491,32 @@
 
         $(".facilities li").click(function () {
             var ck = $(this).find("input");
+            
             if ($(this).hasClass("selected")) {
                 ck.prop('checked', false);
                 $(this).removeClass("selected")
+                
             }
             else {
+                if ($(this).find("a").text() != "不限") {
+                    $(this).parent().find("li[data-unlimited='true']").removeClass("selected").find("input").prop('checked', false);
+                    $(this).parent().find("li[data-unlimited='true']").find("input").prop('checked', false);
+                }
+                else {
+                    $(this).parent().find("li").removeClass("selected").find("input").prop('checked', false);
+                    $(this).parent().find("input").find("input").prop('checked', false);
+                }
                 ck.prop('checked', true);
                 $(this).addClass("selected")
+            }
+            var number = $(this).parent().find("li input:checked");
+            if (number.length==0) {
+                $(this).parent().find("li[data-unlimited='true']").addClass("selected").find("input").prop('checked', true);
             }
             $("#search").submit();
         })
         $(".area li,.starValue li,.sort li").click(function () {
-            $(this).parent().find("li").removeClass("selected")
+            $(this).parent().find("li").removeClass("selected").find("input").prop('checked', false);
             var ck = $(this).find("input");
             if ($(this).hasClass("selected")) {
                 ck.prop('checked', false);

@@ -6,7 +6,7 @@
 <div class="tope tope_2" style="background-color:white;width:100%;position:absolute;float:left;z-index:10;top:0px;">
     <div class="kuang2">
         <div class="top2">
-            <a href="#"><img src="~/Images/lantola-logo.png"></a>
+            <a href="http://Lantola.com"><img src="~/Images/lantola-logo.png"></a>
             <div class="login navbar" style="width:auto;height:76px;line-height:76px;border-bottom:none;">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown visible-md visible-lg" style="border-right:solid 1px #e6e2e2;">
@@ -40,16 +40,22 @@
                                 <li class="dropdown-menu-header">
                                     <strong>登录LANTOLA帐户</strong>
                                 </li>
-                                <li>
+                                <li style="line-height:70px;">
 
                                     @using (Html.BeginForm("Login", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
                                     {
                                         <input type="text" value="" name="Name" placeholder="请输入用户名" class="denglu3">
                                         <input type="password" name="Password" value="" placeholder="请输入密码" class="denglu4">
-                                        <a href="#" style="display:block">
+                                        <a href="#" style="display:block;">
                                             <input type="submit" value="登录" class="denglu5">
                                         </a>
-                                        <a href="#" style="display:block;text-align:right;">忘记密码？</a>
+                                        <div style="height:50px;width:100%;">
+                                            <label class="checkbox-inline" style="display:inline-block;float:left;line-height:20px;margin-top:15px;">
+                                                <input type="checkbox" name="remember" value="1"> 记住账号
+                                            </label>
+                                            <a href="#" style="display:inline-block;float:right;">忘记密码？</a>
+                                        </div>
+                                        
                                     }
                                 </li>
                             }
@@ -60,7 +66,7 @@
                     <li class="visible-md visible-lg">
                         @if (ViewBag.User != null)
                         {
-                            <a href="/User/LoginOut" style="line-height:76px;padding:0 20px;font-size:16px;" class="Register"><i class="fa fa-sign-out"></i> 注销</a>
+                            <a href="/User/LoginOut" style="line-height:76px;padding:0 20px;font-size:16px;"><i class="fa fa-sign-out"></i> 注销</a>
                         }
                         else
                         {

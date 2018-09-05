@@ -131,6 +131,8 @@ namespace HotelSystem.Web.Areas.Hotel.Controllers
         {
             if (policy != null)
             {
+                var cur = from m in DbContext.HotelPolicy where m.HotelInfoId == SessionInfo.hotelUser.HotelInfoId select m;
+                DbContext.HotelPolicy.RemoveRange(cur);
                 foreach (var id in policy)
                 {
                     var p = new HotelPolicy()

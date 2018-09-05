@@ -6,17 +6,20 @@
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=8yxhCfYtFgbKfFGFzLe0tuQNMz2xScIT"></script>
 <link href='~/Scripts/ico/icon.css' rel='stylesheet' type='text/css' />
 <style>
-    .icon{
-        padding-left:60px;
+    .icon {
+        padding-left: 60px;
     }
-    .icon span, .icon i {
-        /*line-height:30px;*/
-        /*float:left;*/
-        vertical-align: middle;
-    }
-    .icon span {
-        margin-left:6px;
-    }
+
+        .icon span, .icon i {
+            /*line-height:30px;*/
+            /*float:left;*/
+            vertical-align: middle;
+        }
+
+        .icon span {
+            margin-left: 6px;
+        }
+
     .slide-img {
         height: 100%;
     }
@@ -59,6 +62,10 @@
         padding-bottom: 30px;
     }
 
+    .hotel-info h4 {
+        font-size: 28px;
+    }
+
     .hotel-info .star {
         margin-left: 10px;
     }
@@ -66,7 +73,7 @@
     .search-btn {
         width: 100%;
         height: 46px;
-        background: #4876FF;
+        background: #4785FF;
         font-size: 14px;
         font-family: "宋体";
         border: #fad280;
@@ -82,7 +89,7 @@
     .media-left .img {
         display: block;
         height: 220px;
-        width:320px;
+        width: 320px;
     }
 
     .media-heading {
@@ -197,7 +204,7 @@
 
                 .img-list .list-box li a {
                     display: block;
-                    height: 75px;
+                    height: 60px;
                     width: 100%;
                 }
 
@@ -437,220 +444,220 @@
             </h4>
             <p class="text-muted">
                 @ViewBag.Hotel.EnglishName &nbsp;&nbsp;&nbsp;&nbsp;  <a href="#About">酒店简介</a>/
-            @if (ViewBag.Login == "true")
+                @if (ViewBag.Login == "true")
             {
-                <a class="collection-btn" data-collection="@ViewBag.Collection" data-hotel="@ViewBag.Hotel.Id" href="javascript:;">收藏酒店</a>
-            }
-        </p>
-    </div>
-    @using (Html.BeginForm("Index", ViewContext.RouteData.GetRequiredString("controller"), FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
-
-        <div class="row">
-            <div class="col-md-6">
-                <div class="daterange">
-                    <div class="day"><span class="day-value">1</span><span class="fa fa-moon-o"></span></div>
-                    <div class="date-box start">
-                        <span class="fa fa-calendar"></span>
-                        <div class="date">
-                            <p>2018年04月06</p>
-                            <p>周四</p>
-                        </div>
-                    </div>
-                    <div class="date-box end">
-                        <span class="fa fa-calendar"></span>
-                        <div class="date">
-                            <p>2018年04月06</p>
-                            <p>周四</p>
-                        </div>
-                    </div>
-                    <input type="hidden" name="startDate" value="">
-                    <input type="hidden" name="endDate" value="">
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="sr-only"></label>
-                    <input type="submit" class="search-btn" value="搜索" />
-                </div>
-            </div>
+                    <a class="collection-btn" data-collection="@ViewBag.Collection" data-hotel="@ViewBag.Hotel.Id" href="javascript:;">收藏酒店</a>
+                }
+            </p>
         </div>
+        @using (Html.BeginForm("Index", ViewContext.RouteData.GetRequiredString("controller"), FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
 
-    }
-    <hr />
-    <div class="room-list">
-        @foreach (var r in ViewBag.Rooms)
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="daterange">
+                        <div class="day"><span class="day-value">1</span><span class="fa fa-moon-o"></span></div>
+                        <div class="date-box start">
+                            <span class="fa fa-calendar"></span>
+                            <div class="date">
+                                <p>2018年04月06</p>
+                                <p>周四</p>
+                            </div>
+                        </div>
+                        <div class="date-box end">
+                            <span class="fa fa-calendar"></span>
+                            <div class="date">
+                                <p>2018年04月06</p>
+                                <p>周四</p>
+                            </div>
+                        </div>
+                        <input type="hidden" name="startDate" value="">
+                        <input type="hidden" name="endDate" value="">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label class="sr-only"></label>
+                        <input type="submit" class="search-btn" value="搜索" />
+                    </div>
+                </div>
+            </div>
+
+        }
+        <hr />
+        <div class="room-list">
+            @foreach (var r in ViewBag.Rooms)
             {
                 var room = r.room;
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <div class="media view">
-                        <div class="media-left" style="padding-left:0px;width:330px;">
-                            @{
-                                var firstImg = new RoomImages();
-                                foreach (var img in room.RoomImages)
-                                {
-                                    firstImg = img;
-                                    break;
-                                }
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="media view">
+                            <div class="media-left" style="padding-left:0px;width:330px;">
+                                @{
+                                    var firstImg = new RoomImages();
+                                    foreach (var img in room.RoomImages)
+                                    {
+                                        firstImg = img;
+                                        break;
+                                    }
 
-                                <a href="javascript:;" class="img more" data-target="#@room.Id" style="background:url('@firstImg.Url') no-repeat;background-size:cover;background-position:center;">
-                                </a>
+                                    <a href="javascript:;" class="img more" data-preview="@room.Id" data-target="#@room.Id" style="background:url('@firstImg.Url') no-repeat;background-size:cover;background-position:center;">
+                                    </a>
+                                }
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading" style="margin-left:4px;">@room.Name &nbsp; <span class="text-muted">( @room.EnglishName )</span>&nbsp; &nbsp; &nbsp; &nbsp;  <a href="javascript:;" data-target="#@room.Id" class="more" style="color:#4785FF;">查看客房详情</a></h4>
+                                <ul class="price-item">
+                                    @foreach (var price in r.PriceViews)
+                                    {
+                                        <li class="">
+                                            <div class="row">
+                                                <div class="col-md-1">@price.priceType.Name</div>
+                                                <div class="col-md-1">@room.BedType</div>
+                                                <div class="col-md-2 text-center">@price.priceType.Breakfast/@price.priceType.Broadband</div>
+                                                <div class="col-md-2 text-center"><a href="javascript:;" style="color:#4785FF;">退订政策</a></div>
+                                                <div class="col-md-2">@Enum.GetName(typeof(PayType), price.priceType.PaymentMethod)</div>
+                                                <div class="col-md-2"><span class="price-value"><span class="fa fa-rmb"></span> @Math.Round(price.avg, 0)</span> </div>
+                                                <div class="col-md-2">
+                                                    @if (price.enough)
+                                                    {
+                                                        <a class="reserve-btn" href="/Order/Apply/@price.priceType.Id?HotelInfoId=@ViewBag.Hotel.Id&StartTime=@ViewBag.startDate&EndTime=@ViewBag.endDate" target="_blank">立即预订</a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>已售完</span>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="media img-list" id="@room.Id">
+                            <span class="close"><i class="fa fa-times-circle-o"></i></span>
+                            <div class="list-box" style="padding-left:0px;padding-right:10px;margin-right:10px;width:320px;display:inline-block;vertical-align: top;">
+                                <ul>
+                                    @foreach (var img in room.RoomImages)
+                                    {
+                                        <li>
+                                            <a href="javascript:;" class="list-item" data-id="@room.Id" data-img="@img.Url" style="background:url('@img.Url') no-repeat;background-size:cover;background-position:center;"></a>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                            <div class="room-info" style="display:inline-block;vertical-align: top;width:750px;">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td>客房面积：@room.Area</td>
+                                            <td>楼层：@room.Storey 层</td>
+                                            <td>床型： @room.BedDescribe</td>
+                                        </tr>
+                                        <tr>
+                                            <td>入住人数：@room.OccupancyNumber</td>
+                                            <td>风景： @room.Scenery </td>
+                                            <td>加床：@room.AddBed </td>
+                                        </tr>
+                                        <tr>
+                                            <td>数量：@room.Number 间</td>
+                                            <td>无烟房：@room.Smokeless </td>
+                                            <td>浴室：@(room.Shower ? "淋浴" : "") @(room.Bathtub ? "浴缸" : "") @(room.HotSpring ? "温泉" : "") @(room.RoundBathtub ? "圆形浴缸" : "") @(room.WindowBathtub ? "邻窗浴缸" : "")</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                                    }
+        </div>
+    </div>
+    <div class="container">
+        <div style="background:#fff;padding:15px;padding-bottom:40px;">
+            <h4>酒店设施</h4>
+            <hr />
+            <div class="item-box">
+                <div class="row">
+                    <div class="item-row">
+                        <span class="col-md-1"> 通用项目： </span>
+                        <div class="col-md-11 icon">
+
+                            @foreach (var p in ViewBag.Policy0)
+                            {
+                                <i class="sprite @p.Icon"></i><span>@p.Name</span>
                             }
                         </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">@room.Name &nbsp; <span class="text-muted">( @room.EnglishName )</span>&nbsp; &nbsp; &nbsp; &nbsp;  <a href="javascript:;" data-target="#@room.Id" class="more" style="color:#4785FF;">查看客房详情</a></h4>
-                            <ul class="price-item">
-                                @foreach (var price in r.PriceViews)
-                                {
-                                    <li class="">
-                                        <div class="row">
-                                            <div class="col-md-1">@price.priceType.Name</div>
-                                            <div class="col-md-1">@room.BedType</div>
-                                            <div class="col-md-2">@price.priceType.Breakfast/@price.priceType.Broadband</div>
-                                            <div class="col-md-2"><a href="javascript:;" style="color:#4785FF;">退订政策</a></div>
-                                            <div class="col-md-2">@Enum.GetName(typeof(PayType), price.priceType.PaymentMethod)</div>
-                                            <div class="col-md-2"><span class="price-value"><span class="fa fa-rmb"></span> @Math.Round(price.avg, 2)</span> </div>
-                                            <div class="col-md-2">
-                                                @if (price.enough)
-                                                {
-                                                    <a class="reserve-btn" href="/Order/Apply/@price.priceType.Id?HotelInfoId=@ViewBag.Hotel.Id&StartTime=@ViewBag.startDate&EndTime=@ViewBag.endDate" target="_blank">立即预定</a>
-                                                }
-                                                else
-                                                {
-                                                    <span>已售完</span>
-                                                }
-                                            </div>
-                                        </div>
-                                    </li>
-                                }
-                            </ul>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="item-row">
+                        <span class="col-md-1"> 服务项目： </span>
+                        <div class="col-md-11 icon">
+
+                            @foreach (var p in ViewBag.Policy1)
+                            {
+                                <i class="sprite @p.Icon"></i><span>@p.Name</span>
+                            }
                         </div>
                     </div>
-                    <div class="media img-list" id="@room.Id">
-                        <span class="close"><i class="fa fa-times-circle-o"></i></span>
-                        <div class="list-box col-md-4">
-                            <ul>
-                                @foreach (var img in room.RoomImages)
-                                {
-                                    <li>
-                                        <a href="javascript:;" class="list-item" style="background:url('@img.Url') no-repeat;background-size:cover;background-position:center;"></a>
-                                    </li>
-                                }
-                            </ul>
-                        </div>
-                        <div class="room-info col-md-8">
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td>客房面积：@room.Area</td>
-                                        <td>楼层：@room.Storey 层</td>
-                                        <td>床型： @room.BedDescribe</td>
-                                    </tr>
-                                    <tr>
-                                        <td>入住人数：@room.OccupancyNumber</td>
-                                        <td>风景： @room.Scenery </td>
-                                        <td>加床：@room.AddBed </td>
-                                    </tr>
-                                    <tr>
-                                        <td>数量：@room.Number 间</td>
-                                        <td>无烟房：@room.Smokeless </td>
-                                        <td>浴室：@(room.Bathtub ? "有" : "无") </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                </div>
+
+                <div class="row">
+                    <div class="item-row">
+                        <span class="col-md-1"> 客房设施： </span>
+                        <div class="col-md-11 icon">
+
+                            @foreach (var p in ViewBag.Policy2)
+                            {
+                                <i class="sprite @p.Icon"></i><span>@p.Name</span>
+                            }
                         </div>
                     </div>
                 </div>
             </div>
-
-                                }
-    </div>
-</div>
-<div class="container">
-    <div style="background:#fff;padding:15px;padding-bottom:40px;">
-        <h4>酒店设施</h4>
-        <hr />
-        <div class="item-box">
-            <div class="row">
-                <div class="item-row">
-                    <span class="col-md-1"> 通用项目： </span>
-                    <div class="col-md-11 icon">
-
-                        @foreach (var p in ViewBag.Policy0)
-                        {
-                            <i class="sprite @p.Icon"></i><span>@p.Name</span>
-                        }
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="item-row">
-                    <span class="col-md-1"> 服务项目： </span>
-                    <div class="col-md-11 icon">
-
-                        @foreach (var p in ViewBag.Policy1)
-                        {
-                            <i class="sprite @p.Icon"></i><span>@p.Name</span>
-                        }
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="item-row">
-                    <span class="col-md-1"> 客房设施： </span>
-                    <div class="col-md-11 icon">
-
-                        @foreach (var p in ViewBag.Policy2)
-                        {
-                            <i class="sprite @p.Icon"></i><span>@p.Name</span>
-                        }
-                    </div>
-                </div>
-            </div>
-        </div>
-        <h4>酒店政策</h4>
-        <hr />
-        <div class="item-box">
-            <div class="row">
-                <div class="item-row">
-                    <div class="col-md-6" style="padding:0px;">
-                        <span class="col-lg-3 col-md-3 col-sm-12"> 入住和离店： </span>
-                        <div class="col-lg-9 col-md-9">
-                            @ViewBag.Service.CheckInTime - @ViewBag.Service.LeaveTime
+            <h4>酒店政策</h4>
+            <hr />
+            <div class="item-box">
+                <div class="row">
+                    <div class="item-row">
+                        <div class="col-md-6" style="padding:0px;">
+                            <span class="col-lg-3 col-md-3 col-sm-12"> 入住和离店： </span>
+                            <div class="col-lg-9 col-md-9">
+                                @ViewBag.Service.CheckInTime - @ViewBag.Service.LeaveTime
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-6" style="padding:0px;">
-                        <span class="col-lg-3 col-md-3 col-sm-12">携带宠物： </span>
-                        <div class="col-lg-9 col-md-9">
-                            @ViewBag.Service.Pet
+                        <div class="col-md-6" style="padding:0px;">
+                            <span class="col-lg-3 col-md-3 col-sm-12">携带宠物： </span>
+                            <div class="col-lg-9 col-md-9">
+                                @ViewBag.Service.Pet
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="item-row">
-                    <div class="col-md-6" style="padding:0px;">
-                        <span class="col-lg-3 col-md-3 col-sm-12"> 自助早餐： </span>
-                        <div class="col-lg-9 col-md-9">
-                            @ViewBag.Service.Buffet
+                <div class="row">
+                    <div class="item-row">
+                        <div class="col-md-6" style="padding:0px;">
+                            <span class="col-lg-3 col-md-3 col-sm-12"> 自助早餐： </span>
+                            <div class="col-lg-9 col-md-9">
+                                @ViewBag.Service.Buffet
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-6" style="padding:0px;">
-                        <span class="col-lg-3 col-md-3 col-sm-12"> 接受信用卡： </span>
-                        <div class="col-lg-9 col-md-9">
-                            @ViewBag.Service.CreditCard
+                        <div class="col-md-6" style="padding:0px;">
+                            <span class="col-lg-3 col-md-3 col-sm-12"> 接受信用卡： </span>
+                            <div class="col-lg-9 col-md-9">
+                                @ViewBag.Service.CreditCard
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 <div class="container-fluid" style="background:url('/Images/banner.png') no-repeat;background-size:cover;background-position:center;padding:0px;">
     <div>
@@ -708,7 +715,7 @@
             <span>购物</span>
             <span>游玩</span>
         </div>
-        <a href="##">到达指引</a>
+        <a href="/HotelHome/Map/@ViewBag.Hotel.Id">到达指引</a>
     </div>
 </div>
 <script src="~/Scripts/masonry.pkgd.min.js"></script>
@@ -744,7 +751,17 @@
         $(".room-list").on("click", ".close", function () {
             $(this).parent().slideToggle();
         });
+        $(".list-item").on("click", function () {
+            var src = $(this).data("img");
+            var id = $(this).data("id");
+            $("a[data-preview='" + id + "']").css("background", "url('" + src + "') no-repeat").css("background-size", "cover").css("background-position", "center");
+        });
+
         // 百度地图API功能
+        var sContent = `<div>
+                            <img style='height:28px;' id='imgDemo' src='http://Lantola.com/@ViewBag.Logo' title='@ViewBag.Hotel.Name' />
+                            <h4 style='margin:0 0 5px 0;padding:0.2em 0'>@ViewBag.Hotel.Name</h4>
+                        </div>`;
         var map = new BMap.Map("map", { enableMapClick: false });    // 创建Map实例
         map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);  // 初始化地图,设置中心点坐标和地图级别
         var myGeo = new BMap.Geocoder();
@@ -752,7 +769,17 @@
         myGeo.getPoint("@ViewBag.Hotel.Adress", function (point) {
             if (point) {
                 map.centerAndZoom(point, 16);
-                map.addOverlay(new BMap.Marker(point));
+                var marker = new BMap.Marker(point);
+                map.addOverlay(marker);              // 将标注添加到地图中
+                var infoWindow = new BMap.InfoWindow(sContent);  // 创建信息窗口对象
+                marker.addEventListener("click", function () {
+                    this.openInfoWindow(infoWindow);
+                    //图片加载完毕重绘infowindow
+                    //document.getElementById('imgDemo').onload = function () {
+                    //    infoWindow.redraw();   //防止在网速较慢，图片未加载时，生成的信息框高度比图片的总高度小，导致图片部分被隐藏
+                    //}
+                });
+                map.openInfoWindow(infoWindow, point);      // 在标注处打开信息窗口
             }
         },
         "@ViewBag.Hotel.City.CityName");
@@ -790,7 +817,13 @@
             "minDate": current.format('YYYY年MM月DD日'),
             locale: locale
         }, function (start, end, label) {
-            showDefaultDate(this.element, start, end);
+            if (moment(start.format('YYYY-MM-DD')).isSame(end.format('YYYY-MM-DD'))) {
+                alert("日期间隔必须大于或等于1天");
+
+            }
+            else {
+                showDefaultDate(this.element, start, end);
+            }
         });
     });
 </script>

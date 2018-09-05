@@ -234,15 +234,7 @@ namespace HotelSystem.Web.Controllers
             try
             {
                 DbContext.SaveChanges();
-                string msg = string.Format("尊敬的客户，您的订单{0}，{1}，{2}入住{3}间{4}晚，订单已确认，感谢您的预订。酒店信息：{5}，{6}",
-                    order.Number,
-                    order.HotelName,
-                    order.StartTime.ToString("yyyy年MM月dd日") + "入住",
-                    order.RoomName + order.RoomCount.ToString(),
-                    (order.EndTime - order.StartTime).Days.ToString(),
-                    Hotel.District.DistrictName + Hotel.Adress,
-                    Hotel.Tel);
-                SMS.Send(msg, order.ApplyPhone, 0);
+                
             }
             catch (Exception ex)
             {

@@ -220,8 +220,8 @@ namespace HotelSystem.Web.Areas.Hotel.Controllers
                 },
                 new SelectListItem()
                 {
-                    Text="无",
-                    Value="无"
+                    Text="无早",
+                    Value="无早"
                 }
             };
             List<SelectListItem> item1 = new List<SelectListItem>()
@@ -238,8 +238,8 @@ namespace HotelSystem.Web.Areas.Hotel.Controllers
                 },
                 new SelectListItem()
                 {
-                    Text="无",
-                    Value="无"
+                    Text="无宽带",
+                    Value="无宽带"
                 }
             };
             ViewBag.Broadband = item1;
@@ -285,12 +285,31 @@ namespace HotelSystem.Web.Areas.Hotel.Controllers
 
             return RedirectToAction("PriceTypeList", new { id = id });
         }
-
+        [Login(Area = "Hotel", Role = "hotel")]
+        public ActionResult DeletePriceType(string id)
+        {
+            var priceType = DbContext.PriceType.Single(m => m.Id == id);
+            try
+            {
+                
+                DbContext.PriceType.Remove(priceType);
+                DbContext.SaveChanges();
+                TempData["message"] = "<strong>删除成功!</strong> ";
+                return RedirectToAction("PriceTypeList", new { id = priceType.RoomId });
+            }
+            catch
+            {
+                TempData["message"] = "<strong>删除失败!</strong> ";
+                return RedirectToAction("PriceTypeList", new { id = priceType.RoomId });
+            }
+           
+        }
         [Login(Area = "Hotel", Role = "hotel")]
         public ActionResult AddPrice(string id, string start, string end)
         {
             if (Request.IsAjaxRequest())
             {
+
                 var list = from p in DbContext.Price
                            where p.PriceTypeId == id
                            select p;
@@ -323,7 +342,9 @@ namespace HotelSystem.Web.Areas.Hotel.Controllers
             }
 
             //ViewBag.CalendarData = JsonConvert.SerializeObject(list);
+            var priceType = DbContext.PriceType.Single(m => m.Id == id);
             ViewBag.PriceTypeId = id;
+            ViewBag.RoomId = priceType.RoomId;
             ViewBag.Message = TempData["message"] as string;
             return View();
         }

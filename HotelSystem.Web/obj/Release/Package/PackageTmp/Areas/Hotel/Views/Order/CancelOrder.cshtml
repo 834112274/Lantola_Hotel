@@ -1,0 +1,72 @@
+﻿@model HotelSystem.Model.Order
+<style>
+    .cause-list li {
+        line-height: 40px;
+    }
+</style>
+@using (Html.BeginForm("CancelOrder", "Order",new { id=Model.Id}, FormMethod.Post, new { enctype = "multipart/form-data",@class= "form-inline" }))
+{
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">取消订单</h4>
+    </div>
+    <div class="modal-body">
+        <div class="order-container">
+            @*<div class="title">订单信息</div>*@
+            <div class="row" style="margin-bottom:20px;">
+                <div class="col-md-3" style="padding:0px;"><div class="col-md-6 text-muted">入住房型</div>  <label>@Model.RoomName</label> </div>
+                <div class="col-md-3" style="padding:0px;"><div class="col-md-6 text-muted">床型</div> <label>@Model.BedType</label> </div>
+                <div class="col-md-3" style="padding:0px;"><div class="col-md-6 text-muted">早餐</div> <label>@Model.Breakfast</label> </div>
+                <div class="col-md-3" style="padding:0px;"><div class="col-md-6 text-muted">宽带</div> <label>@Model.Broadband</label> </div>
+            </div>
+            <div class="row" style="margin-bottom:20px;">
+                <div class="col-md-3" style="padding:0px;"><div class="col-md-6 text-muted">入住日期</div> <label>@Model.StartTime.ToString("yyyy-MM-dd HH:mm")</label> </div>
+                <div class="col-md-3" style="padding:0px;"><div class="col-md-6 text-muted">退房日期</div> <label>@Model.EndTime.ToString("yyyy-MM-dd HH:mm")</label> </div>
+                <div class="col-md-3" style="padding:0px;"><div class="col-md-6 text-muted">间夜数量</div> <label>@Model.RoomCount 间@((Model.StartTime - Model.EndTime).Days.ToString())晚</label> </div>
+            </div>
+            <div class="row" style="margin-bottom:20px;">
+                <div class="col-md-6" style="padding:0px;">
+                    <div class="col-md-3 text-muted">入住人</div>
+                    <label>
+                        @foreach (var p in Model.Occupant)
+                        {
+                            <span>@p.Name /</span>
+                        }
+                    </label>
+                </div>
+                <div class="col-md-6" style="padding:0px;"><div class="col-md-3 text-muted">取消政策</div> <label>@Model.StartTime.AddDays(-3).ToString("yyyy-MM-dd HH:mm") 前可取消 </label> </div>
+            </div>
+            <hr />
+            <h5>取消原因</h5>
+            <div class="container">
+                <ul class="cause-list">
+                    <li>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="cause" value="酒店无空房" />酒店无空房
+                            </label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="cause" value="订单冲突" />订单冲突
+                            </label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            <label for="exampleInputName2">其他原因</label>
+                            <input type="text" name="cause" value="" class="form-control" placeholder="其他原因" />
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        <button type="submit" class="btn btn-primary" id="cofim_form">确认取消</button>
+    </div>
+}

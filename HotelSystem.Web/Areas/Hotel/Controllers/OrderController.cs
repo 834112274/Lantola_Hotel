@@ -46,6 +46,13 @@ namespace HotelSystem.Web.Areas.Hotel.Controllers
                              select m;
                 }
             }
+            else
+            {
+                orders = from m in orders
+                         where m.Payment == true
+                         select m;
+            }
+            
             //申请时间
             if (!string.IsNullOrEmpty(CreateStart))
             {
@@ -131,16 +138,48 @@ namespace HotelSystem.Web.Areas.Hotel.Controllers
             return Redirect(Request.UrlReferrer.ToString());
         }
 
-        [Login(Area = "Hotel", Role = "hotel")]
-        public ActionResult cancel(string id)
+        [Login(Area = "Guest", Role = "guest")]
+        public ActionResult CancelOrder(string id)
         {
-            var order = DbContext.Order.Single(m => m.Id == id);
-            order.State = "0";
-            order.UpdateUser = SessionInfo.hotelUser.Id;
-            order.UpdateTime = DateTime.Now;
-            DbContext.SaveChanges();
-            return Redirect(Request.UrlReferrer.ToString());
+            var orders = from m in DbContext.Order where m.Id == id select m;
+            if (orders.Count() > 0)
+            {
+                return View(orders.First());
+            }
+            else
+            {
+                return View(new Order());
+            }
+
         }
+        [Login(Area = "Guest", Role = "guest")]
+        [HttpPost]
+        public ActionResult CancelOrder(string id, string cause)
+        {
+            var orders = from m in DbContext.Order where m.Id == id select m;
+            if (orders.Count() > 0)
+            {
+                var order = orders.First();
+                var days = (DateTime.Now - order.StartTime).Days;
+                if (days < 3)
+                {
+                    TempData["message"] = "<strong>取消失败!</strong> 入住前3天内不可取消订单.";
+                    return RedirectToAction("Order");
+                }
+                order.State = "0";
+                order.CancelRemarks = cause;
+                order.UpdateTime = DateTime.Now;
+                DbContext.SaveChanges();
+                TempData["message"] = "<strong>订单取消成功!</strong>";
+                return RedirectToAction("Order");
+            }
+            else
+            {
+                TempData["message"] = "<strong>取消失败!</strong> 未选择有效订单.";
+                return RedirectToAction("Order");
+            }
+        }
+
         [Login(Area = "Hotel", Role = "hotel")]
         public ActionResult ExportOrder(string state, string Payment, string CreateStart, string CreateEnd, string Number, string Occupant, string StartTime, string EndTime)
         {

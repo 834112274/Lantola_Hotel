@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<HotelSystem.Model.PriceType>
-
+@using HotelSystem.Model;
 @{
     ViewBag.Title = "房价列表";
     Layout = "~/Areas/Hotel/Views/Shared/_Layout.cshtml";
@@ -30,6 +30,9 @@
         <table class="table table-striped table-bordered bootstrap-datatable datatable">
             <tr>
                 <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.Breakfast)
                 </th>
                 <th>
@@ -54,13 +57,16 @@
             {
                 <tr>
                     <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
                         @Html.DisplayFor(modelItem => item.Breakfast)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Broadband)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.PaymentMethod)
+                        @Enum.GetName(typeof(PayType), Convert.ToInt32(item.PaymentMethod))
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Number)
@@ -72,7 +78,8 @@
                         @Html.DisplayFor(modelItem => item.UpdateTime)
                     </td>
                     <td>
-                        @Html.ActionLink("发布价格", "AddPrice", new { id = item.Id })
+                        @Html.ActionLink("发布价格", "AddPrice", new { id = item.Id }) |
+                        @Html.ActionLink("删除", "DeletePriceType", new { id = item.Id }, new { onclick = "return confirm('确认删除吗？');" })
                     </td>
                 </tr>
             }

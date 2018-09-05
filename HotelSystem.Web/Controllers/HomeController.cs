@@ -1,6 +1,7 @@
 ﻿using HotelSystem.Model;
 using HotelSystem.Web.Models.View;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -84,9 +85,18 @@ namespace HotelSystem.Web.Controllers
         {
             return View();
         }
-        public ActionResult Search(HotelView hotelView,string city)
+        public ActionResult Search(HotelView hotelView)
         {
             var c = DbContext.City.ToList();
+            var selectedCity =c.Where(m=> hotelView.city.Contains(m.CityName));
+            if (selectedCity.Count()>0)
+            {
+                ViewBag.District = selectedCity.First().District.ToList();
+            }
+            else
+            {
+                ViewBag.District =new List<District>();
+            }
             ViewBag.City = c;
             ViewBag.SearchParams = hotelView;
             var hotels = hotelView.Search();

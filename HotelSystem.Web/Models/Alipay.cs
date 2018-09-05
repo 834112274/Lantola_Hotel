@@ -17,7 +17,7 @@ namespace HotelSystem.Web.Models
                              Config.sign_type, Config.alipay_public_key, Config.charset);
 
         public AlipayF2FPrecreateResult GetPayUrl(Order order)
-        {
+         {
             AlipayTradePrecreateContentBuilder builder = new AlipayTradePrecreateContentBuilder();
             //收款账号
             builder.seller_id = Config.pid;

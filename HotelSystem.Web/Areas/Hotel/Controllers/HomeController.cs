@@ -14,7 +14,7 @@ namespace HotelSystem.Web.Areas.Hotel.Controllers
         public ActionResult Index(int pageIndex = 1)
         {
             var orders = from m in DbContext.Order
-                         where m.HotelInfoId == SessionInfo.hotelUser.HotelInfoId && m.State == "1"
+                         where m.HotelInfoId == SessionInfo.hotelUser.HotelInfoId && m.State == "1"&&( m.Payment == true||m.PaymentMethod==1)
                          select m;
             if (orders.Count()>9)
             {

@@ -249,7 +249,7 @@
         }
     </div>
 </div>
-<div class="container-fluid payment">
+<div class="container-fluid payment" style="background-color:#fff;">
     <h4>您好！欢迎访问LANTOLA酒店官方直销网站</h4>
     <div class="container payment-content">
         <h5>欢迎使用</h5>
@@ -320,7 +320,13 @@
             "minDate": s.format('YYYY年MM月DD日'),
             locale: locale
         }, function (start, end, label) {
-            showDefaultDate(this.element, start, end);
+            if (moment(start.format('YYYY-MM-DD')).isSame(end.format('YYYY-MM-DD'))) {
+                alert("日期间隔必须大于或等于1天");
+
+            }
+            else {
+                showDefaultDate(this.element, start, end);
+            }
         });
     });
 </script>

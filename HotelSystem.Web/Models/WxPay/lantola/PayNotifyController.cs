@@ -57,6 +57,8 @@ namespace HotelSystem.Web.Models.WxPay
                         };
                         order.transaction = t;
                         DbContext.SaveChanges();
+                        //短信通知
+                        SendSMS(order);
                         //通知微信
                         WxPayData res = new WxPayData();
                         res.SetValue("return_code", "SUCCESS");
@@ -200,6 +202,8 @@ namespace HotelSystem.Web.Models.WxPay
                                     };
                                     order.transaction = t;
                                     DbContext.SaveChanges();
+                                    //短信通知
+                                    SendSMS(order);
                                     Log.Info(this.GetType().ToString(), $"pay success id:{order.Id}");
                                     Response.Write("success");  //请不要修改或删除
                                 }
@@ -297,5 +301,19 @@ namespace HotelSystem.Web.Models.WxPay
         }
 
         #endregion 支付宝
+
+        public void SendSMS(Order order)
+        {
+            var Hotel = DbContext.HotelInfo.Single(m => m.Id == order.HotelInfoId);
+            string msg = string.Format("尊敬的客户，您的订单{0}，{1}，{2}入住{3}间{4}晚，订单已确认，感谢您的预订。酒店信息：{5}，{6}",
+                    order.Number,
+                    order.HotelName,
+                    order.StartTime.ToString("yyyy年MM月dd日") + "入住",
+                    order.RoomName + order.RoomCount.ToString(),
+                    (order.EndTime - order.StartTime).Days.ToString(),
+                    Hotel.District.DistrictName + Hotel.Adress,
+                    Hotel.Tel);
+            SMS.Send(msg, order.ApplyPhone, 0);
+        }
     }
 }

@@ -212,7 +212,7 @@
         </div>
     </div>
 
-    <div id="kong2">沪ICP备15056989号-1<br />版权所有©2015-2016 Shanghai Lantola E-business Co.Ltd保留所有权利</div>
+    <div id="kong2">沪ICP备18025060号<br />版权所有©@DateTime.Now.ToString("yyyy") Shanghai Lantola E-business Co.Ltd保留所有权利</div>
     <script type="text/javascript" src="~/Scripts/assets/plugins/bootstrap-daterangepicker-master/moment.js"></script>
     <script type="text/javascript" src="~/Scripts/assets/plugins/bootstrap-daterangepicker-master/daterangepicker.js"></script>
     <script type="text/javascript" src="~/Scripts/assets/plugins/bootstrap-daterangepicker-master/language.js"></script>
@@ -237,7 +237,13 @@
             "minDate": s.format('YYYY年MM月DD日'),
             locale: locale
         }, function (start, end, label) {
-            showDefaultDate(this.element, start, end);
+            if (moment(start.format('YYYY-MM-DD')).isSame(end.format('YYYY-MM-DD'))) {
+                alert("日期间隔必须大于或等于1天");
+
+            }
+            else {
+                showDefaultDate(this.element, start, end);
+            }
         });
         $(document).ready(function () {
             $("#user_menu").find("li").removeClass("active");

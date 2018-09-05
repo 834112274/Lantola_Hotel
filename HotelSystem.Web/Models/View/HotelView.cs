@@ -91,12 +91,25 @@ namespace HotelSystem.Web.Models.View
         {
             using (DBModelContainer DbContext = new DBModelContainer())
             {
+                var user = SessionInfo.guestUser;
                 int d = (end - start).Days;
                 var stocks = from m in DbContext.Stock where m.Date >= start && m.Date < end && m.Room.HotelInfoId == id select new { m.RoomId, m.Date, SurplusStock = m.SurplusStock > 0 ? 1 : 0 };
                 var rooms = from r in DbContext.Room.Include("RoomImages") where r.HotelInfoId == id select r;
                 List<RoomView> roomViews = new List<RoomView>();
                 foreach (var r in rooms)
                 {
+                    var userPrice = from m in DbContext.Price select m;
+                    if (user!=null)
+                    {
+                        if (user.Type == 1)
+                        {
+                            userPrice = from m in userPrice where m.PriceType.PaymentMethod != 2 select m;
+                        }
+                    }
+                    else
+                    {
+                        userPrice = from m in userPrice where m.PriceType.PaymentMethod != 2 select m;
+                    }
                     var priceList = from t in DbContext.Price
                                     join m in stocks on new { t.PriceType.RoomId, t.Date } equals new { m.RoomId, m.Date }
                                     where t.PriceType.Room.HotelInfoId == id && t.Date >= start && t.Date < end && t.Status == 1

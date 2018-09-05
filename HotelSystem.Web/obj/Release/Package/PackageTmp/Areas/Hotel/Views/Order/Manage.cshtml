@@ -93,8 +93,8 @@
                             <div class="col-sm-8">
                                 <select class="form-control input-sm" name="Payment">
                                     <option value="">全部</option>
-                                    <option value="1">已支付</option>
-                                    <option value="0">待支付</option>
+                                    <option value="1" selected>已支付</option>
+                                    <option value="0">未支付</option>
                                 </select>
                             </div>
                         </div>
@@ -149,6 +149,12 @@
         }
     </div>
 </div>
+<div class="modal fade" id="cancel_modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" id="cancel_container">
+        </div>
+    </div>
+</div>
 <div id="OrderList">
     @Html.Partial("_OrderList", Model);
 </div>
@@ -164,6 +170,10 @@
         var StartTime = $("input[name='StartTime']").val();
         var EndTime = $("input[name='EndTime']").val();
         $(this).attr('href', `/Hotel/Order/ExportOrder?state=${state}&Payment=${Payment}&CreateStart=${CreateStart}&CreateEnd=${CreateEnd}&Number=${Number}&Occupant=${Occupant}&StartTime=${StartTime}&EndTime=${EndTime}`);
+    });
+    $("#OrderList").on("click", ".cancel-btn", function () {
+        var id = $(this).data("order");
+        $("#cancel_container").load("/Hotel/Order/CancelOrder/" + id);
     });
     $("#clear").click(function () {
         $("input[name]").val('');
