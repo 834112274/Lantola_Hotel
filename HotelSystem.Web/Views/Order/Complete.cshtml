@@ -154,7 +154,7 @@
         </div>
         <div class="describe">
             <div class="info-item"><span class="info-item-title">酒店政策：</span>酒店入住时间为14：00，办理入住时中国居公民，港澳台居民需提供有效身份证件，外国公民提供有效护照。</div>
-            <div class="info-item"><span class="info-item-title">取消政策：</span>根据酒店取消内容显示，为不固定内容。</div>
+            <div class="info-item"><span class="info-item-title">取消政策：</span>@(Model.PaymentMethod == 1 ? "免费取消" : "无法取消")</div>
             <div class="info-item"><span class="info-item-title">发票信息：</span>前台现付的订单请在离店前向酒店索取，预付款订单成交后3个月内可补开发票。</div>
             @*<a href="/Order/Detail/@Model.Id"><input type="submit" class="btn-submit" value="订单详情" /></a>*@
         </div>

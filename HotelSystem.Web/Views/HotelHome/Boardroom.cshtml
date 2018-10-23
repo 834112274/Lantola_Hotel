@@ -145,7 +145,7 @@
                                                 <td>立柱：@(room.Column==0?"无":"有") </td>
                                             </tr>
                                             <tr>
-                                                <td colspan="3">收费：</td>
+                                                <td colspan="3">收费：@("￥"+ room.Price+"/场") @("￥" + room.HalfPrice + "/半场")</td>
                                             </tr>
                                             <tr>
                                                 <td colspan="3">会议布局：@room.Layout</td>

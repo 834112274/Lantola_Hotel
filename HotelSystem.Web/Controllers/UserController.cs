@@ -268,22 +268,12 @@ namespace HotelSystem.Web.Controllers
             {
                 if (Session["verification"] != null)
                 {
-                    string v = Session["verification"].ToString();
-                    DateTime d = DateTime.Parse(Session["SendVerification"].ToString());
-                    if ((DateTime.Now - d).Seconds > 300)
-                    {
-                        ViewBag.Message = "验证码一过期!";
-                        return View("Register");
-                    }
-                    if (!v.Equals(verification))
+                    var Validate = Session["Validate"] as Verification;
+                    var result = Validate.Check(verification, user.Phone);
+                    if (result != 1)
                     {
                         ViewBag.Message = "验证码不匹配!";
                         return View("Register");
-                    }
-                    else
-                    {
-                        Session["verification"] = null;
-                        Session["SendVerification"] = null;
                     }
                 }
                 else
@@ -776,7 +766,7 @@ namespace HotelSystem.Web.Controllers
 
         [Login(Area = "Guest", Role = "guest")]
         [HttpPost]
-        public ActionResult RelievePhone(string VerificationCode)
+        public ActionResult RelievePhone(string VerificationCode,string phone)
         {
             var Validate = Session["Validate"] as Verification;
             var result = Validate.Check(VerificationCode);

@@ -17,7 +17,7 @@ namespace HotelSystem.Web.Controllers
             {
                 case "Advertisement":
                     var Advertisement = from m in DbContext.Article where m.Type == 1 select m;
-
+                    ViewBag.Title = "LANTOLA广告业务";
                     if (Advertisement.Count() > 0)
                     {
                         return View(Advertisement.First());
@@ -29,7 +29,7 @@ namespace HotelSystem.Web.Controllers
 
                 case "About":
                     var About = from m in DbContext.Article where m.Type == 2 select m;
-
+                    ViewBag.Title = "关于LANTOLA";
                     if (About.Count() > 0)
                     {
                         return View(About.First());
@@ -41,7 +41,7 @@ namespace HotelSystem.Web.Controllers
 
                 case "Safe":
                     var Safe = from m in DbContext.Article where m.Type == 3 select m;
-
+                    ViewBag.Title = "LANTOLA（郎拓拉）隐私政策";
                     if (Safe.Count() > 0)
                     {
                         return View(Safe.First());
@@ -53,7 +53,7 @@ namespace HotelSystem.Web.Controllers
 
                 case "Help":
                     var Help = from m in DbContext.Article where m.Type == 4 select m;
-
+                    ViewBag.Title = "LANTOLA（郎拓拉）服务条款";
                     if (Help.Count() > 0)
                     {
                         return View(Help.First());
@@ -65,7 +65,7 @@ namespace HotelSystem.Web.Controllers
 
                 case "License":
                     var License = from m in DbContext.Article where m.Type == 5 select m;
-
+                    ViewBag.Title = "营业执照";
                     if (License.Count() > 0)
                     {
                         return View(License.First());
@@ -77,7 +77,7 @@ namespace HotelSystem.Web.Controllers
 
                 case "Complaint":
                     var Complaint = from m in DbContext.Article where m.Type == 6 select m;
-
+                    ViewBag.Title = "投诉与建议";
                     if (Complaint.Count() > 0)
                     {
                         return View(Complaint.First());

@@ -264,12 +264,12 @@
         <div class="col-md-3" style="padding:0px;"><div class="col-md-6">宽带</div> <label>@Model.Broadband</label> </div>
     </div>
     <div class="row" style="margin-bottom:20px;">
-        <div class="col-md-3" style="padding:0px;"><div class="col-md-6">入住日期</div> <label>@Model.StartTime</label> </div>
-        <div class="col-md-3" style="padding:0px;"><div class="col-md-6">退房日期</div> <label>@Model.EndTime</label> </div>
+        <div class="col-md-3" style="padding:0px;"><div class="col-md-6">入住日期</div> <label>@Model.StartTime.ToString("yyyy-MM-dd") @ViewBag.Hotel.HotelService.CheckInTime</label> </div>
+        <div class="col-md-3" style="padding:0px;"><div class="col-md-6">退房日期</div> <label>@Model.EndTime.ToString("yyyy-MM-dd") @ViewBag.Hotel.HotelService.LeaveTime</label> </div>
         <div class="col-md-3" style="padding:0px;"><div class="col-md-6">间夜数量</div> <label>@Model.RoomCount 间@((Model.StartTime - Model.EndTime).Days.ToString())晚</label> </div>
     </div>
     <div class="row" style="margin-bottom:20px;">
-        <div class="col-md-12" style="padding:0px;"><div class="col-md-1">取消政策</div> <label>入住3天前可以取消订单 </label> </div>
+        <div class="col-md-12" style="padding:0px;"><div class="col-md-1">取消政策</div> <label>不可取消</label> </div>
     </div>
 
     <div class="pay-summary">

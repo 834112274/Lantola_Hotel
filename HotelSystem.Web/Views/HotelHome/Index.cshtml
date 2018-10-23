@@ -1,6 +1,6 @@
 ﻿@using HotelSystem.Model;
 @{
-    ViewBag.Title = "欢迎来到 " + ViewBag.Hotel.Name + " ";
+    ViewBag.Title = ViewBag.Hotel.Name + "官方直销首页—LANTOLA";
     Layout = "~/Views/Shared/_LayoutHotel.cshtml";
 }
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=8yxhCfYtFgbKfFGFzLe0tuQNMz2xScIT"></script>
@@ -515,7 +515,7 @@
                                                 <div class="col-md-1">@price.priceType.Name</div>
                                                 <div class="col-md-1">@room.BedType</div>
                                                 <div class="col-md-2 text-center">@price.priceType.Breakfast/@price.priceType.Broadband</div>
-                                                <div class="col-md-2 text-center"><a href="javascript:;" style="color:#4785FF;">退订政策</a></div>
+                                                <div class="col-md-2 text-center"><a href="javascript:;" style="color:#4785FF;">@(price.priceType.PaymentMethod==1?"免费取消":"无法取消")</a></div>
                                                 <div class="col-md-2">@Enum.GetName(typeof(PayType), price.priceType.PaymentMethod)</div>
                                                 <div class="col-md-2"><span class="price-value"><span class="fa fa-rmb"></span> @Math.Round(price.avg, 0)</span> </div>
                                                 <div class="col-md-2">
@@ -525,7 +525,7 @@
                                                     }
                                                     else
                                                     {
-                                                        <span>已售完</span>
+                                                        <a class="reserve-btn" href="/Order/Apply/@price.priceType.Id?HotelInfoId=@ViewBag.Hotel.Id&StartTime=@ViewBag.startDate&EndTime=@ViewBag.endDate" target="_blank" disabled="disabled">立即预订</a>
                                                     }
                                                 </div>
                                             </div>
@@ -659,7 +659,7 @@
         </div>
     </div>
 </div>
-<div class="container-fluid" style="background:url('/Images/banner.png') no-repeat;background-size:cover;background-position:center;padding:0px;">
+<div class="container-fluid" style="background:url('/Images/hotelinfobg.jpg') no-repeat;background-size:cover;background-position:center;padding:0px;">
     <div>
 
         <div class="container">

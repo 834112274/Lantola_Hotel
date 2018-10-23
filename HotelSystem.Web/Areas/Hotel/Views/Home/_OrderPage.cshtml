@@ -32,7 +32,7 @@
                     }
                 </td>
                 <td><p>@order.StartTime.ToString("yyyy-MM-dd")</p><p>@order.EndTime.ToString("yyyy-MM-dd")</p><p>@order.RoomCount 间@((order.StartTime - order.EndTime).Days.ToString())晚</p> </td>
-                <td><label>@order.Total</label></td>
+                <td><label>@order.HousingPrice</label></td>
                 <td>@(order.GuestUser.Type == 1 ? "普通客户" : "企业客户")</td>
                 <td>
                     @Enum.GetName(typeof(OrderState), Convert.ToInt32(order.State))

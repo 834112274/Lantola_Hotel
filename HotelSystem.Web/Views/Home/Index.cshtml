@@ -1,7 +1,7 @@
 ﻿@using HotelSystem.Model;
 @using HotelSystem.Web.Models.View
 @{
-    ViewBag.Title = "首页";
+    ViewBag.Title = "LANTOLA郎拓拉官网";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <style>
@@ -115,8 +115,12 @@
                                 <div class="form-group has-feedback">
                                     <label class="sr-only"></label>
                                     <select class="form-control input-lg" name="star" style="border:none;border-radius:0px;">
-                                        <option>不限星级</option>
-                                        <option>一星</option>
+                                        <option selected>不限星级</option>
+                                        <option value="6">超五星/奢华型</option>
+                                        <option value="5">五星级/豪华型</option>
+                                        <option value="4">四星级/高档型</option>
+                                        <option value="3">三星级/舒适型</option>
+                                        <option value="2">二星级/经济型</option>
                                     </select>
                                 </div>
                             </div>

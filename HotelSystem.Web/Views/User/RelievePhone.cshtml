@@ -20,7 +20,7 @@
                 <div class="col-md-8">
                     <div class="input-group">
                         <p class="form-control-static">@(Model.Phone.Substring(0, 2))***@(Model.Phone.Substring(Model.Phone.Length - 4, 4))</p>
-                        <input type="hidden" id="Relieve_Phone" value="@(Model.Phone)" />
+                        <input type="hidden" id="Relieve_Phone" name="phone" value="@(Model.Phone)" />
                         <span class="input-group-btn">
                             <button class="btn btn-default" id="RelievePhone_Send" type="button">发送验证码</button>
                         </span>

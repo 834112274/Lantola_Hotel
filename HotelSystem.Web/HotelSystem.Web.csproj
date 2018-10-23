@@ -162,6 +162,7 @@
     <Content Include="Images\denglu8.png" />
     <Content Include="Images\dsadsad.jpg" />
     <Content Include="Images\fail.jpg" />
+    <Content Include="Images\hotelinfobg.jpg" />
     <Content Include="Images\hotelregister1.png" />
     <Content Include="Images\hotelregister3.png" />
     <Content Include="Images\lantola-logo.png" />
@@ -179,6 +180,7 @@
     <Content Include="Images\pwd-1.png" />
     <Content Include="Images\pwd-2.png" />
     <Content Include="Images\unionpay.jpg" />
+    <Content Include="Images\userbg.jpg" />
     <Content Include="Images\user_bg.jpg" />
     <Content Include="Images\wechatpay.jpg" />
     <Content Include="Images\zhuce1.png" />
