@@ -17,8 +17,8 @@ namespace WxPayAPI
             Log.Info(this.GetType().ToString(), "Native pay mode 1 url is producing...");
 
             WxPayData data = new WxPayData();
-            data.SetValue("appid", WxPayConfig.APPID);//公众帐号id
-            data.SetValue("mch_id", WxPayConfig.MCHID);//商户号
+            data.SetValue("appid", WxPayConfig.GetConfig().GetAppID());//公众帐号id
+            data.SetValue("mch_id", WxPayConfig.GetConfig().GetMchID());//商户号
             data.SetValue("time_stamp", WxPayApi.GenerateTimeStamp());//时间戳
             data.SetValue("nonce_str", WxPayApi.GenerateNonceStr());//随机字符串
             data.SetValue("product_id", productId);//商品ID
@@ -42,13 +42,13 @@ namespace WxPayAPI
             WxPayData data = new WxPayData();
             data.SetValue("body", "Lantola酒店预订");//商品描述
             data.SetValue("attach", "test");//附加数据
-            data.SetValue("out_trade_no", order.Number);//订单编号
-            data.SetValue("total_fee", (order.Total*100).ToString());//总金额 (转分)
+            data.SetValue("out_trade_no", order.Number);//随机字符串
+            data.SetValue("total_fee", (order.Total * 100).ToString());//总金额
             data.SetValue("time_start", DateTime.Now.ToString("yyyyMMddHHmmss"));//交易起始时间
             data.SetValue("time_expire", DateTime.Now.AddMinutes(10).ToString("yyyyMMddHHmmss"));//交易结束时间
-            data.SetValue("goods_tag", "hotel");//商品标记
+            data.SetValue("goods_tag", order.RoomName);//商品标记
             data.SetValue("trade_type", "NATIVE");//交易类型
-            data.SetValue("product_id", order.PriceTypeId);//商品ID 绑定价格ID
+            data.SetValue("product_id", order.PriceTypeId);//商品ID
 
             WxPayData result = WxPayApi.UnifiedOrder(data);//调用统一下单接口
             string url = result.GetValue("code_url").ToString();//获得统一下单接口返回的二维码链接

@@ -78,6 +78,5 @@ G:\Github\Lantola\HotelSystem.Model\bin\Debug\EntityFramework.xml
 G:\Github\Lantola\HotelSystem.Model\bin\Debug\EntityFramework.SqlServer.xml
 G:\Github\Lantola\HotelSystem.Model\bin\Debug\zh-Hans\EntityFramework.resources.dll
 G:\Github\Lantola\HotelSystem.Model\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
-G:\Github\Lantola\HotelSystem.Model\obj\Debug\HotelSystem.Model.csprojResolveAssemblyReference.cache
 G:\Github\Lantola\HotelSystem.Model\obj\Debug\HotelSystem.Model.dll
 G:\Github\Lantola\HotelSystem.Model\obj\Debug\HotelSystem.Model.pdb

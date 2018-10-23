@@ -8,8 +8,8 @@ using System.IO;
 using System.Text;
 using System.Net;
 using System.Web.Security;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using LitJson;
+
 namespace WxPayAPI
 {
     public class JsApiPay
@@ -69,7 +69,7 @@ namespace WxPayAPI
                 string path = page.Request.Path;
                 string redirect_uri = HttpUtility.UrlEncode("http://" + host + path);
                 WxPayData data = new WxPayData();
-                data.SetValue("appid", WxPayConfig.APPID);
+                data.SetValue("appid", WxPayConfig.GetConfig().GetAppID());
                 data.SetValue("redirect_uri", redirect_uri);
                 data.SetValue("response_type", "code");
                 data.SetValue("scope", "snsapi_base");
@@ -110,8 +110,8 @@ namespace WxPayAPI
             {
                 //构造获取openid及access_token的url
                 WxPayData data = new WxPayData();
-                data.SetValue("appid", WxPayConfig.APPID);
-                data.SetValue("secret", WxPayConfig.APPSECRET);
+                data.SetValue("appid", WxPayConfig.GetConfig().GetAppID());
+                data.SetValue("secret", WxPayConfig.GetConfig().GetAppSecret());
                 data.SetValue("code", code);
                 data.SetValue("grant_type", "authorization_code");
                 string url = "https://api.weixin.qq.com/sns/oauth2/access_token?" + data.ToUrl();
@@ -122,7 +122,7 @@ namespace WxPayAPI
                 Log.Debug(this.GetType().ToString(), "GetOpenidAndAccessTokenFromCode response : " + result);
 
                 //保存access_token，用于收货地址获取
-                JObject jd = JsonConvert.DeserializeObject<JObject>(result);
+                JsonData jd = JsonMapper.ToObject(result);
                 access_token = (string)jd["access_token"];
 
                 //获取用户openid
@@ -221,7 +221,7 @@ namespace WxPayAPI
 
                 //构造需要用SHA1算法加密的数据
                 WxPayData signData = new WxPayData();
-                signData.SetValue("appid",WxPayConfig.APPID);
+                signData.SetValue("appid",WxPayConfig.GetConfig().GetAppID());
                 signData.SetValue("url", url);
                 signData.SetValue("timestamp",WxPayApi.GenerateTimeStamp());
                 signData.SetValue("noncestr",WxPayApi.GenerateNonceStr());
@@ -235,7 +235,7 @@ namespace WxPayAPI
 
                 //获取收货地址js函数入口参数
                 WxPayData afterData = new WxPayData();
-                afterData.SetValue("appId",WxPayConfig.APPID);
+                afterData.SetValue("appId",WxPayConfig.GetConfig().GetAppID());
                 afterData.SetValue("scope","jsapi_address");
                 afterData.SetValue("signType","sha1");
                 afterData.SetValue("addrSign",addrSign);

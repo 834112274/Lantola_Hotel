@@ -30,6 +30,5 @@ F:\Project\github\Lantola_Hotel\HotelSystem.Helper\obj\Debug\HotelSystem.Helper.
 F:\Project\github\Lantola_Hotel\HotelSystem.Helper\obj\Debug\HotelSystem.Helper.pdb
 G:\Github\Lantola\HotelSystem.Helper\bin\Debug\HotelSystem.Helper.dll
 G:\Github\Lantola\HotelSystem.Helper\bin\Debug\HotelSystem.Helper.pdb
-G:\Github\Lantola\HotelSystem.Helper\obj\Debug\HotelSystem.Helper.csprojResolveAssemblyReference.cache
 G:\Github\Lantola\HotelSystem.Helper\obj\Debug\HotelSystem.Helper.dll
 G:\Github\Lantola\HotelSystem.Helper\obj\Debug\HotelSystem.Helper.pdb

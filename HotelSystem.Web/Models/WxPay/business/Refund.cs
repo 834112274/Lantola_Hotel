@@ -31,7 +31,7 @@ namespace WxPayAPI
             data.SetValue("total_fee", int.Parse(total_fee));//订单总金额
             data.SetValue("refund_fee", int.Parse(refund_fee));//退款金额
             data.SetValue("out_refund_no", WxPayApi.GenerateOutTradeNo());//随机生成商户退款单号
-            data.SetValue("op_user_id", WxPayConfig.MCHID);//操作员，默认为商户号
+            data.SetValue("op_user_id", WxPayConfig.GetConfig().GetMchID());//操作员，默认为商户号
 
             WxPayData result = WxPayApi.Refund(data);//提交退款申请给API，接收返回数据
 

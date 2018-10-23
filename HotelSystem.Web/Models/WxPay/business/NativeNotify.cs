@@ -65,8 +65,8 @@ namespace WxPayAPI
             WxPayData data = new WxPayData();
             data.SetValue("return_code", "SUCCESS");
             data.SetValue("return_msg", "OK");
-            data.SetValue("appid", WxPayConfig.APPID);
-            data.SetValue("mch_id", WxPayConfig.MCHID);
+            data.SetValue("appid", WxPayConfig.GetConfig().GetAppID());
+            data.SetValue("mch_id", WxPayConfig.GetConfig().GetMchID());
             data.SetValue("nonce_str", WxPayApi.GenerateNonceStr());
             data.SetValue("prepay_id", unifiedOrderResult.GetValue("prepay_id"));
             data.SetValue("result_code", "SUCCESS");

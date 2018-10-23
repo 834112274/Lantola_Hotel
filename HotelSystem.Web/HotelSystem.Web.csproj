@@ -57,6 +57,9 @@
       <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="LitJson">
+      <HintPath>..\..\..\cs_sdk_v3.0.9\WxPayAPI\bin\LitJson.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -659,10 +662,14 @@
     <Compile Include="Models\WxPay\lantola\PayNotifyController.cs" />
     <Compile Include="Models\WxPay\lib\Config.cs" />
     <Compile Include="Models\WxPay\lib\Data.cs" />
+    <Compile Include="Models\WxPay\lib\DemoConfig.cs" />
     <Compile Include="Models\WxPay\lib\Exception.cs" />
     <Compile Include="Models\WxPay\lib\HttpService.cs" />
+    <Compile Include="Models\WxPay\lib\IConfig.cs" />
     <Compile Include="Models\WxPay\lib\Log.cs" />
     <Compile Include="Models\WxPay\lib\Notify.cs" />
+    <Compile Include="Models\WxPay\lib\RandomGenerator.cs" />
+    <Compile Include="Models\WxPay\lib\SafeXmlDocument.cs" />
     <Compile Include="Models\WxPay\lib\WxPayApi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

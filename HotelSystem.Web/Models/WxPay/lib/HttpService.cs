@@ -15,6 +15,7 @@ namespace WxPayAPI
     /// </summary>
     public class HttpService
     {
+        private static string USER_AGENT = string.Format("WXPaySDK/{3} ({0}) .net/{1} {2}", Environment.OSVersion, Environment.Version, WxPayConfig.GetConfig().GetMchID(), typeof(HttpService).Assembly.GetName().Version);
 
         public static bool CheckValidationResult(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors errors)
         {
@@ -47,7 +48,7 @@ namespace WxPayAPI
                 * 下面设置HttpWebRequest的相关属性
                 * ************************************************************/
                 request = (HttpWebRequest)WebRequest.Create(url);
-
+                request.UserAgent = USER_AGENT;
                 request.Method = "POST";
                 request.Timeout = timeout * 1000;
 
@@ -65,7 +66,7 @@ namespace WxPayAPI
                 if (isUseCert)
                 {
                     string path = HttpContext.Current.Request.PhysicalApplicationPath;
-                    X509Certificate2 cert = new X509Certificate2(path + WxPayConfig.SSLCERT_PATH, WxPayConfig.SSLCERT_PASSWORD);
+                    X509Certificate2 cert = new X509Certificate2(path + WxPayConfig.GetConfig().GetSSlCertPath(), WxPayConfig.GetConfig().GetSSlCertPassword());
                     request.ClientCertificates.Add(cert);
                     Log.Debug("WxPayApi", "PostXml used cert");
                 }
@@ -148,13 +149,8 @@ namespace WxPayAPI
                 * 下面设置HttpWebRequest的相关属性
                 * ************************************************************/
                 request = (HttpWebRequest)WebRequest.Create(url);
-
+                request.UserAgent = USER_AGENT;
                 request.Method = "GET";
-
-                //设置代理
-                //WebProxy proxy = new WebProxy();
-                //proxy.Address = new Uri(WxPayConfig.PROXY_URL);
-                //request.Proxy = proxy;
 
                 //获取服务器返回
                 response = (HttpWebResponse)request.GetResponse();

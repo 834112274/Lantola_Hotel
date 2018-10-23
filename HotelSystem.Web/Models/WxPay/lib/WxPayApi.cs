@@ -5,6 +5,8 @@ using System.Net;
 using System.IO;
 using System.Text;
 
+using WxPayAPI.lib;
+
 namespace WxPayAPI
 {
     public class WxPayApi
@@ -39,10 +41,11 @@ namespace WxPayAPI
                 throw new WxPayException("提交被扫支付API接口中，缺少必填参数auth_code！");
             }
        
-            inputObj.SetValue("spbill_create_ip", WxPayConfig.IP);//终端ip
-            inputObj.SetValue("appid", WxPayConfig.APPID);//公众账号ID
-            inputObj.SetValue("mch_id", WxPayConfig.MCHID);//商户号
+            inputObj.SetValue("spbill_create_ip", WxPayConfig.GetConfig().GetIp());//终端ip
+            inputObj.SetValue("appid", WxPayConfig.GetConfig().GetAppID());//公众账号ID
+            inputObj.SetValue("mch_id", WxPayConfig.GetConfig().GetMchID());//商户号
             inputObj.SetValue("nonce_str", Guid.NewGuid().ToString().Replace("-", ""));//随机字符串
+            inputObj.SetValue("sign_type", WxPayData.SIGN_TYPE_HMAC_SHA256);//签名类型
             inputObj.SetValue("sign", inputObj.MakeSign());//签名
             string xml = inputObj.ToXml();
 
@@ -82,10 +85,12 @@ namespace WxPayAPI
                 throw new WxPayException("订单查询接口中，out_trade_no、transaction_id至少填一个！");
             }
 
-            inputObj.SetValue("appid", WxPayConfig.APPID);//公众账号ID
-            inputObj.SetValue("mch_id", WxPayConfig.MCHID);//商户号
+            inputObj.SetValue("appid", WxPayConfig.GetConfig().GetAppID());//公众账号ID
+            inputObj.SetValue("mch_id", WxPayConfig.GetConfig().GetMchID());//商户号
             inputObj.SetValue("nonce_str", WxPayApi.GenerateNonceStr());//随机字符串
+            inputObj.SetValue("sign_type", WxPayData.SIGN_TYPE_HMAC_SHA256);//签名类型
             inputObj.SetValue("sign", inputObj.MakeSign());//签名
+
 
             string xml = inputObj.ToXml();
 
@@ -125,9 +130,10 @@ namespace WxPayAPI
                 throw new WxPayException("撤销订单API接口中，参数out_trade_no和transaction_id必须填写一个！");
             }
 
-            inputObj.SetValue("appid", WxPayConfig.APPID);//公众账号ID
-            inputObj.SetValue("mch_id", WxPayConfig.MCHID);//商户号
+            inputObj.SetValue("appid", WxPayConfig.GetConfig().GetAppID());//公众账号ID
+            inputObj.SetValue("mch_id", WxPayConfig.GetConfig().GetMchID());//商户号
             inputObj.SetValue("nonce_str", GenerateNonceStr());//随机字符串
+            inputObj.SetValue("sign_type", WxPayData.SIGN_TYPE_HMAC_SHA256);//签名类型
             inputObj.SetValue("sign", inputObj.MakeSign());//签名
             string xml = inputObj.ToXml();
 
@@ -184,9 +190,10 @@ namespace WxPayAPI
                 throw new WxPayException("退款申请接口中，缺少必填参数op_user_id！");
             }
 
-            inputObj.SetValue("appid", WxPayConfig.APPID);//公众账号ID
-            inputObj.SetValue("mch_id", WxPayConfig.MCHID);//商户号
+            inputObj.SetValue("appid", WxPayConfig.GetConfig().GetAppID());//公众账号ID
+            inputObj.SetValue("mch_id", WxPayConfig.GetConfig().GetMchID());//商户号
             inputObj.SetValue("nonce_str", Guid.NewGuid().ToString().Replace("-", ""));//随机字符串
+            inputObj.SetValue("sign_type", WxPayData.SIGN_TYPE_HMAC_SHA256);//签名类型
             inputObj.SetValue("sign", inputObj.MakeSign());//签名
             
             string xml = inputObj.ToXml();
@@ -230,10 +237,11 @@ namespace WxPayAPI
 			    throw new WxPayException("退款查询接口中，out_refund_no、out_trade_no、transaction_id、refund_id四个参数必填一个！");
 		    }
 
-		    inputObj.SetValue("appid",WxPayConfig.APPID);//公众账号ID
-		    inputObj.SetValue("mch_id",WxPayConfig.MCHID);//商户号
+		    inputObj.SetValue("appid",WxPayConfig.GetConfig().GetAppID());//公众账号ID
+		    inputObj.SetValue("mch_id",WxPayConfig.GetConfig().GetMchID());//商户号
 		    inputObj.SetValue("nonce_str",GenerateNonceStr());//随机字符串
-		    inputObj.SetValue("sign",inputObj.MakeSign());//签名
+            inputObj.SetValue("sign_type", WxPayData.SIGN_TYPE_HMAC_SHA256);//签名类型
+            inputObj.SetValue("sign", inputObj.MakeSign());//签名
 
 		    string xml = inputObj.ToXml();
 		
@@ -272,9 +280,10 @@ namespace WxPayAPI
                 throw new WxPayException("对账单接口中，缺少必填参数bill_date！");
             }
 
-            inputObj.SetValue("appid", WxPayConfig.APPID);//公众账号ID
-            inputObj.SetValue("mch_id", WxPayConfig.MCHID);//商户号
+            inputObj.SetValue("appid", WxPayConfig.GetConfig().GetAppID());//公众账号ID
+            inputObj.SetValue("mch_id", WxPayConfig.GetConfig().GetMchID());//商户号
             inputObj.SetValue("nonce_str", GenerateNonceStr());//随机字符串
+            inputObj.SetValue("sign_type", WxPayData.SIGN_TYPE_HMAC_SHA256);//签名类型
             inputObj.SetValue("sign", inputObj.MakeSign());//签名
 
             string xml = inputObj.ToXml();
@@ -316,10 +325,11 @@ namespace WxPayAPI
 			    throw new WxPayException("需要转换的URL，签名用原串，传输需URL encode！");
 		    }
 
-		    inputObj.SetValue("appid",WxPayConfig.APPID);//公众账号ID
-		    inputObj.SetValue("mch_id",WxPayConfig.MCHID);//商户号
+		    inputObj.SetValue("appid",WxPayConfig.GetConfig().GetAppID());//公众账号ID
+		    inputObj.SetValue("mch_id",WxPayConfig.GetConfig().GetMchID());//商户号
 		    inputObj.SetValue("nonce_str",GenerateNonceStr());//随机字符串	
-		    inputObj.SetValue("sign",inputObj.MakeSign());//签名
+            inputObj.SetValue("sign_type", WxPayData.SIGN_TYPE_HMAC_SHA256);//签名类型
+            inputObj.SetValue("sign", inputObj.MakeSign());//签名
 		    string xml = inputObj.ToXml();
 		
 		    var start = DateTime.Now;//请求开始时间
@@ -381,13 +391,14 @@ namespace WxPayAPI
             //异步通知url未设置，则使用配置文件中的url
             if (!inputObj.IsSet("notify_url"))
             {
-                inputObj.SetValue("notify_url", WxPayConfig.NOTIFY_URL);//异步通知url
+                inputObj.SetValue("notify_url", WxPayConfig.GetConfig().GetNotifyUrl());//异步通知url
             }
 
-            inputObj.SetValue("appid", WxPayConfig.APPID);//公众账号ID
-            inputObj.SetValue("mch_id", WxPayConfig.MCHID);//商户号
-            inputObj.SetValue("spbill_create_ip", WxPayConfig.IP);//终端ip	  	    
+            inputObj.SetValue("appid", WxPayConfig.GetConfig().GetAppID());//公众账号ID
+            inputObj.SetValue("mch_id", WxPayConfig.GetConfig().GetMchID());//商户号
+            inputObj.SetValue("spbill_create_ip", WxPayConfig.GetConfig().GetIp());//终端ip	  	    
             inputObj.SetValue("nonce_str", GenerateNonceStr());//随机字符串
+            inputObj.SetValue("sign_type", WxPayData.SIGN_TYPE_HMAC_SHA256);//签名类型
 
             //签名
             inputObj.SetValue("sign", inputObj.MakeSign());
@@ -428,10 +439,11 @@ namespace WxPayAPI
 			    throw new WxPayException("关闭订单接口中，out_trade_no必填！");
 		    }
 
-		    inputObj.SetValue("appid",WxPayConfig.APPID);//公众账号ID
-		    inputObj.SetValue("mch_id",WxPayConfig.MCHID);//商户号
+		    inputObj.SetValue("appid",WxPayConfig.GetConfig().GetAppID());//公众账号ID
+		    inputObj.SetValue("mch_id",WxPayConfig.GetConfig().GetMchID());//商户号
 		    inputObj.SetValue("nonce_str",GenerateNonceStr());//随机字符串		
-		    inputObj.SetValue("sign",inputObj.MakeSign());//签名
+            inputObj.SetValue("sign_type", WxPayData.SIGN_TYPE_HMAC_SHA256);//签名类型
+            inputObj.SetValue("sign", inputObj.MakeSign());//签名
 		    string xml = inputObj.ToXml();
 		
 		    var start = DateTime.Now;//请求开始时间
@@ -460,13 +472,13 @@ namespace WxPayAPI
         private static void ReportCostTime(string interface_url, int timeCost, WxPayData inputObj)
 	    {
 		    //如果不需要进行上报
-		    if(WxPayConfig.REPORT_LEVENL == 0)
+		    if(WxPayConfig.GetConfig().GetReportLevel() == 0)
             {
 			    return;
 		    } 
 
 		    //如果仅失败上报
-		    if(WxPayConfig.REPORT_LEVENL == 1 && inputObj.IsSet("return_code") && inputObj.GetValue("return_code").ToString() == "SUCCESS" &&
+		    if(WxPayConfig.GetConfig().GetReportLevel() == 1 && inputObj.IsSet("return_code") && inputObj.GetValue("return_code").ToString() == "SUCCESS" &&
 			 inputObj.IsSet("result_code") && inputObj.GetValue("result_code").ToString() == "SUCCESS")
             {
 		 	    return;
@@ -556,12 +568,13 @@ namespace WxPayAPI
 			    throw new WxPayException("接口耗时，缺少必填参数execute_time_！");
 		    }
 
-		    inputObj.SetValue("appid",WxPayConfig.APPID);//公众账号ID
-		    inputObj.SetValue("mch_id",WxPayConfig.MCHID);//商户号
-		    inputObj.SetValue("user_ip",WxPayConfig.IP);//终端ip
+		    inputObj.SetValue("appid",WxPayConfig.GetConfig().GetAppID());//公众账号ID
+		    inputObj.SetValue("mch_id",WxPayConfig.GetConfig().GetMchID());//商户号
+            inputObj.SetValue("user_ip",WxPayConfig.GetConfig().GetIp());//终端ip
 		    inputObj.SetValue("time",DateTime.Now.ToString("yyyyMMddHHmmss"));//商户上报时间	 
 		    inputObj.SetValue("nonce_str",GenerateNonceStr());//随机字符串
-		    inputObj.SetValue("sign",inputObj.MakeSign());//签名
+            inputObj.SetValue("sign_type", WxPayData.SIGN_TYPE_HMAC_SHA256);//签名类型
+            inputObj.SetValue("sign", inputObj.MakeSign());//签名
 		    string xml = inputObj.ToXml();
 
             Log.Info("WxPayApi", "Report request : " + xml);
@@ -582,7 +595,7 @@ namespace WxPayAPI
         public static string GenerateOutTradeNo()
         {
             var ran = new Random();
-            return string.Format("{0}{1}{2}", WxPayConfig.MCHID, DateTime.Now.ToString("yyyyMMddHHmmss"), ran.Next(999));
+            return string.Format("{0}{1}{2}", WxPayConfig.GetConfig().GetMchID(), DateTime.Now.ToString("yyyyMMddHHmmss"), ran.Next(999));
         }
 
         /**
@@ -601,7 +614,8 @@ namespace WxPayAPI
         */
         public static string GenerateNonceStr()
         {
-            return Guid.NewGuid().ToString().Replace("-", "");
+            RandomGenerator randomGenerator = new RandomGenerator();
+            return randomGenerator.GetRandomUInt().ToString();
         }
     }
 }

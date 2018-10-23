@@ -328,3 +328,4 @@ G:\Github\Lantola\HotelSystem.Web\bin\zh-Hans\System.Web.Mvc.resources.dll
 G:\Github\Lantola\HotelSystem.Web\obj\Debug\HotelSystem.Web.csprojResolveAssemblyReference.cache
 G:\Github\Lantola\HotelSystem.Web\obj\Debug\HotelSystem.Web.dll
 G:\Github\Lantola\HotelSystem.Web\obj\Debug\HotelSystem.Web.pdb
+G:\Github\Lantola\HotelSystem.Web\bin\LitJson.dll
